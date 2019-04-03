@@ -13,6 +13,7 @@
 @{
         ViewBag.Title = "Resilience";
 }
+
 <body class="homepage is-preload">
     <div id="page-wrapper">
 
@@ -20,44 +21,17 @@
         <header id="header">
             <div class="logo container">
                 <div>
-                    <h1><a href="index.html" id="logo">Building Resilience</a></h1>
+                    <h1>@Html.ActionLink("Building Resilience", "Index", "Home")</h1>
                 </div>
             </div>
-        </header>
+        </header>        
 
-        <!-- Nav -->
-        <nav id="nav">
-            <ul>
-                <li class="current"><a href="index.html">Home</a></li>
-                <li>
-                    <a href="#">Dropdown</a>
-                    <ul>
-                        <li><a href="#">Lorem ipsum dolor</a></li>
-                        <li><a href="#">Magna phasellus</a></li>
-                        <li>
-                            <a href="#">Phasellus consequat</a>
-                            <ul>
-                                <li><a href="#">Lorem ipsum dolor</a></li>
-                                <li><a href="#">Phasellus consequat</a></li>
-                                <li><a href="#">Magna phasellus</a></li>
-                                <li><a href="#">Etiam dolore nisl</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="#">Veroeros feugiat</a></li>
-                    </ul>
-                </li>
-                <li><a href="left-sidebar.html">Left Sidebar</a></li>
-                <li><a href="right-sidebar.html">Right Sidebar</a></li>
-                <li><a href="no-sidebar.html">No Sidebar</a></li>
-            </ul>
-        </nav>
-
-        <!-- Banner -->
+        <!-- Banner -->       
         <section id="banner">
             <div class="content">
-                <h2>Welcome to TXT by HTML5 UP</h2>
-                <p>A free responsive site template built on HTML5, CSS3, and some other stuff</p>
-                <a href="#main" class="button scrolly">Alright let's go</a>
+                <h2>What is resilience and why is it important for kids to be resilient?</h2>
+                <p>Resilience means the capacity to recover quickly from difficulties. Kids growing up face a lot of challenges. Often times, this affects their development and overall personality. As parents, it is our responsibilty to ensure that they are equipped to face these challenges and recover from setbacks.</p>
+                <a href="#main" class="button scrolly">Learn more</a>
             </div>
         </section>
 
@@ -97,7 +71,7 @@
 
                                         <!-- Feature -->
                                         <section class="box feature">
-                                            <a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+                                            <a href="#" class="image featured"><img src="~/Images/pic01.jpg" alt="" /></a>
                                             <h3><a href="#">A Subheading</a></h3>
                                             <p>
                                                 Phasellus quam turpis, feugiat sit amet ornare in, a hendrerit in
@@ -110,7 +84,7 @@
 
                                         <!-- Feature -->
                                         <section class="box feature">
-                                            <a href="#" class="image featured"><img src="images/pic02.jpg" alt="" /></a>
+                                            <a href="#" class="image featured"><img src="~/Images/pic02.jpg" alt="" /></a>
                                             <h3><a href="#">Another Subheading</a></h3>
                                             <p>
                                                 Phasellus quam turpis, feugiat sit amet ornare in, a hendrerit in
@@ -123,7 +97,7 @@
 
                                         <!-- Feature -->
                                         <section class="box feature">
-                                            <a href="#" class="image featured"><img src="images/pic03.jpg" alt="" /></a>
+                                            <a href="#" class="image featured"><img src="~/Images/pic03.jpg" alt="" /></a>
                                             <h3><a href="#">And Another</a></h3>
                                             <p>
                                                 Phasellus quam turpis, feugiat sit amet ornare in, a hendrerit in
@@ -136,7 +110,7 @@
 
                                         <!-- Feature -->
                                         <section class="box feature">
-                                            <a href="#" class="image featured"><img src="images/pic04.jpg" alt="" /></a>
+                                            <a href="#" class="image featured"><img src="~/Images/pic04.jpg" alt="" /></a>
                                             <h3><a href="#">And One More</a></h3>
                                             <p>
                                                 Phasellus quam turpis, feugiat sit amet ornare in, a hendrerit in
@@ -176,7 +150,7 @@
                                                         <li class="icon fa-comments"><a href="#">8</a></li>
                                                     </ul>
                                                 </header>
-                                                <a href="#" class="image featured"><img src="images/pic05.jpg" alt="" /></a>
+                                                <a href="#" class="image featured"><img src="~/Images/pic05.jpg" alt="" /></a>
                                                 <p>
                                                     Phasellus quam turpis, feugiat sit amet ornare in, a hendrerit in lectus. Praesent
                                                     semper mod quis eget mi. Etiam sed ante risus aliquam erat et volutpat. Praesent a
