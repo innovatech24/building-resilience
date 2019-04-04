@@ -194,10 +194,25 @@
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\burlywood-theme.css" />
+    <Content Include="Content\dark-red-theme.css" />
+    <Content Include="Content\default-theme.css" />
+    <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\green-theme.css" />
+    <Content Include="Content\jquery.fancybox.css" />
     <Content Include="Content\main.css" />
+    <Content Include="Content\orange-theme.css" />
+    <Content Include="Content\pink-theme.css" />
+    <Content Include="Content\purple-theme.css" />
+    <Content Include="Content\red-theme.css" />
+    <Content Include="Content\slick.css" />
+    <Content Include="Content\style.css" />
+    <Content Include="Content\violet-theme.css" />
+    <Content Include="Content\yellow-theme.css" />
     <Content Include="favicon.ico" />
     <Content Include="Fonts\fontawesome-webfont.svg" />
+    <Content Include="Fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Images\banner.jpg" />
@@ -210,6 +225,7 @@
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\custom.js" />
     <Content Include="Scripts\esm\popper-utils.js" />
     <Content Include="Scripts\esm\popper-utils.min.js" />
     <Content Include="Scripts\esm\popper.js" />
@@ -233,6 +249,10 @@
     <Content Include="Fonts\fontawesome-webfont.woff" />
     <Content Include="Fonts\fontawesome-webfont.woff2" />
     <Content Include="Fonts\FontAwesome.otf" />
+    <Content Include="Fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Fonts\glyphicons-halflings-regular.woff2" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\breakpoints.min.js" />
     <Content Include="Scripts\browser.min.js" />
@@ -241,8 +261,11 @@
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.counterup.js" />
     <Content Include="Scripts\jquery.dropotron.min.js" />
+    <Content Include="Scripts\jquery.fancybox.pack.js" />
     <Content Include="Scripts\jquery.min.js" />
+    <Content Include="Scripts\jquery.mixitup.js" />
     <Content Include="Scripts\jquery.scrolly.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
@@ -254,11 +277,13 @@
     <Content Include="Scripts\popper-utils.min.js" />
     <Content Include="Scripts\popper.js" />
     <Content Include="Scripts\popper.min.js" />
+    <Content Include="Scripts\slick.js" />
     <Content Include="Scripts\umd\popper-utils.js" />
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
     <Content Include="Scripts\util.js" />
+    <Content Include="Scripts\waypoints.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -302,6 +327,7 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\Challenges\Bullying.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

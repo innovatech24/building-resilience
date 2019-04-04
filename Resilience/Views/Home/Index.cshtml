@@ -1,357 +1,767 @@
-﻿<!DOCTYPE HTML>
-<!--
-    TXT by HTML5 UP
-    html5up.ne
-    Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
+﻿<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <link rel="stylesheet" href="~/Content/main.css" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    @{ 
+        ViewBag.title = "Resilience";
+    }
+
+    <!-- Favicon -->
+    @*<link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">*@
+
+    <!-- Font awesome -->
+    <link href="~/Content/font-awesome.css" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link href="~/Content/bootstrap.css" rel="stylesheet">
+    <!-- Slick slider -->
+    <link rel="stylesheet" type="text/css" href="~/Content/slick.css">
+    <!-- Fancybox slider -->
+    <link rel="stylesheet" href="~/Content/jquery.fancybox.css" type="text/css" media="screen" />
+    <!-- Theme color -->
+    <link id="switcher" href="~/Content/default-theme.css" rel="stylesheet">
+
+    <!-- Main style sheet -->
+    <link href="~/Content/style.css" rel="stylesheet">
+
+
+    <!-- Google Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,400italic,300,300italic,500,700' rel='stylesheet' type='text/css'>
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
 </head>
-@{
-        ViewBag.Title = "Resilience";
-}
+<body>
 
-<body class="homepage is-preload">
-    <div id="page-wrapper">
-
-        <!-- Header -->
-        <header id="header">
-            <div class="logo container">
-                <div>
-                    <h1>@Html.ActionLink("Building Resilience", "Index", "Home")</h1>
-                </div>
-            </div>
-        </header>        
-
-        <!-- Banner -->       
-        <section id="banner">
-            <div class="content">
-                <h2>What is resilience and why is it important for kids to be resilient?</h2>
-                <p>Resilience means the capacity to recover quickly from difficulties. Kids growing up face a lot of challenges. Often times, this affects their development and overall personality. As parents, it is our responsibilty to ensure that they are equipped to face these challenges and recover from setbacks.</p>
-                <a href="#main" class="button scrolly">Learn more</a>
-            </div>
-        </section>
-
-        <!-- Main -->
-        <section id="main">
-            <div class="container">
-                <div class="row gtr-200">
-                    <div class="col-12">
-
-                        <!-- Highlight -->
-                        <section class="box highlight">
-                            <ul class="special">
-                                <li><a href="#" class="icon fa-search"><span class="label">Magnifier</span></a></li>
-                                <li><a href="#" class="icon fa-tablet"><span class="label">Tablet</span></a></li>
-                                <li><a href="#" class="icon fa-flask"><span class="label">Flask</span></a></li>
-                                <li><a href="#" class="icon fa-cog"><span class="label">Cog?</span></a></li>
-                            </ul>
-                            <header>
-                                <h2>A random assortment of icons in circles</h2>
-                                <p>And some text that attempts to explain their significance</p>
-                            </header>
-                            <p>
-                                Phasellus quam turpis, feugiat sit amet ornare in, hendrerit in lectus. Praesent semper mod quis eget mi. Etiam eu<br />
-                                ante risus. Aliquam erat volutpat. Aliquam luctus et mattis lectus amet pulvinar. Nam nec turpis consequat.
-                            </p>
-                        </section>
-
-                    </div>
-                    <div class="col-12">
-
-                        <!-- Features -->
-                        <section class="box features">
-                            <h2 class="major"><span>A Major Heading</span></h2>
-                            <div>
-                                <div class="row">
-                                    <div class="col-3 col-6-medium col-12-small">
-
-                                        <!-- Feature -->
-                                        <section class="box feature">
-                                            <a href="#" class="image featured"><img src="~/Images/pic01.jpg" alt="" /></a>
-                                            <h3><a href="#">A Subheading</a></h3>
-                                            <p>
-                                                Phasellus quam turpis, feugiat sit amet ornare in, a hendrerit in
-                                                lectus dolore. Praesent semper mod quis eget sed etiam eu ante risus.
-                                            </p>
-                                        </section>
-
+    <!--START SCROLL TOP BUTTON -->
+    <a class="scrollToTop" href="#">
+        <i class="fa fa-angle-up"></i>
+    </a>
+    <!-- END SCROLL TOP BUTTON -->
+    <!-- Start header  -->
+    @*<header id="mu-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12">
+                    <div class="mu-header-area">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                <div class="mu-header-top-left">
+                                    <div class="mu-top-email">
+                                        <i class="fa fa-envelope"></i>
+                                        <span>info@markups.io</span>
                                     </div>
-                                    <div class="col-3 col-6-medium col-12-small">
-
-                                        <!-- Feature -->
-                                        <section class="box feature">
-                                            <a href="#" class="image featured"><img src="~/Images/pic02.jpg" alt="" /></a>
-                                            <h3><a href="#">Another Subheading</a></h3>
-                                            <p>
-                                                Phasellus quam turpis, feugiat sit amet ornare in, a hendrerit in
-                                                lectus dolore. Praesent semper mod quis eget sed etiam eu ante risus.
-                                            </p>
-                                        </section>
-
+                                    <div class="mu-top-phone">
+                                        <i class="fa fa-phone"></i>
+                                        <span>(568) 986 652</span>
                                     </div>
-                                    <div class="col-3 col-6-medium col-12-small">
-
-                                        <!-- Feature -->
-                                        <section class="box feature">
-                                            <a href="#" class="image featured"><img src="~/Images/pic03.jpg" alt="" /></a>
-                                            <h3><a href="#">And Another</a></h3>
-                                            <p>
-                                                Phasellus quam turpis, feugiat sit amet ornare in, a hendrerit in
-                                                lectus dolore. Praesent semper mod quis eget sed etiam eu ante risus.
-                                            </p>
-                                        </section>
-
-                                    </div>
-                                    <div class="col-3 col-6-medium col-12-small">
-
-                                        <!-- Feature -->
-                                        <section class="box feature">
-                                            <a href="#" class="image featured"><img src="~/Images/pic04.jpg" alt="" /></a>
-                                            <h3><a href="#">And One More</a></h3>
-                                            <p>
-                                                Phasellus quam turpis, feugiat sit amet ornare in, a hendrerit in
-                                                lectus dolore. Praesent semper mod quis eget sed etiam eu ante risus.
-                                            </p>
-                                        </section>
-
-                                    </div>
-                                    <div class="col-12">
-                                        <ul class="actions">
-                                            <li><a href="#" class="button large">Do Something</a></li>
-                                            <li><a href="#" class="button alt large">Think About It</a></li>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                <div class="mu-header-top-right">
+                                    <nav>
+                                        <ul class="mu-top-social-nav">
+                                            <li><a href="#"><span class="fa fa-facebook"></span></a></li>
+                                            <li><a href="#"><span class="fa fa-twitter"></span></a></li>
+                                            <li><a href="#"><span class="fa fa-google-plus"></span></a></li>
+                                            <li><a href="#"><span class="fa fa-linkedin"></span></a></li>
+                                            <li><a href="#"><span class="fa fa-youtube"></span></a></li>
                                         </ul>
-                                    </div>
+                                    </nav>
                                 </div>
                             </div>
-                        </section>
-
-                    </div>
-                    <div class="col-12">
-
-                        <!-- Blog -->
-                        <section class="box blog">
-                            <h2 class="major"><span>Another Major Heading</span></h2>
-                            <div>
-                                <div class="row">
-                                    <div class="col-9 col-12-medium">
-                                        <div class="content">
-
-                                            <!-- Featured Post -->
-                                            <article class="box post">
-                                                <header>
-                                                    <h3><a href="#">Here's a really big heading</a></h3>
-                                                    <p>With a smaller subtitle that attempts to elaborate</p>
-                                                    <ul class="meta">
-                                                        <li class="icon fa-clock-o">15 minutes ago</li>
-                                                        <li class="icon fa-comments"><a href="#">8</a></li>
-                                                    </ul>
-                                                </header>
-                                                <a href="#" class="image featured"><img src="~/Images/pic05.jpg" alt="" /></a>
-                                                <p>
-                                                    Phasellus quam turpis, feugiat sit amet ornare in, a hendrerit in lectus. Praesent
-                                                    semper mod quis eget mi. Etiam sed ante risus aliquam erat et volutpat. Praesent a
-                                                    dapibus velit. Curabitur sed nisi nunc, accumsan vestibulum lectus. Lorem ipsum
-                                                    dolor sit non aliquet sed, tempor et dolor.  Praesent a dapibus velit. Curabitur
-                                                    accumsan.
-                                                </p>
-                                                <a href="#" class="button">Continue Reading</a>
-                                            </article>
-
-                                        </div>
-                                    </div>
-                                    <div class="col-3 col-12-medium">
-                                        <div class="sidebar">
-
-                                            <!-- Archives -->
-                                            <ul class="divided">
-                                                <li>
-                                                    <article class="box post-summary">
-                                                        <h3><a href="#">A Subheading</a></h3>
-                                                        <ul class="meta">
-                                                            <li class="icon fa-clock-o">6 hours ago</li>
-                                                            <li class="icon fa-comments"><a href="#">34</a></li>
-                                                        </ul>
-                                                    </article>
-                                                </li>
-                                                <li>
-                                                    <article class="box post-summary">
-                                                        <h3><a href="#">Another Subheading</a></h3>
-                                                        <ul class="meta">
-                                                            <li class="icon fa-clock-o">9 hours ago</li>
-                                                            <li class="icon fa-comments"><a href="#">27</a></li>
-                                                        </ul>
-                                                    </article>
-                                                </li>
-                                                <li>
-                                                    <article class="box post-summary">
-                                                        <h3><a href="#">And Another</a></h3>
-                                                        <ul class="meta">
-                                                            <li class="icon fa-clock-o">Yesterday</li>
-                                                            <li class="icon fa-comments"><a href="#">184</a></li>
-                                                        </ul>
-                                                    </article>
-                                                </li>
-                                                <li>
-                                                    <article class="box post-summary">
-                                                        <h3><a href="#">And Another</a></h3>
-                                                        <ul class="meta">
-                                                            <li class="icon fa-clock-o">2 days ago</li>
-                                                            <li class="icon fa-comments"><a href="#">286</a></li>
-                                                        </ul>
-                                                    </article>
-                                                </li>
-                                                <li>
-                                                    <article class="box post-summary">
-                                                        <h3><a href="#">And One More</a></h3>
-                                                        <ul class="meta">
-                                                            <li class="icon fa-clock-o">3 days ago</li>
-                                                            <li class="icon fa-comments"><a href="#">8,086</a></li>
-                                                        </ul>
-                                                    </article>
-                                                </li>
-                                            </ul>
-                                            <a href="#" class="button alt">Archives</a>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
-
+                        </div>
                     </div>
                 </div>
             </div>
-        </section>
-
-        <!-- Footer -->
-        <footer id="footer">
+        </div>
+    </header>*@
+    <!-- End header  -->
+  
+ 
+    <!-- Start Slider -->
+    <section id="mu-slider">
+        <!-- Start single slider item -->
+        <div class="mu-slider-single">
+            <div class="mu-slider-img">
+                <figure>
+                    <img src="assets/img/slider/1.jpg" alt="img">
+                </figure>
+            </div>
+            <div class="mu-slider-content">
+                <h4>Building Resilience</h4>
+                <span></span>
+                <h2>What is resilience and why is it important for kids to be resilient?</h2>
+                <p>Resilience means the capacity to recover quickly from difficulties. Kids growing up face a lot of challenges. This affects their development and overall personailty. As parents, it is our responsibility to ensure that they are equipped to face these challenges and recover from setbacks.</p>
+                <a href="#" class="mu-read-more-btn">Learn More</a>
+            </div>
+        </div>
+        <!-- Start single slider item -->      
+    </section>
+    <!-- End Slider -->
+    <!-- Start service  -->
+    <section id="mu-service">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12">
+                    <div class="mu-service-area">
+                        <!-- Start single service -->
+                        <div class="mu-service-single">
+                            <span class="fa fa-book"></span>
+                            <h3>Challenges</h3>
+                            <p>What are the challenges faced by young children?</p>
+                        </div>
+                        <!-- Start single service -->
+                        <!-- Start single service -->
+                        <div class="mu-service-single">
+                            <span class="fa fa-users"></span>
+                            <h3>Why resilience?</h3>
+                            <p>Why should young kids be resilient?</p>
+                        </div>
+                        <!-- Start single service -->
+                        <!-- Start single service -->
+                        <div class="mu-service-single">
+                            <span class="fa fa-table"></span>
+                            <h3>Building Resilience</h3>
+                            <p>How can we build resilience amongst kids?</p>
+                        </div>
+                        <!-- Start single service -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End service  -->
+    <!-- Start about us -->
+    <section id="mu-about-us">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="mu-about-us-area">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6">
+                                <div class="mu-about-us-left">
+                                    <!-- Start Title -->
+                                    <div class="mu-title">
+                                        <h2>About Us</h2>
+                                    </div>
+                                    <!-- End Title -->
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum pariatur fuga eveniet soluta aspernatur rem, nam voluptatibus voluptate voluptates sapiente, inventore. Voluptatem, maiores esse molestiae.</p>
+                                    <ul>
+                                        <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</li>
+                                        <li>Saepe a minima quod iste libero rerum dicta!</li>
+                                        <li>Voluptas obcaecati, iste porro fugit soluta consequuntur. Veritatis?</li>
+                                        <li>Ipsam deserunt numquam ad error rem unde, omnis.</li>
+                                        <li>Repellat assumenda adipisci pariatur ipsam eos similique, explicabo.</li>
+                                    </ul>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis quaerat harum facilis excepturi et? Mollitia!</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6">
+                                <div class="mu-about-us-right">
+                                    <a id="mu-abtus-video" href="https://www.youtube.com/embed/HN3pm9qYAUs" target="mutube-video">
+                                        <img src="assets/img/about-us.jpg" alt="img">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End about us -->
+    <!-- Start about us counter -->
+    @*<section id="mu-abtus-counter">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="mu-abtus-counter-area">
+                        <div class="row">
+                            <!-- Start counter item -->
+                            <div class="col-lg-3 col-md-3 col-sm-3">
+                                <div class="mu-abtus-counter-single">
+                                    <span class="fa fa-book"></span>
+                                    <h4 class="counter">568</h4>
+                                    <p>Subjects</p>
+                                </div>
+                            </div>
+                            <!-- End counter item -->
+                            <!-- Start counter item -->
+                            <div class="col-lg-3 col-md-3 col-sm-3">
+                                <div class="mu-abtus-counter-single">
+                                    <span class="fa fa-users"></span>
+                                    <h4 class="counter">3500</h4>
+                                    <p>Students</p>
+                                </div>
+                            </div>
+                            <!-- End counter item -->
+                            <!-- Start counter item -->
+                            <div class="col-lg-3 col-md-3 col-sm-3">
+                                <div class="mu-abtus-counter-single">
+                                    <span class="fa fa-flask"></span>
+                                    <h4 class="counter">65</h4>
+                                    <p>Modern Lab</p>
+                                </div>
+                            </div>
+                            <!-- End counter item -->
+                            <!-- Start counter item -->
+                            <div class="col-lg-3 col-md-3 col-sm-3">
+                                <div class="mu-abtus-counter-single no-border">
+                                    <span class="fa fa-user-secret"></span>
+                                    <h4 class="counter">250</h4>
+                                    <p>Teachers</p>
+                                </div>
+                            </div>
+                            <!-- End counter item -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>*@
+    <!-- End about us counter -->
+    <!-- Start features section -->
+    @*<section id="mu-features">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12">
+                    <div class="mu-features-area">
+                        <!-- Start Title -->
+                        <div class="mu-title">
+                            <h2>Our Features</h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio ipsa ea maxime mollitia, vitae voluptates, quod at, saepe reprehenderit totam aliquam architecto fugiat sunt animi!</p>
+                        </div>
+                        <!-- End Title -->
+                        <!-- Start features content -->
+                        <div class="mu-features-content">
+                            <div class="row">
+                                <div class="col-lg-4 col-md-4  col-sm-6">
+                                    <div class="mu-single-feature">
+                                        <span class="fa fa-book"></span>
+                                        <h4>Professional Courses</h4>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus non dolorem excepturi libero itaque sint labore similique maxime natus eum.</p>
+                                        <a href="#">Read More</a>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-6">
+                                    <div class="mu-single-feature">
+                                        <span class="fa fa-users"></span>
+                                        <h4>Expert Teachers</h4>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus non dolorem excepturi libero itaque sint labore similique maxime natus eum.</p>
+                                        <a href="#">Read More</a>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-6">
+                                    <div class="mu-single-feature">
+                                        <span class="fa fa-laptop"></span>
+                                        <h4>Online Learning</h4>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus non dolorem excepturi libero itaque sint labore similique maxime natus eum.</p>
+                                        <a href="#">Read More</a>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-6">
+                                    <div class="mu-single-feature">
+                                        <span class="fa fa-microphone"></span>
+                                        <h4>Audio Lessons</h4>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus non dolorem excepturi libero itaque sint labore similique maxime natus eum.</p>
+                                        <a href="#">Read More</a>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-6">
+                                    <div class="mu-single-feature">
+                                        <span class="fa fa-film"></span>
+                                        <h4>Video Lessons</h4>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus non dolorem excepturi libero itaque sint labore similique maxime natus eum.</p>
+                                        <a href="#">Read More</a>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-6">
+                                    <div class="mu-single-feature">
+                                        <span class="fa fa-certificate"></span>
+                                        <h4>Professional Certificate</h4>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus non dolorem excepturi libero itaque sint labore similique maxime natus eum.</p>
+                                        <a href="#">Read More</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End features content -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>*@
+    <!-- End features section -->
+    <!-- Start latest course section -->
+    @*<section id="mu-latest-courses">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12">
+                    <div class="mu-latest-courses-area">
+                        <!-- Start Title -->
+                        <div class="mu-title">
+                            <h2>Latest Courses</h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio ipsa ea maxime mollitia, vitae voluptates, quod at, saepe reprehenderit totam aliquam architecto fugiat sunt animi!</p>
+                        </div>
+                        <!-- End Title -->
+                        <!-- Start latest course content -->
+                        <div id="mu-latest-course-slide" class="mu-latest-courses-content">
+                            <div class="col-lg-4 col-md-4 col-xs-12">
+                                <div class="mu-latest-course-single">
+                                    <figure class="mu-latest-course-img">
+                                        <a href="#"><img src="assets/img/courses/1.jpg" alt="img"></a>
+                                        <figcaption class="mu-latest-course-imgcaption">
+                                            <a href="#">Drawing</a>
+                                            <span><i class="fa fa-clock-o"></i>90Days</span>
+                                        </figcaption>
+                                    </figure>
+                                    <div class="mu-latest-course-single-content">
+                                        <h4><a href="#">Lorem ipsum dolor sit amet.</a></h4>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet quod nisi quisquam modi dolore, dicta obcaecati architecto quidem ullam quia.</p>
+                                        <div class="mu-latest-course-single-contbottom">
+                                            <a class="mu-course-details" href="#">Details</a>
+                                            <span class="mu-course-price" href="#">$165.00</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-xs-12">
+                                <div class="mu-latest-course-single">
+                                    <figure class="mu-latest-course-img">
+                                        <a href="#"><img src="assets/img/courses/2.jpg" alt="img"></a>
+                                        <figcaption class="mu-latest-course-imgcaption">
+                                            <a href="#">Engineering </a>
+                                            <span><i class="fa fa-clock-o"></i>75Days</span>
+                                        </figcaption>
+                                    </figure>
+                                    <div class="mu-latest-course-single-content">
+                                        <h4><a href="#">Lorem ipsum dolor sit amet.</a></h4>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet quod nisi quisquam modi dolore, dicta obcaecati architecto quidem ullam quia.</p>
+                                        <div class="mu-latest-course-single-contbottom">
+                                            <a class="mu-course-details" href="#">Details</a>
+                                            <span class="mu-course-price" href="#">$165.00</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-xs-12">
+                                <div class="mu-latest-course-single">
+                                    <figure class="mu-latest-course-img">
+                                        <a href="#"><img src="assets/img/courses/3.jpg" alt="img"></a>
+                                        <figcaption class="mu-latest-course-imgcaption">
+                                            <a href="#">Academic</a>
+                                            <span><i class="fa fa-clock-o"></i>45Days</span>
+                                        </figcaption>
+                                    </figure>
+                                    <div class="mu-latest-course-single-content">
+                                        <h4><a href="#">Lorem ipsum dolor sit amet.</a></h4>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet quod nisi quisquam modi dolore, dicta obcaecati architecto quidem ullam quia.</p>
+                                        <div class="mu-latest-course-single-contbottom">
+                                            <a class="mu-course-details" href="#">Details</a>
+                                            <span class="mu-course-price" href="#">$165.00</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-xs-12">
+                                <div class="mu-latest-course-single">
+                                    <figure class="mu-latest-course-img">
+                                        <a href="#"><img src="assets/img/courses/1.jpg" alt="img"></a>
+                                        <figcaption class="mu-latest-course-imgcaption">
+                                            <a href="#">Drawing</a>
+                                            <span><i class="fa fa-clock-o"></i>90Days</span>
+                                        </figcaption>
+                                    </figure>
+                                    <div class="mu-latest-course-single-content">
+                                        <h4><a href="#">Lorem ipsum dolor sit amet.</a></h4>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet quod nisi quisquam modi dolore, dicta obcaecati architecto quidem ullam quia.</p>
+                                        <div class="mu-latest-course-single-contbottom">
+                                            <a class="mu-course-details" href="#">Details</a>
+                                            <span class="mu-course-price" href="#">$165.00</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-xs-12">
+                                <div class="mu-latest-course-single">
+                                    <figure class="mu-latest-course-img">
+                                        <a href="#"><img src="assets/img/courses/2.jpg" alt="img"></a>
+                                        <figcaption class="mu-latest-course-imgcaption">
+                                            <a href="#">Engineering </a>
+                                            <span><i class="fa fa-clock-o"></i>75Days</span>
+                                        </figcaption>
+                                    </figure>
+                                    <div class="mu-latest-course-single-content">
+                                        <h4><a href="#">Lorem ipsum dolor sit amet.</a></h4>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet quod nisi quisquam modi dolore, dicta obcaecati architecto quidem ullam quia.</p>
+                                        <div class="mu-latest-course-single-contbottom">
+                                            <a class="mu-course-details" href="#">Details</a>
+                                            <span class="mu-course-price" href="#">$165.00</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-xs-12">
+                                <div class="mu-latest-course-single">
+                                    <figure class="mu-latest-course-img">
+                                        <a href="#"><img src="assets/img/courses/3.jpg" alt="img"></a>
+                                        <figcaption class="mu-latest-course-imgcaption">
+                                            <a href="#">Academic</a>
+                                            <span><i class="fa fa-clock-o"></i>45Days</span>
+                                        </figcaption>
+                                    </figure>
+                                    <div class="mu-latest-course-single-content">
+                                        <h4><a href="#">Lorem ipsum dolor sit amet.</a></h4>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet quod nisi quisquam modi dolore, dicta obcaecati architecto quidem ullam quia.</p>
+                                        <div class="mu-latest-course-single-contbottom">
+                                            <a class="mu-course-details" href="#">Details</a>
+                                            <span class="mu-course-price" href="#">$165.00</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End latest course content -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>*@
+    <!-- End latest course section -->
+    <!-- Start our teacher -->
+    @*<section id="mu-our-teacher">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="mu-our-teacher-area">
+                        <!-- begain title -->
+                        <div class="mu-title">
+                            <h2>Our Teachers</h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa, repudiandae, suscipit repellat minus molestiae ea.</p>
+                        </div>
+                        <!-- end title -->
+                        <!-- begain our teacher content -->
+                        <div class="mu-our-teacher-content">
+                            <div class="row">
+                                <div class="col-lg-3 col-md-3  col-sm-6">
+                                    <div class="mu-our-teacher-single">
+                                        <figure class="mu-our-teacher-img">
+                                            <img src="assets/img/teachers/teacher-01.png" alt="teacher img">
+                                            <div class="mu-our-teacher-social">
+                                                <a href="#"><span class="fa fa-facebook"></span></a>
+                                                <a href="#"><span class="fa fa-twitter"></span></a>
+                                                <a href="#"><span class="fa fa-linkedin"></span></a>
+                                                <a href="#"><span class="fa fa-google-plus"></span></a>
+                                            </div>
+                                        </figure>
+                                        <div class="mu-ourteacher-single-content">
+                                            <h4>Brian Dean</h4>
+                                            <span>Math Teacher</span>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique quod pariatur recusandae odio dignissimos. Eligendi.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-sm-6">
+                                    <div class="mu-our-teacher-single">
+                                        <figure class="mu-our-teacher-img">
+                                            <img src="assets/img/teachers/teacher-02.png" alt="teacher img">
+                                            <div class="mu-our-teacher-social">
+                                                <a href="#"><span class="fa fa-facebook"></span></a>
+                                                <a href="#"><span class="fa fa-twitter"></span></a>
+                                                <a href="#"><span class="fa fa-linkedin"></span></a>
+                                                <a href="#"><span class="fa fa-google-plus"></span></a>
+                                            </div>
+                                        </figure>
+                                        <div class="mu-ourteacher-single-content">
+                                            <h4>James Hein</h4>
+                                            <span>Physics Teacher</span>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique quod pariatur recusandae odio dignissimos. Eligendi.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-sm-6">
+                                    <div class="mu-our-teacher-single">
+                                        <figure class="mu-our-teacher-img">
+                                            <img src="assets/img/teachers/teacher-03.png" alt="teacher img">
+                                            <div class="mu-our-teacher-social">
+                                                <a href="#"><span class="fa fa-facebook"></span></a>
+                                                <a href="#"><span class="fa fa-twitter"></span></a>
+                                                <a href="#"><span class="fa fa-linkedin"></span></a>
+                                                <a href="#"><span class="fa fa-google-plus"></span></a>
+                                            </div>
+                                        </figure>
+                                        <div class="mu-ourteacher-single-content">
+                                            <h4>Rebeca Michel</h4>
+                                            <span>English Teacher</span>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique quod pariatur recusandae odio dignissimos. Eligendi.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-sm-6">
+                                    <div class="mu-our-teacher-single">
+                                        <figure class="mu-our-teacher-img">
+                                            <img src="assets/img/teachers/teacher-04.png" alt="teacher img">
+                                            <div class="mu-our-teacher-social">
+                                                <a href="#"><span class="fa fa-facebook"></span></a>
+                                                <a href="#"><span class="fa fa-twitter"></span></a>
+                                                <a href="#"><span class="fa fa-linkedin"></span></a>
+                                                <a href="#"><span class="fa fa-google-plus"></span></a>
+                                            </div>
+                                        </figure>
+                                        <div class="mu-ourteacher-single-content">
+                                            <h4>John Doe</h4>
+                                            <span>Biology Teacher</span>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique quod pariatur recusandae odio dignissimos. Eligendi.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End our teacher content -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>*@
+    <!-- End our teacher -->
+    <!-- Start testimonial -->
+    @*<section id="mu-testimonial">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="mu-testimonial-area">
+                        <div id="mu-testimonial-slide" class="mu-testimonial-content">
+                            <!-- start testimonial single item -->
+                            <div class="mu-testimonial-item">
+                                <div class="mu-testimonial-quote">
+                                    <blockquote>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem rerum soluta aperiam blanditiis obcaecati eveniet aliquam consequatur nobis eaque id.</p>
+                                    </blockquote>
+                                </div>
+                                <div class="mu-testimonial-img">
+                                    <img src="assets/img/testimonial-1.png" alt="img">
+                                </div>
+                                <div class="mu-testimonial-info">
+                                    <h4>John Doe</h4>
+                                    <span>Happy Student</span>
+                                </div>
+                            </div>
+                            <!-- end testimonial single item -->
+                            <!-- start testimonial single item -->
+                            <div class="mu-testimonial-item">
+                                <div class="mu-testimonial-quote">
+                                    <blockquote>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem rerum soluta aperiam blanditiis obcaecati eveniet aliquam consequatur nobis eaque id.</p>
+                                    </blockquote>
+                                </div>
+                                <div class="mu-testimonial-img">
+                                    <img src="assets/img/testimonial-3.png" alt="img">
+                                </div>
+                                <div class="mu-testimonial-info">
+                                    <h4>Rebaca Michel</h4>
+                                    <span>Happy Parent</span>
+                                </div>
+                            </div>
+                            <!-- end testimonial single item -->
+                            <!-- start testimonial single item -->
+                            <div class="mu-testimonial-item">
+                                <div class="mu-testimonial-quote">
+                                    <blockquote>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem rerum soluta aperiam blanditiis obcaecati eveniet aliquam consequatur nobis eaque id.</p>
+                                    </blockquote>
+                                </div>
+                                <div class="mu-testimonial-img">
+                                    <img src="assets/img/testimonial-2.png" alt="img">
+                                </div>
+                                <div class="mu-testimonial-info">
+                                    <h4>Stev Smith</h4>
+                                    <span>Happy Student</span>
+                                </div>
+                            </div>
+                            <!-- end testimonial single item -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>*@
+    <!-- End testimonial -->
+    <!-- Start from blog -->
+    @*<section id="mu-from-blog">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="mu-from-blog-area">
+                        <!-- start title -->
+                        <div class="mu-title">
+                            <h2>From Blog</h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum vitae quae vero ut natus. Dolore!</p>
+                        </div>
+                        <!-- end title -->
+                        <!-- start from blog content   -->
+                        <div class="mu-from-blog-content">
+                            <div class="row">
+                                <div class="col-md-4 col-sm-4">
+                                    <article class="mu-blog-single-item">
+                                        <figure class="mu-blog-single-img">
+                                            <a href="#"><img src="assets/img/blog/blog-1.jpg" alt="img"></a>
+                                            <figcaption class="mu-blog-caption">
+                                                <h3><a href="#">Lorem ipsum dolor sit amet.</a></h3>
+                                            </figcaption>
+                                        </figure>
+                                        <div class="mu-blog-meta">
+                                            <a href="#">By Admin</a>
+                                            <a href="#">02 June 2016</a>
+                                            <span><i class="fa fa-comments-o"></i>87</span>
+                                        </div>
+                                        <div class="mu-blog-description">
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae ipsum non voluptatum eum repellendus quod aliquid. Vitae, dolorum voluptate quis repudiandae eos molestiae dolores enim.</p>
+                                            <a class="mu-read-more-btn" href="#">Read More</a>
+                                        </div>
+                                    </article>
+                                </div>
+                                <div class="col-md-4 col-sm-4">
+                                    <article class="mu-blog-single-item">
+                                        <figure class="mu-blog-single-img">
+                                            <a href="#"><img src="assets/img/blog/blog-2.jpg" alt="img"></a>
+                                            <figcaption class="mu-blog-caption">
+                                                <h3><a href="#">Lorem ipsum dolor sit amet.</a></h3>
+                                            </figcaption>
+                                        </figure>
+                                        <div class="mu-blog-meta">
+                                            <a href="#">By Admin</a>
+                                            <a href="#">02 June 2016</a>
+                                            <span><i class="fa fa-comments-o"></i>87</span>
+                                        </div>
+                                        <div class="mu-blog-description">
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae ipsum non voluptatum eum repellendus quod aliquid. Vitae, dolorum voluptate quis repudiandae eos molestiae dolores enim.</p>
+                                            <a class="mu-read-more-btn" href="#">Read More</a>
+                                        </div>
+                                    </article>
+                                </div>
+                                <div class="col-md-4 col-sm-4">
+                                    <article class="mu-blog-single-item">
+                                        <figure class="mu-blog-single-img">
+                                            <a href="#"><img src="assets/img/blog/blog-3.jpg" alt="img"></a>
+                                            <figcaption class="mu-blog-caption">
+                                                <h3><a href="#">Lorem ipsum dolor sit amet.</a></h3>
+                                            </figcaption>
+                                        </figure>
+                                        <div class="mu-blog-meta">
+                                            <a href="#">By Admin</a>
+                                            <a href="#">02 June 2016</a>
+                                            <span><i class="fa fa-comments-o"></i>87</span>
+                                        </div>
+                                        <div class="mu-blog-description">
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae ipsum non voluptatum eum repellendus quod aliquid. Vitae, dolorum voluptate quis repudiandae eos molestiae dolores enim.</p>
+                                            <a class="mu-read-more-btn" href="#">Read More</a>
+                                        </div>
+                                    </article>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end from blog content   -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>*@
+    <!-- End from blog -->
+    <!-- Start footer -->
+    <footer id="mu-footer">
+        <!-- start footer top -->
+        <div class="mu-footer-top">
             <div class="container">
-                <div class="row gtr-200">
-                    <div class="col-12">
-
-                        <!-- About -->
-                        <section>
-                            <h2 class="major"><span>What's this about?</span></h2>
-                            <p>
-                                This is <strong>TXT</strong>, yet another free responsive site template designed by
-                                <a href="http://twitter.com/ajlkn">AJ</a> for <a href="http://html5up.net">HTML5 UP</a>. It's released under the
-                                <a href="http://html5up.net/license/">Creative Commons Attribution</a> license so feel free to use it for
-                                whatever you're working on (personal or commercial), just be sure to give us credit for the design.
-                                That's basically it :)
-                            </p>
-                        </section>
-
-                    </div>
-                    <div class="col-12">
-
-                        <!-- Contact -->
-                        <section>
-                            <h2 class="major"><span>Get in touch</span></h2>
-                            <ul class="contact">
-                                <li><a class="icon fa-facebook" href="#"><span class="label">Facebook</span></a></li>
-                                <li><a class="icon fa-twitter" href="#"><span class="label">Twitter</span></a></li>
-                                <li><a class="icon fa-instagram" href="#"><span class="label">Instagram</span></a></li>
-                                <li><a class="icon fa-dribbble" href="#"><span class="label">Dribbble</span></a></li>
-                                <li><a class="icon fa-linkedin" href="#"><span class="label">LinkedIn</span></a></li>
-                            </ul>
-                        </section>
-
+                <div class="mu-footer-top-area">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-3 col-sm-3">
+                            <div class="mu-footer-widget">
+                                <h4>Information</h4>
+                                <ul>
+                                    <li><a href="#">About Us</a></li>
+                                    <li><a href="">Features</a></li>
+                                    <li><a href="">Course</a></li>
+                                    <li><a href="">Event</a></li>
+                                    <li><a href="">Sitemap</a></li>
+                                    <li><a href="">Term Of Use</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-3">
+                            <div class="mu-footer-widget">
+                                <h4>Student Help</h4>
+                                <ul>
+                                    <li><a href="">Get Started</a></li>
+                                    <li><a href="#">My Questions</a></li>
+                                    <li><a href="">Download Files</a></li>
+                                    <li><a href="">Latest Course</a></li>
+                                    <li><a href="">Academic News</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-3">
+                            <div class="mu-footer-widget">
+                                <h4>News letter</h4>
+                                <p>Get latest update, news & academic offers</p>
+                                <form class="mu-subscribe-form">
+                                    <input type="email" placeholder="Type your Email">
+                                    <button class="mu-subscribe-btn" type="submit">Subscribe!</button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-3">
+                            <div class="mu-footer-widget">
+                                <h4>Contact</h4>
+                                <address>
+                                    <p>P.O. Box 320, Ross, California 9495, USA</p>
+                                    <p>Phone: (415) 453-1568 </p>
+                                    <p>Website: www.markups.io</p>
+                                    <p>Email: info@markups.io</p>
+                                </address>
+                            </div>
+                        </div>
                     </div>
                 </div>
-
-                <!-- Copyright -->
-                <div id="copyright">
-                    <ul class="menu">
-                        <li>&copy; Untitled. All rights reserved</li>
-                        <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-                    </ul>
-                </div>
-
             </div>
-        </footer>
-
-    </div>
-
-    <!-- Scripts -->
+        </div>
+        <!-- end footer top -->
+        <!-- start footer bottom -->
+        <div class="mu-footer-bottom">
+            <div class="container">
+                <div class="mu-footer-bottom-area">
+                    <p>&copy; All Right Reserved. Designed by <a href="http://www.markups.io/" rel="nofollow">MarkUps.io</a></p>
+                </div>
+            </div>
+        </div>
+        <!-- end footer bottom -->
+    </footer>
+    <!-- End footer -->
+    <!-- jQuery library -->
     <script src="~/Scripts/jquery.min.js"></script>
-    <script src="~/Scripts/jquery.dropotron.min.js"></script>
-    <script src="~/Scripts/jquery.scrolly.min.js"></script>
-    <script src="~/Scripts/browser.min.js"></script>
-    <script src="~/Scripts/breakpoints.min.js"></script>
-    <script src="~/Scripts/util.js"></script>
-    <script src="~/Scripts/main.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="~/Scripts/bootstrap.js"></script>
+    <!-- Slick slider -->
+    <script type="text/javascript" src="~/Scripts/slick.js"></script>
+    <!-- Counter -->
+    <script type="text/javascript" src="~/Scripts/waypoints.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.counterup.js"></script>
+    <!-- Mixit slider -->
+    <script type="text/javascript" src="~/Scripts/jquery.mixitup.js"></script>
+    <!-- Add fancyBox -->
+    <script type="text/javascript" src="~/Scripts/jquery.fancybox.pack.js"></script>
+
+
+    <!-- Custom js -->
+    <script src="~/Scripts/custom.js"></script>
 
 </body>
 </html>
-
-@*<html>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-        <link rel="stylesheet" href="~/Content/main.css" />
-    </head>
-    @{
-        ViewBag.Title = "Resilience";
-    }
-    <body class="homepage is-preload">
-        <div id="page-wrapper">
-            <nav id="nav">
-                <ul>
-                    <li class="current"><a href="index.html">Home</a></li>
-                    <li>
-                        <a href="#">Dropdown</a>
-                        <ul>
-                            <li><a href="#">Lorem ipsum dolor</a></li>
-                            <li><a href="#">Magna phasellus</a></li>
-                            <li>
-                                <a href="#">Phasellus consequat</a>
-                                <ul>
-                                    <li><a href="#">Lorem ipsum dolor</a></li>
-                                    <li><a href="#">Phasellus consequat</a></li>
-                                    <li><a href="#">Magna phasellus</a></li>
-                                    <li><a href="#">Etiam dolore nisl</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#">Veroeros feugiat</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="left-sidebar.html">Left Sidebar</a></li>
-                    <li><a href="right-sidebar.html">Right Sidebar</a></li>
-                    <li><a href="no-sidebar.html">No Sidebar</a></li>
-                </ul>
-            </nav>
-
-            @*<div class="jumbotron">
-                <h1>ASP.NET</h1>
-                <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-                <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-            </div>*@
-
-@*<div class="row">
-        <div class="col-md-4">
-            <h2>Getting started</h2>
-            <p>
-                ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-                enables a clean separation of concerns and gives you full control over markup
-                for enjoyable, agile development.
-            </p>
-            <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-        </div>
-        <div class="col-md-4">
-            <h2>Get more libraries</h2>
-            <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-            <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-        </div>
-        <div class="col-md-4">
-            <h2>Web Hosting</h2>
-            <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-            <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-        </div>
-    </div>*@
-    @*</div>*@
-@*</body>*@
-@*</html>*@
