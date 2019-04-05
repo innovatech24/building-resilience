@@ -23,19 +23,19 @@
                     </button>
                     <!-- LOGO -->
                     <!-- TEXT BASED LOGO -->
-                    <a class="navbar-brand" href="~/Views/Home/Index.cshtml"><i class="fa fa-university"></i><span>Resilience</span></a>
+                    <a class="navbar-brand" @Html.ActionLink("Resilience", "Index", "Home")></a>
                     <!-- IMG BASED LOGO  -->
                     <!-- <a class="navbar-brand" href="index.html"><img src="assets/img/logo.png" alt="logo"></a> -->
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul id="top-menu" class="nav navbar-nav navbar-right main-nav">
-                        <li class="active"><a href="~/Views/Home/Index.cshtml">Home</a></li>
+                        <li class="active">@Html.ActionLink("Home", "Index", "Home")</a></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Challenges<span class="fa fa-angle-down"></span></a>
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="~/Views/Challenges/Bullying.cshtml">Bullying</a></li>
-                                <li><a href="course-detail.html">Child Abuse</a></li>
-                                <li><a href="course-detail.html">Family Violence</a></li>                             
+                                <li>@Html.ActionLink("Bullying", "Bullying", "Challenges")</li>
+                                <li>@Html.ActionLink("Child Abuse", "Abuse", "Challenges")</a></li>
+                                <li>@Html.ActionLink("Family Violence", "Violence", "Challenges")</a></li>                             
                             </ul>
                         </li>
                         <li><a href="gallery.html">Why resilience?</a></li>
