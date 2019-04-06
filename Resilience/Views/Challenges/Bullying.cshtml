@@ -38,10 +38,10 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="mu-page-breadcrumb-area">
-                        <h2>Course Detail</h2>
+                        <h2>What is bullying?</h2>
                         <ol class="breadcrumb">
-                            <li><a href="#">Home</a></li>
-                            <li class="active">Course Detail</li>
+                            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                            <li class="active">Bullying</li>
                         </ol>
                     </div>
                 </div>
@@ -81,13 +81,10 @@
                                                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis ea consequatur doloremque deleniti error ullam, accusamus vel est alias, sit. Similique voluptas aliquid, excepturi accusamus, sequi ducimus incidunt mollitia non.</p>
                                                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi saepe possimus doloribus quod quibusdam officia suscipit qui illum nemo itaque, porro ipsam tempore enim error eius quia, culpa. Reprehenderit consequuntur voluptatem dolorum magni natus inventore molestias veritatis eos aspernatur repudiandae.</p>
                                                 </div>
-                                                <figure class="mu-latest-course-img">
-                                                    <a href="#"><img src="assets/img/courses/1.jpg" alt="img"></a>
-                                                    <figcaption class="mu-latest-course-imgcaption">
-                                                        <a href="#">Drawing</a>
-                                                        <span><i class="fa fa-clock-o"></i>90Days</span>
-                                                    </figcaption>
-                                                </figure>
+                                                <div>
+                                                    <a href="https://plot.ly/~aram0010/14/" target="_blank" title="bullied_behaviour_plot" style="display: block; text-align: center;"><img src="https://plot.ly/~aram0010/14.png" alt="bullied_behaviour_plot" style="max-width: 100%;width: 600px;" width="600" onerror="this.onerror=null;this.src='https://plot.ly/404.png';" /></a>
+                                                    <script data-plotly="aram0010:14" sharekey-plotly="NBaWElaONJH3Mt5ty2ZlEH&link=false" src="https://plot.ly/embed.js" async></script>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -99,5 +96,23 @@
             </div>
         </div>
     </section>
+
+    <!-- jQuery library -->
+    <script src="~/Scripts/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="~/Scripts/bootstrap.js"></script>
+    <!-- Slick slider -->
+    <script type="text/javascript" src="~/Scripts/slick.js"></script>
+    <!-- Counter -->
+    <script type="text/javascript" src="~/Scripts/waypoints.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.counterup.js"></script>
+    <!-- Mixit slider -->
+    <script type="text/javascript" src="~/Scripts/jquery.mixitup.js"></script>
+    <!-- Add fancyBox -->
+    <script type="text/javascript" src="~/Scripts/jquery.fancybox.pack.js"></script>
+
+
+    <!-- Custom js -->
+    <script src="~/Scripts/custom.js"></script>
 </body>
 </html>
