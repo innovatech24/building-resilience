@@ -351,6 +351,7 @@
     <Content Include="Views\Challenges\Bullying.cshtml" />
     <Content Include="Views\Challenges\Abuse.cshtml" />
     <Content Include="Views\Challenges\Violence.cshtml" />
+    <Content Include="Views\Challenges\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
