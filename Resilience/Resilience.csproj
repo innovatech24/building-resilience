@@ -51,6 +51,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -183,12 +185,46 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Behaviour.cs">
+      <DependentUpon>PlotData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Bullying.cs">
+      <DependentUpon>PlotData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FamilyStress.cs">
+      <DependentUpon>PlotData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FamilyViolence.cs">
+      <DependentUpon>PlotData.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\PlotData.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PlotData.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PlotData.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PlotData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PlotData.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PlotData.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Region.cs">
+      <DependentUpon>PlotData.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\PlotData.mdf" />
+    <Content Include="App_Data\PlotData_log.ldf">
+      <DependentUpon>PlotData.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\all.css" />
     <Content Include="Content\all.min.css" />
     <Content Include="Content\bootstrap-grid.css" />
@@ -233,6 +269,17 @@
     <Content Include="Images\pic05.jpg" />
     <Content Include="Images\run-1321278_1280.jpg" />
     <Content Include="Images\silhouette-3095150_1280.png" />
+    <Content Include="Models\PlotData.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>PlotData.Context.cs</LastGenOutput>
+      <DependentUpon>PlotData.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\PlotData.edmx.sql" />
+    <Content Include="Models\PlotData.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>PlotData.cs</LastGenOutput>
+      <DependentUpon>PlotData.edmx</DependentUpon>
+    </Content>
     <Content Include="Scripts\all.js" />
     <Content Include="Scripts\all.min.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -274,6 +321,13 @@
     <Content Include="Fonts\fa-solid-900.ttf" />
     <Content Include="Fonts\fa-solid-900.woff" />
     <Content Include="Fonts\fa-solid-900.woff2" />
+    <EntityDeploy Include="Models\PlotData.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>PlotData.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\PlotData.edmx.diagram">
+      <DependentUpon>PlotData.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\breakpoints.min.js" />
     <Content Include="Scripts\browser.min.js" />
@@ -353,9 +407,7 @@
     <Content Include="Views\Challenges\Violence.cshtml" />
     <Content Include="Views\Challenges\Index.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
@@ -366,6 +418,7 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

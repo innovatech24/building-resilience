@@ -1,0 +1,439 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="PlotData.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="PlotDataStoreContainer">
+    <EntitySet Name="Regions" EntityType="PlotData.Store.Regions" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Bullyings" EntityType="PlotData.Store.Bullyings" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Behaviours" EntityType="PlotData.Store.Behaviours" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="FamilyViolences" EntityType="PlotData.Store.FamilyViolences" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="FamilyStresses" EntityType="PlotData.Store.FamilyStresses" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="RegionBullying" EntityType="PlotData.Store.RegionBullying" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="RegionBehaviour" EntityType="PlotData.Store.RegionBehaviour" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="RegionFamilyStress" EntityType="PlotData.Store.RegionFamilyStress" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="RegionFamilyViolence" EntityType="PlotData.Store.RegionFamilyViolence" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_RegionBullying_Region" Association="PlotData.Store.FK_RegionBullying_Region">
+      <End Role="Region" EntitySet="Regions" />
+      <End Role="RegionBullying" EntitySet="RegionBullying" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RegionBullying_Bullying" Association="PlotData.Store.FK_RegionBullying_Bullying">
+      <End Role="Bullying" EntitySet="Bullyings" />
+      <End Role="RegionBullying" EntitySet="RegionBullying" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RegionBehaviour_Region" Association="PlotData.Store.FK_RegionBehaviour_Region">
+      <End Role="Region" EntitySet="Regions" />
+      <End Role="RegionBehaviour" EntitySet="RegionBehaviour" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RegionBehaviour_Behaviour" Association="PlotData.Store.FK_RegionBehaviour_Behaviour">
+      <End Role="Behaviour" EntitySet="Behaviours" />
+      <End Role="RegionBehaviour" EntitySet="RegionBehaviour" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RegionFamilyStress_Region" Association="PlotData.Store.FK_RegionFamilyStress_Region">
+      <End Role="Region" EntitySet="Regions" />
+      <End Role="RegionFamilyStress" EntitySet="RegionFamilyStress" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RegionFamilyStress_FamilyStress" Association="PlotData.Store.FK_RegionFamilyStress_FamilyStress">
+      <End Role="FamilyStress" EntitySet="FamilyStresses" />
+      <End Role="RegionFamilyStress" EntitySet="RegionFamilyStress" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RegionFamilyViolence_Region" Association="PlotData.Store.FK_RegionFamilyViolence_Region">
+      <End Role="Region" EntitySet="Regions" />
+      <End Role="RegionFamilyViolence" EntitySet="RegionFamilyViolence" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RegionFamilyViolence_FamilyViolence" Association="PlotData.Store.FK_RegionFamilyViolence_FamilyViolence">
+      <End Role="FamilyViolence" EntitySet="FamilyViolences" />
+      <End Role="RegionFamilyViolence" EntitySet="RegionFamilyViolence" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Regions">
+    <Key>
+      <PropertyRef Name="Region_Id" />
+    </Key>
+    <Property Name="Region_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Region_Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Area" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Bullyings">
+    <Key>
+      <PropertyRef Name="Bullying_Id" />
+    </Key>
+    <Property Name="Bullying_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Year" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Numerator" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Denominator" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Indicator" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Behaviours">
+    <Key>
+      <PropertyRef Name="Behaviour_Id" />
+    </Key>
+    <Property Name="Behaviour_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Year" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Numerator" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Denominator" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Indicator" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FamilyViolences">
+    <Key>
+      <PropertyRef Name="Violence_Id" />
+    </Key>
+    <Property Name="Violence_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Year" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Numerator" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Denominator" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Indicator" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FamilyStresses">
+    <Key>
+      <PropertyRef Name="Stress_Id" />
+    </Key>
+    <Property Name="Stress_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Year" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Numerator" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Denominator" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Indicator" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RegionBullying">
+    <Key>
+      <PropertyRef Name="Regions_Region_Id" />
+      <PropertyRef Name="Bullyings_Bullying_Id" />
+    </Key>
+    <Property Name="Regions_Region_Id" Type="int" Nullable="false" />
+    <Property Name="Bullyings_Bullying_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RegionBehaviour">
+    <Key>
+      <PropertyRef Name="Regions_Region_Id" />
+      <PropertyRef Name="Behaviours_Behaviour_Id" />
+    </Key>
+    <Property Name="Regions_Region_Id" Type="int" Nullable="false" />
+    <Property Name="Behaviours_Behaviour_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RegionFamilyStress">
+    <Key>
+      <PropertyRef Name="Regions_Region_Id" />
+      <PropertyRef Name="FamilyStresses_Stress_Id" />
+    </Key>
+    <Property Name="Regions_Region_Id" Type="int" Nullable="false" />
+    <Property Name="FamilyStresses_Stress_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RegionFamilyViolence">
+    <Key>
+      <PropertyRef Name="Regions_Region_Id" />
+      <PropertyRef Name="FamilyViolences_Violence_Id" />
+    </Key>
+    <Property Name="Regions_Region_Id" Type="int" Nullable="false" />
+    <Property Name="FamilyViolences_Violence_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_RegionBullying_Region">
+    <End Role="Region" Type="PlotData.Store.Regions" Multiplicity="1" />
+    <End Role="RegionBullying" Type="PlotData.Store.RegionBullying" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Region">
+        <PropertyRef Name="Region_Id" />
+      </Principal>
+      <Dependent Role="RegionBullying">
+        <PropertyRef Name="Regions_Region_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RegionBullying_Bullying">
+    <End Role="RegionBullying" Type="PlotData.Store.RegionBullying" Multiplicity="*" />
+    <End Role="Bullying" Type="PlotData.Store.Bullyings" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Bullying">
+        <PropertyRef Name="Bullying_Id" />
+      </Principal>
+      <Dependent Role="RegionBullying">
+        <PropertyRef Name="Bullyings_Bullying_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RegionBehaviour_Region">
+    <End Role="Region" Type="PlotData.Store.Regions" Multiplicity="1" />
+    <End Role="RegionBehaviour" Type="PlotData.Store.RegionBehaviour" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Region">
+        <PropertyRef Name="Region_Id" />
+      </Principal>
+      <Dependent Role="RegionBehaviour">
+        <PropertyRef Name="Regions_Region_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RegionBehaviour_Behaviour">
+    <End Role="RegionBehaviour" Type="PlotData.Store.RegionBehaviour" Multiplicity="*" />
+    <End Role="Behaviour" Type="PlotData.Store.Behaviours" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Behaviour">
+        <PropertyRef Name="Behaviour_Id" />
+      </Principal>
+      <Dependent Role="RegionBehaviour">
+        <PropertyRef Name="Behaviours_Behaviour_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RegionFamilyStress_Region">
+    <End Role="Region" Type="PlotData.Store.Regions" Multiplicity="1" />
+    <End Role="RegionFamilyStress" Type="PlotData.Store.RegionFamilyStress" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Region">
+        <PropertyRef Name="Region_Id" />
+      </Principal>
+      <Dependent Role="RegionFamilyStress">
+        <PropertyRef Name="Regions_Region_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RegionFamilyStress_FamilyStress">
+    <End Role="RegionFamilyStress" Type="PlotData.Store.RegionFamilyStress" Multiplicity="*" />
+    <End Role="FamilyStress" Type="PlotData.Store.FamilyStresses" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="FamilyStress">
+        <PropertyRef Name="Stress_Id" />
+      </Principal>
+      <Dependent Role="RegionFamilyStress">
+        <PropertyRef Name="FamilyStresses_Stress_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RegionFamilyViolence_Region">
+    <End Role="Region" Type="PlotData.Store.Regions" Multiplicity="1" />
+    <End Role="RegionFamilyViolence" Type="PlotData.Store.RegionFamilyViolence" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Region">
+        <PropertyRef Name="Region_Id" />
+      </Principal>
+      <Dependent Role="RegionFamilyViolence">
+        <PropertyRef Name="Regions_Region_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RegionFamilyViolence_FamilyViolence">
+    <End Role="RegionFamilyViolence" Type="PlotData.Store.RegionFamilyViolence" Multiplicity="*" />
+    <End Role="FamilyViolence" Type="PlotData.Store.FamilyViolences" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="FamilyViolence">
+        <PropertyRef Name="Violence_Id" />
+      </Principal>
+      <Dependent Role="RegionFamilyViolence">
+        <PropertyRef Name="FamilyViolences_Violence_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="PlotData" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="PlotDataContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Regions" EntityType="PlotData.Region" />
+          <EntitySet Name="Bullyings" EntityType="PlotData.Bullying" />
+          <EntitySet Name="Behaviours" EntityType="PlotData.Behaviour" />
+          <EntitySet Name="FamilyViolences" EntityType="PlotData.FamilyViolence" />
+          <EntitySet Name="FamilyStresses" EntityType="PlotData.FamilyStress" />
+          <AssociationSet Name="RegionBullying" Association="PlotData.RegionBullying">
+            <End Role="Region" EntitySet="Regions" />
+            <End Role="Bullying" EntitySet="Bullyings" />
+          </AssociationSet>
+          <AssociationSet Name="RegionBehaviour" Association="PlotData.RegionBehaviour">
+            <End Role="Region" EntitySet="Regions" />
+            <End Role="Behaviour" EntitySet="Behaviours" />
+          </AssociationSet>
+          <AssociationSet Name="RegionFamilyStress" Association="PlotData.RegionFamilyStress">
+            <End Role="Region" EntitySet="Regions" />
+            <End Role="FamilyStress" EntitySet="FamilyStresses" />
+          </AssociationSet>
+          <AssociationSet Name="RegionFamilyViolence" Association="PlotData.RegionFamilyViolence">
+            <End Role="Region" EntitySet="Regions" />
+            <End Role="FamilyViolence" EntitySet="FamilyViolences" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="Region">
+          <Key>
+            <PropertyRef Name="Region_Id" />
+          </Key>
+          <Property Name="Region_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Region_Name" Type="String" Nullable="false" />
+          <Property Name="Area" Type="String" Nullable="false" />
+          <NavigationProperty Name="Bullyings" Relationship="PlotData.RegionBullying" FromRole="Region" ToRole="Bullying" />
+          <NavigationProperty Name="Behaviours" Relationship="PlotData.RegionBehaviour" FromRole="Region" ToRole="Behaviour" />
+          <NavigationProperty Name="FamilyStresses" Relationship="PlotData.RegionFamilyStress" FromRole="Region" ToRole="FamilyStress" />
+          <NavigationProperty Name="FamilyViolences" Relationship="PlotData.RegionFamilyViolence" FromRole="Region" ToRole="FamilyViolence" />
+        </EntityType>
+        <EntityType Name="Bullying">
+          <Key>
+            <PropertyRef Name="Bullying_Id" />
+          </Key>
+          <Property Name="Bullying_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Year" Type="String" Nullable="false" />
+          <Property Name="Numerator" Type="String" Nullable="false" />
+          <Property Name="Denominator" Type="String" Nullable="false" />
+          <Property Name="Indicator" Type="String" Nullable="false" />
+          <NavigationProperty Name="Regions" Relationship="PlotData.RegionBullying" FromRole="Bullying" ToRole="Region" />
+        </EntityType>
+        <EntityType Name="Behaviour">
+          <Key>
+            <PropertyRef Name="Behaviour_Id" />
+          </Key>
+          <Property Name="Behaviour_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Year" Type="String" Nullable="false" />
+          <Property Name="Numerator" Type="String" Nullable="false" />
+          <Property Name="Denominator" Type="String" Nullable="false" />
+          <Property Name="Indicator" Type="String" Nullable="false" />
+          <NavigationProperty Name="Regions" Relationship="PlotData.RegionBehaviour" FromRole="Behaviour" ToRole="Region" />
+        </EntityType>
+        <EntityType Name="FamilyViolence">
+          <Key>
+            <PropertyRef Name="Violence_Id" />
+          </Key>
+          <Property Name="Violence_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Year" Type="String" Nullable="false" />
+          <Property Name="Numerator" Type="String" Nullable="false" />
+          <Property Name="Denominator" Type="String" Nullable="false" />
+          <Property Name="Indicator" Type="String" Nullable="false" />
+          <NavigationProperty Name="Regions" Relationship="PlotData.RegionFamilyViolence" FromRole="FamilyViolence" ToRole="Region" />
+        </EntityType>
+        <EntityType Name="FamilyStress">
+          <Key>
+            <PropertyRef Name="Stress_Id" />
+          </Key>
+          <Property Name="Stress_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Year" Type="String" Nullable="false" />
+          <Property Name="Numerator" Type="String" Nullable="false" />
+          <Property Name="Denominator" Type="String" Nullable="false" />
+          <Property Name="Indicator" Type="String" Nullable="false" />
+          <NavigationProperty Name="Regions" Relationship="PlotData.RegionFamilyStress" FromRole="FamilyStress" ToRole="Region" />
+        </EntityType>
+        <Association Name="RegionBullying">
+          <End Type="PlotData.Region" Role="Region" Multiplicity="*" />
+          <End Type="PlotData.Bullying" Role="Bullying" Multiplicity="*" />
+        </Association>
+        <Association Name="RegionBehaviour">
+          <End Type="PlotData.Region" Role="Region" Multiplicity="*" />
+          <End Type="PlotData.Behaviour" Role="Behaviour" Multiplicity="*" />
+        </Association>
+        <Association Name="RegionFamilyStress">
+          <End Type="PlotData.Region" Role="Region" Multiplicity="*" />
+          <End Type="PlotData.FamilyStress" Role="FamilyStress" Multiplicity="*" />
+        </Association>
+        <Association Name="RegionFamilyViolence">
+          <End Type="PlotData.Region" Role="Region" Multiplicity="*" />
+          <End Type="PlotData.FamilyViolence" Role="FamilyViolence" Multiplicity="*" />
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="PlotDataStoreContainer" CdmEntityContainer="PlotDataContainer">
+    <EntitySetMapping Name="Regions">
+      <EntityTypeMapping TypeName="IsTypeOf(PlotData.Region)">
+        <MappingFragment StoreEntitySet="Regions">
+          <ScalarProperty Name="Region_Id" ColumnName="Region_Id" />
+          <ScalarProperty Name="Region_Name" ColumnName="Region_Name" />
+          <ScalarProperty Name="Area" ColumnName="Area" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Bullyings">
+      <EntityTypeMapping TypeName="IsTypeOf(PlotData.Bullying)">
+        <MappingFragment StoreEntitySet="Bullyings">
+          <ScalarProperty Name="Bullying_Id" ColumnName="Bullying_Id" />
+          <ScalarProperty Name="Year" ColumnName="Year" />
+          <ScalarProperty Name="Numerator" ColumnName="Numerator" />
+          <ScalarProperty Name="Denominator" ColumnName="Denominator" />
+          <ScalarProperty Name="Indicator" ColumnName="Indicator" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Behaviours">
+      <EntityTypeMapping TypeName="IsTypeOf(PlotData.Behaviour)">
+        <MappingFragment StoreEntitySet="Behaviours">
+          <ScalarProperty Name="Behaviour_Id" ColumnName="Behaviour_Id" />
+          <ScalarProperty Name="Year" ColumnName="Year" />
+          <ScalarProperty Name="Numerator" ColumnName="Numerator" />
+          <ScalarProperty Name="Denominator" ColumnName="Denominator" />
+          <ScalarProperty Name="Indicator" ColumnName="Indicator" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FamilyViolences">
+      <EntityTypeMapping TypeName="IsTypeOf(PlotData.FamilyViolence)">
+        <MappingFragment StoreEntitySet="FamilyViolences">
+          <ScalarProperty Name="Violence_Id" ColumnName="Violence_Id" />
+          <ScalarProperty Name="Year" ColumnName="Year" />
+          <ScalarProperty Name="Numerator" ColumnName="Numerator" />
+          <ScalarProperty Name="Denominator" ColumnName="Denominator" />
+          <ScalarProperty Name="Indicator" ColumnName="Indicator" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FamilyStresses">
+      <EntityTypeMapping TypeName="IsTypeOf(PlotData.FamilyStress)">
+        <MappingFragment StoreEntitySet="FamilyStresses">
+          <ScalarProperty Name="Stress_Id" ColumnName="Stress_Id" />
+          <ScalarProperty Name="Year" ColumnName="Year" />
+          <ScalarProperty Name="Numerator" ColumnName="Numerator" />
+          <ScalarProperty Name="Denominator" ColumnName="Denominator" />
+          <ScalarProperty Name="Indicator" ColumnName="Indicator" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="RegionBullying" TypeName="PlotData.RegionBullying" StoreEntitySet="RegionBullying">
+      <EndProperty Name="Region">
+        <ScalarProperty Name="Region_Id" ColumnName="Regions_Region_Id" />
+      </EndProperty>
+      <EndProperty Name="Bullying">
+        <ScalarProperty Name="Bullying_Id" ColumnName="Bullyings_Bullying_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="RegionBehaviour" TypeName="PlotData.RegionBehaviour" StoreEntitySet="RegionBehaviour">
+      <EndProperty Name="Region">
+        <ScalarProperty Name="Region_Id" ColumnName="Regions_Region_Id" />
+      </EndProperty>
+      <EndProperty Name="Behaviour">
+        <ScalarProperty Name="Behaviour_Id" ColumnName="Behaviours_Behaviour_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="RegionFamilyStress" TypeName="PlotData.RegionFamilyStress" StoreEntitySet="RegionFamilyStress">
+      <EndProperty Name="Region">
+        <ScalarProperty Name="Region_Id" ColumnName="Regions_Region_Id" />
+      </EndProperty>
+      <EndProperty Name="FamilyStress">
+        <ScalarProperty Name="Stress_Id" ColumnName="FamilyStresses_Stress_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="RegionFamilyViolence" TypeName="PlotData.RegionFamilyViolence" StoreEntitySet="RegionFamilyViolence">
+      <EndProperty Name="Region">
+        <ScalarProperty Name="Region_Id" ColumnName="Regions_Region_Id" />
+      </EndProperty>
+      <EndProperty Name="FamilyViolence">
+        <ScalarProperty Name="Violence_Id" ColumnName="FamilyViolences_Violence_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
