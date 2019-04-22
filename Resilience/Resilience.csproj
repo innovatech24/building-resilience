@@ -51,6 +51,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -177,18 +179,84 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ChallengesController.cs" />
+    <Compile Include="Controllers\DiaryEntriesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\OptionsController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Behaviour.cs">
+      <DependentUpon>PlotData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Bullying.cs">
+      <DependentUpon>PlotData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DiaryEntries.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DiaryEntries.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DiaryEntries.cs">
+      <DependentUpon>DiaryEntries.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DiaryEntries.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DiaryEntries.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DiaryEntries1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DiaryEntries.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FamilyStress.cs">
+      <DependentUpon>PlotData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FamilyViolence.cs">
+      <DependentUpon>PlotData.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\PlotData.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PlotData.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PlotData.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PlotData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PlotData.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PlotData.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Region.cs">
+      <DependentUpon>PlotData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Users.cs">
+      <DependentUpon>DiaryEntries.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\aspnet-Resilience-20190403121127.mdf" />
+    <Content Include="App_Data\aspnet-Resilience-20190403121127_log.ldf">
+      <DependentUpon>aspnet-Resilience-20190403121127.mdf</DependentUpon>
+    </Content>
+    <Content Include="App_Data\DiaryEntries.mdf" />
+    <Content Include="App_Data\DiaryEntries_log.ldf">
+      <DependentUpon>DiaryEntries.mdf</DependentUpon>
+    </Content>
+    <Content Include="App_Data\PlotData.mdf" />
+    <Content Include="App_Data\PlotData_log.ldf">
+      <DependentUpon>PlotData.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\all.css" />
     <Content Include="Content\all.min.css" />
     <Content Include="Content\bootstrap-grid.css" />
@@ -200,6 +268,7 @@
     <Content Include="Content\burlywood-theme.css" />
     <Content Include="Content\dark-red-theme.css" />
     <Content Include="Content\default-theme.css" />
+    <Content Include="Content\diarycreate.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\green-theme.css" />
@@ -233,6 +302,28 @@
     <Content Include="Images\pic05.jpg" />
     <Content Include="Images\run-1321278_1280.jpg" />
     <Content Include="Images\silhouette-3095150_1280.png" />
+    <Content Include="Models\DiaryEntries.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>DiaryEntries.Context.cs</LastGenOutput>
+      <DependentUpon>DiaryEntries.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\DiaryEntries.edmx.sql" />
+    <Content Include="Models\DiaryEntries.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>DiaryEntries1.cs</LastGenOutput>
+      <DependentUpon>DiaryEntries.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\PlotData.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>PlotData.Context.cs</LastGenOutput>
+      <DependentUpon>PlotData.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\PlotData.edmx.sql" />
+    <Content Include="Models\PlotData.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>PlotData.cs</LastGenOutput>
+      <DependentUpon>PlotData.edmx</DependentUpon>
+    </Content>
     <Content Include="Scripts\all.js" />
     <Content Include="Scripts\all.min.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -274,6 +365,20 @@
     <Content Include="Fonts\fa-solid-900.ttf" />
     <Content Include="Fonts\fa-solid-900.woff" />
     <Content Include="Fonts\fa-solid-900.woff2" />
+    <EntityDeploy Include="Models\PlotData.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>PlotData.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\PlotData.edmx.diagram">
+      <DependentUpon>PlotData.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Models\DiaryEntries.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DiaryEntries.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\DiaryEntries.edmx.diagram">
+      <DependentUpon>DiaryEntries.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\breakpoints.min.js" />
     <Content Include="Scripts\browser.min.js" />
@@ -352,10 +457,19 @@
     <Content Include="Views\Challenges\Abuse.cshtml" />
     <Content Include="Views\Challenges\Violence.cshtml" />
     <Content Include="Views\Challenges\Index.cshtml" />
+    <Content Include="Views\Users\Create.cshtml" />
+    <Content Include="Views\Users\Delete.cshtml" />
+    <Content Include="Views\Users\Details.cshtml" />
+    <Content Include="Views\Users\Edit.cshtml" />
+    <Content Include="Views\Users\Index.cshtml" />
+    <Content Include="Views\DiaryEntries\Create.cshtml" />
+    <Content Include="Views\DiaryEntries\Delete.cshtml" />
+    <Content Include="Views\DiaryEntries\Details.cshtml" />
+    <Content Include="Views\DiaryEntries\Edit.cshtml" />
+    <Content Include="Views\DiaryEntries\Index.cshtml" />
+    <Content Include="Views\Options\Index.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
@@ -366,6 +480,7 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DiaryEntries.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="DiaryEntriesStoreContainer">
+    <EntitySet Name="Users" EntityType="DiaryEntries.Store.Users" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="DiaryEntries" EntityType="DiaryEntries.Store.DiaryEntries" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="UsersDiaryEntries" Association="DiaryEntries.Store.UsersDiaryEntries">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="DiaryEntries" EntitySet="DiaryEntries" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="LastName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="EmailAddress" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="IsMentor" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DiaryEntries">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Entry" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="UsersId" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="UsersDiaryEntries">
+    <End Role="Users" Type="DiaryEntries.Store.Users" Multiplicity="1" />
+    <End Role="DiaryEntries" Type="DiaryEntries.Store.DiaryEntries" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DiaryEntries">
+        <PropertyRef Name="UsersId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="DiaryEntries" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="DiaryEntriesContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Users" EntityType="DiaryEntries.Users" />
+          <EntitySet Name="DiaryEntries" EntityType="DiaryEntries.DiaryEntries" />
+          <AssociationSet Name="UsersDiaryEntries" Association="DiaryEntries.UsersDiaryEntries">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="DiaryEntries" EntitySet="DiaryEntries" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" Nullable="false" />
+          <Property Name="LastName" Type="String" Nullable="false" />
+          <Property Name="EmailAddress" Type="String" Nullable="false" />
+          <Property Name="IsMentor" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="DiaryEntries" Relationship="DiaryEntries.UsersDiaryEntries" FromRole="Users" ToRole="DiaryEntries" />
+        </EntityType>
+        <EntityType Name="DiaryEntries">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Entry" Type="String" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="DiaryEntries.UsersDiaryEntries" FromRole="DiaryEntries" ToRole="Users" />
+          <Property Name="UsersId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="UsersDiaryEntries">
+          <End Type="DiaryEntries.Users" Role="Users" Multiplicity="1" />
+          <End Type="DiaryEntries.DiaryEntries" Role="DiaryEntries" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DiaryEntries">
+              <PropertyRef Name="UsersId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DiaryEntriesStoreContainer" CdmEntityContainer="DiaryEntriesContainer">
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="IsTypeOf(DiaryEntries.Users)">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+          <ScalarProperty Name="IsMentor" ColumnName="IsMentor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DiaryEntries">
+      <EntityTypeMapping TypeName="IsTypeOf(DiaryEntries.DiaryEntries)">
+        <MappingFragment StoreEntitySet="DiaryEntries">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Entry" ColumnName="Entry" />
+          <ScalarProperty Name="UsersId" ColumnName="UsersId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
