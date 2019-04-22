@@ -7,119 +7,115 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Resilience.Models;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
 
 namespace Resilience.Controllers
 {
-    public class UsersController : Controller
+    public class DiaryEntriesController : Controller
     {
         private DiaryEntriesContainer db = new DiaryEntriesContainer();
 
-        // GET: Users
+        // GET: DiaryEntries
         public ActionResult Index()
         {
-            return View(db.Users.ToList());
+            var diaryEntries = db.DiaryEntries.Include(d => d.User);
+            return View(diaryEntries.ToList());
         }
 
-        // GET: Users/Details/5
+        // GET: DiaryEntries/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Users users = db.Users.Find(id);
-            if (users == null)
+            DiaryEntries diaryEntries = db.DiaryEntries.Find(id);
+            if (diaryEntries == null)
             {
                 return HttpNotFound();
             }
-            return View(users);
+            return View(diaryEntries);
         }
 
-        // GET: Users/Create
+        // GET: DiaryEntries/Create
         public ActionResult Create()
         {
+            ViewBag.UsersId = new SelectList(db.Users, "Id", "FirstName");
             return View();
         }
 
-        // POST: Users/Create
+        // POST: DiaryEntries/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,FirstName,LastName,EmailAddress,IsMentor")] Users users)
+        public ActionResult Create([Bind(Include = "Id,Entry,UsersId")] DiaryEntries diaryEntries)
         {
-            ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId<int>());
-            users.Id = user.Id;
-            users.EmailAddress = user.Email;
-
-            ModelState.Clear();
-            TryValidateModel(users);
-
             if (ModelState.IsValid)
             {
-                db.Users.Add(users);
+                db.DiaryEntries.Add(diaryEntries);
                 db.SaveChanges();
-                return RedirectToAction("Index", "Options");
+                return RedirectToAction("Index");
             }
 
-            return View(users);
+            ViewBag.UsersId = new SelectList(db.Users, "Id", "FirstName", diaryEntries.UsersId);
+            return View(diaryEntries);
         }
 
-        // GET: Users/Edit/5
+        // GET: DiaryEntries/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Users users = db.Users.Find(id);
-            if (users == null)
+            DiaryEntries diaryEntries = db.DiaryEntries.Find(id);
+            if (diaryEntries == null)
             {
                 return HttpNotFound();
             }
-            return View(users);
+            ViewBag.UsersId = new SelectList(db.Users, "Id", "FirstName", diaryEntries.UsersId);
+            return View(diaryEntries);
         }
 
-        // POST: Users/Edit/5
+        // POST: DiaryEntries/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,EmailAddress,IsMentor")] Users users)
+        public ActionResult Edit([Bind(Include = "Id,Entry,UsersId")] DiaryEntries diaryEntries)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(users).State = EntityState.Modified;
+                db.Entry(diaryEntries).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(users);
+            ViewBag.UsersId = new SelectList(db.Users, "Id", "FirstName", diaryEntries.UsersId);
+            return View(diaryEntries);
         }
 
-        // GET: Users/Delete/5
+        // GET: DiaryEntries/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Users users = db.Users.Find(id);
-            if (users == null)
+            DiaryEntries diaryEntries = db.DiaryEntries.Find(id);
+            if (diaryEntries == null)
             {
                 return HttpNotFound();
             }
-            return View(users);
+            return View(diaryEntries);
         }
 
-        // POST: Users/Delete/5
+        // POST: DiaryEntries/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Users users = db.Users.Find(id);
-            db.Users.Remove(users);
+            DiaryEntries diaryEntries = db.DiaryEntries.Find(id);
+            db.DiaryEntries.Remove(diaryEntries);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
