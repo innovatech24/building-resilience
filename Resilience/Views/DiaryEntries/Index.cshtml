@@ -16,6 +16,21 @@
             @Html.DisplayNameFor(model => model.Entry)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.MentorId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SentimentScore)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MentorFeedback)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MenteeFeedback)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.User.FirstName)
         </th>
         <th></th>
@@ -25,6 +40,21 @@
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Entry)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MentorId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SentimentScore)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MentorFeedback)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MenteeFeedback)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.User.FirstName)
