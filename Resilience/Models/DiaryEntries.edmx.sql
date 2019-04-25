@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 04/25/2019 19:02:17
+-- Date Created: 04/25/2019 19:36:50
 -- Generated from EDMX file: C:\Users\kiran\Desktop\IE\repos\Resilience\Resilience\Models\DiaryEntries.edmx
 -- --------------------------------------------------
 
@@ -25,11 +25,11 @@ GO
 -- Dropping existing tables
 -- --------------------------------------------------
 
-IF OBJECT_ID(N'[dbo].[DiaryEntries]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[DiaryEntries];
-GO
 IF OBJECT_ID(N'[dbo].[Users]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Users];
+GO
+IF OBJECT_ID(N'[dbo].[DiaryEntries]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[DiaryEntries];
 GO
 
 -- --------------------------------------------------
@@ -38,7 +38,7 @@ GO
 
 -- Creating table 'Users'
 CREATE TABLE [dbo].[Users] (
-    [Id] int IDENTITY(1,1) NOT NULL,
+    [Id] int  NOT NULL,
     [FirstName] nvarchar(max)  NOT NULL,
     [LastName] nvarchar(max)  NOT NULL,
     [EmailAddress] nvarchar(max)  NOT NULL,

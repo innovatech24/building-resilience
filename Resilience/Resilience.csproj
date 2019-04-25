@@ -180,12 +180,10 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ChallengesController.cs" />
     <Compile Include="Controllers\DiaryEntriesController.cs" />
-    <Compile Include="Controllers\DiaryEntriesController1.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\OptionsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
-    <Compile Include="Controllers\UsersController1.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -460,16 +458,16 @@
     <Content Include="Views\Challenges\Violence.cshtml" />
     <Content Include="Views\Challenges\Index.cshtml" />
     <Content Include="Views\Options\Index.cshtml" />
-    <Content Include="Views\Users\Create.cshtml" />
-    <Content Include="Views\Users\Delete.cshtml" />
-    <Content Include="Views\Users\Details.cshtml" />
-    <Content Include="Views\Users\Edit.cshtml" />
-    <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\DiaryEntries\Create.cshtml" />
     <Content Include="Views\DiaryEntries\Delete.cshtml" />
     <Content Include="Views\DiaryEntries\Details.cshtml" />
     <Content Include="Views\DiaryEntries\Edit.cshtml" />
     <Content Include="Views\DiaryEntries\Index.cshtml" />
+    <Content Include="Views\Users\Create.cshtml" />
+    <Content Include="Views\Users\Delete.cshtml" />
+    <Content Include="Views\Users\Details.cshtml" />
+    <Content Include="Views\Users\Edit.cshtml" />
+    <Content Include="Views\Users\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
