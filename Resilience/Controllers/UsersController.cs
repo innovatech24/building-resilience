@@ -15,6 +15,29 @@ namespace Resilience.Controllers
     public class UsersController : Controller
     {
         private DiaryEntriesContainer db = new DiaryEntriesContainer();
+        private ApplicationUserManager _userManager;
+
+        public UsersController()
+        {
+
+        }
+
+        public UsersController(ApplicationUserManager userManager)
+        {
+            UserManager = userManager;            
+        }
+
+        public ApplicationUserManager UserManager
+        {
+            get
+            {
+                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            }
+            private set
+            {
+                _userManager = value;
+            }
+        }
 
         // GET: Users
         public ActionResult Index()
@@ -61,7 +84,24 @@ namespace Resilience.Controllers
             {
                 db.Users.Add(users);
                 db.SaveChanges();
-                return RedirectToAction("Index", "Options");
+
+                var roles = UserManager.GetRoles(user.Id);
+                
+                if (roles.Count == 2)
+                {
+                    return RedirectToAction("Choice", "Options");
+                }
+                else
+                {
+                    if (roles.Contains("Mentor"))
+                    {
+                        return RedirectToAction("Mentor", "Options");
+                    }
+                    else
+                    {
+                        return RedirectToAction("Mentee", "Options");
+                    }
+                }                
             }
 
             return View(users);

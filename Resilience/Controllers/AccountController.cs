@@ -80,7 +80,24 @@ namespace Resilience.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToAction("Index", "Options");
+                    var currentuse = UserManager.FindByEmail(model.Email);
+                    //ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId<int>());
+                    var roles = UserManager.GetRoles(currentuse.Id);
+                    if (roles.Count == 2)
+                    {
+                        return RedirectToAction("Choice", "Options");
+                    }
+                    else
+                    {
+                        if (roles.Contains("Mentor"))
+                        {
+                            return RedirectToAction("Mentor", "Options");
+                        }
+                        else
+                        {
+                            return RedirectToAction("Mentee", "Options");
+                        }
+                    }                    
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
@@ -175,7 +192,7 @@ namespace Resilience.Controllers
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
-
+                 
                     return RedirectToAction("Create", "Users");
                 }
                 AddErrors(result);

@@ -457,7 +457,7 @@
     <Content Include="Views\Challenges\Abuse.cshtml" />
     <Content Include="Views\Challenges\Violence.cshtml" />
     <Content Include="Views\Challenges\Index.cshtml" />
-    <Content Include="Views\Options\Index.cshtml" />
+    <Content Include="Views\Options\Mentee.cshtml" />
     <Content Include="Views\DiaryEntries\Create.cshtml" />
     <Content Include="Views\DiaryEntries\Delete.cshtml" />
     <Content Include="Views\DiaryEntries\Details.cshtml" />
@@ -469,6 +469,7 @@
     <Content Include="Views\Users\Edit.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\Options\Choice.cshtml" />
+    <Content Include="Views\Options\Mentor.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
