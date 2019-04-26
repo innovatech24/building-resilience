@@ -1,4 +1,5 @@
 ﻿@model Resilience.Models.RegisterViewModel
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -55,6 +56,12 @@
                 @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
                 <div class="col-md-10">
                     @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.RoleName, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.RoleName, new List<SelectListItem> { new SelectListItem { Value = "Mentor", Text = "Mentor" }, new SelectListItem { Value = "Mentee", Text = "Mentee" }, new SelectListItem { Value = "Both", Text = "Both" } }, new { @class = "form-control" })
                 </div>
             </div>
             <div class="form-group">
