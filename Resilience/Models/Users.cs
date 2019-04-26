@@ -24,7 +24,7 @@ namespace Resilience.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string EmailAddress { get; set; }
-        public bool IsMentor { get; set; }
+        public int MentorId { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DiaryEntries> DiaryEntries { get; set; }

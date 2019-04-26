@@ -17,6 +17,11 @@ namespace Resilience.Models
         public int Id { get; set; }
         public string Entry { get; set; }
         public int UsersId { get; set; }
+        public int MentorId { get; set; }
+        public decimal SentimentScore { get; set; }
+        public string MentorFeedback { get; set; }
+        public System.DateTime Date { get; set; }
+        public int MenteeFeedback { get; set; }
     
         public virtual Users User { get; set; }
     }
