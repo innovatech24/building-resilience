@@ -450,21 +450,21 @@ img {
 /*==================
  ABOUT SECTION
 ====================*/
-#mu-about-us {
-  display: inline;
-  float: left;
-  width: 100%;
-  padding: 100px 0;
+#mu-about-us .mu-how-can-we-help {
+    display: inline;
+    float: left;
+    width: 100%;
+    padding: 100px 0;
 }
-#mu-about-us .mu-about-us-area {
-  display: inline;
-  float: left;
-  width: 100%;
+#mu-about-us .mu-about-us-area mu-how-can-we-help .mu-how-can-we-help{
+    display: inline;
+    float: left;
+    width: 100%;
 }
-#mu-about-us .mu-about-us-area .mu-about-us-left {
-  display: inline;
-  float: left;
-  width: 100%;
+#mu-about-us .mu-about-us-area .mu-about-us-left mu-how-can-we-help .mu-how-can-we-help{
+    display: inline;
+    float: left;
+    width: 100%;
 }
 #mu-about-us .mu-about-us-area .mu-about-us-left h2 {
   font-size: 40px;
@@ -2050,7 +2050,7 @@ img {
   }
 
   #mu-slider .mu-slider-single .mu-slider-img {
-    height: 400px;
+    height: 300px;
   }
 
   #mu-slider .mu-slider-single .mu-slider-content a {
@@ -2068,11 +2068,11 @@ img {
     font-size: 20px;
   }
 
-  #mu-about-us {
+  #mu-about-us mu-how-can-we-help {
     padding: 60px 0;
   }
 
-  #mu-about-us .mu-about-us-area .mu-about-us-right {
+  #mu-about-us .mu-about-us-area .mu-about-us-right mu-how-can-we-help  {
     margin-top: 30px;
   }
 
