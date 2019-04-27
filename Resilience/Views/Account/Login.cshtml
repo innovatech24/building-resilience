@@ -28,12 +28,37 @@
     <!-- Google Fonts -->
     <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,400italic,300,300italic,500,700' rel='stylesheet' type='text/css'>
+    <style>
+        .login-register-page {
+            height: 700px;
+            background: url('../../Images/album-background-blank-1089842.jpg') no-repeat center fixed;
+            background-size: cover;
+        }
+        .login-register-form {
+            position: absolute;
+            left: 35%;
+            top: 30%;
+            background-color: white;
+            width: 450px;
+            height: 400px;
+            padding: 3% 0 0;
+            margin: auto;
+            text-align: center;
+            @*box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);*@
+        }
+
+        .form-group {
+            position: center;
+            text-align: center;
+        }
+        </style>
 </head>
 <body>
-
-    <h2>Log in</h2>
-    <div class="row">
-        <div class="col-md-8">
+    <div class="login-register-page">
+        <div class="login-register-form center-block">
+            <h2>Log in</h2>
+            <!-- <div class="row"> -->
+            <!--<div class="col-md-8"> -->
             <section id="loginForm">
                 @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
                 {
@@ -42,21 +67,21 @@
                     <hr />
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                     <div class="form-group">
-                        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-                        <div class="col-md-10">
-                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                        @Html.LabelFor(m => m.Email, new { @class = "col-md-offset-1 col-md-2 control-label" })
+                        <div class="col-md-offset-1 col-md-6">
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control"})
                             @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
                         </div>
                     </div>
                     <div class="form-group">
-                        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-                        <div class="col-md-10">
-                            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                        @Html.LabelFor(m => m.Password, new { @class = "col-md-offset-1 col-md-2 control-label" } )
+                        <div class="col-md-offset-1 col-md-6">
+                            @Html.PasswordFor(m => m.Password, new { @class = "form-control"} )
                             @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
                         </div>
                     </div>
                     <div class="form-group">
-                        <div class="col-md-offset-2 col-md-10">
+                        <div class="col-md-offset-1 col-md-10">
                             <div class="checkbox">
                                 @Html.CheckBoxFor(m => m.RememberMe)
                                 @Html.LabelFor(m => m.RememberMe)
@@ -64,7 +89,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <div class="col-md-offset-2 col-md-10">
+                        <div class="col-md-offset-1 col-md-10">
                             <input type="submit" value="Log in" class="btn btn-default" />
                         </div>
                     </div>
@@ -84,7 +109,8 @@
                 </section>
             </div>*@
     </div>
-
+    <!--</div>-->
+    <!-- </div> -->
     @section Scripts {
         @Scripts.Render("~/bundles/jqueryval")
     }

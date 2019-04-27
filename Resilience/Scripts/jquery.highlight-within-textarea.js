@@ -8,11 +8,11 @@
 (function($) {
 	let ID = 'hwt';
 
-	let HighlightWithinTextarea = function($el, config) {
+	let highlightWithinTextarea = function($el, config) {
 		this.init($el, config);
 	};
 
-	HighlightWithinTextarea.prototype = {
+	highlightWithinTextarea.prototype = {
 		init: function($el, config) {
 			this.$el = $el;
 
@@ -370,7 +370,7 @@
 				if (plugin) {
 					plugin.destroy();
 				}
-				plugin = new HighlightWithinTextarea($this, options);
+				plugin = new highlightWithinTextarea($this, options);
 				if (plugin.isGenerated) {
 					$this.data(ID, plugin);
 				}

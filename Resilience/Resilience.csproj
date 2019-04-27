@@ -278,6 +278,7 @@
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\green-theme.css" />
     <Content Include="Content\jquery.fancybox.css" />
+    <Content Include="Content\jquery.highlight-within-textarea.css" />
     <Content Include="Content\main.css" />
     <Content Include="Content\orange-theme.css" />
     <Content Include="Content\pink-theme.css" />
@@ -295,6 +296,8 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Images\achievement-adult-aerial-1122403.jpg" />
+    <Content Include="Images\album-background-blank-1089842.jpg" />
+    <Content Include="Images\backgrounds-blank-blue-953214.jpg" />
     <Content Include="Images\banner.jpg" />
     <Content Include="Images\children-3874296_1280.jpg" />
     <Content Include="Images\HomePageImage.jpg" />
@@ -392,7 +395,6 @@
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\breakpoints.min.js" />
     <Content Include="Scripts\browser.min.js" />
-    <Content Include="Scripts\highlight_textarea.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
@@ -409,6 +411,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\jqueryd.min.js" />
     <Content Include="Scripts\main.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\popper-utils.js" />
