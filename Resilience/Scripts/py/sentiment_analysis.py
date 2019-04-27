@@ -1,7 +1,7 @@
 #import nltk
 import sys
 
-# nltk.download('vader_lexicon')
+#nltk.download('vader_lexicon')
 
 def nltk_sentiment(sentence):
     from nltk.sentiment.vader import SentimentIntensityAnalyzer

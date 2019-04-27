@@ -25,7 +25,7 @@ namespace Resilience.Models
         private string run_cmd(string cmd, string args)
         {
             ProcessStartInfo start = new ProcessStartInfo();
-            start.FileName = @"python.exe";
+            start.FileName = @"C:\users\kiran\Anaconda3\python.exe";
             start.CreateNoWindow = true;
             start.Arguments = string.Format("{0} \"{1}\"", AppDomain.CurrentDomain.BaseDirectory.Replace("\\", "/") + cmd, args);
             start.UseShellExecute = false;

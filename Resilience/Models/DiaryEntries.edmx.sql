@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 04/20/2019 18:55:39
+-- Date Created: 04/25/2019 19:36:50
 -- Generated from EDMX file: C:\Users\kiran\Desktop\IE\repos\Resilience\Resilience\Models\DiaryEntries.edmx
 -- --------------------------------------------------
 
@@ -17,11 +17,20 @@ GO
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
+IF OBJECT_ID(N'[dbo].[FK_UsersDiaryEntries]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[DiaryEntries] DROP CONSTRAINT [FK_UsersDiaryEntries];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
 -- --------------------------------------------------
 
+IF OBJECT_ID(N'[dbo].[Users]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Users];
+GO
+IF OBJECT_ID(N'[dbo].[DiaryEntries]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[DiaryEntries];
+GO
 
 -- --------------------------------------------------
 -- Creating all tables
@@ -29,11 +38,11 @@ GO
 
 -- Creating table 'Users'
 CREATE TABLE [dbo].[Users] (
-    [Id] int IDENTITY(1,1) NOT NULL,
+    [Id] int  NOT NULL,
     [FirstName] nvarchar(max)  NOT NULL,
     [LastName] nvarchar(max)  NOT NULL,
     [EmailAddress] nvarchar(max)  NOT NULL,
-    [IsMentor] bit  NOT NULL
+    [MentorId] int  NULL
 );
 GO
 
@@ -41,7 +50,12 @@ GO
 CREATE TABLE [dbo].[DiaryEntries] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [Entry] nvarchar(max)  NOT NULL,
-    [UsersId] int  NOT NULL
+    [UsersId] int  NOT NULL,
+    [MentorId] int  NOT NULL,
+    [SentimentScore] float  NULL,
+    [MentorFeedback] nvarchar(max)  NULL,
+    [Date] datetime  NOT NULL,
+    [MenteeFeedback] int  NULL
 );
 GO
 

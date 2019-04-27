@@ -11,7 +11,8 @@ namespace Resilience.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Users
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -24,9 +25,21 @@ namespace Resilience.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string EmailAddress { get; set; }
-        public int MentorId { get; set; }
+        public Nullable<int> MentorId { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DiaryEntries> DiaryEntries { get; set; }
+    }
+
+    public class AddMentor
+    {
+        [Required]
+        public string Email { get; set; }
+    }
+
+    public class AddMentee
+    {
+        [Required]
+        public string Email { get; set; }
     }
 }

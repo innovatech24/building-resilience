@@ -14,6 +14,21 @@ namespace Resilience.Controllers
             return View();
         }
 
+        public ActionResult Choice()
+        {
+            return View();
+        }
+
+        public ActionResult Mentee()
+        {
+            return View();
+        }
+
+        public ActionResult Mentor()
+        {
+            return View();
+        }
+
         /*
         // GET: Options/Details/5
         public ActionResult Details(int id)
