@@ -470,7 +470,8 @@
     <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\Options\Choice.cshtml" />
     <Content Include="Views\Options\Mentor.cshtml" />
-    <Content Include="Views\Users\Choose.cshtml" />
+    <Content Include="Views\Users\ChooseMentor.cshtml" />
+    <Content Include="Views\Users\ChooseMentee.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

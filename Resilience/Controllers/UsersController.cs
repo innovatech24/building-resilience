@@ -138,16 +138,16 @@ namespace Resilience.Controllers
             return View(users);
         }
 
-        //GET: Users/Choose
-        public ActionResult Choose()
+        //GET: Users/ChooseMentor
+        public ActionResult ChooseMentor()
         {
             return View();
         }
 
-        //POST: Users/Choose
+        //POST: Users/ChooseMentor
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Choose(AddMentor mentor)
+        public ActionResult ChooseMentor(AddMentor mentor)
         {
             if(ModelState.IsValid)
             {
@@ -168,6 +168,41 @@ namespace Resilience.Controllers
                 db.Entry(currentUser).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Mentee", "Options");
+            }
+            return View();
+        }
+
+        //GET: Users/ChooseMentee
+        public ActionResult ChooseMentee()
+        {
+            return View();
+        }
+
+        //POST: Users/ChooseMentee
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ChooseMentee(AddMentee mentee)
+        {
+            if (ModelState.IsValid)
+            {
+                if (string.IsNullOrEmpty(mentee.Email))
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                var UserManager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+                var users = UserManager.FindByEmail(mentee.Email);
+                var userId = users.Id;
+                if (users == null)
+                {
+                    return HttpNotFound();
+                }
+                ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId<int>());
+                Users currentUser = db.Users.Find(user.Id);
+                Users menteeUser = db.Users.Find(users.Id);
+                 menteeUser.MentorId = currentUser.Id;               
+                db.Entry(currentUser).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Mentor", "Options");
             }
             return View();
         }

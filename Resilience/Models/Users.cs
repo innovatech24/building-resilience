@@ -36,4 +36,10 @@ namespace Resilience.Models
         [Required]
         public string Email { get; set; }
     }
+
+    public class AddMentee
+    {
+        [Required]
+        public string Email { get; set; }
+    }
 }
