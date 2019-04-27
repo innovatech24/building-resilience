@@ -113,7 +113,7 @@ function highlightText(textObj, doit) {
         });
     }
     else {
-        $(textObj).highlightWithinTextarea('destroy');
+        $(textObj).HighlightWithinTextarea('destroy');
     };
 
 }

@@ -44,9 +44,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Entry)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MentorId)
-            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.MentorId)
+                </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.SentimentScore)
             </th>
@@ -69,11 +69,11 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Entry)
+                    @Html.TextBoxFor(modelItem => item.Entry, new { @class = "entry", disabled = "true" })
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.MentorId)
-                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.MentorId)
+                    </td>*@
                 <td class="sentiment">
                     @Html.DisplayFor(modelItem => item.SentimentScore)
                 </td>
@@ -89,17 +89,18 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.User.FirstName)
                 </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-                </td>
+                @*<td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    </td>*@
             </tr>
         }
 
     </table>
 
     <div id="gaugediv"></div>
+
 
     <!-- jQuery library -->
     <script src="~/Scripts/jquery.min.js"></script>
@@ -114,6 +115,7 @@
     <script type="text/javascript" src="~/Scripts/jquery.mixitup.js"></script>
     <!-- Add fancyBox -->
     <script type="text/javascript" src="~/Scripts/jquery.fancybox.pack.js"></script>
+    <script src="~/Scripts/jqueryd.min.js"></script>
     <!-- AM CHARTS-->
     <script type="text/javascript" src="~/Scripts/AMcharts/core.js"></script>
     <script type="text/javascript" src="~/Scripts/AMcharts/charts.js"></script>
@@ -125,5 +127,6 @@
     <script type="text/javascript" src="~/Scripts/Additional_functions.js"></script>
     <script src="~/Scripts/Sentiment.js"></script>
     <script src="~/Scripts/custom.js"></script>
+
 </body>
 </html>
