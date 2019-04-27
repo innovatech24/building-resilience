@@ -35,67 +35,66 @@
 </head>
 <body>
 
-    <h2>View</h2>
+    <h2>Dashboard</h2>
 
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
     <table class="table">
         <tr>
-            <th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.Entry)
-            </th>
-            <th>
+            </th>*@
+            @*<th>
                 @Html.DisplayNameFor(model => model.MentorId)
-            </th>
-            <th>
+            </th>*@
+            @*<th>
                 @Html.DisplayNameFor(model => model.SentimentScore)
-            </th>
-            <th>
+            </th>*@
+            @*<th>
                 @Html.DisplayNameFor(model => model.MentorFeedback)
-            </th>
+            </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.Date)
             </th>
-            <th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.MenteeFeedback)
-            </th>
+            </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.User.FirstName)
-            </th>
-            <th></th>
+            </th>            
         </tr>
 
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Entry)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.MentorId)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.SentimentScore)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.MentorFeedback)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Date)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.MenteeFeedback)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.User.FirstName)
-                </td>
-                @*<td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-                    </td>*@
-            </tr>
+        <tr>
+            @*<td>
+            @Html.DisplayFor(modelItem => item.Entry)
+        </td>*@
+            @*<td>
+            @Html.DisplayFor(modelItem => item.MentorId)
+        </td>*@
+            @*<td>
+            @Html.DisplayFor(modelItem => item.SentimentScore)
+        </td>*@
+            @*<td>
+            @Html.DisplayFor(modelItem => item.MentorFeedback)
+        </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            @*<td>
+            @Html.DisplayFor(modelItem => item.MenteeFeedback)
+        </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.User.FirstName)
+            </td>
+            @*<td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+        </td>*@
+            <td>
+                @Html.ActionLink("View", "View", new { id = item.Id})
+            </td>            
+        </tr>
         }
 
     </table>

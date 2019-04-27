@@ -332,6 +332,10 @@
     <Content Include="Scripts\Additional_functions.js" />
     <Content Include="Scripts\all.js" />
     <Content Include="Scripts\all.min.js" />
+    <Content Include="Scripts\AMcharts\animated.js" />
+    <Content Include="Scripts\AMcharts\charts.js" />
+    <Content Include="Scripts\AMcharts\core.js" />
+    <Content Include="Scripts\AMcharts\kelly.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -481,6 +485,10 @@
     <Content Include="Views\Options\Mentor.cshtml" />
     <Content Include="Views\Users\ChooseMentor.cshtml" />
     <Content Include="Views\Users\ChooseMentee.cshtml" />
+    <Content Include="Scripts\py\sentiment_analysis.py" />
+    <Content Include="Scripts\py\sentiment_analysis2.py" />
+    <Content Include="Views\DiaryEntries\Dashboard.cshtml" />
+    <Content Include="Views\DiaryEntries\View.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Sentiment\" />

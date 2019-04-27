@@ -6,6 +6,8 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
 using Resilience.Models;
 
 namespace Resilience.Controllers
@@ -17,7 +19,26 @@ namespace Resilience.Controllers
         // GET: DiaryEntries
         public ActionResult Index()
         {
-            var diaryEntries = db.DiaryEntries.Include(d => d.User);
+            //var diaryEntries = db.DiaryEntries.Include(d => d.User);
+            ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId<int>());
+            Users currentUser = db.Users.Find(user.Id);
+            var diaryEntries = db.DiaryEntries.Where(d => d.UsersId == currentUser.Id).ToList();
+            return View(diaryEntries.ToList());
+        }
+
+        //GET: Dashboard
+        public ActionResult Dashboard()
+        {
+            ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId<int>());
+            Users currentUser = db.Users.Find(user.Id);
+            var diaryEntries = db.DiaryEntries.Where(d => d.MentorId == currentUser.Id).ToList();
+            return View(diaryEntries.ToList());
+        }
+
+        //GET: View/5
+        public ActionResult View(int Id)
+        {
+            var diaryEntries = db.DiaryEntries.Where(d => d.Id == Id).ToList();
             return View(diaryEntries.ToList());
         }
 
@@ -50,6 +71,15 @@ namespace Resilience.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Entry,UsersId,MentorId,SentimentScore,MentorFeedback,Date,MenteeFeedback")] DiaryEntries diaryEntries)
         {
+            SentimentPy sent = new SentimentPy();
+            var score = sent.getSentimentScore(diaryEntries.Entry);
+            diaryEntries.SentimentScore = score;
+            ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId<int>());
+            Users currentUser = db.Users.Find(user.Id);
+            diaryEntries.UsersId = currentUser.Id;
+            diaryEntries.MentorId = currentUser.MentorId.Value;
+            diaryEntries.Date = DateTime.Now;
+
             if (ModelState.IsValid)
             {
                 db.DiaryEntries.Add(diaryEntries);
