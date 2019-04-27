@@ -138,6 +138,40 @@ namespace Resilience.Controllers
             return View(users);
         }
 
+        //GET: Users/Choose
+        public ActionResult Choose()
+        {
+            return View();
+        }
+
+        //POST: Users/Choose
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Choose(AddMentor mentor)
+        {
+            if(ModelState.IsValid)
+            {
+                if (string.IsNullOrEmpty(mentor.Email))
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                var UserManager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+                var users = UserManager.FindByEmail(mentor.Email);
+                var userId = users.Id;
+                if (users == null)
+                {
+                    return HttpNotFound();
+                }
+                ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId<int>());
+                Users currentUser = db.Users.Find(user.Id);
+                currentUser.MentorId = users.Id;
+                db.Entry(currentUser).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Mentee", "Options");
+            }
+            return View();
+        }
+
         // GET: Users/Delete/5
         public ActionResult Delete(int? id)
         {
