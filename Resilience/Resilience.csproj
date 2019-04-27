@@ -490,9 +490,7 @@
     <Content Include="Views\DiaryEntries\Dashboard.cshtml" />
     <Content Include="Views\DiaryEntries\View.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\Sentiment\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />

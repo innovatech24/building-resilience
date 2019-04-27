@@ -2,7 +2,8 @@
 $(document).ready(function () {
     window.gauge = createGauge(0, "gaugediv");
 
-    updateGauge(window.gauge, "#inputest");
+    //updateGauge(window.gauge, "#inputest");
+    updateGaugeValue(window.gauge, parseFloat($(".sentiment", this).text().trim()));
 
 });
 

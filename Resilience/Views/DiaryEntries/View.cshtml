@@ -74,7 +74,7 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.MentorId)
                 </td>
-                <td>
+                <td class="sentiment">
                     @Html.DisplayFor(modelItem => item.SentimentScore)
                 </td>
                 <td>
@@ -99,6 +99,8 @@
 
     </table>
 
+    <div id="gaugediv"></div>
+
     <!-- jQuery library -->
     <script src="~/Scripts/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -112,9 +114,16 @@
     <script type="text/javascript" src="~/Scripts/jquery.mixitup.js"></script>
     <!-- Add fancyBox -->
     <script type="text/javascript" src="~/Scripts/jquery.fancybox.pack.js"></script>
-
-
+    <!-- AM CHARTS-->
+    <script type="text/javascript" src="~/Scripts/AMcharts/core.js"></script>
+    <script type="text/javascript" src="~/Scripts/AMcharts/charts.js"></script>
+    <script type="text/javascript" src="~/Scripts/AMcharts/animated.js"></script>
+    <script type="text/javascript" src="~/Scripts/AMcharts/kelly.js"></script>
+    <!-- HIGHLIGHTING TEXT-->
+    <script type="text/javascript" src="~/Scripts/jquery.highlight-within-textarea.js"></script>
     <!-- Custom js -->
+    <script type="text/javascript" src="~/Scripts/Additional_functions.js"></script>
+    <script src="~/Scripts/Sentiment.js"></script>
     <script src="~/Scripts/custom.js"></script>
 </body>
 </html>
