@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    @{ 
+    @{
         ViewBag.title = "Building Resilience";
     }
 
@@ -21,6 +21,9 @@
     <link rel="stylesheet" href="~/Content/jquery.fancybox.css" type="text/css" media="screen" />
     <!-- Theme color -->
     <link id="switcher" href="~/Content/default-theme.css" rel="stylesheet">
+
+    <!-- Highlight style -->
+    <link rel="stylesheet" href="~/Content/jquery.highlight-within-textarea.css" />
 
     <!-- Main style sheet -->
     <link href="~/Content/style.css" rel="stylesheet">
@@ -45,8 +48,7 @@
     <a class="scrollToTop" href="#">
         <i class="fa fa-angle-up"></i>
     </a>
-    <!-- END SCROLL TOP BUTTON --> 
- 
+    <!-- END SCROLL TOP BUTTON -->
     <!-- Start Slider -->
     <section id="mu-slider">
         <!-- Start single slider item -->
@@ -60,10 +62,10 @@
                 <h2>Building Resilience</h2>
                 <span></span>
                 <h3>What is Resilience and why is it important for kids to be resilient?</h3>
-                <p>Resilience means the capacity to recover quickly from difficulties. Kids growing up face a lot of challenges. This affects their development and overall personailty.</p>               
+                <p>Resilience means the capacity to recover quickly from difficulties. Kids growing up face a lot of challenges. This affects their development and overall personailty.</p>
             </div>
         </div>
-        <!-- Start single slider item -->      
+        <!-- Start single slider item -->
     </section>
     <!-- End Slider -->
     <!-- Start service  -->
@@ -127,26 +129,39 @@
                             <div class="col-lg-6 col-md-6">
                                 <div class="mu-about-us-right">
                                     @*<video controls="controls" autoplay="autoplay">
-                                        <source src="~/Images/ResilienceVideo.mp4" type="video/mp4" />
-                                        Your browser does not support the video.
-                                    </video>*@
+                    <source src="~/Images/ResilienceVideo.mp4" type="video/mp4" />
+                    Your browser does not support the video.
+                </video>*@
                                     <figure>
-                                        <img src="~/Images/run-1321278_1280.jpg" height ="500" width ="600" alt="img" />
+                                        <img src="~/Images/run-1321278_1280.jpg" height="500" width="600" alt="img" />
                                     </figure>
                                 </div>
                             </div>
+                            <!--<div class="col-lg-6 col-md-6">
+                                    <div id="gaugediv"></div>
+                                    Highlight: <input type="checkbox" id="highlight" />
+                                    <textarea id="inputest" cols="150" rows="15">
+    Last week's lecture presented the idea that science is the most powerful form of evidence  [1] . My position as a student studying both physics and law makes this an important issue for me  [2]  and one I was thinking about while watching the 'The New Inventors' television program last Tuesday  [3] . The two 'inventors' (an odd name considering that, as Smith (2002) says, nobody thinks of things in a vacuum) were accompanied by their marketing people. The conversations were quite contrived, but also funny and enlightening. I realised that the marketing people used a certain form of evidence to persuade the viewers (us?) of the value of the inventions  [4] . To them, this value was determined solely by whether something could be bought or sold—in other words, whether something was 'marketable'. In contrast, the inventors seemed quite shy and reluctant to use anything more than technical language, almost as if this was the only evidence required – as if no further explanation was needed.
+
+
+
+    This difference forced me to reflect on the aims of this course—how communication skills are not generic, but differ according to time and place. Like in the 'Research Methodology' textbook discussed in the first lecture, these communication skills are the result of a form of triangulation,  [5]  which I have made into the following diagram:
+    </textarea>
+
+                                </div>-->
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- End about us -->   
-    
+
+    <!-- End about us -->
     <!-- jQuery library -->
     <script src="~/Scripts/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="~/Scripts/bootstrap.js"></script>
+
     <!-- Slick slider -->
     <script type="text/javascript" src="~/Scripts/slick.js"></script>
     <!-- Counter -->
@@ -157,8 +172,18 @@
     <!-- Add fancyBox -->
     <script type="text/javascript" src="~/Scripts/jquery.fancybox.pack.js"></script>
 
+    <!-- AM CHARTS-->
+    <script type="text/javascript" src="~/Scripts/AMcharts/core.js"></script>
+    <script type="text/javascript" src="~/Scripts/AMcharts/charts.js"></script>
+    <script type="text/javascript" src="~/Scripts/AMcharts/animated.js"></script>
+    <script type="text/javascript" src="~/Scripts/AMcharts/kelly.js"></script>
+
+    <!-- HIGHLIGHTING TEXT-->
+    <script type="text/javascript" src="~/Scripts/jquery.highlight-within-textarea.js"></script>
 
     <!-- Custom js -->
+    <script type="text/javascript" src="~/Scripts/Additional_functions.js"></script>
+    <script src="~/Scripts/Sentiment.js"></script>
     <script src="~/Scripts/custom.js"></script>
 
 </body>

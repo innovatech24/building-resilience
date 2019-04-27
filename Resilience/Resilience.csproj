@@ -183,6 +183,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\OptionsController.cs" />
+    <Compile Include="Controllers\SentimentController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -194,6 +195,7 @@
     <Compile Include="Models\Bullying.cs">
       <DependentUpon>PlotData.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DBConnect.cs" />
     <Compile Include="Models\DiaryEntries.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -238,6 +240,7 @@
     <Compile Include="Models\Region.cs">
       <DependentUpon>PlotData.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\SentimentPy.cs" />
     <Compile Include="Models\Users.cs">
       <DependentUpon>DiaryEntries.tt</DependentUpon>
     </Compile>
@@ -257,6 +260,8 @@
     <Content Include="App_Data\PlotData_log.ldf">
       <DependentUpon>PlotData.mdf</DependentUpon>
     </Content>
+    <Content Include="App_Data\Users.mdf" />
+    <Content Include="App_Data\Users_log.ldf" />
     <Content Include="Content\all.css" />
     <Content Include="Content\all.min.css" />
     <Content Include="Content\bootstrap-grid.css" />
@@ -324,6 +329,7 @@
       <LastGenOutput>PlotData.cs</LastGenOutput>
       <DependentUpon>PlotData.edmx</DependentUpon>
     </Content>
+    <Content Include="Scripts\Additional_functions.js" />
     <Content Include="Scripts\all.js" />
     <Content Include="Scripts\all.min.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -382,6 +388,7 @@
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\breakpoints.min.js" />
     <Content Include="Scripts\browser.min.js" />
+    <Content Include="Scripts\highlight_textarea.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
@@ -390,6 +397,7 @@
     <Content Include="Scripts\jquery.counterup.js" />
     <Content Include="Scripts\jquery.dropotron.min.js" />
     <Content Include="Scripts\jquery.fancybox.pack.js" />
+    <Content Include="Scripts\jquery.highlight-within-textarea.js" />
     <Content Include="Scripts\jquery.min.js" />
     <Content Include="Scripts\jquery.mixitup.js" />
     <Content Include="Scripts\jquery.scrolly.min.js" />
@@ -403,6 +411,7 @@
     <Content Include="Scripts\popper-utils.min.js" />
     <Content Include="Scripts\popper.js" />
     <Content Include="Scripts\popper.min.js" />
+    <Content Include="Scripts\Sentiment.js" />
     <Content Include="Scripts\slick.js" />
     <Content Include="Scripts\umd\popper-utils.js" />
     <Content Include="Scripts\umd\popper-utils.min.js" />
@@ -473,7 +482,9 @@
     <Content Include="Views\Users\ChooseMentor.cshtml" />
     <Content Include="Views\Users\ChooseMentee.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Views\Sentiment\" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
