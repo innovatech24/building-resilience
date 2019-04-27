@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Security.Claims;
@@ -16,18 +17,18 @@ namespace Resilience.Controllers
     public class AccountController : Controller
     {
         private ApplicationSignInManager _signInManager;
-        private ApplicationUserManager _userManager;
+        private ApplicationUserManager _userManager;       
 
         public AccountController()
         {
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
             UserManager = userManager;
-            SignInManager = signInManager;
+            SignInManager = signInManager;            
         }
-
+        
         public ApplicationSignInManager SignInManager
         {
             get
@@ -79,7 +80,24 @@ namespace Resilience.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToAction("Index", "Options");
+                    var currentuse = UserManager.FindByEmail(model.Email);
+                    //ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId<int>());
+                    var roles = UserManager.GetRoles(currentuse.Id);
+                    if (roles.Count == 2)
+                    {
+                        return RedirectToAction("Choice", "Options");
+                    }
+                    else
+                    {
+                        if (roles.Contains("Mentor"))
+                        {
+                            return RedirectToAction("Mentor", "Options");
+                        }
+                        else
+                        {
+                            return RedirectToAction("Mentee", "Options");
+                        }
+                    }                    
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
@@ -138,7 +156,7 @@ namespace Resilience.Controllers
         // GET: /Account/Register
         [AllowAnonymous]
         public ActionResult Register()
-        {
+        {          
             return View();
         }
 
@@ -152,9 +170,21 @@ namespace Resilience.Controllers
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
-                var result = await UserManager.CreateAsync(user, model.Password);
+                var result = await UserManager.CreateAsync(user, model.Password);                             
+
                 if (result.Succeeded)
                 {
+                    var currentUser = UserManager.FindByName(user.UserName);
+                    if (model.RoleName == "Both")
+                    {
+                        var roleresult1 = UserManager.AddToRole(currentUser.Id, "Mentor");
+                        var roleresult2 = UserManager.AddToRole(currentUser.Id, "Mentee");
+                    }
+                    else
+                    {
+                        var roleresult = UserManager.AddToRole(currentUser.Id, model.RoleName);
+                    }
+
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
@@ -162,7 +192,7 @@ namespace Resilience.Controllers
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
-
+                 
                     return RedirectToAction("Create", "Users");
                 }
                 AddErrors(result);

@@ -4,46 +4,51 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="DiaryEntries.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="DiaryEntries">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Entry" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="UsersId" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Users">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="FirstName" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="LastName" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="EmailAddress" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="IsMentor" Type="bit" Nullable="false" />
-        </EntityType>
-        <Association Name="FK_UsersDiaryEntries">
-          <End Role="Users" Type="Self.Users" Multiplicity="1" />
-          <End Role="DiaryEntries" Type="Self.DiaryEntries" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="DiaryEntries">
-              <PropertyRef Name="UsersId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityContainer Name="DiaryEntriesStoreContainer">
-          <EntitySet Name="DiaryEntries" EntityType="Self.DiaryEntries" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_UsersDiaryEntries" Association="Self.FK_UsersDiaryEntries">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="DiaryEntries" EntitySet="DiaryEntries" />
-          </AssociationSet>
-        </EntityContainer>
-      </Schema></edmx:StorageModels>
+    <Schema Namespace="DiaryEntries.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="DiaryEntriesStoreContainer">
+    <EntitySet Name="Users" EntityType="DiaryEntries.Store.Users" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="DiaryEntries" EntityType="DiaryEntries.Store.DiaryEntries" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="UsersDiaryEntries" Association="DiaryEntries.Store.UsersDiaryEntries">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="DiaryEntries" EntitySet="DiaryEntries" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="LastName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="EmailAddress" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="MentorId" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="DiaryEntries">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Entry" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="UsersId" Type="int" Nullable="false" />
+    <Property Name="MentorId" Type="int" Nullable="false" />
+    <Property Name="SentimentScore" Type="float" Nullable="true" />
+    <Property Name="MentorFeedback" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="MenteeFeedback" Type="int" Nullable="true" />
+  </EntityType>
+  <Association Name="UsersDiaryEntries">
+    <End Role="Users" Type="DiaryEntries.Store.Users" Multiplicity="1" />
+    <End Role="DiaryEntries" Type="DiaryEntries.Store.DiaryEntries" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DiaryEntries">
+        <PropertyRef Name="UsersId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="DiaryEntries" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
@@ -59,12 +64,12 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="None" />
           <Property Name="FirstName" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="LastName" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="EmailAddress" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="DiaryEntries" Relationship="DiaryEntries.UsersDiaryEntries" FromRole="Users" ToRole="DiaryEntries" />
-          <Property Name="MentorId" Type="Int32" Nullable="false" />
+          <Property Name="MentorId" Type="Int32" Nullable="true" />          
         </EntityType>
         <EntityType Name="DiaryEntries">
           <Key>
@@ -75,10 +80,10 @@
           <NavigationProperty Name="User" Relationship="DiaryEntries.UsersDiaryEntries" FromRole="DiaryEntries" ToRole="Users" />
           <Property Name="UsersId" Type="Int32" Nullable="false" />
           <Property Name="MentorId" Type="Int32" Nullable="false" />
-          <Property Name="SentimentScore" Type="Decimal" Nullable="false" />
-          <Property Name="MentorFeedback" Type="String" Nullable="false" />
+          <Property Name="SentimentScore" Type="Double" Nullable="true" />
+          <Property Name="MentorFeedback" Type="String" Nullable="true" />
           <Property Name="Date" Type="DateTime" Nullable="false" />
-          <Property Name="MenteeFeedback" Type="Int32" Nullable="false" />
+          <Property Name="MenteeFeedback" Type="Int32" Nullable="true" />
         </EntityType>
         <Association Name="UsersDiaryEntries">
           <End Type="DiaryEntries.Users" Role="Users" Multiplicity="1" />
@@ -105,6 +110,7 @@
           <ScalarProperty Name="FirstName" ColumnName="FirstName" />
           <ScalarProperty Name="LastName" ColumnName="LastName" />
           <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+          <ScalarProperty Name="MentorId" ColumnName="MentorId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -114,6 +120,11 @@
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Entry" ColumnName="Entry" />
           <ScalarProperty Name="UsersId" ColumnName="UsersId" />
+          <ScalarProperty Name="MentorId" ColumnName="MentorId" />
+          <ScalarProperty Name="SentimentScore" ColumnName="SentimentScore" />
+          <ScalarProperty Name="MentorFeedback" ColumnName="MentorFeedback" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="MenteeFeedback" ColumnName="MenteeFeedback" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
