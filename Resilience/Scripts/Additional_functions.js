@@ -117,3 +117,8 @@ function highlightText(textObj, doit) {
     };
 
 }
+
+// Change value of the gauge given a fixed value
+function updateGaugeValue(gauge_, val) {
+    gauge_.chart.setTimeout(() => { gauge_.hand.showValue(val, 1000, am4core.ease.cubicOut) }, 500);
+}
