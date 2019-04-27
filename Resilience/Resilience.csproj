@@ -278,6 +278,7 @@
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\green-theme.css" />
     <Content Include="Content\jquery.fancybox.css" />
+    <Content Include="Content\jquery.highlight-within-textarea.css" />
     <Content Include="Content\main.css" />
     <Content Include="Content\orange-theme.css" />
     <Content Include="Content\pink-theme.css" />

@@ -20,7 +20,8 @@
     <link rel="stylesheet" href="~/Content/jquery.fancybox.css" type="text/css" media="screen" />
     <!-- Theme color -->
     <link id="switcher" href="~/Content/default-theme.css" rel="stylesheet">
-
+    <!-- Highlighter function -->
+    <link rel="stylesheet" href="~/Content/jquery.highlight-within-textarea.css" />
     <!-- Main style sheet -->
     <link href="~/Content/style.css" rel="stylesheet">
 
@@ -69,7 +70,7 @@
         {
             <tr>
                 <td>
-                    @Html.TextBoxFor(modelItem => item.Entry, new { @class = "entry", disabled = "true" })
+                    @Html.TextBoxFor(modelItem => item.Entry, new { @class = "entry", @readonly = "readonly" })
                 </td>
                 @*<td>
                         @Html.DisplayFor(modelItem => item.MentorId)
