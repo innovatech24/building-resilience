@@ -296,6 +296,8 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Images\achievement-adult-aerial-1122403.jpg" />
+    <Content Include="Images\album-background-blank-1089842.jpg" />
+    <Content Include="Images\backgrounds-blank-blue-953214.jpg" />
     <Content Include="Images\banner.jpg" />
     <Content Include="Images\children-3874296_1280.jpg" />
     <Content Include="Images\HomePageImage.jpg" />
