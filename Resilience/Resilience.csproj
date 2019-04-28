@@ -272,6 +272,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\burlywood-theme.css" />
     <Content Include="Content\dark-red-theme.css" />
+    <Content Include="Content\dashboard.css" />
     <Content Include="Content\default-theme.css" />
     <Content Include="Content\diarycreate.css" />
     <Content Include="Content\font-awesome.css" />
@@ -344,6 +345,7 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\custom.js" />
+    <Content Include="Scripts\Dashboard.js" />
     <Content Include="Scripts\esm\popper-utils.js" />
     <Content Include="Scripts\esm\popper-utils.min.js" />
     <Content Include="Scripts\esm\popper.js" />
@@ -392,6 +394,7 @@
     <Content Include="Models\DiaryEntries.edmx.diagram">
       <DependentUpon>DiaryEntries.edmx</DependentUpon>
     </Content>
+    <Content Include="Content\dash.less" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\breakpoints.min.js" />
     <Content Include="Scripts\browser.min.js" />
@@ -492,6 +495,7 @@
     <Content Include="Scripts\py\sentiment_analysis2.py" />
     <Content Include="Views\DiaryEntries\Dashboard.cshtml" />
     <Content Include="Views\DiaryEntries\View.cshtml" />
+    <Content Include="Views\DiaryEntries\ViewUser.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

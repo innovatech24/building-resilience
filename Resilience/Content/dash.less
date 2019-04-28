@@ -1,0 +1,24 @@
+﻿.square {
+    border: 1px solid gray;
+    overflow: hidden;
+    padding-bottom: 100%;
+    position: relative;
+
+    > div {
+        height: 100%;
+        position: absolute;
+        width: 100%;
+
+        > div {
+            display: table;
+            height: 100%;
+            width: 100%;
+
+            > div {
+                display: table-cell;
+                text-align: center;
+                vertical-align: middle;
+            }
+        }
+    }
+}
