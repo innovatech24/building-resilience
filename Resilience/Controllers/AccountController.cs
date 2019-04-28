@@ -83,6 +83,7 @@ namespace Resilience.Controllers
                     var currentuse = UserManager.FindByEmail(model.Email);
                     //ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId<int>());
                     var roles = UserManager.GetRoles(currentuse.Id);
+                    
                     if (roles.Count == 2)
                     {
                         return RedirectToAction("Choice", "Options");

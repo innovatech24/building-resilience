@@ -15,6 +15,7 @@ namespace Resilience.Controllers
             return View();
         }
 
+        [Authorize(Roles = "Mentor")]
         public JsonResult SentimentMinMax(string input)
         {
             SentimentPy s = new SentimentPy();
@@ -23,6 +24,7 @@ namespace Resilience.Controllers
             return Json(res);
         }
 
+        [Authorize(Roles = "Mentor")]
         public JsonResult SentimentScore(string input)
         {
             SentimentPy s = new SentimentPy();

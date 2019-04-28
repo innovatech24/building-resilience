@@ -40,12 +40,14 @@ namespace Resilience.Controllers
         }
 
         // GET: Users
+        [Authorize]
         public ActionResult Index()
         {
             return View(db.Users.ToList());
         }
 
         // GET: Users/Details/5
+        [Authorize]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -61,6 +63,7 @@ namespace Resilience.Controllers
         }
 
         // GET: Users/Create
+        [Authorize]
         public ActionResult Create()
         {
             return View();
@@ -69,6 +72,7 @@ namespace Resilience.Controllers
         // POST: Users/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,FirstName,LastName,EmailAddress,MentorId")] Users users)
@@ -84,7 +88,7 @@ namespace Resilience.Controllers
             {
                 db.Users.Add(users);
                 db.SaveChanges();
-
+                
                 var roles = UserManager.GetRoles(user.Id);
                 
                 if (roles.Count == 2)
@@ -108,6 +112,7 @@ namespace Resilience.Controllers
         }
 
         // GET: Users/Edit/5
+        [Authorize]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -125,6 +130,7 @@ namespace Resilience.Controllers
         // POST: Users/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,EmailAddress,MentorId")] Users users)
@@ -139,12 +145,14 @@ namespace Resilience.Controllers
         }
 
         //GET: Users/ChooseMentor
+        [Authorize(Roles = "Mentee")]
         public ActionResult ChooseMentor()
         {
             return View();
         }
 
         //POST: Users/ChooseMentor
+        [Authorize(Roles = "Mentee")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult ChooseMentor(AddMentor mentor)
@@ -173,12 +181,14 @@ namespace Resilience.Controllers
         }
 
         //GET: Users/ChooseMentee
+        [Authorize(Roles = "Mentor")]
         public ActionResult ChooseMentee()
         {
             return View();
         }
 
         //POST: Users/ChooseMentee
+        [Authorize(Roles = "Mentor")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult ChooseMentee(AddMentee mentee)
@@ -208,6 +218,7 @@ namespace Resilience.Controllers
         }
 
         // GET: Users/Delete/5
+        [Authorize]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -223,6 +234,7 @@ namespace Resilience.Controllers
         }
 
         // POST: Users/Delete/5
+        [Authorize]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

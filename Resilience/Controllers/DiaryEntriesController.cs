@@ -17,6 +17,7 @@ namespace Resilience.Controllers
         private DiaryEntriesContainer db = new DiaryEntriesContainer();
 
         // GET: DiaryEntries
+        [Authorize(Roles = "Mentee")]
         public ActionResult Index()
         {
             //var diaryEntries = db.DiaryEntries.Include(d => d.User);
@@ -27,6 +28,7 @@ namespace Resilience.Controllers
         }
 
         //GET: Dashboard
+        [Authorize(Roles = "Mentor")]
         public ActionResult Dashboard()
         {
             ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId<int>());
@@ -36,6 +38,7 @@ namespace Resilience.Controllers
         }
 
         //GET: View/5
+        [Authorize(Roles = "Mentor")]
         public ActionResult View(int Id)
         {
             var diaryEntries = db.DiaryEntries.Where(d => d.Id == Id).ToList();
@@ -43,6 +46,7 @@ namespace Resilience.Controllers
         }
 
         // GET: DiaryEntries/Details/5
+        [Authorize]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -58,6 +62,7 @@ namespace Resilience.Controllers
         }
 
         // GET: DiaryEntries/Create
+        [Authorize]
         public ActionResult Create()
         {
             ViewBag.UsersId = new SelectList(db.Users, "Id", "FirstName");
@@ -67,6 +72,7 @@ namespace Resilience.Controllers
         // POST: DiaryEntries/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Mentee")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Entry,UsersId,MentorId,SentimentScore,MentorFeedback,Date,MenteeFeedback")] DiaryEntries diaryEntries)
@@ -92,6 +98,7 @@ namespace Resilience.Controllers
         }
 
         // GET: DiaryEntries/Edit/5
+        [Authorize]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -110,6 +117,7 @@ namespace Resilience.Controllers
         // POST: DiaryEntries/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Entry,UsersId,MentorId,SentimentScore,MentorFeedback,Date,MenteeFeedback")] DiaryEntries diaryEntries)
@@ -125,6 +133,7 @@ namespace Resilience.Controllers
         }
 
         // GET: DiaryEntries/Delete/5
+        [Authorize(Roles = "Mentee")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -140,6 +149,7 @@ namespace Resilience.Controllers
         }
 
         // POST: DiaryEntries/Delete/5
+        [Authorize(Roles = "Mentee")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
