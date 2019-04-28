@@ -497,6 +497,7 @@
     <Content Include="Views\DiaryEntries\Dashboard.cshtml" />
     <Content Include="Views\DiaryEntries\View.cshtml" />
     <Content Include="Views\DiaryEntries\ViewUser.cshtml" />
+    <Content Include="Views\DiaryEntries\Feedback.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

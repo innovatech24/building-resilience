@@ -36,16 +36,13 @@
     }
 </head>
 <body>
-    <h2>View</h2>
+    <h2>View</h2>    
    
     <table class="table">
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Entry)
             </th>       
-            @*<th>
-                @Html.DisplayNameFor(model => model.SentimentScore)
-            </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.MentorFeedback)
             </th>
@@ -56,25 +53,51 @@
        
         @foreach (var item in Model)
         {
-            <tr>
+        <tr>
+            <td>
+                @Html.TextBoxFor(modelItem => item.Entry, new { @class = "entry", @readonly = "readonly" })
+            </td>
+            @if (item.MentorFeedback == null)
+            {
                 <td>
-                    @Html.TextBoxFor(modelItem => item.Entry, new { @class = "entry", @readonly = "readonly" })
+                    @Html.ActionLink("Give Feedback", "Feedback", "DiaryEntries")
                 </td>
-                @*<td class="sentiment">
-                    @Html.DisplayFor(modelItem => item.SentimentScore)
-                </td>*@
+            }
+            else 
+            {
                 <td>
                     @Html.DisplayFor(modelItem => item.MentorFeedback)
-                </td>                
+                </td>
+            }
+
+            @if (item.MentorFeedback == null)
+            {
+                <td>
+                    <text>
+                        You haven't given feedback that can be rated.
+                    </text>
+                </td>
+            }
+            else if (item.MenteeFeedback == null)
+            {
+                <td>                    
+                    <text>
+                        Your mentee has not given feedback yet.
+                    </text>
+                </td>
+            }
+            else
+            {
                 <td>
                     @Html.DisplayFor(modelItem => item.MenteeFeedback)
                 </td>
-                @*<td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-                    </td>*@
-            </tr>       
+            }            
+            @*<td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+        </td>*@
+        </tr>       
         }
     </table>
    
