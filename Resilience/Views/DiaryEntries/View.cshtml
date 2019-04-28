@@ -60,7 +60,7 @@
             @if (item.MentorFeedback == null)
             {
                 <td>
-                    @Html.ActionLink("Give Feedback", "Feedback", "DiaryEntries")
+                    @Html.ActionLink("Give Feedback", "Feedback", new { id = item.Id }, null )
                 </td>
             }
             else 

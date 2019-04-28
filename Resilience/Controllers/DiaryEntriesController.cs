@@ -170,6 +170,40 @@ namespace Resilience.Controllers
             return RedirectToAction("Index");
         }
 
+        //GET: Feedback/5
+        [Authorize(Roles = "Mentor")]
+        public ActionResult Feedback(int Id)
+        {
+            DiaryEntries diaryEntries = db.DiaryEntries.Find(Id);
+            return View(diaryEntries);
+        }
+
+        //POST: Feedback
+        [Authorize(Roles = "Mentor")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Feedback(DiaryEntries mentfeedback)
+        {
+            
+            if (ModelState.IsValid)
+            {
+                if (string.IsNullOrEmpty(mentfeedback.MentorFeedback))
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }              
+                DiaryEntries diaryEntries = db.DiaryEntries.Find(mentfeedback.Id);
+                if (diaryEntries == null)
+                {
+                    return HttpNotFound();
+                }
+                diaryEntries.MentorFeedback = mentfeedback.MentorFeedback;
+                db.Entry(diaryEntries).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Dashboard", "DiaryEntries");
+            }
+            return View();
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

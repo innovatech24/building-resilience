@@ -66,7 +66,7 @@
             {
                 @Html.AntiForgeryToken()
 
-            <div class="form-horizontal">
+                <div class="form-horizontal">
                 <h4>DiaryEntries</h4>
                 <hr />
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -78,60 +78,13 @@
                     </div>
                 </div>
 
-                @*<div class="form-group">
-            @Html.LabelFor(model => model.UsersId, "UsersId", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("UsersId", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.UsersId, "", new { @class = "text-danger" })
-            </div>
-        </div>*@
-
-                @*<div class="form-group">
-            @Html.LabelFor(model => model.MentorId, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.MentorId, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.MentorId, "", new { @class = "text-danger" })
-            </div>
-        </div>*@
-
-                @*<div class="form-group">
-            @Html.LabelFor(model => model.SentimentScore, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.SentimentScore, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.SentimentScore, "", new { @class = "text-danger" })
-            </div>
-        </div>*@
-
-                @*<div class="form-group">
-            @Html.LabelFor(model => model.MentorFeedback, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.MentorFeedback, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.MentorFeedback, "", new { @class = "text-danger" })
-            </div>
-        </div>*@
-
-                @*<div class="form-group">
-            @Html.LabelFor(model => model.Date, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
-            </div>
-        </div>*@
-
-                @*<div class="form-group">
-            @Html.LabelFor(model => model.MenteeFeedback, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.MenteeFeedback, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.MenteeFeedback, "", new { @class = "text-danger" })
-            </div>
-        </div>*@
                 <hr />
                 <div class="form-group">
                     <div class="col-md-offset-1 col-md-10">
                         <input type="submit" value="Create" class="btn btn-default" />
                     </div>
                 </div>
-            </div>
+                </div>
             }
 
             <div>
