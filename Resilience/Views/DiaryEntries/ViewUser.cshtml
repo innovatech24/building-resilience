@@ -34,54 +34,61 @@
     @{
         Layout = "~/Views/Shared/_Layout.cshtml";
     }
+    <style>
+        .view-diary-entry {
+            height: 800px;
+            background: url('../../Images/atmosphere-background-bright-19670.jpg') no-repeat center;
+            background-size: cover;
+        }
+        </style>
 </head>
 <body>
+    <div class="view-diary-entry">
+        <h2>View Diary Entries</h2>
 
-    <h2>View Diary Entries</h2>
-
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayText("No.")
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Date)
-            </th>
-        </tr>
-
-        @{ int rowNo = 0; }
-
-        @foreach (var item in Model)
-         {
+        <table class="table">
             <tr>
-                <td>
-                    @(rowNo += 1)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Date)
-                </td>
-                
-                <td>
-                    @Html.ActionLink("View Entry", "View", new { id = item.Id })
-                </td>
+                <th>
+                    @Html.DisplayText("No.")
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Date)
+                </th>
             </tr>
-         }
-    </table>
 
-    <!-- jQuery library -->
-    <script src="~/Scripts/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="~/Scripts/bootstrap.js"></script>
-    <!-- Slick slider -->
-    <script type="text/javascript" src="~/Scripts/slick.js"></script>
-    <!-- Counter -->
-    <script type="text/javascript" src="~/Scripts/waypoints.js"></script>
-    <script type="text/javascript" src="~/Scripts/jquery.counterup.js"></script>
-    <!-- Mixit slider -->
-    <script type="text/javascript" src="~/Scripts/jquery.mixitup.js"></script>
-    <!-- Add fancyBox -->
-    <script type="text/javascript" src="~/Scripts/jquery.fancybox.pack.js"></script>    
-    <!-- Custom js -->
-    <script src="~/Scripts/custom.js"></script>
+            @{ int rowNo = 0; }
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @(rowNo += 1)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Date)
+                    </td>
+
+                    <td>
+                        @Html.ActionLink("View Entry", "View", new { id = item.Id })
+                    </td>
+                </tr>
+            }
+        </table>
+        </div>
+        <!-- jQuery library -->
+        <script src="~/Scripts/jquery.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="~/Scripts/bootstrap.js"></script>
+        <!-- Slick slider -->
+        <script type="text/javascript" src="~/Scripts/slick.js"></script>
+        <!-- Counter -->
+        <script type="text/javascript" src="~/Scripts/waypoints.js"></script>
+        <script type="text/javascript" src="~/Scripts/jquery.counterup.js"></script>
+        <!-- Mixit slider -->
+        <script type="text/javascript" src="~/Scripts/jquery.mixitup.js"></script>
+        <!-- Add fancyBox -->
+        <script type="text/javascript" src="~/Scripts/jquery.fancybox.pack.js"></script>
+        <!-- Custom js -->
+        <script src="~/Scripts/custom.js"></script>
 </body>
 </html>

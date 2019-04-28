@@ -35,27 +35,49 @@
     @{
         Layout = "~/Views/Shared/_Layout.cshtml";
     }
+    <style>
+        .dashboard-list-mentee {
+            height: 800px;
+            background: url('../../Images/background-border-brown-628241.jpg') no-repeat center;
+            background-size: cover;
+        }
+        .list-mentee {
+            position: absolute;
+            top: 10%;
+            left: 12%;
+            background-color: transparent;
+            width: 1100px;
+            height: 720px;
+            padding: 3% 0 0;
+            margin: auto;
+            text-align: center;
+            @*box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+            *@
+        }
+    </style>
 </head>
 <body>
+    <div class="dashboard-list-mentee">
+        <div class="list-mentee">
+            <h2>Dashboard</h2>
+            <h3>List of Mentees:</h3>
 
-    <h2>Dashboard</h2>
-    <h3>List of mentees:</h3>
-
-    <div class="row row-tile">
-        <div class="col-md-8 tile">
-            <div class="row row-tile text-white">
-                @foreach (var item in Model)
-                {                    
-                    <div class="col-sm-2 col-xs-6 tile square ">
-                        <div class="tile-content">
-                            @Html.ActionLink(item.FirstName, "ViewUser", new { id = item.Id })
-                        </div>
+            <div class="row row-tile">
+                <div class="col-md-8 tile">
+                    <div class="row row-tile text-white">
+                        @foreach (var item in Model)
+                        {
+                            <div class="col-sm-2 col-xs-6 tile square ">
+                                <div class="tile-content">
+                                    @Html.ActionLink(item.FirstName, "ViewUser", new { id = item.Id })
+                                </div>
+                            </div>
+                        }
                     </div>
-                }
-            </div>  
+                </div>
+            </div>
         </div>
     </div>
-               
     <!-- jQuery library -->
     <script src="~/Scripts/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
