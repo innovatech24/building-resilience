@@ -1,11 +1,10 @@
-﻿
-$(document).ready(function () {
+﻿$(document).ready(function () {
     highlightText(".entry", true);
     window.gauge = createGauge(0, "gaugediv");
-
-    //updateGauge(window.gauge, "#inputest");
-    updateGaugeValue(window.gauge, parseFloat($(".sentiment", this).text().trim()));
-
+    //var sentiment = @Html.Raw(Json.Encode(Model.DiaryEntries.SentimentScore));
+    //updateGauge(window.gauge, "#inputest");   
+    updateGaugeValue(window.gauge, sentiment);
+    //updateGaugeValue(window.gauge, parseFloat(sentiment));
 });
 
 

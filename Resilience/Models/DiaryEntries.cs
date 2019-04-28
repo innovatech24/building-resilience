@@ -19,7 +19,7 @@ namespace Resilience.Models
         [DataType(DataType.MultilineText)]
         public string Entry { get; set; }
         public int UsersId { get; set; }
-        public int MentorId { get; set; }
+        public int MentorId { get; set; }        
         public Nullable<double> SentimentScore { get; set; }
         public string MentorFeedback { get; set; }
         public System.DateTime Date { get; set; }

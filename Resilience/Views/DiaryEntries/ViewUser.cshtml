@@ -1,5 +1,4 @@
-﻿@*@model IEnumerable<Resilience.Models.DiaryEntries>*@
-@model IEnumerable<Resilience.Models.Users>
+﻿@model IEnumerable<Resilience.Models.DiaryEntries>
 
 <!DOCTYPE html>
 <html>
@@ -8,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     @{
-        ViewBag.title = "Dashboard - Building Resilience";
+        ViewBag.title = "View Diary Entries - Building Resilience";
     }
 
     <!-- Font awesome -->
@@ -38,24 +37,37 @@
 </head>
 <body>
 
-    <h2>Dashboard</h2>
-    <h3>List of mentees:</h3>
+    <h2>View Diary Entries</h2>
 
-    <div class="row row-tile">
-        <div class="col-md-8 tile">
-            <div class="row row-tile text-white">
-                @foreach (var item in Model)
-                {                    
-                    <div class="col-sm-2 col-xs-6 tile square ">
-                        <div class="tile-content">
-                            @Html.ActionLink(item.FirstName, "ViewUser", new { id = item.Id })
-                        </div>
-                    </div>
-                }
-            </div>  
-        </div>
-    </div>
-               
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayText("No.")
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+        </tr>
+
+        @{ int rowNo = 0; }
+
+        @foreach (var item in Model)
+         {
+            <tr>
+                <td>
+                    @(rowNo += 1)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                
+                <td>
+                    @Html.ActionLink("View Entry", "View", new { id = item.Id })
+                </td>
+            </tr>
+         }
+    </table>
+
     <!-- jQuery library -->
     <script src="~/Scripts/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -68,8 +80,7 @@
     <!-- Mixit slider -->
     <script type="text/javascript" src="~/Scripts/jquery.mixitup.js"></script>
     <!-- Add fancyBox -->
-    <script type="text/javascript" src="~/Scripts/jquery.fancybox.pack.js"></script>
-    <script src="~/Scripts/Dashboard.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.fancybox.pack.js"></script>    
     <!-- Custom js -->
     <script src="~/Scripts/custom.js"></script>
 </body>

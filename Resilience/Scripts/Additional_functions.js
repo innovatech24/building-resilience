@@ -20,6 +20,7 @@ function createGauge(value, name_div) {
     axis.strictMinMax = true;
     axis.renderer.grid.template.stroke = new am4core.InterfaceColorSet().getFor("background");
     axis.renderer.grid.template.strokeOpacity = 0.3;
+    axis.renderer.labels.template.disabled = true;
 
     var colorSet = new am4core.ColorSet();
 

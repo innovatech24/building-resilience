@@ -33,8 +33,9 @@ namespace Resilience.Controllers
         {
             ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId<int>());
             Users currentUser = db.Users.Find(user.Id);
-            var diaryEntries = db.DiaryEntries.Where(d => d.MentorId == currentUser.Id).ToList();
-            return View(diaryEntries.ToList());
+            //var diaryEntries = db.DiaryEntries.Where(d => d.MentorId == currentUser.Id).ToList();
+            var users = db.Users.Where(d => d.MentorId == currentUser.Id).ToList();
+            return View(users.ToList());
         }
 
         //GET: View/5
@@ -44,6 +45,15 @@ namespace Resilience.Controllers
             var diaryEntries = db.DiaryEntries.Where(d => d.Id == Id).ToList();
             return View(diaryEntries.ToList());
         }
+
+        //GET: ViewUser/5
+        [Authorize(Roles = "Mentor")]
+        public ActionResult ViewUser(int Id)
+        {
+            var diaryEntries = db.DiaryEntries.Where(d => d.UsersId == Id);
+            return View(diaryEntries);
+        }
+
 
         // GET: DiaryEntries/Details/5
         [Authorize]
