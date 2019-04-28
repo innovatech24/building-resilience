@@ -200,7 +200,7 @@ img {
   margin-left: 4px;
 }
 #mu-menu .navbar-default {
-  background-color: #fff;
+  background-color: antiquewhite;
   border-radius: 0;
   border-left: none;
   border-right: none;
@@ -416,6 +416,7 @@ img {
   float: left;
   margin-top: -80px;
   width: 100%;
+  background-color: antiquewhite;
 }
 #mu-service .mu-service-area {
   display: inline;
@@ -450,21 +451,23 @@ img {
 /*==================
  ABOUT SECTION
 ====================*/
-#mu-about-us .mu-how-can-we-help {
+#mu-about-us {
     display: inline;
     float: left;
     width: 100%;
     padding: 100px 0;
+    background-color: antiquewhite;
 }
-#mu-about-us .mu-about-us-area{
-    display: inline;
-    float: left;
-    width: 100%;
+#mu-about-us .mu-about-us-area {
+        display: inline;
+        float: left;
+        width: 100%;
+        
 }
 #mu-about-us .mu-about-us-area .mu-about-us-left {
-    display: inline;
-    float: left;
-    width: 100%;
+        display: inline;
+        float: left;
+        width: 100%;               
 }
 #mu-about-us .mu-about-us-area .mu-about-us-left h2 {
   font-size: 40px;
@@ -514,6 +517,7 @@ img {
     float: left;
     width: 100%;
     padding: 100px 0;
+    background-color:antiquewhite;
 }
 
 #mu-how-can-we-help .mu-how-can-we-help-area {
@@ -2103,11 +2107,15 @@ img {
     font-size: 20px;
   }
 
-  #mu-about-us mu-how-can-we-help {
+  #mu-about-us {
     padding: 60px 0;
   }
 
-  #mu-about-us .mu-about-us-area .mu-about-us-right mu-how-can-we-help  {
+  #mu-how-can-we-help {
+        padding: 60px 0;
+    }
+
+  #mu-about-us .mu-about-us-area .mu-about-us-right  {
     margin-top: 30px;
   }
 
@@ -2486,47 +2494,53 @@ img {
     margin-bottom: 10px;
   }
 
-  #mu-testimonial .mu-testimonial-area .mu-testimonial-content .mu-testimonial-item .mu-testimonial-quote {
-    padding: 40px 15px 80px;
-  }
+    @media (max-width: 360px) {
+        #mu-how-can-we-help .mu-how-can-we-help-area .mu-how-can-we-help-left h2 {
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
 
-  #mu-footer .mu-footer-top {
-    padding: 50px 0 10px;
-  }
+        #mu-testimonial .mu-testimonial-area .mu-testimonial-content .mu-testimonial-item .mu-testimonial-quote {
+            padding: 40px 15px 80px;
+        }
 
-  .mu-pagination .pagination li a {
-    padding: 5px 8px;
-  }
+        #mu-footer .mu-footer-top {
+            padding: 50px 0 10px;
+        }
 
-  .mu-comments-area .comments .commentlist li .news-img {
-    margin-right: 0;
-  }
+        .mu-pagination .pagination li a {
+            padding: 5px 8px;
+        }
 
-  .mu-comments-area .comments .commentlist .children {
-    margin-left: 10px;
-  }
+        .mu-comments-area .comments .commentlist li .news-img {
+            margin-right: 0;
+        }
 
-  .mu-blog-single .mu-blog-single-item .mu-blog-social .mu-news-social-nav li a {
-    margin-bottom: 10px;
-  }
+        .mu-comments-area .comments .commentlist .children {
+            margin-left: 10px;
+        }
 
-  #mu-gallery .mu-gallery-area .mu-gallery-content .mu-gallery-body ul li .mu-single-gallery .mu-single-gallery-item .mu-single-gallery-img {
-    height: 220px;
-  }
+        .mu-blog-single .mu-blog-single-item .mu-blog-social .mu-news-social-nav li a {
+            margin-bottom: 10px;
+        }
 
-  #mu-contact .mu-contact-area .mu-contact-content .mu-contact-right iframe {
-    height: 300px;
-  }
+        #mu-gallery .mu-gallery-area .mu-gallery-content .mu-gallery-body ul li .mu-single-gallery .mu-single-gallery-item .mu-single-gallery-img {
+            height: 220px;
+        }
 
-  #mu-error .mu-error-area p {
-    font-size: 18px;
-  }
+        #mu-contact .mu-contact-area .mu-contact-content .mu-contact-right iframe {
+            height: 300px;
+        }
 
-  #mu-error .mu-error-area span {
-    font-size: 14px;
-  }
+        #mu-error .mu-error-area p {
+            font-size: 18px;
+        }
 
-  #mu-error .mu-error-area h2 {
-    font-size: 100px;
-  }
-}
+        #mu-error .mu-error-area span {
+            font-size: 14px;
+        }
+
+        #mu-error .mu-error-area h2 {
+            font-size: 100px;
+        }
+    }
