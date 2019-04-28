@@ -45,6 +45,24 @@ function createGauge(value, name_div) {
     range2.axisFill.fill = am4core.color("green");
     range2.axisFill.zIndex = -1;
 
+    var legend = new am4charts.Legend();
+    legend.isMeasured = false;
+    legend.y = am4core.percent(100);
+    legend.verticalCenter = "bottom";
+    legend.parent = chart.chartContainer;
+    legend.data = [{
+        "name": "Negative",
+        "fill": chart.colors.getIndex(4)
+    }, {
+        "name": "Positive",
+        "fill": am4core.color("green")
+    }];
+
+    var title = chart.titles.create();
+    title.text = "Sentiment";
+    title.fontSize = 25;
+    title.marginBottom = 0;
+
     hand = chart.hands.push(new am4charts.ClockHand());
     hand.showValue(0, 0, am4core.ease.cubicOut);
 
