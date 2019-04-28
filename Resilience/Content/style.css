@@ -456,12 +456,12 @@ img {
     width: 100%;
     padding: 100px 0;
 }
-#mu-about-us .mu-about-us-area mu-how-can-we-help .mu-how-can-we-help{
+#mu-about-us .mu-about-us-area{
     display: inline;
     float: left;
     width: 100%;
 }
-#mu-about-us .mu-about-us-area .mu-about-us-left mu-how-can-we-help .mu-how-can-we-help{
+#mu-about-us .mu-about-us-area .mu-about-us-left {
     display: inline;
     float: left;
     width: 100%;
@@ -509,6 +509,41 @@ img {
   text-align: center;
   top: 0;
 }
+#mu-how-can-we-help {
+    display: inline;
+    float: left;
+    width: 100%;
+    padding: 100px 0;
+}
+
+#mu-how-can-we-help .mu-how-can-we-help-area {
+    display: inline;
+    float: left;
+    width: 100%;
+}
+
+#mu-how-can-we-help .mu-how-can-we-help-area .mu-how-can-we-help-left {
+        display: inline;
+        float: left;
+        width: 100%;
+    }
+
+#mu-how-can-we-help .mu-how-can-we-help-area .mu-how-can-we-help-left h2 {
+        font-size: 40px;
+        margin-bottom: 20px;
+        text-align: left;
+    }
+
+#mu-how-can-we-help .mu-how-can-we-help-area .mu-how-can-we-help-left ul {
+        margin-left: 25px;
+        margin-bottom: 15px;
+    }
+
+#mu-how-can-we-help .mu-how-can-we-help-area .mu-how-can-we-help-left ul li {
+    line-height: 30px;
+    list-style: circle;
+}
+
 
 /*==== about us dynamic video player ====*/
 #about-video-popup {
