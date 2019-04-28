@@ -277,6 +277,7 @@
     <Content Include="Content\diarycreate.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\gaugediv.css" />
     <Content Include="Content\green-theme.css" />
     <Content Include="Content\jquery.fancybox.css" />
     <Content Include="Content\jquery.highlight-within-textarea.css" />

@@ -50,8 +50,8 @@ namespace Resilience.Controllers
         [Authorize(Roles = "Mentor")]
         public ActionResult ViewUser(int Id)
         {
-            var diaryEntries = db.DiaryEntries.Where(d => d.UsersId == Id).ToList();
-            return View(diaryEntries.ToList());
+            var diaryEntries = db.DiaryEntries.Where(d => d.UsersId == Id);
+            return View(diaryEntries);
         }
 
 
