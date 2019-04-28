@@ -21,10 +21,20 @@ namespace Resilience.Models
         public int UsersId { get; set; }
         public int MentorId { get; set; }        
         public Nullable<double> SentimentScore { get; set; }
+        [DataType(DataType.MultilineText)]
         public string MentorFeedback { get; set; }
         public System.DateTime Date { get; set; }
         public Nullable<int> MenteeFeedback { get; set; }
     
         public virtual Users User { get; set; }
+    }
+
+    public class AddFeedback
+    {
+        [Required]
+        public int entryId { get; set; }
+        [Required]
+        public string mentfeedback { get; set; }
+        
     }
 }
