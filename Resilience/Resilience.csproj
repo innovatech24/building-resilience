@@ -297,8 +297,11 @@
     <Content Include="Content\Site.css" />
     <Content Include="Images\achievement-adult-aerial-1122403.jpg" />
     <Content Include="Images\album-background-blank-1089842.jpg" />
+    <Content Include="Images\art-artist-black-and-white-265047.jpg" />
+    <Content Include="Images\art-background-blue-1037992.jpg" />
     <Content Include="Images\backgrounds-blank-blue-953214.jpg" />
     <Content Include="Images\banner.jpg" />
+    <Content Include="Images\blank-composition-desk-317355.jpg" />
     <Content Include="Images\children-3874296_1280.jpg" />
     <Content Include="Images\HomePageImage.jpg" />
     <Content Include="Images\kids-1898959_1280.jpg" />
@@ -343,6 +346,7 @@
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\choice.js" />
     <Content Include="Scripts\custom.js" />
     <Content Include="Scripts\esm\popper-utils.js" />
     <Content Include="Scripts\esm\popper-utils.min.js" />
