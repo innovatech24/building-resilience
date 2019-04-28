@@ -26,35 +26,102 @@
     <!-- Google Fonts -->
     <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,400italic,300,300italic,500,700' rel='stylesheet' type='text/css'>
-    @{    
+    @{
         Layout = "~/Views/Shared/_Layout.cshtml";
     }
+    <style>
+        .choice-background {
+            height: 700px;
+            background: url('../../Images/art-background-blue-1037992.jpg') no-repeat center;
+            background-size: cover;
+        }
+            .choice-ask{
+            position: absolute;
+            top: 24%;
+            left: 35%;
+            color: white;
+            @*box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+            *@
+        }
+        .button {
+            border: none;
+            text-align: center;
+            text-transform: uppercase;
+            text-decoration: none;
+            display: inline-block;
+            -webkit-transition-duration: 0.4s; /* Safari */
+            transition-duration: 0.4s;
+            cursor: pointer;
+        }
+            .button1 {
+            width: 20%;
+            height: 10%;
+            background-color: transparent;
+            color: white;
+            border: 2px solid black;
+            box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+            border-radius: 12px;
+            position: absolute;
+            top: 50%;
+            left: 15%;
+        }
+        
+        
+        .button1:hover {
+            background-color: white;
+            color: black;
+        }
+        .button2 {
+            width: 20%;
+            height: 10%;
+            background-color: transparent;
+            color: white;
+            border: 2px solid black;
+            box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+            border-radius: 12px;
+            position: absolute;
+            top: 50%;
+            left: 65%;
+        }
+        .button2:hover {
+            background-color: white;
+            color: black;
+        }
+        
+    </style>
 </head>
 <body>
+    <div class="choice-background">
+        <div class="choice-ask">
+            <h2>Where would you like to go?</h2>
+        </div>
+        <button class="button1">
+            @Html.ActionLink("MENTOR VIEW", "Mentor", "Options")
+        </button>
+        <button class="button2">
+            @Html.ActionLink("MENTEE VIEW", "Mentee", "Options")
+            @*@Html.ActionLink("Mentee view", "Mentee", "Options", null, new { @class = "col-md-offset-4 col-md-2 btn btn-lg" })*@
+        </button>
 
-    <h2>Where would you like to go?</h2>
-    <div class="row">
-        @Html.ActionLink("Mentor View", "Mentor", "Options", null, new { @class = "col-md-offset-2 col-md-2 btn btn-lg" })
-        @Html.ActionLink("Mentee View", "Mentee", "Options", null, new { @class = "col-md-offset-2 col-md-2 btn btn-lg" })
+
     </div>
+        <!-- jQuery library -->
+        <script src="~/Scripts/jquery.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="~/Scripts/bootstrap.js"></script>
+        <!-- Slick slider -->
+        <script type="text/javascript" src="~/Scripts/slick.js"></script>
+        <!-- Counter -->
+        <script type="text/javascript" src="~/Scripts/waypoints.js"></script>
+        <script type="text/javascript" src="~/Scripts/jquery.counterup.js"></script>
+        <!-- Mixit slider -->
+        <script type="text/javascript" src="~/Scripts/jquery.mixitup.js"></script>
+        <!-- Add fancyBox -->
+        <script type="text/javascript" src="~/Scripts/jquery.fancybox.pack.js"></script>
 
-    <!-- jQuery library -->
-    <script src="~/Scripts/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="~/Scripts/bootstrap.js"></script>
-    <!-- Slick slider -->
-    <script type="text/javascript" src="~/Scripts/slick.js"></script>
-    <!-- Counter -->
-    <script type="text/javascript" src="~/Scripts/waypoints.js"></script>
-    <script type="text/javascript" src="~/Scripts/jquery.counterup.js"></script>
-    <!-- Mixit slider -->
-    <script type="text/javascript" src="~/Scripts/jquery.mixitup.js"></script>
-    <!-- Add fancyBox -->
-    <script type="text/javascript" src="~/Scripts/jquery.fancybox.pack.js"></script>
-
-
-    <!-- Custom js -->
-    <script src="~/Scripts/custom.js"></script>
+        <script src="~/Scripts/choice.js"></script>
+        <!-- Custom js -->
+        <script src="~/Scripts/custom.js"></script>
 </body>
 </html>
 
