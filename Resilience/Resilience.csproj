@@ -180,7 +180,8 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ChallengesController.cs" />
     <Compile Include="Controllers\DiaryEntriesController.cs" />
-    <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Controllers\ExerciseAssignsController.cs" />
+    <Compile Include="Controllers\ExercisesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\OptionsController.cs" />
@@ -213,6 +214,12 @@
     <Compile Include="Models\DiaryEntries1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+      <DependentUpon>DiaryEntries.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Exercise.cs">
+      <DependentUpon>DiaryEntries.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ExerciseAssign.cs">
       <DependentUpon>DiaryEntries.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\FamilyStress.cs">
@@ -504,7 +511,16 @@
     <Content Include="Views\DiaryEntries\View.cshtml" />
     <Content Include="Views\DiaryEntries\ViewUser.cshtml" />
     <Content Include="Views\DiaryEntries\Feedback.cshtml" />
-    <Content Include="Views\Error\NotFound.cshtml" />
+    <Content Include="Views\Exercises\Create.cshtml" />
+    <Content Include="Views\Exercises\Delete.cshtml" />
+    <Content Include="Views\Exercises\Details.cshtml" />
+    <Content Include="Views\Exercises\Edit.cshtml" />
+    <Content Include="Views\Exercises\Index.cshtml" />
+    <Content Include="Views\ExerciseAssigns\Create.cshtml" />
+    <Content Include="Views\ExerciseAssigns\Delete.cshtml" />
+    <Content Include="Views\ExerciseAssigns\Details.cshtml" />
+    <Content Include="Views\ExerciseAssigns\Edit.cshtml" />
+    <Content Include="Views\ExerciseAssigns\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

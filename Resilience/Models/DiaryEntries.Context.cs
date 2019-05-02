@@ -27,5 +27,7 @@ namespace Resilience.Models
     
         public virtual DbSet<Users> Users { get; set; }
         public virtual DbSet<DiaryEntries> DiaryEntries { get; set; }
+        public virtual DbSet<ExerciseAssign> ExerciseAssigns { get; set; }
+        public virtual DbSet<Exercise> Exercises { get; set; }
     }
 }
