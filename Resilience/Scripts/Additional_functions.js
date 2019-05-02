@@ -127,7 +127,6 @@ function highlightText(textObj, doit) {
                         }
                     ]
                 });
-
             }
         });
     }
