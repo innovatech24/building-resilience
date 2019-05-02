@@ -99,7 +99,7 @@ function updateGauge(gauge_, textObj) {
             gauge_.chart.setTimeout(() => { gauge_.hand.showValue(response, 1000, am4core.ease.cubicOut) }, 500);
         }
     });
-}
+};
 
 // Hightight negative and positive sentences on an html text object given a boolean 'doit'
 function highlightText(textObj, doit) {
@@ -135,9 +135,9 @@ function highlightText(textObj, doit) {
         $(textObj).HighlightWithinTextarea('destroy');
     };
 
-}
+};
 
 // Change value of the gauge given a fixed value
 function updateGaugeValue(gauge_, val) {
     gauge_.chart.setTimeout(() => { gauge_.hand.showValue(val, 1000, am4core.ease.cubicOut) }, 500);
-}
+};

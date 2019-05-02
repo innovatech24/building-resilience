@@ -1,9 +1,15 @@
 ﻿@model System.Web.Mvc.HandleErrorInfo
-
 @{
-    ViewBag.Title = "Error";
+    ViewBag.Title = "Customize Error Page";
 }
-
-<h1 class="text-danger">Error.</h1>
-<h2 class="text-danger">An error occurred while processing your request.</h2>
-
+<div style=" padding: 20px; color:red">
+    <h3>
+        Ups!
+    </h3>
+    <h4>
+        Sorry, something gone wrong :(
+    </h4>
+    <h6>@Html.ActionLink("Go Back To Home Page", "Index", "Home")</h6> @*link name , action method name , controller name*@
+    <br />
+    <br />
+</div>

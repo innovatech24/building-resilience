@@ -32,7 +32,14 @@
     <!-- Google Fonts -->
     <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,400italic,300,300italic,500,700' rel='stylesheet' type='text/css'>
-
+    
+    <script>
+        // Hide the body if is not validated yet.
+        if ("@Session["validated"]" == "") {
+            var bd = document.getElementsByTagName("BODY")[0];
+            bd.hidden = true;
+        };
+    </script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -82,9 +89,9 @@
                         <!-- Start single service -->
                         <div class="mu-service-single">
                             <span class="fas fa-wrench"></span>
-                            <h3>@Html.ActionLink("How can we help?", "Index", "Home",null,null,"mu-how-can-we-help",null,null)</h3>
+                            <h3>@Html.ActionLink("How can we help?", "Index", "Home", null, null, "mu-how-can-we-help", null, null)</h3>
                             <p>By enhancing the communication channel available to you</p>
-                        </div>                        
+                        </div>
                         <!-- Start single service -->
                     </div>
                 </div>
@@ -92,84 +99,83 @@
         </div>
     </section>
     <!-- End service  -->
-
     <!-- Start about us -->
-    <section id="mu-about-us">    
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="mu-about-us-area">
-                            <div class="row">
-                                <div class="col-lg-12 col-md-12">
-                                    <div class="mu-about-us-left">
-                                        <!-- Start Title -->
-                                        <div class="mu-title">
-                                            <h2>Why do you need to care about resilience?</h2>
-                                        </div>
-                                        <!-- End Title -->
-                                        <p>It's very important for a person's mental health. It's about learning from the process so we can be stronger and look forward to the next challenge. By being resilient, a person can: </p>
-                                        <ul>
-                                            <li>Learn to manage Stress</li>
-                                            <li>Keep working on your skills</li>
-                                            <li>Maintain a positive outlook</li>
-                                            <li>Be Optimistic</li>
-                                            <li>Embrace Change</li>
-                                            <li>Communicate their problems better</li>
-                                        </ul>
-                                        <p>Being a sensible adult in handling situations is tough, building resilience helps in the process.</p>
-                                        <p>For this purpose, we require people that have been through similar situations and who can guide us to make better decisions. Someone who is willing to mentor us. It's amazing if we have someone who we can converse with regularly but what if they are overseas or your schedules don't mesh well?</p>
-                                        <h3>@Html.ActionLink("We can help! But How?", "Index", "Home", null, null, "mu-how-can-we-help", null, null)</h3>
+    <section id="mu-about-us">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="mu-about-us-area">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12">
+                                <div class="mu-about-us-left">
+                                    <!-- Start Title -->
+                                    <div class="mu-title">
+                                        <h2>Why do you need to care about resilience?</h2>
                                     </div>
+                                    <!-- End Title -->
+                                    <p>It's very important for a person's mental health. It's about learning from the process so we can be stronger and look forward to the next challenge. By being resilient, a person can: </p>
+                                    <ul>
+                                        <li>Learn to manage Stress</li>
+                                        <li>Keep working on your skills</li>
+                                        <li>Maintain a positive outlook</li>
+                                        <li>Be Optimistic</li>
+                                        <li>Embrace Change</li>
+                                        <li>Communicate their problems better</li>
+                                    </ul>
+                                    <p>Being a sensible adult in handling situations is tough, building resilience helps in the process.</p>
+                                    <p>For this purpose, we require people that have been through similar situations and who can guide us to make better decisions. Someone who is willing to mentor us. It's amazing if we have someone who we can converse with regularly but what if they are overseas or your schedules don't mesh well?</p>
+                                    <h3>@Html.ActionLink("We can help! But How?", "Index", "Home", null, null, "mu-how-can-we-help", null, null)</h3>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
     </section>
     <!-- End about us -->
     <!-- Start How can we help -->
     <section id="mu-how-can-we-help">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="mu-how-can-we-help-area">
-                            <div class="row">
-                                <div class="col-lg-12 col-md-12">
-                                    <div class="mu-how-can-we-help-left">
-                                        <!-- Start Title -->
-                                        <div class="mu-title">
-                                            <h2>How can we help?</h2>
-                                        </div>
-                                        <!-- End Title -->
-                                        <p>We have provided a communication channel that used by mentors and mentees. We provide a view for both</p>
-                                        <p>For Mentees:</p>
-                                        <ul>
-                                            <li>You can use the website to communicate with your chosen mentor</li>
-                                        </ul>
-                                        <ul>
-                                            <li>You can write your experiences in the form of a diary</li>
-                                            <li>The diary can be shared with your mentor</li>
-                                            <li>Mentor can provide feeback and the Mentee can respond to it</li>
-                                        </ul>
-                                        <p>For Mentors:</p>
-                                        <ul>
-                                            <li>You can use the website to respond and give feedback to your mentees.</li>
-                                        </ul>
-                                        <ul>
-                                            <li>You can read the diary that the mentee has written and sent to you</li>
-                                            <li>WE HAVE ANALYSED THE OVERALL TONE OF THE DIARY AND HIGHLIGHTED THE KEY SENTENCES FOR YOUR PERUSAL</li>
-                                            <li>You can provide feedback for your mentees</li>
-                                        </ul>
-                                        <h2 class="nav navbar-nav navbar-left">So what are you waiting for?</h2>
-                                        <h2>@Html.Partial("_LoginPartial")</h2>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="mu-how-can-we-help-area">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12">
+                                <div class="mu-how-can-we-help-left">
+                                    <!-- Start Title -->
+                                    <div class="mu-title">
+                                        <h2>How can we help?</h2>
                                     </div>
+                                    <!-- End Title -->
+                                    <p>We have provided a communication channel that used by mentors and mentees. We provide a view for both</p>
+                                    <p>For Mentees:</p>
+                                    <ul>
+                                        <li>You can use the website to communicate with your chosen mentor</li>
+                                    </ul>
+                                    <ul>
+                                        <li>You can write your experiences in the form of a diary</li>
+                                        <li>The diary can be shared with your mentor</li>
+                                        <li>Mentor can provide feeback and the Mentee can respond to it</li>
+                                    </ul>
+                                    <p>For Mentors:</p>
+                                    <ul>
+                                        <li>You can use the website to respond and give feedback to your mentees.</li>
+                                    </ul>
+                                    <ul>
+                                        <li>You can read the diary that the mentee has written and sent to you</li>
+                                        <li>WE HAVE ANALYSED THE OVERALL TONE OF THE DIARY AND HIGHLIGHTED THE KEY SENTENCES FOR YOUR PERUSAL</li>
+                                        <li>You can provide feedback for your mentees</li>
+                                    </ul>
+                                    <h2 class="nav navbar-nav navbar-left">So what are you waiting for?</h2>
+                                    <h2>@Html.Partial("_LoginPartial")</h2>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
     </section>
     <!--End How can we help-->
     <!-- jQuery library -->
@@ -187,19 +193,16 @@
     <!-- Add fancyBox -->
     <script type="text/javascript" src="~/Scripts/jquery.fancybox.pack.js"></script>
 
-    <!-- AM CHARTS-->
-    <script type="text/javascript" src="~/Scripts/AMcharts/core.js"></script>
-    <script type="text/javascript" src="~/Scripts/AMcharts/charts.js"></script>
-    <script type="text/javascript" src="~/Scripts/AMcharts/animated.js"></script>
-    <script type="text/javascript" src="~/Scripts/AMcharts/kelly.js"></script>
-
-    <!-- HIGHLIGHTING TEXT-->
-    <script type="text/javascript" src="~/Scripts/jquery.highlight-within-textarea.js"></script>
-
     <!-- Custom js -->
-    <script type="text/javascript" src="~/Scripts/Additional_functions.js"></script>
-    <script src="~/Scripts/Sentiment.js"></script>
     <script src="~/Scripts/custom.js"></script>
-
+    <script src="~/Scripts/index.js"></script>
+    
+    <script>
+        // Code to get access to the page under a password
+        if ("@Session["validated"]" == "") {
+            validate();
+        };
+   
+    </script>
 </body>
 </html>

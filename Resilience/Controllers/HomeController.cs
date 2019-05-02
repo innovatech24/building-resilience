@@ -8,6 +8,7 @@ namespace Resilience.Controllers
 {
     public class HomeController : Controller
     {
+        //[HandleError]
         public ActionResult Index()
         {
             return View();
@@ -25,6 +26,18 @@ namespace Resilience.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+
+        public JsonResult Validate(string entry)
+        {
+            string pass = "789456123";
+
+            if (pass.Equals(entry))
+            {
+                Session["validated"] = "yes";
+            }
+
+            return Json(pass.Equals(entry));
         }
     }
 }
