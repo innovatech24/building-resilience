@@ -12,17 +12,19 @@ namespace Resilience.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class DiaryEntries
+    public partial class ExerciseAssign
     {
         public int Id { get; set; }
-        public string Entry { get; set; }
-        public int UsersId { get; set; }
         public int MentorId { get; set; }
-        public Nullable<double> SentimentScore { get; set; }
+        public System.DateTime DueDate { get; set; }
+        public Nullable<System.DateTime> CompletionDate { get; set; }
+        public Nullable<int> MenteeRating { get; set; }
         public string MentorFeedback { get; set; }
-        public System.DateTime Date { get; set; }
-        public Nullable<int> MenteeFeedback { get; set; }
+        public string MenteeComments { get; set; }
+        public int TaskId { get; set; }
+        public int UsersId { get; set; }
     
+        public virtual Exercise Task { get; set; }
         public virtual Users User { get; set; }
     }
 }

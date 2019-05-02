@@ -1,0 +1,76 @@
+﻿@model IEnumerable<Resilience.Models.ExerciseAssign>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MentorId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DueDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CompletionDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MenteeRating)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MentorFeedback)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MenteeComments)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Task.TaskName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User.FirstName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.MentorId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DueDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CompletionDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MenteeRating)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MentorFeedback)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MenteeComments)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Task.TaskName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.User.FirstName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

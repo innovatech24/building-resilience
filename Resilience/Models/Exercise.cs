@@ -11,38 +11,21 @@ namespace Resilience.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
-    public partial class Users
+    
+    public partial class Exercise
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Users()
+        public Exercise()
         {
-            this.DiaryEntries = new HashSet<DiaryEntries>();
             this.TaskAssigns = new HashSet<ExerciseAssign>();
         }
     
         public int Id { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string EmailAddress { get; set; }
+        public string TaskName { get; set; }
+        public string TaskDescription { get; set; }
         public Nullable<int> MentorId { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DiaryEntries> DiaryEntries { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ExerciseAssign> TaskAssigns { get; set; }
-    }
-
-    public class AddMentor
-    {
-        [Required]
-        public string Email { get; set; }
-    }
-
-    public class AddMentee
-    {
-        [Required]
-        public string Email { get; set; }
     }
 }

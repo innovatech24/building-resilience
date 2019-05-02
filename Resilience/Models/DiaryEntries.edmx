@@ -8,9 +8,19 @@
   <EntityContainer Name="DiaryEntriesStoreContainer">
     <EntitySet Name="Users" EntityType="DiaryEntries.Store.Users" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="DiaryEntries" EntityType="DiaryEntries.Store.DiaryEntries" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ExerciseAssigns" EntityType="DiaryEntries.Store.ExerciseAssigns" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Exercises" EntityType="DiaryEntries.Store.Exercises" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="UsersDiaryEntries" Association="DiaryEntries.Store.UsersDiaryEntries">
       <End Role="Users" EntitySet="Users" />
       <End Role="DiaryEntries" EntitySet="DiaryEntries" />
+    </AssociationSet>
+    <AssociationSet Name="TaskTaskAssign" Association="DiaryEntries.Store.TaskTaskAssign">
+      <End Role="Task" EntitySet="Exercises" />
+      <End Role="TaskAssign" EntitySet="ExerciseAssigns" />
+    </AssociationSet>
+    <AssociationSet Name="UsersTaskAssign" Association="DiaryEntries.Store.UsersTaskAssign">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="TaskAssign" EntitySet="ExerciseAssigns" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Users">
@@ -36,6 +46,29 @@
     <Property Name="Date" Type="datetime" Nullable="false" />
     <Property Name="MenteeFeedback" Type="int" Nullable="true" />
   </EntityType>
+  <EntityType Name="ExerciseAssigns">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MentorId" Type="int" Nullable="false" />
+    <Property Name="DueDate" Type="datetime" Nullable="false" />
+    <Property Name="CompletionDate" Type="datetime" Nullable="true" />
+    <Property Name="MenteeRating" Type="int" Nullable="true" />
+    <Property Name="MentorFeedback" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="MenteeComments" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="TaskId" Type="int" Nullable="false" />
+    <Property Name="UsersId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Exercises">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TaskName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="TaskDescription" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="MentorId" Type="int" Nullable="true" />
+  </EntityType>
   <Association Name="UsersDiaryEntries">
     <End Role="Users" Type="DiaryEntries.Store.Users" Multiplicity="1" />
     <End Role="DiaryEntries" Type="DiaryEntries.Store.DiaryEntries" Multiplicity="*" />
@@ -44,6 +77,30 @@
         <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="DiaryEntries">
+        <PropertyRef Name="UsersId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TaskTaskAssign">
+    <End Role="Task" Type="DiaryEntries.Store.Exercises" Multiplicity="1" />
+    <End Role="TaskAssign" Type="DiaryEntries.Store.ExerciseAssigns" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Task">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TaskAssign">
+        <PropertyRef Name="TaskId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UsersTaskAssign">
+    <End Role="Users" Type="DiaryEntries.Store.Users" Multiplicity="1" />
+    <End Role="TaskAssign" Type="DiaryEntries.Store.ExerciseAssigns" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TaskAssign">
         <PropertyRef Name="UsersId" />
       </Dependent>
     </ReferentialConstraint>
@@ -59,6 +116,16 @@
             <End Role="Users" EntitySet="Users" />
             <End Role="DiaryEntries" EntitySet="DiaryEntries" />
           </AssociationSet>
+          <EntitySet Name="ExerciseAssigns" EntityType="DiaryEntries.ExerciseAssign" />
+          <EntitySet Name="Exercises" EntityType="DiaryEntries.Exercise" />
+          <AssociationSet Name="TaskTaskAssign" Association="DiaryEntries.TaskTaskAssign">
+            <End Role="Task" EntitySet="Exercises" />
+            <End Role="TaskAssign" EntitySet="ExerciseAssigns" />
+          </AssociationSet>
+          <AssociationSet Name="UsersTaskAssign" Association="DiaryEntries.UsersTaskAssign">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="TaskAssign" EntitySet="ExerciseAssigns" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Users">
           <Key>
@@ -69,7 +136,8 @@
           <Property Name="LastName" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="EmailAddress" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="DiaryEntries" Relationship="DiaryEntries.UsersDiaryEntries" FromRole="Users" ToRole="DiaryEntries" />
-          <Property Name="MentorId" Type="Int32" Nullable="true" />          
+          <Property Name="MentorId" Type="Int32" Nullable="true" />
+          <NavigationProperty Name="TaskAssigns" Relationship="DiaryEntries.UsersTaskAssign" FromRole="Users" ToRole="TaskAssign" />          
         </EntityType>
         <EntityType Name="DiaryEntries">
           <Key>
@@ -93,6 +161,56 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="DiaryEntries">
+              <PropertyRef Name="UsersId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ExerciseAssign">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MentorId" Type="Int32" Nullable="false" />
+          <Property Name="DueDate" Type="DateTime" Nullable="false" />
+          <Property Name="CompletionDate" Type="DateTime" Nullable="true" />
+          <Property Name="MenteeRating" Type="Int32" Nullable="true" />
+          <Property Name="MentorFeedback" Type="String" Nullable="true" />
+          <Property Name="MenteeComments" Type="String" Nullable="true" />
+          <NavigationProperty Name="Task" Relationship="DiaryEntries.TaskTaskAssign" FromRole="TaskAssign" ToRole="Task" />
+          <Property Name="TaskId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="DiaryEntries.UsersTaskAssign" FromRole="TaskAssign" ToRole="Users" />
+          <Property Name="UsersId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Exercise">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TaskName" Type="String" Nullable="false" />
+          <Property Name="TaskDescription" Type="String" Nullable="false" />
+          <Property Name="MentorId" Type="Int32" Nullable="true" />
+          <NavigationProperty Name="TaskAssigns" Relationship="DiaryEntries.TaskTaskAssign" FromRole="Task" ToRole="TaskAssign" />
+        </EntityType>
+        <Association Name="TaskTaskAssign">
+          <End Type="DiaryEntries.Exercise" Role="Task" Multiplicity="1" />
+          <End Type="DiaryEntries.ExerciseAssign" Role="TaskAssign" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Task">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TaskAssign">
+              <PropertyRef Name="TaskId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="UsersTaskAssign">
+          <End Type="DiaryEntries.Users" Role="Users" Multiplicity="1" />
+          <End Type="DiaryEntries.ExerciseAssign" Role="TaskAssign" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TaskAssign">
               <PropertyRef Name="UsersId" />
             </Dependent>
           </ReferentialConstraint>
@@ -125,6 +243,31 @@
           <ScalarProperty Name="MentorFeedback" ColumnName="MentorFeedback" />
           <ScalarProperty Name="Date" ColumnName="Date" />
           <ScalarProperty Name="MenteeFeedback" ColumnName="MenteeFeedback" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ExerciseAssigns">
+      <EntityTypeMapping TypeName="IsTypeOf(DiaryEntries.ExerciseAssign)">
+        <MappingFragment StoreEntitySet="ExerciseAssigns">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="MentorId" ColumnName="MentorId" />
+          <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+          <ScalarProperty Name="CompletionDate" ColumnName="CompletionDate" />
+          <ScalarProperty Name="MenteeRating" ColumnName="MenteeRating" />
+          <ScalarProperty Name="MentorFeedback" ColumnName="MentorFeedback" />
+          <ScalarProperty Name="MenteeComments" ColumnName="MenteeComments" />
+          <ScalarProperty Name="TaskId" ColumnName="TaskId" />
+          <ScalarProperty Name="UsersId" ColumnName="UsersId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Exercises">
+      <EntityTypeMapping TypeName="IsTypeOf(DiaryEntries.Exercise)">
+        <MappingFragment StoreEntitySet="Exercises">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="TaskName" ColumnName="TaskName" />
+          <ScalarProperty Name="TaskDescription" ColumnName="TaskDescription" />
+          <ScalarProperty Name="MentorId" ColumnName="MentorId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

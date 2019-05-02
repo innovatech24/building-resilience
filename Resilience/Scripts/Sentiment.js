@@ -16,5 +16,4 @@ $("#highlight").click(function () {
     } else {
         highlightText(".entry", false);
     }
-
 });
