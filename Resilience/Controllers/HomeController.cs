@@ -8,7 +8,7 @@ namespace Resilience.Controllers
 {
     public class HomeController : Controller
     {
-        //[HandleError]
+        [HandleError]
         public ActionResult Index()
         {
             return View();
@@ -30,7 +30,8 @@ namespace Resilience.Controllers
 
         public JsonResult Validate(string entry)
         {
-            string pass = "789456123";
+            //string pass = "789456123";
+            string pass = DateTime.Now.ToString("ddd_ddMM");
 
             if (pass.Equals(entry))
             {
