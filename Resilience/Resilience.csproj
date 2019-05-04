@@ -523,6 +523,7 @@
     <Content Include="Views\ExerciseAssigns\Edit.cshtml" />
     <Content Include="Views\ExerciseAssigns\Index.cshtml" />
     <Content Include="Views\Error\NotFound.cshtml" />
+    <Content Include="Views\Error\NoMentorMapped.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
