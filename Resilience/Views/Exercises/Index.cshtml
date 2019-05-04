@@ -21,6 +21,24 @@
         <th>
             @Html.DisplayNameFor(model => model.MentorId)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DueDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CompletionDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MentorFeedback)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MenteeComments)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MenteeRating)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Goal.GoalName)
+        </th>
         <th></th>
     </tr>
 
@@ -34,6 +52,24 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.MentorId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DueDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CompletionDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MentorFeedback)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MenteeComments)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MenteeRating)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Goal.GoalName)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
