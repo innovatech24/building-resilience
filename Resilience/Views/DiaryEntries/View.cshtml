@@ -23,8 +23,8 @@
     <!-- Highlighter function -->
     <link rel="stylesheet" href="~/Content/jquery.highlight-within-textarea.css" />
     <!-- Main style sheet -->
-    <link href="~/Content/style.css" rel="stylesheet"/>
-    <link href="~/Content/gaugediv.css" rel="stylesheet" />
+    <link href="~/Content/style.css" type="text/css" rel="stylesheet"/>
+    <link href="~/Content/gaugediv.css"  type="text/css" rel="stylesheet" />
 
 
     <!-- Google Fonts -->
@@ -77,9 +77,9 @@
                     </td>
                     @if (item.MentorFeedback == null)
                     {
-                    <td>
-                        @Html.ActionLink("Give Feedback", "Feedback", new { id = item.Id }, null)
-                    </td>
+                        <td>
+                            @Html.ActionLink("Give Feedback", "Feedback", new { id = item.Id }, null)
+                        </td>
                     }
                     else
                     {
@@ -149,6 +149,9 @@
         <script type="text/javascript" src="~/Scripts/Additional_functions.js"></script>
         <script src="~/Scripts/Sentiment.js"></script>
         <script src="~/Scripts/custom.js"></script>
+        
+
+
     </div>
 </body>
 </html>
