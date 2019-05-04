@@ -170,12 +170,20 @@ namespace Resilience.Controllers
                 {
                     return HttpNotFound();
                 }
-                ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId<int>());
-                Users currentUser = db.Users.Find(user.Id);
-                currentUser.MentorId = users.Id;
-                db.Entry(currentUser).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Mentee", "Options");
+                var roles = UserManager.GetRoles(userId);
+                if (roles.Contains("Mentor"))
+                {
+                    ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId<int>());
+                    Users currentUser = db.Users.Find(user.Id);
+                    currentUser.MentorId = users.Id;
+                    db.Entry(currentUser).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Mentee", "Options");
+                }
+                else
+                {
+                    return HttpNotFound();
+                }                
             }
             return View();
         }
@@ -206,13 +214,21 @@ namespace Resilience.Controllers
                 {
                     return HttpNotFound();
                 }
-                ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId<int>());
-                Users currentUser = db.Users.Find(user.Id);
-                Users menteeUser = db.Users.Find(users.Id);
-                 menteeUser.MentorId = currentUser.Id;               
-                db.Entry(currentUser).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Mentor", "Options");
+                var roles = UserManager.GetRoles(userId);
+                if(roles.Contains("Mentee"))
+                {
+                    ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId<int>());
+                    Users currentUser = db.Users.Find(user.Id);
+                    Users menteeUser = db.Users.Find(userId);
+                    menteeUser.MentorId = currentUser.Id;
+                    db.Entry(currentUser).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Mentor", "Options");
+                }
+                else
+                {
+                    return HttpNotFound();
+                }                
             }
             return View();
         }
