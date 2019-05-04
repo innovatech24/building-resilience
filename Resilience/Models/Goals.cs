@@ -12,19 +12,27 @@ namespace Resilience.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class ExerciseAssign
+    public partial class Goals
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Goals()
+        {
+            this.Exercises = new HashSet<Exercise>();
+        }
+    
         public int Id { get; set; }
-        public int MentorId { get; set; }
+        public string GoalName { get; set; }
+        public string GoalDescription { get; set; }
         public System.DateTime DueDate { get; set; }
-        public Nullable<System.DateTime> CompletionDate { get; set; }
-        public Nullable<int> MenteeRating { get; set; }
+        public System.DateTime CompletionDate { get; set; }
         public string MentorFeedback { get; set; }
         public string MenteeComments { get; set; }
-        public int TaskId { get; set; }
+        public Nullable<int> MenteeRating { get; set; }
         public int UsersId { get; set; }
+        public int MentorId { get; set; }
     
-        public virtual Exercise Task { get; set; }
         public virtual Users User { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Exercise> Exercises { get; set; }
     }
 }

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Resilience.Models.ExerciseAssign>
+﻿@model IEnumerable<Resilience.Models.Goals>
 
 @{
     ViewBag.Title = "Index";
@@ -13,7 +13,10 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.MentorId)
+            @Html.DisplayNameFor(model => model.GoalName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GoalDescription)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.DueDate)
@@ -22,16 +25,16 @@
             @Html.DisplayNameFor(model => model.CompletionDate)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.MenteeRating)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.MentorFeedback)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.MenteeComments)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Task.TaskName)
+            @Html.DisplayNameFor(model => model.MenteeRating)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MentorId)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.User.FirstName)
@@ -42,7 +45,10 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.MentorId)
+            @Html.DisplayFor(modelItem => item.GoalName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GoalDescription)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.DueDate)
@@ -51,16 +57,16 @@
             @Html.DisplayFor(modelItem => item.CompletionDate)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.MenteeRating)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.MentorFeedback)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.MenteeComments)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Task.TaskName)
+            @Html.DisplayFor(modelItem => item.MenteeRating)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MentorId)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.User.FirstName)

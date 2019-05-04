@@ -14,18 +14,17 @@ namespace Resilience.Models
     
     public partial class Exercise
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Exercise()
-        {
-            this.TaskAssigns = new HashSet<ExerciseAssign>();
-        }
-    
         public int Id { get; set; }
         public string TaskName { get; set; }
         public string TaskDescription { get; set; }
         public Nullable<int> MentorId { get; set; }
+        public System.DateTime DueDate { get; set; }
+        public System.DateTime CompletionDate { get; set; }
+        public string MentorFeedback { get; set; }
+        public string MenteeComments { get; set; }
+        public string MenteeRating { get; set; }
+        public int GoalsId { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ExerciseAssign> TaskAssigns { get; set; }
+        public virtual Goals Goal { get; set; }
     }
 }
