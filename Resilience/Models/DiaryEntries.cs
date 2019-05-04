@@ -11,14 +11,17 @@ namespace Resilience.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class DiaryEntries
     {
         public int Id { get; set; }
+        [DataType(DataType.MultilineText)]
         public string Entry { get; set; }
         public int UsersId { get; set; }
         public int MentorId { get; set; }
         public Nullable<double> SentimentScore { get; set; }
+        [DataType(DataType.MultilineText)]
         public string MentorFeedback { get; set; }
         public System.DateTime Date { get; set; }
         public Nullable<int> MenteeFeedback { get; set; }

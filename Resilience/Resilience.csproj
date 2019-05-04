@@ -524,6 +524,7 @@
     <Content Include="Views\Exercises\Details.cshtml" />
     <Content Include="Views\Exercises\Edit.cshtml" />
     <Content Include="Views\Exercises\Index.cshtml" />
+    <Content Include="Views\DiaryEntries\ViewFeedback.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
