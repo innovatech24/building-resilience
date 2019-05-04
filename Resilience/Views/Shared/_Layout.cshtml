@@ -7,6 +7,14 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <link href="~/Content/all.css" rel="stylesheet">
+
+    <script>
+        // Hide the body if is not validated yet.
+        if ("@Session["validated"]" == "") {
+            var bd = document.getElementsByTagName("BODY")[0];
+            bd.hidden = true;
+        };
+    </script>
 </head>
 <body>
     <!-- Start menu -->
@@ -32,23 +40,23 @@
                         <li>@Html.ActionLink("Home", "Index", "Home")</li>
                         <!--Iteration 1 Code -->
                         @*<li class="dropdown">
-                            <a href="~/Views/Challenges/Index.cshtml" class="dropdown-toggle" data-toggle="dropdown">Challenges <span class="fas fa-angle-down"></span></a>
-                            <ul class="dropdown-menu" role="menu">
-                                <li>@Html.ActionLink("Bullying", "Bullying", "Challenges")</li>
-                                <li>@Html.ActionLink("Child Abuse", "Abuse", "Challenges")</li>
-                                <li>@Html.ActionLink("Family Violence", "Violence", "Challenges")</li>
-                            </ul>
-                        </li>*@
+                                <a href="~/Views/Challenges/Index.cshtml" class="dropdown-toggle" data-toggle="dropdown">Challenges <span class="fas fa-angle-down"></span></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>@Html.ActionLink("Bullying", "Bullying", "Challenges")</li>
+                                    <li>@Html.ActionLink("Child Abuse", "Abuse", "Challenges")</li>
+                                    <li>@Html.ActionLink("Family Violence", "Violence", "Challenges")</li>
+                                </ul>
+                            </li>*@
                         <li>@Html.ActionLink("Why resilience?", "Index", "Home", null, null, "mu-about-us", null, null)</li>
                         <li>@Html.Partial("_LoginPartial")</li>
                         <!--Iteration 1 Code-->
                         @*<li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Building resilience <span class="fa fa-angle-down"></span></a>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="blog-archive.html">Activity 1</a></li>
-                                <li><a href="blog-single.html">Activity 2</a></li>
-                            </ul>
-                        </li>*@
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Building resilience <span class="fa fa-angle-down"></span></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="blog-archive.html">Activity 1</a></li>
+                                    <li><a href="blog-single.html">Activity 2</a></li>
+                                </ul>
+                            </li>*@
                         @*<li><a href="contact.html">Contact</a></li>*@
                     </ul>
                 </div><!--/.nav-collapse -->
@@ -56,30 +64,30 @@
         </nav>
     </section>
     <!-- End menu -->
- 
+
     @RenderBody()
 
     <!-- Start footer -->
     <footer id="mu-footer">
         <!-- start footer top -->
         @*<div class="mu-footer-top">
-            <div class="container">
-                <div class="mu-footer-top-area">
-                    <div class="row">
-                        <div class="col-lg-3 col-md-3 col-sm-3">
-                            <div class="mu-footer-widget">
-                                <h4>Information</h4>
-                                <ul>
-                                    <li>@Html.ActionLink("Bullying", "Bullying", "Challenges")</li>
-                                    <li>@Html.ActionLink("Child Abuse", "Abuse", "Challenges")</li>
-                                    <li>@Html.ActionLink("Family Violence", "Violence", "Challenges")</li>
-                                </ul>
+                <div class="container">
+                    <div class="mu-footer-top-area">
+                        <div class="row">
+                            <div class="col-lg-3 col-md-3 col-sm-3">
+                                <div class="mu-footer-widget">
+                                    <h4>Information</h4>
+                                    <ul>
+                                        <li>@Html.ActionLink("Bullying", "Bullying", "Challenges")</li>
+                                        <li>@Html.ActionLink("Child Abuse", "Abuse", "Challenges")</li>
+                                        <li>@Html.ActionLink("Family Violence", "Violence", "Challenges")</li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>*@
+            </div>*@
         <!-- end footer top -->
         <!-- start footer bottom -->
         <div class="mu-footer-bottom">
@@ -92,9 +100,18 @@
         <!-- end footer bottom -->
     </footer>
     <!-- End footer -->
-
     @*@Scripts.Render("~/bundles/jquery")*@
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+
+    <script src="~/Scripts/index.js"></script>
+
+    <script>
+        // Code to get access to the page under a password
+        if ("@Session["validated"]" == "") {
+            validate();
+        };
+
+    </script>
 </body>
 </html>
