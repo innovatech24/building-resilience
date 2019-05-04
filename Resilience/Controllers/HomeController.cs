@@ -28,6 +28,24 @@ namespace Resilience.Controllers
             return View();
         }
 
+        public JsonResult ValidateEntry()
+        {
+            //string pass = "789456123";
+            /*string pass = DateTime.Now.ToString("ddd_ddMM");
+
+            if (pass.Equals(entry))
+            {
+                Session["validated"] = "yes";
+            }*/
+            bool res = false;
+            if(Session["validated"] != null)
+            {
+                res = Session["validated"].Equals("yes");
+            }
+
+            return Json(res);
+        }
+
         public JsonResult Validate(string entry)
         {
             //string pass = "789456123";
