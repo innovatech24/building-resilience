@@ -34,13 +34,5 @@ namespace Resilience.Controllers
             return Json(res);
         }
 
-        public JsonResult testPy()
-        {
-            SentimentPy s = new SentimentPy();
-
-            string res = s.findPy();
-
-            return Json(res);
-        }
     }
 }
