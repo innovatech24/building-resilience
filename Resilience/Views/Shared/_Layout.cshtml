@@ -8,15 +8,17 @@
     @Scripts.Render("~/bundles/modernizr")
     <link href="~/Content/all.css" rel="stylesheet">
 
-    <script>
-        // Hide the body if is not validated yet.
-        if ("@Session["validated"]" == "") {
-            var bd = document.getElementsByTagName("BODY")[0];
-            bd.hidden = true;
-        };
-    </script>
+    
+    @*<script>
+            // Hide the body if is not validated yet.
+            if ("@Session["validated"]" == "") {
+                var bd = document.getElementsByTagName("BODY")[0];
+                bd.hidden = true;
+            };
+        </script>*@
 </head>
 <body>
+
     <!-- Start menu -->
     <section id="mu-menu">
         <nav class="navbar navbar-default" role="navigation">
@@ -103,15 +105,6 @@
     @*@Scripts.Render("~/bundles/jquery")*@
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
-
-    <script src="~/Scripts/index.js"></script>
-
-    <script>
-        // Code to get access to the page under a password
-        if ("@Session["validated"]" == "") {
-            validate();
-        };
-
-    </script>
+    <script src="~/Scripts/validate-entry.js"></script>
 </body>
 </html>

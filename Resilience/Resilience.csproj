@@ -443,6 +443,7 @@
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
     <Content Include="Scripts\util.js" />
+    <Content Include="Scripts\validate-entry.js" />
     <Content Include="Scripts\waypoints.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
