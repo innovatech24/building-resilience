@@ -1,0 +1,15 @@
+﻿@{
+    ViewBag.Title = "NoMentorMapped";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>No Mentor Mapped</h2>
+<p>You have not assigned a mentor to yourself. Please add a mentor and then create diary entries.</p>
+
+<div class="col-md-offset-1 col-md-4">
+    @Html.ActionLink("Add a mentor", "ChooseMentor", "Users");
+</div>
+<div class="col-md-offset-4 col-md-4">
+    @Html.ActionLink("Back to options", "Mentee", "Options");
+</div>
+

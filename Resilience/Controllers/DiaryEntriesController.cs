@@ -75,6 +75,12 @@ namespace Resilience.Controllers
         [Authorize]
         public ActionResult Create()
         {
+            ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId<int>());
+            Users currentUser = db.Users.Find(user.Id);
+            if (currentUser.MentorId == null)
+            {
+                return RedirectToAction("NoMentorMapped", "Error");
+            }
             ViewBag.UsersId = new SelectList(db.Users, "Id", "FirstName");
             return View();
         }

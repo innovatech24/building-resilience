@@ -13,7 +13,15 @@ namespace Resilience.Controllers
         {
             return View();
         }
+
+        //GET: NotFound
         public ActionResult NotFound()
+        {
+            return View();
+        }
+
+        //GET: NoMentorMapped
+        public ActionResult NoMentorMapped()
         {
             return View();
         }
