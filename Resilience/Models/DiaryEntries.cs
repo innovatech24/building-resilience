@@ -16,9 +16,8 @@ namespace Resilience.Models
     public partial class DiaryEntries
     {
         public int Id { get; set; }
-
-        public string Entry { get; set; }
         [DataType(DataType.MultilineText)]
+        public string Entry { get; set; }
         public int UsersId { get; set; }
         public int MentorId { get; set; }
         public Nullable<double> SentimentScore { get; set; }
