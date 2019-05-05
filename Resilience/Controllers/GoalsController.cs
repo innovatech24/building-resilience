@@ -6,6 +6,8 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
 using Resilience.Models;
 
 namespace Resilience.Controllers
@@ -50,11 +52,15 @@ namespace Resilience.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,GoalName,GoalDescription,DueDate,CompletionDate,MentorFeedback,MenteeComments,MenteeRating,UsersId,MentorId")] Goals goals)
         {
+            ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId<int>());
+            Users currentUser = db.Users.Find(user.Id);
+            goals.UsersId = currentUser.Id;
+            goals.MentorId = currentUser.MentorId.Value;
             if (ModelState.IsValid)
             {
                 db.Goals.Add(goals);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Create", "Exercises");
             }
 
             ViewBag.UsersId = new SelectList(db.Users, "Id", "FirstName", goals.UsersId);

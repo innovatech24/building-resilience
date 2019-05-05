@@ -49,7 +49,7 @@
             <tr>
                 <td>
                     @*@Html.TextBoxFor(modelItem => item.Entry, new { @class = "entry", @readonly = "readonly" })*@
-                    <textarea class="entry" rows=15 cols=100>@item.Entry</textarea>
+                    <textarea class="entry" rows=15 cols=300 readonly="readonly">@item.Entry</textarea>
                 </td>
                 @if (item.MentorFeedback == null)
                 {
