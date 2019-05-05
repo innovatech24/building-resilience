@@ -20,6 +20,8 @@
     <link rel="stylesheet" href="~/Content/jquery.fancybox.css" type="text/css" media="screen" />
     <!-- Theme color -->
     <link id="switcher" href="~/Content/default-theme.css" rel="stylesheet">
+    <!-- RateYo -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
 
     <!-- Main style sheet -->
     <link href="~/Content/style.css" rel="stylesheet">
@@ -77,21 +79,19 @@
                 else if (item.MenteeFeedback == null)
                 {
                     <td>
-                        <text>
-                            Rate your mentor's feedback. 
-                        </text>
+                        <div class="rating" data-rateyo-rating ="0" iid=@item.Id></div>
                     </td>
                 }
                 else
                 {
-                    <td>
-                        @Html.DisplayFor(modelItem => item.MenteeFeedback)
-                    </td>
-                }                
+                <td>
+                    <div class="rating" data-rateyo-rating="@item.MenteeFeedback" iid=@item.Id></div>
+                </td>
+                }
             </tr>
         }
     </table>
-
+    <div id="rating"></div>
     <!-- jQuery library -->
     <script src="~/Scripts/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -106,12 +106,11 @@
     <!-- Add fancyBox -->
     <script type="text/javascript" src="~/Scripts/jquery.fancybox.pack.js"></script>
     <script src="~/Scripts/jqueryd.min.js"></script>
+    <!-- RATEYO-->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
     <!-- AM CHARTS-->
-    <script type="text/javascript" src="~/Scripts/AMcharts/core.js"></script>
-    <script type="text/javascript" src="~/Scripts/AMcharts/charts.js"></script>
-    <script type="text/javascript" src="~/Scripts/AMcharts/animated.js"></script>
-    <script type="text/javascript" src="~/Scripts/AMcharts/kelly.js"></script>
     <script src="~/Scripts/custom.js"></script>
+    <script src="~/Scripts/ViewFeedback.js"></script>
 </body>
 </html>
 
