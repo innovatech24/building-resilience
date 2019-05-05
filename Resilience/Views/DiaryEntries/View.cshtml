@@ -23,8 +23,9 @@
     <!-- Highlighter function -->
     <link rel="stylesheet" href="~/Content/jquery.highlight-within-textarea.css" />
     <!-- Main style sheet -->
-    <link href="~/Content/style.css" type="text/css" rel="stylesheet"/>
-    <link href="~/Content/gaugediv.css"  type="text/css" rel="stylesheet" />
+    <link href="~/Content/style.css" type="text/css" rel="stylesheet" />
+
+    <link href="~/Content/gaugediv.css" rel="stylesheet" type="text/css" />
 
 
     <!-- Google Fonts -->
@@ -40,6 +41,7 @@
             background: url('../../Images/atmosphere-background-bright-19670.jpg') no-repeat center;
             background-size: cover;
         }
+
         .long-textbox {
             height: 350px;
             width: 750px;
@@ -49,6 +51,12 @@
         input, select, textarea {
             max-width: 1000px;
         }
+
+        .gaugediv {
+            width: 800px;
+            height: 300px;
+        }
+
     </style>
 </head>
 <body>
@@ -119,11 +127,12 @@
             }
         </table>
 
-        <div id="gaugediv"></div>
+        <div class="gaugediv"></div>
 
         <script type="text/javascript">
-        var sentiment = @Html.Raw(Json.Encode(Model.ElementAt(0).SentimentScore));
+            var sentiment = @Html.Raw(Json.Encode(Model.ElementAt(0).SentimentScore));
         </script>
+
         <!-- jQuery library -->
         <script src="~/Scripts/jquery.min.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
