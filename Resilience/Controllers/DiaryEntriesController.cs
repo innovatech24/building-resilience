@@ -189,8 +189,7 @@ namespace Resilience.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Feedback(DiaryEntries mentfeedback)
-        {
-            
+        {            
             if (ModelState.IsValid)
             {
                 if (string.IsNullOrEmpty(mentfeedback.MentorFeedback))
@@ -208,6 +207,16 @@ namespace Resilience.Controllers
                 return RedirectToAction("Dashboard", "DiaryEntries");
             }
             return View();
+        }
+
+        //GET: ViewFeedback
+        [Authorize (Roles = "Mentee")]
+        public ActionResult ViewFeedback()
+        {
+            ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId<int>());
+            Users currentUser = db.Users.Find(user.Id);
+            var diaryEntries = db.DiaryEntries.Where(d => d.UsersId == currentUser.Id);
+            return View(diaryEntries);
         }
 
         protected override void Dispose(bool disposing)

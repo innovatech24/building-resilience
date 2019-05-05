@@ -1,15 +1,42 @@
-﻿@{
-    ViewBag.Title = "NoMentorMapped";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    @{
+        ViewBag.title = "No Mentor - Building Resilience";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
 
-<h2>No Mentor Mapped</h2>
-<p>You have not assigned a mentor to yourself. Please add a mentor and then create diary entries.</p>
+    <!-- Font awesome -->
+    <link href="~/Content/font-awesome.css" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link href="~/Content/bootstrap.css" rel="stylesheet">
+    <!-- Slick slider -->
+    <link rel="stylesheet" type="text/css" href="~/Content/slick.css">
+    <!-- Fancybox slider -->
+    <link rel="stylesheet" href="~/Content/jquery.fancybox.css" type="text/css" media="screen" />
+    <!-- Theme color -->
+    <link id="switcher" href="~/Content/default-theme.css" rel="stylesheet">
 
-<div class="col-md-offset-1 col-md-4">
-    @Html.ActionLink("Add a mentor", "ChooseMentor", "Users");
-</div>
-<div class="col-md-offset-4 col-md-4">
-    @Html.ActionLink("Back to options", "Mentee", "Options");
-</div>
+    <!-- Main style sheet -->
+    <link href="~/Content/style.css" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,400italic,300,300italic,500,700' rel='stylesheet' type='text/css'>
+</head>
+<body>
+    <h2>No Mentor Mapped</h2>
+    <p>You have not assigned a mentor to yourself. Please add a mentor and then create diary entries.</p>
+
+    <div class="col-md-offset-1 col-md-4">
+        @Html.ActionLink("Add a mentor", "ChooseMentor", "Users");
+    </div>
+    <div class="col-md-offset-4 col-md-4">
+        @Html.ActionLink("Back to options", "Mentee", "Options");
+    </div>
+</body>
+</html>
 

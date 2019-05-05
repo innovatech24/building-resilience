@@ -1,4 +1,4 @@
-﻿@model Resilience.Models.ExerciseAssign
+﻿@model Resilience.Models.Goals
 
 @{
     ViewBag.Title = "Details";
@@ -8,15 +8,23 @@
 <h2>Details</h2>
 
 <div>
-    <h4>ExerciseAssign</h4>
+    <h4>Goals</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.MentorId)
+            @Html.DisplayNameFor(model => model.GoalName)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.MentorId)
+            @Html.DisplayFor(model => model.GoalName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GoalDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GoalDescription)
         </dd>
 
         <dt>
@@ -36,14 +44,6 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.MenteeRating)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.MenteeRating)
-        </dd>
-
-        <dt>
             @Html.DisplayNameFor(model => model.MentorFeedback)
         </dt>
 
@@ -60,11 +60,19 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Task.TaskName)
+            @Html.DisplayNameFor(model => model.MenteeRating)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Task.TaskName)
+            @Html.DisplayFor(model => model.MenteeRating)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MentorId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MentorId)
         </dd>
 
         <dt>

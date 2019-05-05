@@ -17,7 +17,8 @@ namespace Resilience.Controllers
         // GET: Exercises
         public ActionResult Index()
         {
-            return View(db.Exercises.ToList());
+            var exercises = db.Exercises.Include(e => e.Goal);
+            return View(exercises.ToList());
         }
 
         // GET: Exercises/Details/5
@@ -38,6 +39,7 @@ namespace Resilience.Controllers
         // GET: Exercises/Create
         public ActionResult Create()
         {
+            ViewBag.GoalsId = new SelectList(db.Goals, "Id", "GoalName");
             return View();
         }
 
@@ -46,7 +48,7 @@ namespace Resilience.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,TaskName,TaskDescription,MentorId")] Exercise exercise)
+        public ActionResult Create([Bind(Include = "Id,TaskName,TaskDescription,MentorId,DueDate,CompletionDate,MentorFeedback,MenteeComments,MenteeRating,GoalsId")] Exercise exercise)
         {
             if (ModelState.IsValid)
             {
@@ -55,6 +57,7 @@ namespace Resilience.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.GoalsId = new SelectList(db.Goals, "Id", "GoalName", exercise.GoalsId);
             return View(exercise);
         }
 
@@ -70,6 +73,7 @@ namespace Resilience.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.GoalsId = new SelectList(db.Goals, "Id", "GoalName", exercise.GoalsId);
             return View(exercise);
         }
 
@@ -78,7 +82,7 @@ namespace Resilience.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,TaskName,TaskDescription,MentorId")] Exercise exercise)
+        public ActionResult Edit([Bind(Include = "Id,TaskName,TaskDescription,MentorId,DueDate,CompletionDate,MentorFeedback,MenteeComments,MenteeRating,GoalsId")] Exercise exercise)
         {
             if (ModelState.IsValid)
             {
@@ -86,6 +90,7 @@ namespace Resilience.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.GoalsId = new SelectList(db.Goals, "Id", "GoalName", exercise.GoalsId);
             return View(exercise);
         }
 

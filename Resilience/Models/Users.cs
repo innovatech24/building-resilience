@@ -19,7 +19,7 @@ namespace Resilience.Models
         public Users()
         {
             this.DiaryEntries = new HashSet<DiaryEntries>();
-            this.TaskAssigns = new HashSet<ExerciseAssign>();
+            this.Goals = new HashSet<Goals>();
         }
     
         public int Id { get; set; }
@@ -31,7 +31,7 @@ namespace Resilience.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DiaryEntries> DiaryEntries { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ExerciseAssign> TaskAssigns { get; set; }
+        public virtual ICollection<Goals> Goals { get; set; }
     }
 
     public class AddMentor

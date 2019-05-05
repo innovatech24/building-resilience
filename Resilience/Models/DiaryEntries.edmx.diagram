@@ -8,11 +8,11 @@
         <EntityTypeShape EntityType="DiaryEntries.Users" Width="1.5" PointX="4.75" PointY="0.5" />
         <EntityTypeShape EntityType="DiaryEntries.DiaryEntries" Width="1.5" PointX="7.75" PointY="0.5" />
         <AssociationConnector Association="DiaryEntries.UsersDiaryEntries" />
-        <EntityTypeShape EntityType="DiaryEntries.ExerciseAssign" Width="1.5" PointX="4.75" PointY="3.75" />
-        <EntityTypeShape EntityType="DiaryEntries.Exercise" Width="1.5" PointX="1.25" PointY="4" />
-        <AssociationConnector Association="DiaryEntries.TaskTaskAssign" />
-        <AssociationConnector Association="DiaryEntries.UsersTaskAssign" />
-      </Diagram>
+        <EntityTypeShape EntityType="DiaryEntries.Exercise" Width="1.5" PointX="1.5" PointY="3.5" />
+        <EntityTypeShape EntityType="DiaryEntries.Goals" Width="1.5" PointX="4.75" PointY="3.5" />
+        <AssociationConnector Association="DiaryEntries.UsersGoals" />
+        <AssociationConnector Association="DiaryEntries.GoalsExercise" />
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>
