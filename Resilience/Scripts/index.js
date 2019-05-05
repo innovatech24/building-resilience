@@ -20,7 +20,7 @@ function validateEntry(validation) {
 
         // Validated with the code in the server. Execute the code after the ajax finish.
         $.when(validateEntryAjax(entry)).done(function (response) {
-
+            console.log(respone);
             // Call again with the new response
             validateEntry(response);
         });
