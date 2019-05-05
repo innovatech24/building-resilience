@@ -29,7 +29,7 @@ namespace Resilience.Models
             start.CreateNoWindow = true;
             start.Arguments = string.Format("{0} \"{1}\"", AppDomain.CurrentDomain.BaseDirectory.Replace("\\", "/") + cmd, args);
             start.UseShellExecute = false;
-            start.RedirectStandardOutput = true;
+            start.RedirectStandardOutput = true;           
             using (Process process = Process.Start(start))
             {
                 using (StreamReader reader = process.StandardOutput)
@@ -57,6 +57,7 @@ namespace Resilience.Models
                     string result = reader.ReadToEnd();
                     //Console.Write(result);
                     //process.WaitForExit();
+                    //result = @"C:\users\kiran\anaconda3\python.exe";
                     return result;
                 }
             }
