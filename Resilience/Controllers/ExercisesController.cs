@@ -6,6 +6,9 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using Newtonsoft.Json;
 using Resilience.Models;
 
 namespace Resilience.Controllers
@@ -46,9 +49,9 @@ namespace Resilience.Controllers
         // POST: Exercises/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,TaskName,TaskDescription,MentorId,DueDate,CompletionDate,MentorFeedback,MenteeComments,MenteeRating,GoalsId")] Exercise exercise)
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        /*public ActionResult Create([Bind(Include = "Id,TaskName,TaskDescription,MentorId,DueDate,CompletionDate,MentorFeedback,MenteeComments,MenteeRating,GoalsId")] Exercise exercise)
         {
             if (ModelState.IsValid)
             {
@@ -59,6 +62,30 @@ namespace Resilience.Controllers
 
             ViewBag.GoalsId = new SelectList(db.Goals, "Id", "GoalName", exercise.GoalsId);
             return View(exercise);
+        }*/
+
+        // POST: Exercises/Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(string data)
+        {
+            try
+            {
+                var serializedData = JsonConvert.DeserializeObject<List<Exercise>>(data);
+                foreach (var record in serializedData)
+                {                    
+                    record.MentorId = record.Goal.MentorId;
+                    record.GoalsId = record.Goal.Id;
+                    record.CompletionDate = DateTime.Now;
+                    db.Exercises.Add(record);
+                }
+                db.SaveChanges();
+                return RedirectToAction("Mentee", "Options");
+            }
+            catch
+            {
+                return RedirectToAction("NotFound", "Error");
+            }
         }
 
         // GET: Exercises/Edit/5

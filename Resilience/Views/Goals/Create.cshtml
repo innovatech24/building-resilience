@@ -24,6 +24,8 @@
 
     <!-- Main style sheet -->
     <link href="~/Content/style.css" rel="stylesheet">
+    <!-- datepicker -->
+    <link href="~/Content/bootstrap-datepicker3.css" rel="stylesheet" />
 
     <!-- Google Fonts -->
     <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
@@ -38,7 +40,7 @@
     {
         @Html.AntiForgeryToken()
 
-        <div class="form-horizontal">            
+        <div class="form-horizontal">
             <hr />
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             <div class="form-group">
@@ -57,10 +59,23 @@
                 </div>
             </div>
 
+            @*<div class="form-group">
+                    @Html.LabelFor(model => model.DueDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.DueDate, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.DueDate, "", new { @class = "text-danger" })
+                    </div>
+                </div>*@
+
             <div class="form-group">
                 @Html.LabelFor(model => model.DueDate, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.DueDate, new { htmlAttributes = new { @class = "form-control" } })
+                    <div class="input-group date" data-provide="datepicker">
+                        @Html.EditorFor(model => model.DueDate, new { htmlAttributes = new { @class = "form-control" } })
+                        @*<span class="input-group-addon">
+                                <span class="glyphicon glyphicon-th"></span>
+                            </span>*@
+                    </div>
                     @Html.ValidationMessageFor(model => model.DueDate, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -77,18 +92,15 @@
     <script src="~/Scripts/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="~/Scripts/bootstrap.js"></script>
-    <!-- Slick slider -->
-    <script type="text/javascript" src="~/Scripts/slick.js"></script>
-    <!-- Counter -->
-    <script type="text/javascript" src="~/Scripts/waypoints.js"></script>
-    <script type="text/javascript" src="~/Scripts/jquery.counterup.js"></script>
-    <!-- Mixit slider -->
-    <script type="text/javascript" src="~/Scripts/jquery.mixitup.js"></script>
-    <!-- Add fancyBox -->
-    <script type="text/javascript" src="~/Scripts/jquery.fancybox.pack.js"></script>
-
-    <script src="~/Scripts/choice.js"></script>
-    <!-- Custom js -->
-    <script src="~/Scripts/custom.js"></script>
+    <!-- Datepicker -->
+    <script src="~/Scripts/bootstrap-datepicker.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script type="text/javascript">
+        //$.fn.datepicker.defaults = { todayHighlight: true, autoclose: true, format: "dd-M-yyyy" };
+        $.fn.datepicker.defaults.format = "dd-M-yyyy";
+        $.fn.datepicker.defaults.todayHighlight = true;
+        $.fn.datepicker.defaults.autoclose = true;
+    </script>
 </body>
 </html>

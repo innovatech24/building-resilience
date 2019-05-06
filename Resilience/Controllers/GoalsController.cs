@@ -56,6 +56,7 @@ namespace Resilience.Controllers
             Users currentUser = db.Users.Find(user.Id);
             goals.UsersId = currentUser.Id;
             goals.MentorId = currentUser.MentorId.Value;
+            goals.CompletionDate = DateTime.Now;
             if (ModelState.IsValid)
             {
                 db.Goals.Add(goals);
