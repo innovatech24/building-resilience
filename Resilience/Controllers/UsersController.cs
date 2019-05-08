@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
+using System.Dynamic;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
@@ -192,7 +193,10 @@ namespace Resilience.Controllers
                 }
                 else
                 {
-                    return HttpNotFound();
+                    // Type options : info, danger, success, warning
+                    TempData["UserMessage"] = new JavaScriptSerializer().Serialize(new { Type = "warning", Title = "Warning:", Message = "E-mail not registered as mentor" });
+
+                    return View();
                 }                
             }
             return View();
@@ -287,6 +291,27 @@ namespace Resilience.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        [Authorize]
+        public string getUser(int id)
+        {
+            Users user = db.Users.Find(id);
+
+            dynamic userObj = new ExpandoObject(); ;
+            userObj.user = new { user.FirstName, user.LastName };
+
+            if (user.MentorId != null)
+            {
+                Users mentor = db.Users.Find(user.MentorId);
+                userObj.mentor = new {mentor.FirstName,mentor.LastName,mentor.EmailAddress };
+            }
+            else
+            {
+                userObj.mentor = null;
+            }
+
+            return (new JavaScriptSerializer().Serialize(new { User = userObj.user, Mentor = userObj.mentor }));
         }
     }
 }

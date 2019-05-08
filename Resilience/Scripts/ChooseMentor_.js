@@ -1,7 +1,28 @@
 ﻿
+
 $(document).ready(function () {
     showMessage("addMentorMessage", message);
-   
+
+    $.ajax({
+        url: '/Users/getUser',
+        type: 'POST',
+        data: {
+            id: uid
+        },
+        success: function (response) {
+
+            var user = JSON.parse(response);
+            
+            if (user.Mentor != null) {
+                var element = document.getElementById("MentorInfo");
+                
+                var p1 = document.createElement("strong");
+                p1.appendChild(document.createTextNode(user.Mentor.FirstName + " " + user.Mentor.LastName + " - " + user.Mentor.EmailAddress))
+                element.appendChild(p1);
+                element.hidden = false;
+            }
+        }
+    });
 });
 
 function showMessage(obj, messageObj) {
