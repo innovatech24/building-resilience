@@ -37,6 +37,7 @@
             background: url('../../Images/album-background-blank-1089842.jpg') no-repeat center fixed;
             background-size: cover;
         }
+
         .add-mentee-form {
             position: absolute;
             left: 35%;
@@ -48,9 +49,11 @@
             margin: auto;
             text-align: center;
             /*box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);*/
-            
         }
     </style>
+    <script type="text/javascript">
+        var message = "@TempData["UserMessage"]";
+    </script>
 </head>
 <body>
     <div class="add-mentee-background">
@@ -61,45 +64,48 @@
             {
                 @Html.AntiForgeryToken()
 
-            <div class="form-horizontal">
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-                <hr />
-                <div class="form-group">
-                    <div class="col-md-offset-1 col-md-10">
-                        <input type="submit" value="Add" class="btn btn-default" />
-                    </div>
+        <div class="form-horizontal">
+            <div class="form-group">
+                @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
                 </div>
             </div>
+            <hr />
+            <div class="form-group">
+                <div class="col-md-offset-1 col-md-10">
+                    <input type="submit" value="Add" class="btn btn-default" />
+                </div>
+            </div>
+            <div id="addMessage" class="alert" hidden>
+            </div>
+        </div>
             }
         </div>
     </div>
 
-            <!-- jQuery library -->
-            <script src="~/Scripts/jquery.min.js"></script>
-            <!-- Include all compiled plugins (below), or include individual files as needed -->
-            <script src="~/Scripts/bootstrap.js"></script>
-            <!-- Slick slider -->
-            <script type="text/javascript" src="~/Scripts/slick.js"></script>
-            <!-- Counter -->
-            <script type="text/javascript" src="~/Scripts/waypoints.js"></script>
-            <script type="text/javascript" src="~/Scripts/jquery.counterup.js"></script>
-            <!-- Mixit slider -->
-            <script type="text/javascript" src="~/Scripts/jquery.mixitup.js"></script>
-            <!-- Add fancyBox -->
-            <script type="text/javascript" src="~/Scripts/jquery.fancybox.pack.js"></script>
+    <!-- jQuery library -->
+    <script src="~/Scripts/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="~/Scripts/bootstrap.js"></script>
+    <!-- Slick slider -->
+    <script type="text/javascript" src="~/Scripts/slick.js"></script>
+    <!-- Counter -->
+    <script type="text/javascript" src="~/Scripts/waypoints.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.counterup.js"></script>
+    <!-- Mixit slider -->
+    <script type="text/javascript" src="~/Scripts/jquery.mixitup.js"></script>
+    <!-- Add fancyBox -->
+    <script type="text/javascript" src="~/Scripts/jquery.fancybox.pack.js"></script>
 
 
-            <!-- Custom js -->
-            <script src="~/Scripts/custom.js"></script>
+    <!-- Custom js -->
+    <script src="~/Scripts/custom.js"></script>
+    <script src="~/Scripts/ChooseMentee_.js"></script>
 
-            @section Scripts {
-                @Scripts.Render("~/bundles/jqueryval")
-            }
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
 </body>
 </html>
