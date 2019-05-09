@@ -54,59 +54,64 @@
         <table class="table">
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.Entry)
+                    Date
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.MentorFeedback)
+                    Diary
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.MenteeFeedback)
+                    Feeling
+                </th>
+                <th>
+                    Mentor
+                </th>
+                <th>
+                    Feedback
                 </th>
             </tr>
 
         @foreach (var item in Model)
         {
-            <tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @*@Html.TextBoxFor(modelItem => item.Entry, new { @class = "entry", @readonly = "readonly" })*@
+                <textarea class="entry" rows=15 cols=100>@item.Entry</textarea>
+            </td>
+            @if (item.MenteeFeedback == null)
+            {
                 <td>
-                    @*@Html.TextBoxFor(modelItem => item.Entry, new { @class = "entry", @readonly = "readonly" })*@
-                    <textarea class="entry" rows=15 cols=100>@item.Entry</textarea>
+                    <div class="rating" data-rateyo-rating="0" iid=@item.Id></div>
                 </td>
-                @if (item.MentorFeedback == null)
-                {
-                    <td>
-                        <text>
-                            Your mentor hasn't given feedback yet.
-                        </text>
-                    </td>
-                }
-                else
-                {
-                    <td>
-                        @*@Html.DisplayFor(modelItem => item.MentorFeedback)*@
-                        <textarea class="feedback" rows=15 cols=100>@item.MentorFeedback</textarea>
-                    </td>
-                }
-                @if (item.MentorFeedback == null)
-                {
-                    <td>
-                        <text>
-                            There is no feedback to be rated yet.
-                        </text>
-                    </td>
-                }
-                else if (item.MenteeFeedback == null)
-                {
-                    <td>
-                        <div class="rating" data-rateyo-rating ="0" iid=@item.Id></div>
-                    </td>
-                }
-                else
-                {
+            }
+            else
+            {
                 <td>
                     <div class="rating" data-rateyo-rating="@item.MenteeFeedback" iid=@item.Id></div>
                 </td>
-                }
-            </tr>
+            }
+            <td>
+                @Html.DisplayFor(modelItem => item.MentorId)
+            </td>
+            @if (item.MentorFeedback == null)
+            {
+                <td>
+                    <text>
+                        Your mentor hasn't given feedback yet.
+                    </text>
+                </td>
+            }
+            else
+            {
+                <td>
+                    @*@Html.DisplayFor(modelItem => item.MentorFeedback)*@
+                    <textarea class="feedback" rows=15 cols=100>@item.MentorFeedback</textarea>
+                </td>
+            }
+
+        </tr>
         }
     </table>
     <div id="rating"></div>
@@ -128,7 +133,7 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
     <!-- AM CHARTS-->
     <script src="~/Scripts/custom.js"></script>
-    <script src="~/Scripts/ViewFeedback.js"></script>
+    <script src="~/Scripts/ViewFeedback_.js"></script>
 </body>
 </html>
 

@@ -106,7 +106,7 @@ namespace Resilience.Controllers
             {
                 db.DiaryEntries.Add(diaryEntries);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("ViewFeedback");
             }
 
             ViewBag.UsersId = new SelectList(db.Users, "Id", "FirstName", diaryEntries.UsersId);

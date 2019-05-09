@@ -2,6 +2,7 @@
     
     $(".rating").rateYo({
         precision: 0,
+        readOnly: true,
         onSet: function (rating, rateYoInstance) {
             $.ajax({
                 url: '/DiaryEntries/ViewFeedback',
