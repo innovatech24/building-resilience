@@ -27,11 +27,16 @@
     <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,400italic,300,300italic,500,700' rel='stylesheet' type='text/css'>
     <style>
-    .nf-background{
-    height: 800px;
-    background: url('../../Images/anime-art-artistic-262272.jpg') no-repeat center;
-    background-size: cover;
-    }
+        html, body {
+            height: 100%;
+            width: 100%;
+        }
+        .nf-background {
+            height: 100%;
+            width: 100%;
+            background: url('../../Images/anime-art-artistic-262272.jpg') no-repeat center;
+            background-size: cover;
+        }
         .nf-ask {
             position: absolute;
             top: 25%;
@@ -59,8 +64,8 @@
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
     border-radius: 12px;
     position: absolute;
-    top: 60%;
-    left: 22%;
+    top: 65%;
+    left: 20%;
     }
 
 
@@ -73,23 +78,25 @@
 <body>
     <div class="nf-background">
         <div class="nf-ask">
-            <h1>
-                404
-            </h1>
-            <br />
-            <h2>
-                Oops! This Page Could Not Be Found
-            </h2>
-            <br />
-            <p>
-                Sorry, The Page You Are Looking For File Is Not Found Or Controller Name / Controller Action Method Name Not There
-            </p>
+            <div class="col-lg-10 col-md-10 col-sm-10">
+                <h1>
+                    404
+                </h1>
+                <br />
+                <h2>
+                    Oops! This Page Could Not Be Found
+                </h2>
+                <br />
+                <p>
+                    Sorry, The Page You Are Looking For File Is Not Found Or Controller Name / Controller Action Method Name Not There
+                </p>
+            </div>
         </div>
             <button class="button1">
-                @Html.ActionLink("Go Back To Home Page", "Index", "Home")
+                @Html.ActionLink("Back to home page", "Index", "Home")
             </button>
-        
-    </div>
+
+        </div>
     <script src="~/Scripts/choice.js"></script>
 </body>
 </html>

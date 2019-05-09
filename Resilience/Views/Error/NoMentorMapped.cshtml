@@ -27,8 +27,13 @@
     <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,400italic,300,300italic,500,700' rel='stylesheet' type='text/css'>
     <style>
+        html, body {
+            height: 100%;
+            width: 100%;
+        }
         .nomentor-background {
-            height: 800px;
+            height: 100%;
+            width: 100%;
             background: url('../../Images/anime-art-artistic-262272.jpg') no-repeat center;
             background-size: cover;
         }
@@ -36,9 +41,7 @@
             position:absolute;
             top:30%;
             left:10%;
-            color: orangered;
-            @*box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-            *@
+            color: orangered;        
         }
         .button {
             border: none;
@@ -59,16 +62,13 @@
             box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
             border-radius: 12px;
             position: absolute;
-            top: 60%;
+            top: 70%;
             left: 10%;
         }
-
-
         .button1:hover {
             background-color: white;
             color: black;
         }
-
         .button2 {
             width: 20%;
             height: 10%;
@@ -78,11 +78,9 @@
             box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
             border-radius: 12px;
             position: absolute;
-            top: 60%;
+            top: 70%;
             left: 40%;
         }
-
-
             .button2:hover {
                 background-color: white;
                 color: black;
@@ -92,17 +90,18 @@
 <body>
     <div class="nomentor-background">
         <div class="nomentor-ask">
-            <h1>You have not assigned a mentor to yourself</h1>
-            <br />
-            <h3>Please add a mentor and then create diary entries.</h3>
+            <div class="col-lg-10 col-md-10 col-sm-10">
+                <h1>Oops! You Have Not Assigned A Mentor To Yourself</h1>
+                <br />
+                <h3>Please add a mentor and then create diary entries.</h3>
+            </div>
         </div>
-            <button class="button1">
-                @Html.ActionLink("Add a mentor", "ChooseMentor", "Users")
-            </button>
-            <button class="button2">
-                @Html.ActionLink("Back to options", "Mentee", "Options")
-            </button>
-        
+        <button class="button1">
+            @Html.ActionLink("Add a mentor", "ChooseMentor", "Users")
+        </button>
+        <button class="button2">
+            @Html.ActionLink("Back to options", "Mentee", "Options")
+        </button>
     </div>
     <script src="~/Scripts/choice.js"></script>
 </body>

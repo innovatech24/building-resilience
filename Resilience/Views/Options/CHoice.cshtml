@@ -30,15 +30,18 @@
         Layout = "~/Views/Shared/_Layout.cshtml";
     }
     <style>
+        html, body {
+            height: 100%;
+            width: 100%;
+        }
         .choice-background {
-            height: 700px;
+            height: 100%;
+            width: 100%;
             background: url('../../Images/art-background-blue-1037992.jpg') no-repeat center;
             background-size: cover;
         }
-            .choice-ask{
-            position: absolute;
-            top: 16%;
-            left: 35%;
+            .choice-ask{            
+            text-align:center;
             color: white;
             @*box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
             *@
@@ -93,18 +96,21 @@
 <body>
     <div class="choice-background">
         <div class="choice-ask">
-            <h2>Where would you like to go?</h2>
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <br />
+                <h2>Where would you like to go?</h2>
+            </div>
+            </div>
+            <button class="button1">
+                @Html.ActionLink("MENTOR VIEW", "Mentor", "Options")
+            </button>
+            <button class="button2">
+                @Html.ActionLink("MENTEE VIEW", "Mentee", "Options")
+                @*@Html.ActionLink("Mentee view", "Mentee", "Options", null, new { @class = "col-md-offset-4 col-md-2 btn btn-lg" })*@
+            </button>
+
+
         </div>
-        <button class="button1">
-            @Html.ActionLink("MENTOR VIEW", "Mentor", "Options")
-        </button>
-        <button class="button2">
-            @Html.ActionLink("MENTEE VIEW", "Mentee", "Options")
-            @*@Html.ActionLink("Mentee view", "Mentee", "Options", null, new { @class = "col-md-offset-4 col-md-2 btn btn-lg" })*@
-        </button>
-
-
-    </div>
         <!-- jQuery library -->
         <script src="~/Scripts/jquery.min.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
