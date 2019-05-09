@@ -127,6 +127,12 @@ namespace Resilience.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult MentorView(int Id)
+        {            
+            var goals = db.Goals.Where(g => g.UsersId == Id).ToList();
+            return View(goals.ToList());
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

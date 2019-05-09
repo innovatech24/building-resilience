@@ -538,6 +538,9 @@
     <Content Include="Views\Exercises\Edit.cshtml" />
     <Content Include="Views\Exercises\Index.cshtml" />
     <Content Include="Views\DiaryEntries\ViewFeedback.cshtml" />
+    <Content Include="Views\Options\Landingpage.cshtml" />
+    <Content Include="Views\Goals\MentorView.cshtml" />
+    <Content Include="Views\Options\Progress.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
