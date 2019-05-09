@@ -30,13 +30,6 @@ namespace Resilience.Controllers
 
         public JsonResult ValidateEntry()
         {
-            //string pass = "789456123";
-            /*string pass = DateTime.Now.ToString("ddd_ddMM");
-
-            if (pass.Equals(entry))
-            {
-                Session["validated"] = "yes";
-            }*/
 
             // Turn on validation
             bool res = false;
