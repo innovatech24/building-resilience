@@ -273,6 +273,9 @@
     <Content Include="App_Data\Users_log.ldf" />
     <Content Include="Content\all.css" />
     <Content Include="Content\all.min.css" />
+    <Content Include="Content\bootstrap-datepicker.css" />
+    <Content Include="Content\bootstrap-datepicker.min.css" />
+    <Content Include="Content\bootstrap-datepicker3.css" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-reboot.css" />
@@ -354,6 +357,8 @@
     <Content Include="Scripts\AMcharts\charts.js" />
     <Content Include="Scripts\AMcharts\core.js" />
     <Content Include="Scripts\AMcharts\kelly.js" />
+    <Content Include="Scripts\bootstrap-datepicker.js" />
+    <Content Include="Scripts\bootstrap-datepicker.min.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -412,11 +417,13 @@
       <DependentUpon>DiaryEntries.edmx</DependentUpon>
     </Content>
     <Content Include="Content\dash.less" />
+    <Content Include="Content\bootstrap-datepicker.css.map" />
+    <Content Include="Content\bootstrap-datepicker.min.css.map" />
+    <Content Include="Content\bootstrap-datepicker3.css.map" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\breakpoints.min.js" />
     <Content Include="Scripts\browser.min.js" />
-    <Content Include="Scripts\rater.js" />
-    <Content Include="Scripts\ViewFeedback_.js" />
+    <Content Include="Scripts\ViewFeedback.js" />
     <Content Include="Scripts\index.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
