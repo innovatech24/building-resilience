@@ -1,19 +1,25 @@
 ﻿$(document).ready(function () {
-    
-    $(".rating").rateYo({
-        precision: 0,
-        readOnly: true,
-        onSet: function (rating, rateYoInstance) {
-            $.ajax({
-                url: '/DiaryEntries/ViewFeedback',
-                type: 'POST',
-                data: {
-                    Id: parseInt(this.getAttribute("iid")),
-                    rate: rating
-                }
-            });
-        }
-    });
+
+    // Get list of rating divs
+    var rates = document.getElementsByClassName("rating");
+
+    // Define range of emoticons
+    var emotionsArray = ['crying', 'disappointed', 'meh', 'happy', 'smile'];
+
+    // Loop over rating divs
+    for (var i = 0; i < rates.length; i++) {
+
+        // Get element
+        element = rates.item(i);
+
+        // Configure rating on each element
+        $(element).emotionsRating({
+            bgEmotion: 'happy',
+            emotions: emotionsArray,
+            disabled: true,
+            initialRating: element.getAttribute("rate")
+        });
+    };
 
 });
 

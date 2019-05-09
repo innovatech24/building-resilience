@@ -23,7 +23,8 @@
 
     <!-- Main style sheet -->
     <link href="~/Content/style.css" rel="stylesheet">
-
+    <!-- RateYo -->
+    @*<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">*@
 
     <!-- Google Fonts -->
     <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
@@ -54,7 +55,7 @@
         .multi-line {
             max-width: 80%;
         }
-        </style>
+    </style>
 </head>
 <body>
     <div class="create-background">
@@ -66,25 +67,37 @@
             {
                 @Html.AntiForgeryToken()
 
-                <div class="form-horizontal">
-                <h4>DiaryEntries</h4>
-                <hr />
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Entry, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.Entry, new { htmlAttributes = new { @class = "form-control", rows = "20" } })
-                        @Html.ValidationMessageFor(model => model.Entry, "", new { @class = "text-danger" })
-                    </div>
+        <div class="form-horizontal">
+            <h4>Reflective diary</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @*@Html.LabelFor(model => model.Entry, htmlAttributes: new { @class = "control-label col-md-2" })*@
+
+                <label class="control-label col-md-2">Diary</label>
+
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Entry, new { htmlAttributes = new { @class = "form-control", rows = "15" } })
+                    @Html.ValidationMessageFor(model => model.Entry, "", new { @class = "text-danger" })
                 </div>
 
-                <hr />
-                <div class="form-group">
-                    <div class="col-md-offset-1 col-md-10">
-                        <input type="submit" value="Create" class="btn btn-default" />
-                    </div>
+            </div>
+            <div class="form-group">
+                
+                <label class="control-label col-md-2">How do you feel?</label>
+
+                <div class="col-md-8">
+                    <div class="rating"></div>
+                    @Html.HiddenFor(model => model.MenteeFeedback)
                 </div>
+            </div>
+            <hr />
+            <div class="form-group">
+                <div class="col-md-offset-1 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
                 </div>
+            </div>
+        </div>
             }
 
             <div>
@@ -92,31 +105,34 @@
             </div>
         </div>
     </div>
-        @section Scripts {
-            @Scripts.Render("~/bundles/jqueryval")
-        }
-        <!-- jQuery library -->
-        <script src="~/Scripts/jquery.min.js"></script>
-        <!-- Include all compiled plugins (below), or include individual files as needed -->
-        <script src="~/Scripts/bootstrap.js"></script>
-        <!-- Slick slider -->
-        <script type="text/javascript" src="~/Scripts/slick.js"></script>
-        <!-- Counter -->
-        <script type="text/javascript" src="~/Scripts/waypoints.js"></script>
-        <script type="text/javascript" src="~/Scripts/jquery.counterup.js"></script>
-        <!-- Mixit slider -->
-        <script type="text/javascript" src="~/Scripts/jquery.mixitup.js"></script>
-        <!-- Add fancyBox -->
-        <script type="text/javascript" src="~/Scripts/jquery.fancybox.pack.js"></script>
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
+    <!-- jQuery library -->
+    <script src="~/Scripts/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="~/Scripts/bootstrap.js"></script>
+    <!-- Slick slider -->
+    <script type="text/javascript" src="~/Scripts/slick.js"></script>
+    <!-- Counter -->
+    <script type="text/javascript" src="~/Scripts/waypoints.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.counterup.js"></script>
+    <!-- Mixit slider -->
+    <script type="text/javascript" src="~/Scripts/jquery.mixitup.js"></script>
+    <!-- Add fancyBox -->
+    <script type="text/javascript" src="~/Scripts/jquery.fancybox.pack.js"></script>
+    <!-- Emoticon rating-->
+    @*<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>*@
+    <script type="text/javascript" src="~/Scripts/emoticon_rating.js"></script>
 
-
-        <!-- Custom js -->
-        <script src="~/Scripts/custom.js"></script>
-        <script type="text/javascript">
-            // Enable navigation prompt
-            window.onbeforeunload = function() {
-                return true;
-            };
-        </script>
+    <!-- Custom js -->
+    <script src="~/Scripts/custom.js"></script>
+    <script src="~/Scripts/DiaryEntryCreate.js"></script>
+    <script type="text/javascript">
+        // Enable navigation prompt
+        window.onbeforeunload = function () {
+            return true;
+        };
+    </script>
 </body>
 </html>

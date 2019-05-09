@@ -35,10 +35,10 @@
 
     <div class="mentor-landing">        
         <button class="button1">
-            @Html.ActionLink("View goals and tasks", "MentorView", "Goals", new { id = ViewBag.id })
+            @Html.ActionLink("View goals and tasks", "MentorView", "Goals", new { id = ViewBag.id },null)
         </button>
         <button class="button2">
-            @Html.ActionLink("View diary entries", "ViewUser", "DiaryEntries", new { id = ViewBag.id })
+            @Html.ActionLink("View diary entries", "ViewUser", "DiaryEntries", new { id = ViewBag.id },null)
         </button>
         <button class="button3">
             @Html.ActionLink("View Progress", "Progress", "Options")
