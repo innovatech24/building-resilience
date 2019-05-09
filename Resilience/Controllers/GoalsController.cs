@@ -61,7 +61,7 @@ namespace Resilience.Controllers
             {
                 db.Goals.Add(goals);
                 db.SaveChanges();
-                return RedirectToAction("Create", "Exercises");
+                return RedirectToAction("Create", "Exercises", new { id = goals.Id });
             }
 
             ViewBag.UsersId = new SelectList(db.Users, "Id", "FirstName", goals.UsersId);

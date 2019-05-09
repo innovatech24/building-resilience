@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 05/04/2019 13:26:53
+-- Date Created: 05/09/2019 13:56:08
 -- Generated from EDMX file: C:\Users\kiran\Desktop\IE\repos\Resilience\Resilience\Models\DiaryEntries.edmx
 -- --------------------------------------------------
 
@@ -20,6 +20,12 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_UsersDiaryEntries]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[DiaryEntries] DROP CONSTRAINT [FK_UsersDiaryEntries];
 GO
+IF OBJECT_ID(N'[dbo].[FK_UsersGoals]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Goals] DROP CONSTRAINT [FK_UsersGoals];
+GO
+IF OBJECT_ID(N'[dbo].[FK_GoalsExercise]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Exercises] DROP CONSTRAINT [FK_GoalsExercise];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
@@ -33,6 +39,9 @@ IF OBJECT_ID(N'[dbo].[DiaryEntries]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[Exercises]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Exercises];
+GO
+IF OBJECT_ID(N'[dbo].[Goals]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Goals];
 GO
 
 -- --------------------------------------------------
@@ -70,9 +79,9 @@ CREATE TABLE [dbo].[Exercises] (
     [MentorId] int  NULL,
     [DueDate] datetime  NOT NULL,
     [CompletionDate] datetime  NOT NULL,
-    [MentorFeedback] nvarchar(max)  NOT NULL,
-    [MenteeComments] nvarchar(max)  NOT NULL,
-    [MenteeRating] nvarchar(max)  NOT NULL,
+    [MentorFeedback] nvarchar(max)  NULL,
+    [MenteeComments] nvarchar(max)  NULL,
+    [MenteeRating] nvarchar(max)  NULL,
     [GoalsId] int  NOT NULL
 );
 GO

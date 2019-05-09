@@ -56,9 +56,9 @@
     <Property Name="MentorId" Type="int" Nullable="true" />
     <Property Name="DueDate" Type="datetime" Nullable="false" />
     <Property Name="CompletionDate" Type="datetime" Nullable="false" />
-    <Property Name="MentorFeedback" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="MenteeComments" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="MenteeRating" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="MentorFeedback" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="MenteeComments" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="MenteeRating" Type="nvarchar(max)" Nullable="true" />
     <Property Name="GoalsId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Goals">
@@ -182,9 +182,9 @@
           <Property Name="MentorId" Type="Int32" Nullable="true" />
           <Property Name="DueDate" Type="DateTime" Nullable="false" />
           <Property Name="CompletionDate" Type="DateTime" Nullable="false" />
-          <Property Name="MentorFeedback" Type="String" Nullable="false" />
-          <Property Name="MenteeComments" Type="String" Nullable="false" />
-          <Property Name="MenteeRating" Type="String" Nullable="false" />
+          <Property Name="MentorFeedback" Type="String" Nullable="true" />
+          <Property Name="MenteeComments" Type="String" Nullable="true" />
+          <Property Name="MenteeRating" Type="String" Nullable="true" />
           <NavigationProperty Name="Goal" Relationship="DiaryEntries.GoalsExercise" FromRole="Exercise" ToRole="Goals" />
           <Property Name="GoalsId" Type="Int32" Nullable="false" />
         </EntityType>

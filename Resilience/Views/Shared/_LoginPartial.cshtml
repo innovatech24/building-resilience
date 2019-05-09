@@ -5,9 +5,17 @@
     {
     @Html.AntiForgeryToken()
 
-        
+
         var claim = ((System.Security.Claims.ClaimsIdentity)User.Identity).FindFirst("name");
-        var name = claim.Value.ToString();
+        var name = "Hello";
+        if ( claim != null )
+        {
+            name = claim.Value.ToString();
+        }
+        else
+        {
+            name = User.Identity.GetUserName();
+        }
 
     <ul class="nav navbar-nav navbar-right">
         <li>            

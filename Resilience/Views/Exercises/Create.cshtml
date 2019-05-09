@@ -33,7 +33,7 @@
 </head>
 <body>
 
-    <h2>Create tasks for your goal - @Html.DisplayNameFor(model => model.Goal.GoalName)</h2>
+    <h2>Create tasks for your goal - @ViewBag.goalName</h2>
 
     <table class="table">
         <thead>
@@ -77,18 +77,9 @@
                     </td>
 
                     <td>
-                        @*<div class="form-group">
-                                @Html.LabelFor(model => model.DueDate, htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    @Html.EditorFor(model => model.DueDate, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.DueDate, "", new { @class = "text-danger" })
-                                </div>
-                            </div>*@
-
-                        <div class="form-group">
-                            @*@Html.LabelFor(model => model.DOB, htmlAttributes: new { @class = "control-label col-md-2", style = "font-size:20px" })*@
+                        <div class="form-group">                            
                             <div class="col-md-10">
-                                <div class="input-group date" data-provide="datepicker">
+                                <div id="sandbox">
                                     @Html.EditorFor(model => model.DueDate, new { htmlAttributes = new { @class = "form-control" } })
                                     @*<span class="input-group-addon">
                                             <span class="glyphicon glyphicon-th"></span>
@@ -120,39 +111,27 @@
                 </td>
             </tr>
         </tfoot>
-    </table>
+    </table>    
 
-    <!-- jQuery library -->
-    <script src="~/Scripts/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="~/Scripts/bootstrap.js"></script>
-    <!-- Datepicker -->
-    <script src="~/Scripts/bootstrap-datepicker.min.js"></script>
+    @section Scripts{
 
-    <!-- Slick slider -->
-    <script type="text/javascript" src="~/Scripts/slick.js"></script>
-    <!-- Counter -->
-    <script type="text/javascript" src="~/Scripts/waypoints.js"></script>
-    <script type="text/javascript" src="~/Scripts/jquery.counterup.js"></script>
-    <!-- Mixit slider -->
-    <script type="text/javascript" src="~/Scripts/jquery.mixitup.js"></script>
-    <!-- Add fancyBox -->
-    <script type="text/javascript" src="~/Scripts/jquery.fancybox.pack.js"></script>
-
-    <script src="~/Scripts/choice.js"></script>
-    <!-- Custom js -->
-    <script src="~/Scripts/custom.js"></script>
-    <script type="text/javascript">
-        $.fn.datepicker.defaults.format = "dd-M-yyyy";
-        $.fn.datepicker.defaults.todayHighlight = true;
-        $.fn.datepicker.defaults.autoclose = true;
-    </script>
-    <script>
+        <!-- jQuery library -->
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/jqueryval")
+        <script src="~/Scripts/bootstrap-datepicker.min.js"></script>
+        <script>
+            $('#sandbox input').datepicker({
+                autoclose: true,
+                todayHighlight: true,
+                format: "dd-M-yyyy"
+            });
+        </script> 
+        <script>
 
         $(".btnAdd").click(function () {
-            var td1 = '<td>@Html.EditorFor(modelItem => modelItem.TaskName, new { htmlAttributes = new { @class = "form-control" } })</td>';
-            var td2 = '<td>@Html.EditorFor(modelItem => modelItem.TaskDescription, new { htmlAttributes = new { @class = "form-control" } })</td>';
-            var td3 = '<td>@Html.EditorFor(modelItem => modelItem.DueDate, new { htmlAttributes = new { @class = "form-control" } })</td>';
+            var td1 = '<td><div class="form-group"><div class="col-md-10">@Html.EditorFor(modelItem => modelItem.TaskName, new { htmlAttributes = new { @class = "form-control" } })</div></div></td>';
+            var td2 = '<td><div class="form-group"><div class="col-md-10">@Html.EditorFor(modelItem => modelItem.TaskDescription, new { htmlAttributes = new { @class = "form-control" } })</div></div></td>';
+            var td3 = '<td><div class="form-group"><div class="col-md-10"><div id="sandbox">@Html.EditorFor(modelItem => modelItem.DueDate, new { htmlAttributes = new { @class = "form-control" } })</div></div></div></td>';
             $("tbody").append('<tr>' + td1 + td2 + td3 + '</tr>');
         });
 
@@ -162,34 +141,40 @@
                 var TaskName = $(this).find('#TaskName').val();
                 var TaskDescription = $(this).find('#TaskDescription').val();
                 var DueDate = $(this).find('#DueDate').val();
+                var GoalsId = '@ViewBag.goalId';
+                var MentorId = '@ViewBag.mentorId';
 
                 var alldata = {
                     'TaskName': TaskName,
                     'TaskDescription': TaskDescription,
                     'DueDate': DueDate,
+                    'GoalsId': GoalsId,
+                    'MentorId': MentorId,
                 }
+                //console.log(data);
                 data.push(alldata);
-            });
-            console.log(data);
+            });           
             return data;
         }
 
         $('#btnSubmit').click(function () {
             var data = JSON.stringify(getAllData());
+            //console.log(data);
             $.ajax({
                 url: '/Exercises/Create',
                 type: 'POST',
                 dataType: 'json',
                 contentType: 'application/json; charset=utf-8',
                 data: JSON.stringify({ 'data': data }),
-                /*success: function () {
-                    alert("Data Added Successfully");
+                success: function () {
+                    window.location.replace("/Options/Mentee");
                 },
                 error: function () {
                     alert("Error while inserting data");
-                }*/
+                }
             });
         });
-    </script>
+        </script>
+    }
 </body>
 </html>
