@@ -127,53 +127,58 @@
             });
         </script> 
         <script>
-
-        $(".btnAdd").click(function () {
-            var td1 = '<td><div class="form-group"><div class="col-md-10">@Html.EditorFor(modelItem => modelItem.TaskName, new { htmlAttributes = new { @class = "form-control" } })</div></div></td>';
-            var td2 = '<td><div class="form-group"><div class="col-md-10">@Html.EditorFor(modelItem => modelItem.TaskDescription, new { htmlAttributes = new { @class = "form-control" } })</div></div></td>';
-            var td3 = '<td><div class="form-group"><div class="col-md-10"><div id="sandbox">@Html.EditorFor(modelItem => modelItem.DueDate, new { htmlAttributes = new { @class = "form-control" } })</div></div></div></td>';
-            $("tbody").append('<tr>' + td1 + td2 + td3 + '</tr>');
-        });
-
-        function getAllData() {
-            var data = [];
-            $('tbody tr').each(function () {
-                var TaskName = $(this).find('#TaskName').val();
-                var TaskDescription = $(this).find('#TaskDescription').val();
-                var DueDate = $(this).find('#DueDate').val();
-                var GoalsId = '@ViewBag.goalId';
-                var MentorId = '@ViewBag.mentorId';
-
-                var alldata = {
-                    'TaskName': TaskName,
-                    'TaskDescription': TaskDescription,
-                    'DueDate': DueDate,
-                    'GoalsId': GoalsId,
-                    'MentorId': MentorId,
-                }
-                //console.log(data);
-                data.push(alldata);
-            });           
-            return data;
-        }
-
-        $('#btnSubmit').click(function () {
-            var data = JSON.stringify(getAllData());
-            //console.log(data);
-            $.ajax({
-                url: '/Exercises/Create',
-                type: 'POST',
-                dataType: 'json',
-                contentType: 'application/json; charset=utf-8',
-                data: JSON.stringify({ 'data': data }),
-                success: function () {
-                    window.location.replace("/Options/Mentee");
-                },
-                error: function () {
-                    alert("Error while inserting data");
-                }
+            $(".btnAdd").click(function () {
+                $('#sandbox').datepicker('destroy');
+                var td1 = '<td><div class="form-group"><div class="col-md-10">@Html.EditorFor(modelItem => modelItem.TaskName, new { htmlAttributes = new { @class = "form-control" } })</div></div></td>';
+                var td2 = '<td><div class="form-group"><div class="col-md-10">@Html.EditorFor(modelItem => modelItem.TaskDescription, new { htmlAttributes = new { @class = "form-control" } })</div></div></td>';
+                var td3 = '<td><div class="form-group"><div class="col-md-10"><div id="sandbox">@Html.EditorFor(modelItem => modelItem.DueDate, new { htmlAttributes = new { @class = "form-control" } })</div></div></div></td>';
+                $("tbody").append('<tr>' + td1 + td2 + td3 + '</tr>');
+                $('#sandbox input').datepicker({
+                    autoclose: true,
+                    todayHighlight: true,
+                    format: "dd-M-yyyy"
+                });
             });
-        });
+
+            function getAllData() {
+                var data = [];
+                $('tbody tr').each(function () {
+                    var TaskName = $(this).find('#TaskName').val();
+                    var TaskDescription = $(this).find('#TaskDescription').val();
+                    var DueDate = $(this).find('#DueDate').val();
+                    var GoalsId = '@ViewBag.goalId';
+                    var MentorId = '@ViewBag.mentorId';
+
+                    var alldata = {
+                        'TaskName': TaskName,
+                        'TaskDescription': TaskDescription,
+                        'DueDate': DueDate,
+                        'GoalsId': GoalsId,
+                        'MentorId': MentorId,
+                    }
+                    //console.log(data);
+                    data.push(alldata);
+                });           
+                return data;
+            }
+
+            $('#btnSubmit').click(function () {
+                var data = JSON.stringify(getAllData());
+                //console.log(data);
+                $.ajax({
+                    url: '/Exercises/Create',
+                    type: 'POST',
+                    dataType: 'json',
+                    contentType: 'application/json; charset=utf-8',
+                    data: JSON.stringify({ 'data': data }),
+                    success: function () {
+                        window.location.replace("/Options/Mentee");
+                    },
+                    error: function () {
+                        window.location.replace("Error/NotFound");
+                    }
+                });
+            });
         </script>
     }
 </body>
