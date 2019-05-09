@@ -1,105 +1,180 @@
 ﻿@model Resilience.Models.Exercise
 
-@{
-    ViewBag.Title = "Create";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    @{
+        ViewBag.title = "Create Tasks for your Goals - Building Resilience";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
 
-<h2>Create</h2>
+    <!-- Font awesome -->
+    <link href="~/Content/font-awesome.css" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link href="~/Content/bootstrap.css" rel="stylesheet">
+    <!-- Slick slider -->
+    <link rel="stylesheet" type="text/css" href="~/Content/slick.css">
+    <!-- Fancybox slider -->
+    <link rel="stylesheet" href="~/Content/jquery.fancybox.css" type="text/css" media="screen" />
+    <!-- Theme color -->
+    <link id="switcher" href="~/Content/default-theme.css" rel="stylesheet">
+    <!-- datepicker -->
+    <link href="~/Content/bootstrap-datepicker3.css" rel="stylesheet" />
 
+    <!-- Main style sheet -->
+    <link href="~/Content/style.css" rel="stylesheet">
 
-@using (Html.BeginForm()) 
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Exercise</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.TaskName, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.TaskName, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.TaskName, "", new { @class = "text-danger" })
-            </div>
-        </div>
+    <!-- Google Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,400italic,300,300italic,500,700' rel='stylesheet' type='text/css'>
+</head>
+<body>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.TaskDescription, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.TaskDescription, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.TaskDescription, "", new { @class = "text-danger" })
-            </div>
-        </div>
+    <h2>Create tasks for your goal - @ViewBag.goalName</h2>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.MentorId, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.MentorId, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.MentorId, "", new { @class = "text-danger" })
-            </div>
-        </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.TaskName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TaskDescription)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DueDate)
+                </th>
+            </tr>
+        </thead>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.DueDate, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.DueDate, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.DueDate, "", new { @class = "text-danger" })
-            </div>
-        </div>
+        <tbody>
+            <tr>
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <td>
+                        <div class="form-group">
+                            @*@Html.LabelFor(model => model.TaskName, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.TaskName, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.TaskName, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </td>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.CompletionDate, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CompletionDate, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.CompletionDate, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                    <td>
+                        <div class="form-group">
+                            @*@Html.LabelFor(model => model.TaskDescription, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.TaskDescription, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.TaskDescription, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </td>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.MentorFeedback, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.MentorFeedback, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.MentorFeedback, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                    <td>
+                        <div class="form-group">                            
+                            <div class="col-md-10">
+                                <div id="sandbox">
+                                    @Html.EditorFor(model => model.DueDate, new { htmlAttributes = new { @class = "form-control" } })
+                                    @*<span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-th"></span>
+                                        </span>*@
+                                </div>
+                                @Html.ValidationMessageFor(model => model.DueDate, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </td>
+                }
+            </tr>
+        </tbody>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.MenteeComments, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.MenteeComments, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.MenteeComments, "", new { @class = "text-danger" })
-            </div>
-        </div>
+        <tfoot>
+            <tr>
+                <td>
+                    <div class="form-group">
+                        <div class="col-md-offset-4 col-md-10">
+                            <input type="button" value="Add a task" class="btnAdd btn btn-default" />
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input id="btnSubmit" type="submit" value="Create" class="btn btn-default" />
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </tfoot>
+    </table>    
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.MenteeRating, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.MenteeRating, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.MenteeRating, "", new { @class = "text-danger" })
-            </div>
-        </div>
+    @section Scripts{
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.GoalsId, "GoalsId", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("GoalsId", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.GoalsId, "", new { @class = "text-danger" })
-            </div>
-        </div>
+        <!-- jQuery library -->
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/jqueryval")
+        <script src="~/Scripts/bootstrap-datepicker.min.js"></script>
+        <script>
+            $('#sandbox input').datepicker({
+                autoclose: true,
+                todayHighlight: true,
+                format: "dd-M-yyyy"
+            });
+        </script> 
+        <script>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
-}
+        $(".btnAdd").click(function () {
+            var td1 = '<td><div class="form-group"><div class="col-md-10">@Html.EditorFor(modelItem => modelItem.TaskName, new { htmlAttributes = new { @class = "form-control" } })</div></div></td>';
+            var td2 = '<td><div class="form-group"><div class="col-md-10">@Html.EditorFor(modelItem => modelItem.TaskDescription, new { htmlAttributes = new { @class = "form-control" } })</div></div></td>';
+            var td3 = '<td><div class="form-group"><div class="col-md-10"><div id="sandbox">@Html.EditorFor(modelItem => modelItem.DueDate, new { htmlAttributes = new { @class = "form-control" } })</div></div></div></td>';
+            $("tbody").append('<tr>' + td1 + td2 + td3 + '</tr>');
+        });
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+        function getAllData() {
+            var data = [];
+            $('tbody tr').each(function () {
+                var TaskName = $(this).find('#TaskName').val();
+                var TaskDescription = $(this).find('#TaskDescription').val();
+                var DueDate = $(this).find('#DueDate').val();
+                var GoalsId = '@ViewBag.goalId';
+                var MentorId = '@ViewBag.mentorId';
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+                var alldata = {
+                    'TaskName': TaskName,
+                    'TaskDescription': TaskDescription,
+                    'DueDate': DueDate,
+                    'GoalsId': GoalsId,
+                    'MentorId': MentorId,
+                }
+                //console.log(data);
+                data.push(alldata);
+            });           
+            return data;
+        }
+
+        $('#btnSubmit').click(function () {
+            var data = JSON.stringify(getAllData());
+            //console.log(data);
+            $.ajax({
+                url: '/Exercises/Create',
+                type: 'POST',
+                dataType: 'json',
+                contentType: 'application/json; charset=utf-8',
+                data: JSON.stringify({ 'data': data }),
+                success: function () {
+                    window.location.replace("/Options/Mentee");
+                },
+                error: function () {
+                    alert("Error while inserting data");
+                }
+            });
+        });
+        </script>
+    }
+</body>
+</html>

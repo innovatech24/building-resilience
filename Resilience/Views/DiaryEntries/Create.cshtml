@@ -112,5 +112,11 @@
 
         <!-- Custom js -->
         <script src="~/Scripts/custom.js"></script>
+        <script type="text/javascript">
+            // Enable navigation prompt
+            window.onbeforeunload = function() {
+                return true;
+            };
+        </script>
 </body>
 </html>

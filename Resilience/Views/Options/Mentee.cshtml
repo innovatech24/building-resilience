@@ -113,16 +113,21 @@
         <div class="mentee-ask">
             <h2>What do you want to do?</h2>
         </div>
-            <button class="button1">
-                @Html.ActionLink("Add/Change your mentor", "ChooseMentor", "Users")
-            </button>
-            <button class="button2">
-                    @Html.ActionLink("Write a new diary entry", "Create", "DiaryEntries")
-            </button>
-            <button class="button3">
-                    @Html.ActionLink("View feedback from your mentor", "ViewFeedback", "DiaryEntries")
-            </button>
+        <button class="button1">
+            @Html.ActionLink("Add/Change your mentor", "ChooseMentor", "Users")
+        </button>
+        <button class="button4">
+            @Html.ActionLink("Create your goals and tasks", "Create", "Goals")
+        </button>
+        <button class="button2">
+            @Html.ActionLink("Write a new diary entry", "Create", "DiaryEntries")
+        </button>
+        <button class="button3">
+            @Html.ActionLink("View feedback from your mentor", "ViewFeedback", "DiaryEntries")
+        </button>
+
     </div>
+
     <!-- jQuery library -->
     <script src="~/Scripts/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -140,5 +145,10 @@
     <script src="~/Scripts/choice.js"></script>
     <!-- Custom js -->
     <script src="~/Scripts/custom.js"></script>
+    <script type="text/javascript">
+        if ("@TempData["UserMessage"]" != "") {
+            alert("@TempData["UserMessage"]");
+        };
+    </script>
 </body>
 </html>

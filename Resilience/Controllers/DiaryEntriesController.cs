@@ -219,6 +219,18 @@ namespace Resilience.Controllers
             return View(diaryEntries);
         }
 
+        [Authorize(Roles = "Mentee")]
+        [HttpPost]
+        public void ViewFeedback(int Id, int rate)
+        {
+            DiaryEntries diaryEntries = db.DiaryEntries.Find(Id);
+            diaryEntries.MenteeFeedback = rate;
+            db.Entry(diaryEntries).State = EntityState.Modified;
+            db.SaveChanges();
+
+            //return View(diaryEntries);
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

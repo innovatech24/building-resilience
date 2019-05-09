@@ -6,6 +6,9 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using Newtonsoft.Json;
 using Resilience.Models;
 
 namespace Resilience.Controllers
@@ -37,28 +40,35 @@ namespace Resilience.Controllers
         }
 
         // GET: Exercises/Create
-        public ActionResult Create()
+        public ActionResult Create(int Id)
         {
-            ViewBag.GoalsId = new SelectList(db.Goals, "Id", "GoalName");
+            ViewBag.GoalsId = new SelectList(db.Goals, Id, "GoalName");
+            var goal = db.Goals.Find(Id);
+            ViewBag.goalName = goal.GoalName;
+            ViewBag.goalId = goal.Id;
+            ViewBag.mentorId = goal.MentorId;
             return View();
         }
 
         // POST: Exercises/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,TaskName,TaskDescription,MentorId,DueDate,CompletionDate,MentorFeedback,MenteeComments,MenteeRating,GoalsId")] Exercise exercise)
+        [HttpPost]      
+        public ActionResult Create(string data)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.Exercises.Add(exercise);
+                var serializedData = JsonConvert.DeserializeObject<List<Exercise>>(data);
+                foreach (var record in serializedData)
+                {                   
+                    record.CompletionDate = DateTime.Now;
+                    db.Exercises.Add(record);
+                }
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return Json("success");
             }
-
-            ViewBag.GoalsId = new SelectList(db.Goals, "Id", "GoalName", exercise.GoalsId);
-            return View(exercise);
+            catch
+            {
+                return Json("error");
+            }
         }
 
         // GET: Exercises/Edit/5

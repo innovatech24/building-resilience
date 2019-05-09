@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
+using System.Dynamic;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Resilience.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
+using System.Web.Script.Serialization;
 
 namespace Resilience.Controllers
 {
@@ -165,11 +167,15 @@ namespace Resilience.Controllers
                 }
                 var UserManager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
                 var users = UserManager.FindByEmail(mentor.Email);
-                var userId = users.Id;
+                
                 if (users == null)
                 {
-                    return HttpNotFound();
+                    // Type options : info, danger, success, warning
+                    TempData["UserMessage"] = new JavaScriptSerializer().Serialize(new { Type = "danger", Title = "Error:", Message = "E-mail not found" });
+
+                    return View();
                 }
+                var userId = users.Id;
                 var roles = UserManager.GetRoles(userId);
                 if (roles.Contains("Mentor"))
                 {
@@ -178,11 +184,19 @@ namespace Resilience.Controllers
                     currentUser.MentorId = users.Id;
                     db.Entry(currentUser).State = EntityState.Modified;
                     db.SaveChanges();
-                    return RedirectToAction("Mentee", "Options");
+
+                    // Type options : info, danger, success, warning
+                    TempData["UserMessage"] = new JavaScriptSerializer().Serialize(new { Type="success", Title = "Success!", Message = "Mentor added correctly!" });
+                    
+                    //return RedirectToAction("Mentee", "Options");
+                    return View();
                 }
                 else
                 {
-                    return HttpNotFound();
+                    // Type options : info, danger, success, warning
+                    TempData["UserMessage"] = new JavaScriptSerializer().Serialize(new { Type = "warning", Title = "Warning:", Message = "E-mail not registered as mentor" });
+
+                    return View();
                 }                
             }
             return View();
@@ -209,11 +223,15 @@ namespace Resilience.Controllers
                 }
                 var UserManager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
                 var users = UserManager.FindByEmail(mentee.Email);
-                var userId = users.Id;
+                
                 if (users == null)
                 {
-                    return HttpNotFound();
+                    // Type options : info, danger, success, warning
+                    TempData["UserMessage"] = new JavaScriptSerializer().Serialize(new { Type = "danger", Title = "Error:", Message = "E-mail not found" });
+
+                    return View();
                 }
+                var userId = users.Id;
                 var roles = UserManager.GetRoles(userId);
                 if(roles.Contains("Mentee"))
                 {
@@ -223,7 +241,12 @@ namespace Resilience.Controllers
                     menteeUser.MentorId = currentUser.Id;
                     db.Entry(currentUser).State = EntityState.Modified;
                     db.SaveChanges();
-                    return RedirectToAction("Mentor", "Options");
+
+                    // Type options : info, danger, success, warning
+                    TempData["UserMessage"] = new JavaScriptSerializer().Serialize(new { Type = "success", Title = "Success!", Message = "Mentee added correctly!" });
+
+                    //return RedirectToAction("Mentee", "Options");
+                    return View();
                 }
                 else
                 {
@@ -268,6 +291,27 @@ namespace Resilience.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        [Authorize]
+        public string getUser(int id)
+        {
+            Users user = db.Users.Find(id);
+
+            dynamic userObj = new ExpandoObject(); ;
+            userObj.user = new { user.FirstName, user.LastName };
+
+            if (user.MentorId != null)
+            {
+                Users mentor = db.Users.Find(user.MentorId);
+                userObj.mentor = new {mentor.FirstName,mentor.LastName,mentor.EmailAddress };
+            }
+            else
+            {
+                userObj.mentor = null;
+            }
+
+            return (new JavaScriptSerializer().Serialize(new { User = userObj.user, Mentor = userObj.mentor }));
         }
     }
 }

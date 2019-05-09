@@ -17,7 +17,8 @@ namespace Resilience.Controllers
     public class AccountController : Controller
     {
         private ApplicationSignInManager _signInManager;
-        private ApplicationUserManager _userManager;       
+        private ApplicationUserManager _userManager;
+        private DiaryEntriesContainer db = new DiaryEntriesContainer();
 
         public AccountController()
         {
@@ -81,7 +82,8 @@ namespace Resilience.Controllers
             {
                 case SignInStatus.Success:
                     var currentuse = UserManager.FindByEmail(model.Email);
-                    //ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId<int>());
+                    var user = db.Users.Find(currentuse.Id);
+                    var claim = await UserManager.AddClaimAsync(currentuse.Id, new Claim("name", user.FirstName));                    
                     var roles = UserManager.GetRoles(currentuse.Id);
                     
                     if (roles.Count == 2)
