@@ -94,7 +94,7 @@
             <hr />
             <div class="form-group">
                 <div class="col-md-offset-1 col-md-10">
-                    <input type="submit" value="Create" class="btn btn-default" />
+                    <input type="submit" value="Create" class="btn btn-default" onclick="btnSubmit()"/>
                 </div>
             </div>
         </div>
@@ -128,11 +128,6 @@
     <!-- Custom js -->
     <script src="~/Scripts/custom.js"></script>
     <script src="~/Scripts/DiaryEntryCreate.js"></script>
-    <script type="text/javascript">
-        // Enable navigation prompt
-        window.onbeforeunload = function () {
-            return true;
-        };
-    </script>
+    
 </body>
 </html>
