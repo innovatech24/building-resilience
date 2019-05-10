@@ -72,6 +72,7 @@
 
             @foreach (var item in Model)
             {
+                
                 <tr>
                     <td>
                         @Html.DisplayFor(modelItem => item.Date)
@@ -93,7 +94,7 @@
                         </td>
                     }
                     <td>
-                        @Html.DisplayFor(modelItem => item.MentorId)
+                        @item.User.FirstName @item.User.LastName
                     </td>
                     @if (item.MentorFeedback == null)
                     {
@@ -135,6 +136,7 @@
         <!-- AM CHARTS-->
         <script src="~/Scripts/custom.js"></script>
         <script src="~/Scripts/ViewFeedback_.js"></script>
+
 </body>
 </html>
 
