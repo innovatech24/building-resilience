@@ -131,7 +131,7 @@ function highlightText(textObj, doit) {
         });
     }
     else {
-        $(textObj).HighlightWithinTextarea('destroy');
+        $(textObj).highlightWithinTextarea('destroy');
     };
 
 };

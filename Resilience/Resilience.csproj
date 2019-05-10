@@ -369,6 +369,7 @@
     <Content Include="Scripts\custom.js" />
     <Content Include="Scripts\Dashboard.js" />
     <Content Include="Scripts\DiaryEntryCreate.js" />
+    <Content Include="Scripts\DiaryEntryView.js" />
     <Content Include="Scripts\esm\popper-utils.js" />
     <Content Include="Scripts\esm\popper-utils.min.js" />
     <Content Include="Scripts\esm\popper.js" />
@@ -448,7 +449,6 @@
     <Content Include="Scripts\popper-utils.min.js" />
     <Content Include="Scripts\popper.js" />
     <Content Include="Scripts\popper.min.js" />
-    <Content Include="Scripts\Sentiment.js" />
     <Content Include="Scripts\slick.js" />
     <Content Include="Scripts\umd\popper-utils.js" />
     <Content Include="Scripts\umd\popper-utils.min.js" />

@@ -66,13 +66,13 @@
         <table class="table">
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.Entry)
+                    Diary
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.MentorFeedback)
+                    Feeling
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.MenteeFeedback)
+                    Your feedback
                 </th>
             </tr>
 
@@ -81,8 +81,23 @@
                 <tr>
                     <td>
                         @*@Html.TextBoxFor(modelItem => item.Entry, new { @class = "entry", @readonly = "readonly" })*@
-                        <textarea class="entry" rows=15 cols=100>@item.Entry</textarea>
+                        <textarea id="entry" rows=15 cols=100>@item.Entry</textarea>
+                        <input id="highlight" type="checkbox">Highlight
                     </td>
+                    @if (item.MenteeFeedback == null)
+                    {
+                        <td>
+                            <text>
+                                Your mentee did not share it.
+                            </text>
+                        </td>
+                    }
+                    else
+                    {
+                        <td width="16%">
+                            <div id="rating" rate=@item.MenteeFeedback></div>
+                        </td>
+                    }
                     @if (item.MentorFeedback == null)
                     {
                         <td>
@@ -96,28 +111,7 @@
                         </td>
                     }
 
-                    @if (item.MentorFeedback == null)
-                    {
-                        <td>
-                            <text>
-                                You haven't given feedback that can be rated.
-                            </text>
-                        </td>
-                    }
-                    else if (item.MenteeFeedback == null)
-                    {
-                        <td>
-                            <text>
-                                Your mentee has not given feedback yet.
-                            </text>
-                        </td>
-                    }
-                    else
-                    {
-                        <td>
-                            @Html.DisplayFor(modelItem => item.MenteeFeedback)
-                        </td>
-                    }
+
                     @*<td>
                         @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
                         @Html.ActionLink("Details", "Details", new { id = item.Id }) |
@@ -154,11 +148,13 @@
         <script type="text/javascript" src="~/Scripts/AMcharts/kelly.js"></script>
         <!-- HIGHLIGHTING TEXT-->
         <script type="text/javascript" src="~/Scripts/jquery.highlight-within-textarea.js"></script>
+        <!-- Emoticon rating-->
+        <script type="text/javascript" src="~/Scripts/emoticon_rating.js"></script>
         <!-- Custom js -->
         <script type="text/javascript" src="~/Scripts/Additional_functions.js"></script>
-        <script src="~/Scripts/Sentiment.js"></script>
-        <script src="~/Scripts/custom.js"></script>
-        
+        <script type="text/javascript" src="~/Scripts/DiaryEntryView.js"></script>
+        <script type="text/javascript" src="~/Scripts/custom.js"></script>
+
 
 
     </div>
