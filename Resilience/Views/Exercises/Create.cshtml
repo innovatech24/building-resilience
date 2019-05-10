@@ -39,13 +39,16 @@
         <thead>
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.TaskName)
+                    @*@Html.DisplayNameFor(model => model.TaskName)*@
+                    Task name
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.TaskDescription)
+                    @*@Html.DisplayNameFor(model => model.TaskDescription)*@
+                    Description
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.DueDate)
+                    @*@Html.DisplayNameFor(model => model.DueDate)*@
+                    Due date
                 </th>
             </tr>
         </thead>
@@ -77,10 +80,10 @@
                     </td>
 
                     <td>
-                        <div class="form-group">                            
+                        <div class="form-group">
                             <div class="col-md-10">
                                 <div id="sandbox">
-                                    @Html.EditorFor(model => model.DueDate, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.EditorFor(model => model.DueDate, new { htmlAttributes = new { @class = "form-control" ,@onchange="dateChange(this)"} })
                                     @*<span class="input-group-addon">
                                             <span class="glyphicon glyphicon-th"></span>
                                         </span>*@
@@ -111,7 +114,7 @@
                 </td>
             </tr>
         </tfoot>
-    </table>    
+    </table>
 
     @section Scripts{
 
@@ -125,13 +128,13 @@
                 todayHighlight: true,
                 format: "dd-M-yyyy"
             });
-        </script> 
+        </script>
         <script>
             $(".btnAdd").click(function () {
                 $('#sandbox').datepicker('destroy');
                 var td1 = '<td><div class="form-group"><div class="col-md-10">@Html.EditorFor(modelItem => modelItem.TaskName, new { htmlAttributes = new { @class = "form-control" } })</div></div></td>';
                 var td2 = '<td><div class="form-group"><div class="col-md-10">@Html.EditorFor(modelItem => modelItem.TaskDescription, new { htmlAttributes = new { @class = "form-control" } })</div></div></td>';
-                var td3 = '<td><div class="form-group"><div class="col-md-10"><div id="sandbox">@Html.EditorFor(modelItem => modelItem.DueDate, new { htmlAttributes = new { @class = "form-control" } })</div></div></div></td>';
+                var td3 = '<td><div class="form-group"><div class="col-md-10"><div id="sandbox">@Html.EditorFor(modelItem => modelItem.DueDate, new { htmlAttributes = new { @class = "form-control" ,@onchange="dateChange(this)"} })</div></div></div></td>';
                 $("tbody").append('<tr>' + td1 + td2 + td3 + '</tr>');
                 $('#sandbox input').datepicker({
                     autoclose: true,
@@ -158,9 +161,20 @@
                     }
                     //console.log(data);
                     data.push(alldata);
-                });           
+                });
                 return data;
             }
+
+            function dateChange(element) {
+                var goalDate = new Date("@ViewBag.DueDate");
+                var taskDate = new Date(element.value);
+
+                if (taskDate > goalDate) {
+                    alert("Task date can't be after goal date");
+                    element.value = "";
+                    element.focus();
+                };
+            };
 
             $('#btnSubmit').click(function () {
                 var data = JSON.stringify(getAllData());
@@ -181,5 +195,6 @@
             });
         </script>
     }
+    
 </body>
 </html>

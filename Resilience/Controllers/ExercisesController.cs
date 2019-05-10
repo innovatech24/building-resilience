@@ -47,6 +47,8 @@ namespace Resilience.Controllers
             ViewBag.goalName = goal.GoalName;
             ViewBag.goalId = goal.Id;
             ViewBag.mentorId = goal.MentorId;
+            ViewBag.DueDate = goal.DueDate;
+
             return View();
         }
 
