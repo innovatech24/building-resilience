@@ -4,7 +4,7 @@ $(document).ready(function () {
     //highlightText("#entry", true);
 
     // Create gauge plot in div 'gaugediv'
-    window.gauge = createGauge(0, "gaugediv");
+    window.gauge = createGauge(0, "gaugediv","Sentiment",true);
 
     // Set value of the plot to the sentiment score value
     updateGaugeValue(window.gauge, sentiment);

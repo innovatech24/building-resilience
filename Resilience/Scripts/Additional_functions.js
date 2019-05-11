@@ -1,6 +1,6 @@
 ﻿
 // Creates Gauge plot. Receives initial value for the gauge and the div id where to put it. It returns an object with the chart and the hand.
-function createGauge(value, name_div) {
+function createGauge(value, name_div,Title,putLegend) {
 
     // Themes begin
     am4core.useTheme(am4themes_kelly);
@@ -45,21 +45,23 @@ function createGauge(value, name_div) {
     range2.axisFill.fill = am4core.color("green");
     range2.axisFill.zIndex = -1;
 
-    var legend = new am4charts.Legend();
-    legend.isMeasured = false;
-    legend.y = am4core.percent(100);
-    legend.verticalCenter = "bottom";
-    legend.parent = chart.chartContainer;
-    legend.data = [{
-        "name": "Negative",
-        "fill": chart.colors.getIndex(4)
-    }, {
-        "name": "Positive",
-        "fill": am4core.color("green")
-    }];
+    if (putLegend) {
+        var legend = new am4charts.Legend();
+        legend.isMeasured = false;
+        legend.y = am4core.percent(100);
+        legend.verticalCenter = "bottom";
+        legend.parent = chart.chartContainer;
+        legend.data = [{
+            "name": "Negative",
+            "fill": chart.colors.getIndex(4)
+        }, {
+            "name": "Positive",
+            "fill": am4core.color("green")
+        }];
+    };
 
     var title = chart.titles.create();
-    title.text = "Sentiment";
+    title.text = Title;
     title.fontSize = 25;
     title.marginBottom = 0;
 
@@ -139,4 +141,8 @@ function highlightText(textObj, doit) {
 // Change value of the gauge given a fixed value
 function updateGaugeValue(gauge_, val) {
     gauge_.chart.setTimeout(() => { gauge_.hand.showValue(val, 1000, am4core.ease.cubicOut) }, 500);
+};
+
+function intstringToDate(val) {
+    return (new Date(parseInt(val.substr(6))))
 };
