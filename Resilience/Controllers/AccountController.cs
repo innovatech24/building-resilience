@@ -85,6 +85,8 @@ namespace Resilience.Controllers
                     var user = db.Users.Find(currentuse.Id);
                     var claim = await UserManager.AddClaimAsync(currentuse.Id, new Claim("name", user.FirstName));                    
                     var roles = UserManager.GetRoles(currentuse.Id);
+                    EmailController mail = new EmailController();
+                    mail.Email();
                     
                     if (roles.Count == 2)
                     {
