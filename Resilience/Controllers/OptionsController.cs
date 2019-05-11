@@ -9,6 +9,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Data.SqlClient;
+using MvcSiteMapProvider.Web.Mvc.Filters;
 
 namespace Resilience.Controllers
 {
@@ -81,6 +82,7 @@ namespace Resilience.Controllers
             return View();
         }
 
+        [SiteMapTitle("title")]
         [Authorize(Roles = "Mentor")]        
         public ActionResult Landingpage(int Id)
         {
@@ -88,6 +90,7 @@ namespace Resilience.Controllers
             return View();
         }
 
+        [SiteMapTitle("title")]
         [Authorize(Roles = "Mentor")]
         public ActionResult Progress(int Id)
         {
@@ -96,6 +99,7 @@ namespace Resilience.Controllers
             return View(user);
         }
 
+        [SiteMapTitle("title")]
         [Authorize(Roles = "Mentee")]
         public ActionResult MenteeProgress()
         {

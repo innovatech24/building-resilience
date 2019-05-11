@@ -9,15 +9,21 @@
     <mvcSiteMapNode title="Dual View" controller="Options" action="Choice"/>
     <mvcSiteMapNode title="Mentor View" controller="Options" action="Mentor">
       <mvcSiteMapNode title="Add Mentee" controller="Users" action="ChooseMentee"/>
-      <mvcSiteMapNode title="Check Mentees Dashboard" controller="DiaryEntries" action="Dashboard">
-        <mvcSiteMapNode title="View Diary Entries" controller="DiaryEntries" action="ViewUser" preservedRouteParameters="id"/>
+      <mvcSiteMapNode title="Select Mentees Dashboard" controller="DiaryEntries" action="Dashboard">
+        <mvcSiteMapNode title="View Mentees Progress" controller="Options" action="Landingpage" preservedRouteParameters="id">
+          <mvcSiteMapNode title="View Goals and Tasks" controller="Goals" action="MentorView" preservedRouteParameters="id"/>
+          <mvcSiteMapNode title="View Diary Entries" controller="DiaryEntries" action="ViewUser" preservedRouteParameters="id"/>
+          <mvcSiteMapNode title="Progress Summary" controller="Options" action="Progress" preservedRouteParameters="id"/>
+        </mvcSiteMapNode>
       </mvcSiteMapNode>
     </mvcSiteMapNode>
     <mvcSiteMapNode title="Mentee View" controller="Options" action="Mentee">
       <mvcSiteMapNode title="Add Mentor" controller="Users" action="ChooseMentor"/>
       <mvcSiteMapNode title="Write Diary Entry" controller="DiaryEntries" action="Create"/>
+      <mvcSiteMapNode title="Mentor Not Added Error Message" controller="Error" action="NoMentorMapped"/>
       <mvcSiteMapNode title="Create Goals and Tasks" controller="Goals" action="Create"/>
       <mvcSiteMapNode title="View Feedback" controller="DiaryEntries" action="ViewFeedback"/>
+      <mvcSiteMapNode title="Progress Summary" controller="Options" action="MenteeProgress"/>
     </mvcSiteMapNode>
   </mvcSiteMapNode>
 </mvcSiteMap>

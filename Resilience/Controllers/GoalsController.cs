@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
+using MvcSiteMapProvider.Web.Mvc.Filters;
 using Resilience.Models;
 
 namespace Resilience.Controllers
@@ -127,6 +128,7 @@ namespace Resilience.Controllers
             return RedirectToAction("Index");
         }
 
+        [SiteMapTitle("title")]
         public ActionResult MentorView(int Id)
         {            
             var goals = db.Goals.Where(g => g.UsersId == Id).ToList();
