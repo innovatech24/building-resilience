@@ -41,9 +41,6 @@
                 @Html.DisplayNameFor(model => model.TaskDescription)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.MentorId)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.DueDate)
             </th>
             <th>
@@ -58,69 +55,70 @@
             <th>
                 @Html.DisplayNameFor(model => model.MentorFeedback)
             </th>
+            <th></th>
         </tr>
 
         @foreach (var item in Model)
         {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.TaskName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TaskDescription)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MentorId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DueDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CompletionDate)
-            </td>
-            @if (item.MenteeComments == null)
-            {
+            <tr>
                 <td>
-                    <text>
-                        Your mentee hasn't left any comments yet. They would typically do this once they complete the goal.
-                    </text>
+                    @Html.DisplayFor(modelItem => item.TaskName)
                 </td>
-            }
-            else
-            {
                 <td>
-                    @Html.DisplayFor(modelItem => item.MenteeComments)
+                    @Html.DisplayFor(modelItem => item.TaskDescription)
                 </td>
-            }
-            @if (item.MenteeRating == null)
-            {
                 <td>
-                    <text>
-                        Your mentee hasn't told us how they felt with this goal. They would typically do this once they complete the goal.
-                    </text>
+                    @Html.DisplayFor(modelItem => item.DueDate)
                 </td>
-            }
-            else
-            {
                 <td>
-                    @Html.DisplayFor(modelItem => item.MenteeRating)
+                    @Html.DisplayFor(modelItem => item.CompletionDate)
                 </td>
-            }
-            @if (item.MentorFeedback == null)
-            {
+                @if (item.MenteeComments == null)
+                {
+                    <td>
+                        <text>
+                            Your mentee hasn't left any comments yet. They would typically do this once they complete the goal.
+                        </text>
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MenteeComments)
+                    </td>
+                }
+                @if (item.MenteeRating == null)
+                {
+                    <td>
+                        <text>
+                            Your mentee hasn't told us how they felt with this goal. They would typically do this once they complete the goal.
+                        </text>
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MenteeRating)
+                    </td>
+                }
+                @if (item.MentorFeedback == null)
+                {
+                    <td>
+                        <text>
+                            You haven't given feedback yet. You can give feedback once the goal is completed.
+                        </text>
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MentorFeedback)
+                    </td>
+                }
                 <td>
-                    <text>
-                        You haven't given feedback yet. You can give feedback once the goal is completed.
-                    </text>
+                    @Html.ActionLink("Propose change", "Edit", "Exercises", new { id = item.Id }, null)
                 </td>
-            }
-            else
-            {
-                <td>
-                    @Html.DisplayFor(modelItem => item.MentorFeedback)
-                </td>
-            }
-        </tr>
+            </tr>
         }
 
     </table>
