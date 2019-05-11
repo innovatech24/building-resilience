@@ -8,9 +8,11 @@ namespace Resilience.Controllers
 {
     public class EmailController : Controller
     {
+
+        var apiKey = Environment.GetEnvironmentVariable("SENDGRID_KEY");
+
         public void Email()
-        {
-            var apiKey = Environment.GetEnvironmentVariable("SENDGRID_KEY");
+        {            
             var client = new SendGridClient(apiKey);
             var from = new EmailAddress("no-reply@buildingresilience.tk", "Building Resilience");
             var subject = "Sending with SendGrid is Fun";
@@ -20,5 +22,7 @@ namespace Resilience.Controllers
             var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
             var response = client.SendEmailAsync(msg);
         }
+
+        public void
     }
 }
