@@ -53,7 +53,7 @@
             transition-duration: 0.4s;
             cursor: pointer;
         }
-            .button1 {
+        .button1 {
             width: 20%;
             height: 10%;
             background-color: transparent;
@@ -64,6 +64,7 @@
             position: absolute;
             top: 70%;
             left: 10%;
+            font-size: 1vw;
         }
         .button1:hover {
             background-color: white;
@@ -80,6 +81,7 @@
             position: absolute;
             top: 70%;
             left: 40%;
+            font-size: 1vw;
         }
             .button2:hover {
                 background-color: white;
@@ -103,6 +105,9 @@
             @Html.ActionLink("Back to options", "Mentee", "Options")
         </button>
     </div>
+    <script src="~/Scripts/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="~/Scripts/bootstrap.js"></script>
     <script src="~/Scripts/choice.js"></script>
 </body>
 </html>

@@ -35,45 +35,50 @@
         Layout = "~/Views/Shared/_Layout.cshtml";
     }
     <style>
+        html, body {
+            height: 100%;
+            width: 100%;
+        }
         .view-diary-entry {
-            height: 800px;
-            background: url('../../Images/atmosphere-background-bright-19670.jpg') no-repeat center;
-            background-size: cover;
+            height:auto;
+            background: url('../../Images/atmosphere-background-bright-19670.jpg') center;
+            background-repeat: repeat-y;
         }
         </style>
 </head>
 <body>
     <div class="view-diary-entry">
         <h2>View Diary Entries</h2>
-
-        <table class="table">
-            <tr>
-                <th>
-                    @Html.DisplayText("No.")
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Date)
-                </th>
-            </tr>
-
-            @{ int rowNo = 0; }
-
-            @foreach (var item in Model)
-            {
+        <div style="overflow-x:auto;">
+            <table class="table">
                 <tr>
-                    <td>
-                        @(rowNo += 1)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Date)
-                    </td>
-
-                    <td>
-                        @Html.ActionLink("View Entry", "View", new { id = item.Id })
-                    </td>
+                    <th>
+                        @Html.DisplayText("No.")
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Date)
+                    </th>
                 </tr>
-            }
-        </table>
+
+                @{ int rowNo = 0; }
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @(rowNo += 1)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Date)
+                        </td>
+
+                        <td>
+                            @Html.ActionLink("View Entry", "View", new { id = item.Id })
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
         </div>
         <!-- jQuery library -->
         <script src="~/Scripts/jquery.min.js"></script>

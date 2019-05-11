@@ -36,25 +36,29 @@
         Layout = "~/Views/Shared/_Layout.cshtml";
     }
     <style>
+        html, body {
+            height: 100%;
+            width: 100%;
+        }
         .view-diary-detail {
-            height: 900px;
-            background: url('../../Images/atmosphere-background-bright-19670.jpg') no-repeat center;
-            background-size: cover;
+            height: auto;
+            background: url('../../Images/atmosphere-background-bright-19670.jpg') center;
+            background-repeat: repeat-y;
         }
 
         .long-textbox {
-            height: 350px;
-            width: 750px;
+            height: 20%;
+            width: 40%;
             white-space: pre-wrap;
         }
 
         input, select, textarea {
-            max-width: 1000px;
+            max-width: 100%;
         }
 
         .gaugediv {
-            width: 800px;
-            height: 300px;
+            width: 50%;
+            height: 40%;
         }
 
     </style>
@@ -62,70 +66,76 @@
 <body>
     <div class="view-diary-detail">
         <h2>View</h2>
-
-        <table class="table">
-            <tr>
-                <th>
-                    Diary
-                </th>
-                <th>
-                    Feeling
-                </th>
-                <th>
-                    Your feedback
-                </th>
-            </tr>
-
-            @foreach (var item in Model)
-            {
+        <div style="overflow-x:auto;">
+            <table class="table">
                 <tr>
-                    <td>
-                        @*@Html.TextBoxFor(modelItem => item.Entry, new { @class = "entry", @readonly = "readonly" })*@
-                        <textarea id="entry" rows=15 cols=100>@item.Entry</textarea>
-                        <input id="highlight" type="checkbox">Highlight
-                    </td>
-                    @if (item.MenteeFeedback == null)
-                    {
-                        <td>
-                            <text>
-                                Your mentee did not share it.
-                            </text>
-                        </td>
-                    }
-                    else
-                    {
-                        <td width="16%">
-                            <div id="rating" rate=@item.MenteeFeedback></div>
-                        </td>
-                    }
-                    @if (item.MentorFeedback == null)
-                    {
-                        <td>
-                            @Html.ActionLink("Give Feedback", "Feedback", new { id = item.Id }, null)
-                        </td>
-                    }
-                    else
-                    {
-                        <td>
-                            @Html.DisplayFor(modelItem => item.MentorFeedback)
-                        </td>
-                    }
+                    <th>
+                        @Html.DisplayNameFor(model => model.Entry)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.MentorFeedback)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.MenteeFeedback)
+                    </th>
+                </tr>
 
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @*@Html.TextBoxFor(modelItem => item.Entry, new { @class = "entry", @readonly = "readonly" })*@
+                            <textarea class="entry" rows=15 cols=100 readonly ="readonly">@item.Entry</textarea>
+                        </td>
+                        @if (item.MentorFeedback == null)
+                        {
+                            <td>
+                                @Html.ActionLink("Give Feedback", "Feedback", new { id = item.Id }, null)
+                            </td>
+                        }
+                        else
+                        {
+                            <td>
+                                @Html.DisplayFor(modelItem => item.MentorFeedback)
+                            </td>
+                        }
 
-                    @*<td>
+                        @if (item.MentorFeedback == null)
+                        {
+                            <td>
+                                <text>
+                                    You haven't given feedback that can be rated.
+                                </text>
+                            </td>
+                        }
+                        else if (item.MenteeFeedback == null)
+                        {
+                            <td>
+                                <text>
+                                    Your mentee has not given feedback yet.
+                                </text>
+                            </td>
+                        }
+                        else
+                        {
+                            <td>
+                                @Html.DisplayFor(modelItem => item.MenteeFeedback)
+                            </td>
+                        }
+                        @*<td>
                         @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
                         @Html.ActionLink("Details", "Details", new { id = item.Id }) |
                         @Html.ActionLink("Delete", "Delete", new { id = item.Id })
                     </td>*@
-                </tr>
-            }
-        </table>
+                    </tr>
+                }
+            </table>
+        </div>
+            <div class="gaugediv"></div>
 
-        <div class="gaugediv"></div>
-
-        <script type="text/javascript">
+            <script type="text/javascript">
             var sentiment = @Html.Raw(Json.Encode(Model.ElementAt(0).SentimentScore));
-        </script>
+            </script>
 
         <!-- jQuery library -->
         <script src="~/Scripts/jquery.min.js"></script>
@@ -157,6 +167,6 @@
 
 
 
-    </div>
+        </div>
 </body>
 </html>
