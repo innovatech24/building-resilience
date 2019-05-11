@@ -176,6 +176,7 @@ namespace Resilience.Controllers
                     return View();
                 }
                 var userId = users.Id;
+                var mentorUser = db.Users.Find(userId);
                 var roles = UserManager.GetRoles(userId);
                 if (roles.Contains("Mentor"))
                 {
@@ -184,9 +185,12 @@ namespace Resilience.Controllers
                     currentUser.MentorId = users.Id;
                     db.Entry(currentUser).State = EntityState.Modified;
                     db.SaveChanges();
+                    EmailController mail = new EmailController();
+                    mail.MentorConfirmation(mentor.Email, currentUser.FirstName, currentUser.LastName, mentorUser.FirstName);
 
                     // Type options : info, danger, success, warning
                     TempData["UserMessage"] = new JavaScriptSerializer().Serialize(new { Type="success", Title = "Success!", Message = "Mentor added correctly!" });
+
                     
                     //return RedirectToAction("Mentee", "Options");
                     return View();
@@ -231,7 +235,7 @@ namespace Resilience.Controllers
 
                     return View();
                 }
-                var userId = users.Id;
+                var userId = users.Id;              
                 var roles = UserManager.GetRoles(userId);
                 if(roles.Contains("Mentee"))
                 {
@@ -241,6 +245,8 @@ namespace Resilience.Controllers
                     menteeUser.MentorId = currentUser.Id;
                     db.Entry(currentUser).State = EntityState.Modified;
                     db.SaveChanges();
+                    EmailController mail = new EmailController();
+                    mail.MenteeConfirmation(mentee.Email, currentUser.FirstName, currentUser.LastName , menteeUser.FirstName);
 
                     // Type options : info, danger, success, warning
                     TempData["UserMessage"] = new JavaScriptSerializer().Serialize(new { Type = "success", Title = "Success!", Message = "Mentee added correctly!" });

@@ -66,12 +66,23 @@ namespace Resilience.Controllers
             try
             {
                 var serializedData = JsonConvert.DeserializeObject<List<Exercise>>(data);
+                var mentor = 0;
+                var id = 0;
                 foreach (var record in serializedData)
                 {                   
                     record.CompletionDate = new DateTime(1990, 2, 10);
                     db.Exercises.Add(record);
+                    mentor = record.MentorId.Value;
+                    id = record.GoalsId;
                 }
                 db.SaveChanges();
+                var goals = db.Goals.Find(id);
+                var mentee = db.Users.Find(goals.UsersId);
+                var UserManager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+                var mentorUser = UserManager.FindById(mentor);
+                var ment = db.Users.Find(mentor);
+                EmailController mail = new EmailController();
+                mail.NewTask(mentorUser.Email, ment.FirstName, mentee.FirstName, mentee.LastName);
                 return Json("success");
             }
             catch
@@ -107,6 +118,14 @@ namespace Resilience.Controllers
             {
                 db.Entry(exercise).State = EntityState.Modified;
                 db.SaveChanges();
+                var goals = db.Goals.Find(exercise.Id);
+                var mentee = db.Users.Find(goals.UsersId);
+                var UserManager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+                var menteeUser = UserManager.FindById(mentee.Id);
+                var mentorUser = UserManager.FindById(goals.MentorId);
+                var ment = db.Users.Find(mentorUser.Id);
+                EmailController mail = new EmailController();
+                mail.EditTask(menteeUser.Email, mentee.FirstName, ment.FirstName, ment.LastName);
                 return RedirectToAction("Index", new { id = exercise.GoalsId });
             }
             ViewBag.GoalsId = new SelectList(db.Goals, "Id", "GoalName", exercise.GoalsId);

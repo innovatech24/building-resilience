@@ -111,6 +111,11 @@ namespace Resilience.Controllers
             {
                 db.DiaryEntries.Add(diaryEntries);
                 db.SaveChanges();
+                EmailController mail = new EmailController();
+                var UserManager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+                var users = UserManager.FindById(diaryEntries.MentorId);
+                Users mentor = db.Users.Find(users.Id);
+                mail.NewDiary(users.Email, mentor.FirstName, currentUser.FirstName, currentUser.LastName);
                 return RedirectToAction("ViewFeedback");
             }
 
@@ -209,6 +214,12 @@ namespace Resilience.Controllers
                 diaryEntries.MentorFeedback = mentfeedback.MentorFeedback;
                 db.Entry(diaryEntries).State = EntityState.Modified;
                 db.SaveChanges();
+                var UserManager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+                var menteeUser = UserManager.FindById(mentfeedback.UsersId);
+                var mentee = db.Users.Find(mentfeedback.UsersId);
+                var mentor = db.Users.Find(mentfeedback.MentorId);
+                EmailController mail = new EmailController();
+                mail.FeedbackProvided(menteeUser.Email, mentee.FirstName, mentor.FirstName, mentor.LastName);
                 return RedirectToAction("Dashboard", "DiaryEntries");
             }
             return View();
