@@ -8,6 +8,8 @@ using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
+using MvcSiteMapProvider;
+using MvcSiteMapProvider.Web.Mvc.Filters;
 using Resilience.Models;
 
 namespace Resilience.Controllers
@@ -47,6 +49,7 @@ namespace Resilience.Controllers
         }
 
         //GET: ViewUser/5
+        [SiteMapTitle("title")]
         [Authorize(Roles = "Mentor")]
         public ActionResult ViewUser(int Id)
         {
