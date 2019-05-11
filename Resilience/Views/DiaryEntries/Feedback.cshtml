@@ -33,18 +33,20 @@
         Layout = "~/Views/Shared/_Layout.cshtml";
     }
     <style>
+        html, body {
+            height: 100%;
+            width: 100%;
+        }
         .feedback-background {
-            height: 1000px;
+            height: 125%;
+            width: 100%;
             background: url('../../Images/art-artist-black-and-white-265047.jpg') no-repeat center;
             background-size: cover;
         }
-        .feedback-box {
-            position: absolute;
-            left: 10%;
-            top: 6%;
+        .col-md-11 {            
             background-color: transparent;
-            width: 1000px;
-            @*height: 400px;*@
+            width: 90%;
+            height: 70%;
             padding: 3% 0 0;
             margin: auto;
             text-align: center;
@@ -59,7 +61,8 @@
 <body>
 
     <div class="feedback-background">
-        <div class="feedback-box">
+        
+        <div class="col-md-offset-1 col-md-11">
             <h2>Give feedback</h2>
             <hr />
             <div class="form-group">
@@ -85,7 +88,7 @@
 
                         <div class="col-md-10">
 
-                            @Html.EditorFor(model => model.MentorFeedback, new { htmlAttributes = new { @class = "form-control", @rows = "20" } })
+                            @Html.EditorFor(model => model.MentorFeedback, new { htmlAttributes = new { @class = "form-control", @rows = "13" } })
                             @Html.ValidationMessageFor(model => model.MentorFeedback, "", new { @class = "text-danger" })
                         </div>
                     </div>
@@ -99,8 +102,8 @@
             }
 
             @*<div>
-                    @Html.ActionLink("Back to List", "Index")
-                </div>*@
+            @Html.ActionLink("Back to List", "Index")
+        </div>*@
         </div>
     </div>
 

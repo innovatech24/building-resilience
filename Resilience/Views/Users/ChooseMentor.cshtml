@@ -33,18 +33,23 @@
         Layout = "~/Views/Shared/_Layout.cshtml";
     }
     <style>
+        html, body {
+            height: 100%;
+            width: 100%;
+        }
         .add-mentor-background {
-            height: 700px;
-            background: url('../../Images/album-background-blank-1089842.jpg') no-repeat center fixed;
+            height: 100%;
+            width: 100%;
+            background: url('../../Images/album-background-blank-1089842.jpg') no-repeat center;
             background-size: cover;
         }
         .add-mentor-form {
             position: absolute;
             left: 35%;
-            top: 30%;
-            background-color: white;
-            width: 450px;
-            height: 400px;
+            top: 8%;
+            background-color: transparent;
+            width: 33%;
+            height: 50%;
             padding: 3% 0 0;
             margin: auto;
             text-align: center;
@@ -58,7 +63,6 @@
     </script>
 </head>
 <body>
-
     <div class="add-mentor-background">
         <div class="add-mentor-form">
             <h2>Add your Mentor</h2>
@@ -71,7 +75,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "col-md-offset-1 form-control" } })
                     @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
                 </div>
             </div>
