@@ -1,0 +1,86 @@
+﻿@model Resilience.Models.Users
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    @{
+        ViewBag.title = "Progress";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+    <!-- Main style sheet -->
+    <link href="~/Content/style.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,400italic,300,300italic,500,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <!-- Main style sheet -->
+    <link href="~/Content/Progress_.css" rel="stylesheet">
+
+</head>
+<body>
+    <script>
+        var menteeId = @Model.Id;
+    </script>
+
+    <main class="main">
+        <div class="main-header">
+            <div class="main-header__heading">@Model.FirstName @Model.LastName </div>
+            <div class="main-header__updates">@Model.EmailAddress</div>
+        </div>
+
+        <div class="main-overview">
+            <!--<div class="overviewcard">
+        <div class="overviewcard__icon">Overview</div>
+        <div class="overviewcard__info">Card</div>
+    </div>-->
+            <div class="overviewcard">
+                <div class="overviewcard__icon">Overview</div>
+                <div class="overviewcard__info">Card</div>
+            </div>
+            <div class="overviewcard">
+                <div class="overviewcard__icon">Overview</div>
+                <div class="overviewcard__info">Card</div>
+            </div>
+            <div class="overviewcard">
+                <div class="overviewcard__icon">Average feeling input</div>
+                <div class="overviewcard__info"><div id="rating"></div></div>
+            </div>
+        </div>
+
+        <div class="main-cards">
+            <div class="card">Card</div>
+            <div class="card"><div class="gaugediv"></div></div>
+            <div class="card"><div class="timeplotdiv"></div></div>
+        </div>
+    </main>
+
+
+    <!-- jQuery library -->
+    <script src="~/Scripts/jquery.min.js"></script>
+    <!-- Slick slider -->
+    <script type="text/javascript" src="~/Scripts/slick.js"></script>
+    <!-- Counter -->
+    <script type="text/javascript" src="~/Scripts/waypoints.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.counterup.js"></script>
+    <!-- Mixit slider -->
+    <script type="text/javascript" src="~/Scripts/jquery.mixitup.js"></script>
+    <!-- Add fancyBox -->
+    <script type="text/javascript" src="~/Scripts/jquery.fancybox.pack.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="~/Scripts/bootstrap.js"></script>
+    <!-- AM CHARTS-->
+    <script type="text/javascript" src="~/Scripts/AMcharts/core.js"></script>
+    <script type="text/javascript" src="~/Scripts/AMcharts/charts.js"></script>
+    <script type="text/javascript" src="~/Scripts/AMcharts/animated.js"></script>
+    <script type="text/javascript" src="~/Scripts/AMcharts/kelly.js"></script>
+    <!-- Emoticon rating-->
+    <script type="text/javascript" src="~/Scripts/emoticon_rating.js"></script>
+    <!-- Custom js -->
+    <script src="~/Scripts/Additional_functions.js"></script>
+    <script src="~/Scripts/custom.js"></script>
+    <script src="~/Scripts/Progress_.js"></script>
+</body>
+</html>

@@ -4,6 +4,8 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Dynamic;
+using System.Web.Script.Serialization;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
@@ -106,7 +108,7 @@ namespace Resilience.Controllers
             {
                 db.DiaryEntries.Add(diaryEntries);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("ViewFeedback");
             }
 
             ViewBag.UsersId = new SelectList(db.Users, "Id", "FirstName", diaryEntries.UsersId);
@@ -216,10 +218,20 @@ namespace Resilience.Controllers
             ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId<int>());
             Users currentUser = db.Users.Find(user.Id);
             var diaryEntries = db.DiaryEntries.Where(d => d.UsersId == currentUser.Id);
+            
+            // The name and last name of the mentor is going in unused variables
+            foreach(DiaryEntries d in diaryEntries)
+            {
+                var mentor = db.Users.Find(d.MentorId);
+                d.User.FirstName = mentor.FirstName;
+                d.User.LastName = mentor.LastName;
+               
+            }
+
             return View(diaryEntries);
         }
 
-        [Authorize(Roles = "Mentee")]
+        /*[Authorize(Roles = "Mentee")]
         [HttpPost]
         public void ViewFeedback(int Id, int rate)
         {
@@ -230,6 +242,7 @@ namespace Resilience.Controllers
 
             //return View(diaryEntries);
         }
+        */
 
         protected override void Dispose(bool disposing)
         {

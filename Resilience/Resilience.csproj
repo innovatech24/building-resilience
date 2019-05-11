@@ -296,6 +296,7 @@
     <Content Include="Content\main.css" />
     <Content Include="Content\orange-theme.css" />
     <Content Include="Content\pink-theme.css" />
+    <Content Include="Content\Progress_.css" />
     <Content Include="Content\purple-theme.css" />
     <Content Include="Content\red-theme.css" />
     <Content Include="Content\slick.css" />
@@ -370,6 +371,8 @@
     <Content Include="Scripts\ChooseMentor_.js" />
     <Content Include="Scripts\custom.js" />
     <Content Include="Scripts\Dashboard.js" />
+    <Content Include="Scripts\DiaryEntryCreate.js" />
+    <Content Include="Scripts\DiaryEntryView.js" />
     <Content Include="Scripts\esm\popper-utils.js" />
     <Content Include="Scripts\esm\popper-utils.min.js" />
     <Content Include="Scripts\esm\popper.js" />
@@ -425,7 +428,6 @@
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\breakpoints.min.js" />
     <Content Include="Scripts\browser.min.js" />
-    <Content Include="Scripts\ViewFeedback.js" />
     <Content Include="Scripts\index.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -450,7 +452,7 @@
     <Content Include="Scripts\popper-utils.min.js" />
     <Content Include="Scripts\popper.js" />
     <Content Include="Scripts\popper.min.js" />
-    <Content Include="Scripts\Sentiment.js" />
+    <Content Include="Scripts\Progress_.js" />
     <Content Include="Scripts\slick.js" />
     <Content Include="Scripts\umd\popper-utils.js" />
     <Content Include="Scripts\umd\popper-utils.min.js" />
@@ -458,6 +460,7 @@
     <Content Include="Scripts\umd\popper.min.js" />
     <Content Include="Scripts\util.js" />
     <Content Include="Scripts\validate-entry.js" />
+    <Content Include="Scripts\ViewFeedback_.js" />
     <Content Include="Scripts\waypoints.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -540,6 +543,9 @@
     <Content Include="Views\Exercises\Edit.cshtml" />
     <Content Include="Views\Exercises\Index.cshtml" />
     <Content Include="Views\DiaryEntries\ViewFeedback.cshtml" />
+    <Content Include="Views\Options\Landingpage.cshtml" />
+    <Content Include="Views\Goals\MentorView.cshtml" />
+    <Content Include="Views\Options\Progress.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

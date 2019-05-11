@@ -1,0 +1,82 @@
+﻿
+.main {
+    grid-area: main;
+    background-color: #8fd4d9;
+}
+
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+    padding: 20px;
+    height: 150px;
+    background-color: #e3e4e6;
+    color: slategray;
+}
+
+.main-overview {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(265px, 1fr));
+    grid-auto-rows: 94px;
+    grid-gap: 20px;
+    
+}
+
+.overviewcard {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #d3d3;
+}
+
+.main-cards {
+    column-count: 1;
+    column-gap: 20px;
+    margin: 20px;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    background-color: #82bef6;
+    margin-bottom: 20px;
+    -webkit-column-break-inside: avoid;
+    padding: 24px;
+    box-sizing: border-box;
+}
+
+    /* Force varying heights to simulate dynamic content */
+    .card:first-child {
+        height: 600px;
+    }
+
+    .card:nth-child(2) {
+        height: 280px;
+    }
+
+    .card:nth-child(3) {
+        height: 300px;
+    }
+
+/* Medium screens breakpoint (1050px) */
+@media only screen and (min-width: 65.625em) {
+    /* Break out main cards into two columns */
+    .main-cards {
+        column-count: 2;
+    }
+}
+
+
+.gaugediv {
+    width: 100%;
+    height: 100%;
+}
+
+.timeplotdiv {
+    width: 100%;
+    height: 100%;
+}
+

@@ -2,16 +2,20 @@
 using Microsoft.AspNet.Identity.Owin;
 using Resilience.Models;
 using System;
+using System.Dynamic;
 using System.Collections.Generic;
+using System.Web.Script.Serialization;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Data.SqlClient;
 
 namespace Resilience.Controllers
 {
     public class OptionsController : Controller
     {
         private ApplicationUserManager _userManager;
+        private DiaryEntriesContainer db = new DiaryEntriesContainer();
 
         public OptionsController()
         {
@@ -77,78 +81,62 @@ namespace Resilience.Controllers
             return View();
         }
 
-        /*
-        // GET: Options/Details/5
-        public ActionResult Details(int id)
+        [Authorize(Roles = "Mentor")]        
+        public ActionResult Landingpage(int Id)
         {
+            ViewBag.id = Id;            
             return View();
         }
 
-        // GET: Options/Create
-        public ActionResult Create()
+        [Authorize(Roles = "Mentor")]
+        public ActionResult Progress(int Id)
         {
-            return View();
+            var user = db.Users.Find(Id);
+
+            return View(user);
         }
 
-        // POST: Options/Create
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        [Authorize]
+        public JsonResult DashboardData(int Id)
         {
-            try
-            {
-                // TODO: Add insert logic here
+            
+            var diaryentries = db.DiaryEntries
+                .Where(d => d.UsersId == Id)
+                .Select(d => new { Date = d.Date, d.MenteeFeedback,d.SentimentScore,d.MentorFeedback}).ToList();
 
-                return RedirectToAction("Index");
-            }
-            catch
+            var goalsTasks = db.Goals
+                .Where(d => d.UsersId == Id)
+                .Select(d => new {d.GoalName,d.MenteeRating,d.DueDate,d.CompletionDate,
+                    tasks = db.Exercises
+                    .Where(e => e.GoalsId==d.Id)
+                    .Select(e => new {e.TaskName,e.DueDate,e.CompletionDate,e.MenteeRating }) })
+                .ToList();
+
+            // DIARY ENTRY
+            var Dscores = new List<double>();
+            var Dentries = new List<object>();
+            var Dfeeling = new List<double>();
+            foreach (var entry in diaryentries) 
             {
-                return View();
+                Dscores.Add(entry.SentimentScore.Value);
+                Dfeeling.Add(entry.MenteeFeedback.Value);
+
+                Dentries.Add(new { date = entry.Date.ToString("MM-dd-yyyy"), score = entry.SentimentScore.Value, feeling = entry.MenteeFeedback.Value });
             }
+
+            // GOALS
+            foreach(var goal in goalsTasks)
+            {
+
+            }
+
+            return Json(new JavaScriptSerializer().Serialize(new {
+                diaries = new { AvgSentimentScore = Dscores.Average(),
+                                AvgFeeling = Dfeeling.Average(),
+                                Entries = Dentries
+                },
+                goals = goalsTasks
+            }));
         }
-
-        // GET: Options/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: Options/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Options/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: Options/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-        */
     }
 }

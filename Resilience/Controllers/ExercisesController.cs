@@ -18,9 +18,16 @@ namespace Resilience.Controllers
         private DiaryEntriesContainer db = new DiaryEntriesContainer();
 
         // GET: Exercises
-        public ActionResult Index()
+        /*public ActionResult Index()
         {
             var exercises = db.Exercises.Include(e => e.Goal);
+            return View(exercises.ToList());
+        }*/
+
+        //GET: Exercises/5
+        public ActionResult Index(int Id)
+        {
+            var exercises = db.Exercises.Where(e => e.GoalsId == Id);
             return View(exercises.ToList());
         }
 
@@ -47,6 +54,8 @@ namespace Resilience.Controllers
             ViewBag.goalName = goal.GoalName;
             ViewBag.goalId = goal.Id;
             ViewBag.mentorId = goal.MentorId;
+            ViewBag.DueDate = goal.DueDate;
+
             return View();
         }
 
@@ -93,12 +102,12 @@ namespace Resilience.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,TaskName,TaskDescription,MentorId,DueDate,CompletionDate,MentorFeedback,MenteeComments,MenteeRating,GoalsId")] Exercise exercise)
-        {
+        {            
             if (ModelState.IsValid)
             {
                 db.Entry(exercise).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", new { id = exercise.GoalsId });
             }
             ViewBag.GoalsId = new SelectList(db.Goals, "Id", "GoalName", exercise.GoalsId);
             return View(exercise);
