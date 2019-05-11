@@ -16,6 +16,7 @@
     <mvcSiteMapNode title="Mentee View" controller="Options" action="Mentee">
       <mvcSiteMapNode title="Add Mentor" controller="Users" action="ChooseMentor"/>
       <mvcSiteMapNode title="Write Diary Entry" controller="DiaryEntries" action="Create"/>
+      <mvcSiteMapNode title="Create Goals and Tasks" controller="Goals" action="Create"/>
       <mvcSiteMapNode title="View Feedback" controller="DiaryEntries" action="ViewFeedback"/>
     </mvcSiteMapNode>
   </mvcSiteMapNode>
