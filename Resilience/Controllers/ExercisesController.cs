@@ -68,7 +68,7 @@ namespace Resilience.Controllers
                 var serializedData = JsonConvert.DeserializeObject<List<Exercise>>(data);
                 foreach (var record in serializedData)
                 {                   
-                    record.CompletionDate = DateTime.Now;
+                    record.CompletionDate = new DateTime(1990, 2, 10);
                     db.Exercises.Add(record);
                 }
                 db.SaveChanges();
