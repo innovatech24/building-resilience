@@ -18,9 +18,16 @@ namespace Resilience.Controllers
         private DiaryEntriesContainer db = new DiaryEntriesContainer();
 
         // GET: Exercises
-        public ActionResult Index()
+        /*public ActionResult Index()
         {
             var exercises = db.Exercises.Include(e => e.Goal);
+            return View(exercises.ToList());
+        }*/
+
+        //GET: Exercises/5
+        public ActionResult Index(int Id)
+        {
+            var exercises = db.Exercises.Where(e => e.GoalsId == Id);
             return View(exercises.ToList());
         }
 
