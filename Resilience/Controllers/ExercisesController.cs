@@ -118,7 +118,7 @@ namespace Resilience.Controllers
             {
                 db.Entry(exercise).State = EntityState.Modified;
                 db.SaveChanges();
-                var goals = db.Goals.Find(exercise.Id);
+                var goals = db.Goals.Find(exercise.GoalsId);
                 var mentee = db.Users.Find(goals.UsersId);
                 var UserManager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
                 var menteeUser = UserManager.FindById(mentee.Id);

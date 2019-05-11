@@ -8,14 +8,14 @@ namespace Resilience.Controllers
 {
     public class EmailController : Controller
     {        
-        private string apiKey = Environment.GetEnvironmentVariable("SENDGRID_KEY");                       
-
+                
         public void SendConfirmation(string toEmail)
         {
+            var apiKey = Environment.GetEnvironmentVariable("SENDGRID_KEY");
             var client = new SendGridClient(apiKey);
             var from = new EmailAddress("no-reply@buildingresilience.tk", "Building Resilience");
             var subject = "Welcome to Building Resilience!";
-            var to = new EmailAddress("toEmail", "");
+            var to = new EmailAddress(toEmail, "");
             var plainTextContent = "Welcome to Building Resilience! ";
             var htmlContent = "<strong>and easy to do anywhere, even with C#</strong>";
             var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
@@ -24,22 +24,24 @@ namespace Resilience.Controllers
 
         public void MentorConfirmation(string toEmail, string menteeFirstName, string menteeLastName, string mentorFirstName)
         {
+            var apiKey = Environment.GetEnvironmentVariable("SENDGRID_KEY");
             var client = new SendGridClient(apiKey);
             var from = new EmailAddress("no-reply@buildingresilience.tk", "Building Resilience");
             var subject = "Someone has added you as a mentor";
-            var to = new EmailAddress("toEmail", mentorFirstName);
+            var to = new EmailAddress(toEmail, mentorFirstName);
             var plainTextContent = "Hello " + mentorFirstName + ",\n" + menteeFirstName + " " + menteeLastName + " has added you as a mentor. If you think this is in error, please log on to Building Resilience and remove them as a mentee.";
-            var htmlContent = "Hello " + mentorFirstName + ",<p><strong>" + menteeLastName + " " + menteeLastName + "</strong> has added you as a mentor. If you think this is in error, please log on to Building Resilience and remove them as a mentee.";
+            var htmlContent = "Hello " + mentorFirstName + ",<p><strong>" + menteeFirstName + " " + menteeLastName + "</strong> has added you as a mentor. If you think this is in error, please log on to Building Resilience and remove them as a mentee.";
             var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
             var response = client.SendEmailAsync(msg);
         }
 
         public void MenteeConfirmation(string toEmail, string mentorFirstName, string mentorLastName, string menteeFirstName)
         {
+            var apiKey = Environment.GetEnvironmentVariable("SENDGRID_KEY");
             var client = new SendGridClient(apiKey);
             var from = new EmailAddress("no-reply@buildingresilience.tk", "Building Resilience");
             var subject = "Someone has added you as a mentee";
-            var to = new EmailAddress("toEmail", menteeFirstName);
+            var to = new EmailAddress(toEmail, menteeFirstName);
             var plainTextContent = "Hello " + menteeFirstName + ",\n" + mentorFirstName + " " + mentorLastName + " has added you as a mentor. If you think this is in error, please log on to Building Resilience and remove them as a mentor.";
             var htmlContent = "Hello " + menteeFirstName + ",<p><strong>" + mentorLastName + " " + mentorLastName + "</strong> has added you as a mentor. If you think this is in error, please log on to Building Resilience and remove them as a mentor.";
             var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
@@ -48,10 +50,11 @@ namespace Resilience.Controllers
 
         public void NewDiary(string toEmail, string mentorFirstName, string menteeFirstName, string menteeLastName)
         {
+            var apiKey = Environment.GetEnvironmentVariable("SENDGRID_KEY");
             var client = new SendGridClient(apiKey);
             var from = new EmailAddress("no-reply@buildingresilience.tk", "Building Resilience");
             var subject = "You have a new diary entry to review";
-            var to = new EmailAddress("toEmail", mentorFirstName);
+            var to = new EmailAddress(toEmail, mentorFirstName);
             var plainTextContent = "Hello " + mentorFirstName + ",\n" + menteeFirstName + " " + menteeLastName + " has added a new reflective diary entry. Please log on to Building Resilience to review and provide feedback.";
             var htmlContent = "Hello " + mentorFirstName + ",<p><strong>" + menteeFirstName + " " + menteeLastName + "</strong> has added a new reflective diary entry. Please log on to Building Resilience to review and provide feedback.";
             var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
@@ -60,10 +63,11 @@ namespace Resilience.Controllers
 
         public void NewTask(string toEmail, string mentorFirstName, string menteeFirstName, string menteeLastName)
         {
+            var apiKey = Environment.GetEnvironmentVariable("SENDGRID_KEY");
             var client = new SendGridClient(apiKey);
             var from = new EmailAddress("no-reply@buildingresilience.tk", "Building Resilience");
             var subject = "You have a new goal/task to review";
-            var to = new EmailAddress("toEmail", mentorFirstName);
+            var to = new EmailAddress(toEmail, mentorFirstName);
             var plainTextContent = "Hello " + mentorFirstName + ",\n" + menteeFirstName + " " + menteeLastName + " has added a new goal/task. Please log on to Building Resilience to review and provide feedback.";
             var htmlContent = "Hello " + mentorFirstName + ",<p><strong>" + menteeFirstName + " " + menteeLastName + "</strong> has created a new goal/task. Please log on to Building Resilience to review and provide feedback.";
             var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
@@ -72,10 +76,11 @@ namespace Resilience.Controllers
 
         public void EditTask(string toEmail, string menteeFirstName, string mentorFirstName, string mentorLastName)
         {
+            var apiKey = Environment.GetEnvironmentVariable("SENDGRID_KEY");
             var client = new SendGridClient(apiKey);
             var from = new EmailAddress("no-reply@buildingresilience.tk", "Building Resilience");
             var subject = "Yor mentor has proposed changes to your tasks";
-            var to = new EmailAddress("toEmail", menteeFirstName);
+            var to = new EmailAddress(toEmail, menteeFirstName);
             var plainTextContent = "Hello " + menteeFirstName + ",\n" + mentorFirstName + " " + mentorLastName + " has proposed changes to some tasks. Please log on to Building Resilience to review.";
             var htmlContent = "Hello " + menteeFirstName + ",<p><strong>" + mentorFirstName + " " + mentorLastName + "</strong> has proposed changes to some tasks. Please log on to Building Resilience to review.";
             var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
@@ -84,10 +89,11 @@ namespace Resilience.Controllers
 
         public void FeedbackProvided(string toEmail, string menteeFirstName, string mentorFirstName, string mentorLastName)
         {
+            var apiKey = Environment.GetEnvironmentVariable("SENDGRID_KEY");
             var client = new SendGridClient(apiKey);
             var from = new EmailAddress("no-reply@buildingresilience.tk", "Building Resilience");
             var subject = "Yor mentor has proposed changes to your tasks";
-            var to = new EmailAddress("toEmail", menteeFirstName);
+            var to = new EmailAddress(toEmail, menteeFirstName);
             var plainTextContent = "Hello " + menteeFirstName + ",\n" + mentorFirstName + " " + mentorLastName + " has provided feedback on one of your diary entries. Please log on to Building Resilience to review.";
             var htmlContent = "Hello " + menteeFirstName + ",<p><strong>" + mentorFirstName + " " + mentorLastName + "</strong> has provided feedback on one of your diary entries. Please log on to Building Resilience to review.";
             var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
