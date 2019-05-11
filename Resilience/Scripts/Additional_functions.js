@@ -49,7 +49,7 @@ function createGauge(value, name_div,Title,putLegend) {
         var legend = new am4charts.Legend();
         legend.isMeasured = false;
         legend.y = am4core.percent(100);
-        legend.verticalCenter = "bottom";
+        //legend.verticalCenter = "top";
         legend.parent = chart.chartContainer;
         legend.data = [{
             "name": "Negative",
@@ -58,13 +58,16 @@ function createGauge(value, name_div,Title,putLegend) {
             "name": "Positive",
             "fill": am4core.color("green")
         }];
+        
+        legend.itemContainers.template.paddingTop = -5;
     };
-
-    var title = chart.titles.create();
-    title.text = Title;
-    title.fontSize = 25;
-    title.marginBottom = 0;
-
+    if (Title != "") {
+        var title = chart.titles.create();
+        title.text = Title;
+        title.fontSize = 25;
+        title.marginBottom = 0;
+    };
+    
     hand = chart.hands.push(new am4charts.ClockHand());
     hand.showValue(0, 0, am4core.ease.cubicOut);
 

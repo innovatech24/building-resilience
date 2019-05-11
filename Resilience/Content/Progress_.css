@@ -1,7 +1,7 @@
 ﻿
 .main {
     grid-area: main;
-    background-color: #8fd4d9;
+    /*background-color: #8fd4d9;*/
 }
 
 .main-header {
@@ -9,9 +9,15 @@
     justify-content: space-between;
     margin: 20px;
     padding: 20px;
-    height: 150px;
+    height: 80px;
     background-color: #e3e4e6;
     color: slategray;
+    font-weight: bold;
+    font-size: 2vw;
+    -webkit-box-shadow: 4px 4px 15px -3px rgba(0,0,0,0.39);
+    -moz-box-shadow: 4px 4px 15px -3px rgba(0,0,0,0.39);
+    box-shadow: 4px 4px 15px -3px rgba(0,0,0,0.39);
+    border-radius: 4px;
 }
 
 .main-overview {
@@ -27,7 +33,12 @@
     align-items: center;
     justify-content: space-between;
     padding: 20px;
-    background-color: #d3d3;
+    background-color: #e3e4e6;
+    -webkit-box-shadow: 4px 4px 15px -3px rgba(0,0,0,0.39);
+    -moz-box-shadow: 4px 4px 15px -3px rgba(0,0,0,0.39);
+    box-shadow: 4px 4px 15px -3px rgba(0,0,0,0.39);
+    border-radius: 4px;
+    /*margin: 20px;*/
 }
 
 .main-cards {
@@ -41,11 +52,15 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
-    background-color: #82bef6;
+    background-color: #e3e4e6;
     margin-bottom: 20px;
     -webkit-column-break-inside: avoid;
     padding: 24px;
     box-sizing: border-box;
+    -webkit-box-shadow: 4px 4px 15px -3px rgba(0,0,0,0.39);
+    -moz-box-shadow: 4px 4px 15px -3px rgba(0,0,0,0.39);
+    box-shadow: 4px 4px 15px -3px rgba(0,0,0,0.39);
+    border-radius: 4px;
 }
 
     /* Force varying heights to simulate dynamic content */
