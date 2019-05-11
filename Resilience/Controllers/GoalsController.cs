@@ -41,6 +41,12 @@ namespace Resilience.Controllers
         // GET: Goals/Create
         public ActionResult Create()
         {
+            ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId<int>());
+            Users currentUser = db.Users.Find(user.Id);
+            if (currentUser.MentorId == null)
+            {
+                return RedirectToAction("NoMentorMapped", "Error");
+            }
             ViewBag.UsersId = new SelectList(db.Users, "Id", "FirstName");
             return View();
         }
@@ -53,7 +59,7 @@ namespace Resilience.Controllers
         public ActionResult Create([Bind(Include = "Id,GoalName,GoalDescription,DueDate,CompletionDate,MentorFeedback,MenteeComments,MenteeRating,UsersId,MentorId")] Goals goals)
         {
             ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId<int>());
-            Users currentUser = db.Users.Find(user.Id);
+            Users currentUser = db.Users.Find(user.Id);            
             goals.UsersId = currentUser.Id;
             goals.MentorId = currentUser.MentorId.Value;
             goals.CompletionDate = new DateTime(1990, 2, 10);
