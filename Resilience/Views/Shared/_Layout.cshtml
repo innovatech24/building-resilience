@@ -118,25 +118,27 @@
         </nav>
     </section>
     <!-- End menu -->
-
     @*<div class="breadcrumbs">
-        <div class="crumbs">
-            <ul>
-                <li>You are Here: @Html.MvcSiteMap().SiteMapPath()</li>
-            </ul>
-        </div>
-        <p>
-            @RenderBody()
-        </p>
-    </div>*@
+            <div class="crumbs">
+                <ul>
+                    <li>You are Here: @Html.MvcSiteMap().SiteMapPath()</li>
+                </ul>
+            </div>
+            <p>
+                @RenderBody()
+            </p>
+        </div>*@
 
     <div class="breadcrumbs">
-        You are Here: @Html.MvcSiteMap().SiteMapPath()
-        <p>
-            @RenderBody()
-        </p>
+        <div class="crumbs">
+            <ul>
+                <li>
+                    You are Here: @Html.MvcSiteMap().SiteMapPath()
+                </li>
+            </ul>          
+        </div>
     </div>
-
+    @RenderBody()
     <!-- Start footer -->
     <footer id="mu-footer">
         <!-- start footer top -->
