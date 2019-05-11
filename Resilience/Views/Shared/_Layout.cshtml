@@ -7,6 +7,67 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <link href="~/Content/all.css" rel="stylesheet">
+    
+    <style>
+        .breadcrumbs{
+            margin: auto;
+            font-family: Helvetica;
+            background: #FFF;
+        }
+        .crumbs {
+            background-color: #eee;
+        }
+        .crumbs ul {
+            list-style: none;
+            display: inline-table;
+        }
+        .crumbs ul li {
+            display: block;
+            float: left;
+            height: 40px;
+            background: #F3F5FA;
+            text-align: center;
+            padding: 15px 10px 0 30px;
+            position: relative;
+            margin: 0 5px 0 0;
+            font-size: 15px;
+            text-decoration: none;
+            color: #8093A7;
+            padding-right: 30px;
+        }
+        .crumbs ul li:after {
+            content: "";
+            border-top: 20px solid transparent;
+            border-bottom: 20px solid transparent;
+            border-left: 20px solid #F3F5FA;
+            position: absolute;
+            right: -20px;
+            top: 0;
+            z-index: 1;
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+}
+        .crumbs ul li:before {
+            content: "";
+            border-top: 20px solid transparent;
+            border-bottom: 20px solid transparent;
+            border-left: 20px solid #fff;
+            position: absolute;
+            left: 0;
+            top: 0;
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+        .crumbs ul li:hover {
+        background: #357DFD;
+        color: #fff;
+        }
+
+        .crumbs ul li:hover:after {
+        border-left-color: #357DFD;
+        color: #fff;
+        }
+    </style>
 </head>
 <body>
 
@@ -58,7 +119,23 @@
     </section>
     <!-- End menu -->
 
-    @RenderBody()
+    @*<div class="breadcrumbs">
+        <div class="crumbs">
+            <ul>
+                <li>You are Here: @Html.MvcSiteMap().SiteMapPath()</li>
+            </ul>
+        </div>
+        <p>
+            @RenderBody()
+        </p>
+    </div>*@
+
+    <div class="breadcrumbs">
+        You are Here: @Html.MvcSiteMap().SiteMapPath()
+        <p>
+            @RenderBody()
+        </p>
+    </div>
 
     <!-- Start footer -->
     <footer id="mu-footer">
