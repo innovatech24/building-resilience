@@ -9,27 +9,33 @@
         success: function (response) {
 
             var data = JSON.parse(response);
-            console.log(data);
 
             // Feelings rating
             var emotionsArray = ['crying', 'disappointed', 'meh', 'happy', 'smile'];
             $("#rating").emotionsRating({
                 bgEmotion: 'happy',
                 emotions: emotionsArray,
+                emotionSize: 25,
                 disabled: true,
                 initialRating: Math.round(data.diaries.AvgFeeling)
             });
 
             // Create gauge plot in div 'gaugediv'
-            window.gauge = createGauge(0, "gaugediv","Average sentiment in reflective diaries",false);
+            window.gauge = createGauge(0, "gaugediv","",true);
             // Set value of the plot to the sentiment score value
             updateGaugeValue(window.gauge, data.diaries.AvgSentimentScore);
 
 
             // Timeseries for diary entry
-            timeseriesplot("timeplotdiv",data.diaries.Entries,Title = "Feeling rating VS Sentiment score");
+            timeseriesplot("timeplotdiv",data.diaries.Entries,Title = "");
 
-            stackedbarplot("bardiv",data.goals.Goals,"Bar plot");
+            // Stacked bar plot of goals
+            stackedbarplot("bardiv", data.goals.Goals, "");
+
+            //Information overview divs
+            document.getElementById("openGoals").appendChild(document.createTextNode(data.goals.OpenGoals));
+            document.getElementById("closeGoals").appendChild(document.createTextNode(data.goals.CloseGoals));
+            document.getElementById("nDiaries").appendChild(document.createTextNode(data.diaries.NumDiaries));
         }
     });
 });
@@ -124,11 +130,13 @@ function timeseriesplot(obj,data,Title) {
     chart.cursor = new am4charts.XYCursor();
 
     //Add Title
-    var title = chart.titles.create();
-    title.text = Title;
-    title.fontSize = 25;
-    title.marginBottom = 0;
-
+    if (Title != "") {
+        var title = chart.titles.create();
+        title.text = Title;
+        title.fontSize = 25;
+        title.marginBottom = 0;
+    };
+    
     // generate some random data, quite different range
     function generateChartData() {
         var chartData = [];
@@ -203,7 +211,7 @@ function stackedbarplot(obj, data, Title){
     // Create axes
     var categoryAxis = chart.yAxes.push(new am4charts.CategoryAxis());
     categoryAxis.dataFields.category = "GoalName";
-    //categoryAxis.title.text = "Local country offices";
+    categoryAxis.title.text = "Goals";
     categoryAxis.renderer.grid.template.location = 0;
     categoryAxis.renderer.minGridDistance = 20;
     categoryAxis.renderer.cellStartLocation = 0.1;
@@ -215,7 +223,7 @@ function stackedbarplot(obj, data, Title){
     valueAxis.title.text = "Tasks";
 
     // Create series
-    function createSeries(field, name, stacked) {
+    function createSeries(field, name, stacked,color) {
         var series = chart.series.push(new am4charts.ColumnSeries());
         series.dataFields.valueX = field;
         series.dataFields.categoryY = "GoalName";
@@ -223,18 +231,24 @@ function stackedbarplot(obj, data, Title){
         series.columns.template.tooltipText = "{name}: [bold]{valueX}[/]";
         series.stacked = stacked;
         series.columns.template.width = am4core.percent(95);
+
+        series.fill = am4core.color(color);
+        series.stroke = am4core.color("white");
     }
 
-    createSeries("completedTasks", "Completed", false);
-    createSeries("delayedCompletedTasks", "Delayed", true);
-    createSeries("delayedTasks", "Overdue", true);
+    createSeries("completedTasks", "Completed (on time)", false,"#74db7e");
+    createSeries("delayedCompletedTasks", "Completed (late)", true,"orange");
+    createSeries("delayedTasks", "Overdue", true, "#ed5c4b");
+    createSeries("pendingTasks", "Ongoing", true, "#4ba4ed");
 
     // Add legend
     chart.legend = new am4charts.Legend();
 
     //Add Title
-    var title = chart.titles.create();
-    title.text = Title;
-    title.fontSize = 25;
-    title.marginBottom = 0;
+    if (Title != "") {
+        var title = chart.titles.create();
+        title.text = Title;
+        title.fontSize = 25;
+        title.marginBottom = 0;
+    };
 };

@@ -100,6 +100,7 @@ namespace Resilience.Controllers
         public JsonResult DashboardData(int Id)
         {
             
+            // Get from database
             var diaryentries = db.DiaryEntries
                 .Where(d => d.UsersId == Id)
                 .Select(d => new { Date = d.Date, d.MenteeFeedback,d.SentimentScore,d.MentorFeedback}).ToList();
@@ -112,7 +113,7 @@ namespace Resilience.Controllers
                     .Select(e => new {e.TaskName,e.DueDate,e.CompletionDate,e.MenteeRating }).ToList() })
                 .ToList();
 
-            // DIARY ENTRY
+            // DIARY ENTRY. Format output
             var Dscores = new List<double>();
             var Dentries = new List<object>();
             var Dfeeling = new List<double>();
@@ -121,33 +122,47 @@ namespace Resilience.Controllers
                 Dscores.Add(entry.SentimentScore.Value);
                 Dfeeling.Add(entry.MenteeFeedback.Value);
 
-                Dentries.Add(new { date = entry.Date.ToString("MM-dd-yyyy"), score = entry.SentimentScore.Value, feeling = entry.MenteeFeedback.Value });
+                Dentries.Add(new
+                {
+                    date = entry.Date.ToString("MM-dd-yyyy"),
+                    score = entry.SentimentScore.Value,
+                    feeling = entry.MenteeFeedback.Value
+                });
             }
 
             // GOALS
             var Ggoals = new List<object>();
             var Gtasks = new List<object>();
-            foreach(var goal in goalsTasks)
+            var openGoals = 0;
+            var closeGoals = 0;
+            foreach (var goal in goalsTasks)
             {
+                // Count 
                 int completedTasks = 0;
                 int delayedCompletedTasks = 0;
                 int delayedTasks = 0;
-                int PendingTasks = 0;
-                foreach(var task in goal.tasks)
+                int pendingTasks = 0;
+                foreach (var task in goal.tasks)
                 {
 
-                    if(task.CompletionDate != null)
+                    if(DateTime.Compare(task.CompletionDate.Date,DateTime.Parse("10-02-1990"))!=0)
                     {
-                        completedTasks++;
-
-                        if (task.CompletionDate > task.DueDate)
+                        if (DateTime.Compare(task.CompletionDate.Date,task.DueDate.Date) > 0)
                         {
-                            delayedCompletedTasks = 0;
+                            delayedCompletedTasks++;
+                        }
+                        else
+                        {
+                            completedTasks++;
                         }
                     }
-                    else if(new DateTime() > task.DueDate )
+                    else if(DateTime.Compare(DateTime.Now.Date, task.DueDate.Date) > 0)
                     {
-                        delayedTasks = 0;
+                        delayedTasks++;
+                    }
+                    else
+                    {
+                        pendingTasks++;
                     }
 
                     Gtasks.Add(new
@@ -162,6 +177,16 @@ namespace Resilience.Controllers
 
                 }
 
+                //If goal has no completion date. It's open
+                if (DateTime.Compare(goal.CompletionDate.Date, DateTime.Parse("10-02-1990")) != 0)
+                {
+                    openGoals++;
+                }
+                else
+                {
+                    closeGoals++;
+                }
+
                 Ggoals.Add(new
                 {
                     goal.GoalName,
@@ -171,7 +196,8 @@ namespace Resilience.Controllers
                     totalTasks = goal.tasks.Count(),
                     delayedCompletedTasks,
                     completedTasks,
-                    delayedTasks
+                    delayedTasks,
+                    pendingTasks
                 });
 
             }
@@ -181,11 +207,14 @@ namespace Resilience.Controllers
                 {
                     AvgSentimentScore = Dscores.Average(),
                     AvgFeeling = Dfeeling.Average(),
+                    NumDiaries = Dentries.Count(),
                     Entries = Dentries
                 },
                 goals = new
                 {
                     Goals = Ggoals,
+                    OpenGoals = openGoals,
+                    CloseGoals = closeGoals,
                     Tasks = Gtasks
                 }
             }));
