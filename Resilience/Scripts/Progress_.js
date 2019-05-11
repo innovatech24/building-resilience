@@ -29,6 +29,7 @@
             // Timeseries for diary entry
             timeseriesplot("timeplotdiv",data.diaries.Entries,Title = "Feeling rating VS Sentiment score");
 
+            stackedbarplot("bardiv",data.goals.Goals,"Bar plot");
         }
     });
 });
@@ -46,7 +47,6 @@ function timeseriesplot(obj,data,Title) {
 
     // Add data
     chart.data = data;
-    console.log(generateChartData());
 
     // Create axes
     var dateAxis = chart.xAxes.push(new am4charts.DateAxis());
@@ -160,4 +160,81 @@ function timeseriesplot(obj,data,Title) {
         }
         return chartData;
     }
+};
+
+function stackedbarplot(obj, data, Title){
+    // Themes begin
+    am4core.useTheme(am4themes_animated);
+    // Themes end
+
+    // Create chart instance
+    var chart = am4core.create(obj, am4charts.XYChart);
+
+    // Add data
+    chart.data = data;
+    /*
+    chart.data = [{
+        "year": "2003",
+        "europe": 2.5,
+        "namerica": 2.5,
+        "asia": 2.1,
+        "lamerica": 1.2,
+        "meast": 0.2,
+        "africa": 0.1
+    }, {
+        "year": "2004",
+        "europe": 2.6,
+        "namerica": 2.7,
+        "asia": 2.2,
+        "lamerica": 1.3,
+        "meast": 0.3,
+        "africa": 0.1
+    }, {
+        "year": "2005",
+        "europe": 2.8,
+        "namerica": 2.9,
+        "asia": 2.4,
+        "lamerica": 1.4,
+        "meast": 0.3,
+        "africa": 0.1
+    }];
+    */
+
+    // Create axes
+    var categoryAxis = chart.yAxes.push(new am4charts.CategoryAxis());
+    categoryAxis.dataFields.category = "GoalName";
+    //categoryAxis.title.text = "Local country offices";
+    categoryAxis.renderer.grid.template.location = 0;
+    categoryAxis.renderer.minGridDistance = 20;
+    categoryAxis.renderer.cellStartLocation = 0.1;
+    categoryAxis.renderer.cellEndLocation = 0.9;
+
+
+    var valueAxis = chart.xAxes.push(new am4charts.ValueAxis());
+    valueAxis.min = 0;
+    valueAxis.title.text = "Tasks";
+
+    // Create series
+    function createSeries(field, name, stacked) {
+        var series = chart.series.push(new am4charts.ColumnSeries());
+        series.dataFields.valueX = field;
+        series.dataFields.categoryY = "GoalName";
+        series.name = name;
+        series.columns.template.tooltipText = "{name}: [bold]{valueX}[/]";
+        series.stacked = stacked;
+        series.columns.template.width = am4core.percent(95);
+    }
+
+    createSeries("completedTasks", "Completed", false);
+    createSeries("delayedCompletedTasks", "Delayed", true);
+    createSeries("delayedTasks", "Overdue", true);
+
+    // Add legend
+    chart.legend = new am4charts.Legend();
+
+    //Add Title
+    var title = chart.titles.create();
+    title.text = Title;
+    title.fontSize = 25;
+    title.marginBottom = 0;
 };
