@@ -109,7 +109,7 @@ namespace Resilience.Controllers
                 .Select(d => new {d.GoalName,d.MenteeRating,d.DueDate,d.CompletionDate,
                     tasks = db.Exercises
                     .Where(e => e.GoalsId==d.Id)
-                    .Select(e => new {e.TaskName,e.DueDate,e.CompletionDate,e.MenteeRating }) })
+                    .Select(e => new {e.TaskName,e.DueDate,e.CompletionDate,e.MenteeRating }).ToList() })
                 .ToList();
 
             // DIARY ENTRY
@@ -125,17 +125,69 @@ namespace Resilience.Controllers
             }
 
             // GOALS
+            var Ggoals = new List<object>();
+            var Gtasks = new List<object>();
             foreach(var goal in goalsTasks)
             {
+                int completedTasks = 0;
+                int delayedCompletedTasks = 0;
+                int delayedTasks = 0;
+                int PendingTasks = 0;
+                foreach(var task in goal.tasks)
+                {
+
+                    if(task.CompletionDate != null)
+                    {
+                        completedTasks++;
+
+                        if (task.CompletionDate > task.DueDate)
+                        {
+                            delayedCompletedTasks = 0;
+                        }
+                    }
+                    else if(new DateTime() > task.DueDate )
+                    {
+                        delayedTasks = 0;
+                    }
+
+                    Gtasks.Add(new
+                    {
+                        goal.GoalName,
+                        goalDueDate = goal.DueDate.ToString("MM-dd-yyyy"),
+                        task.TaskName,
+                        DueDate =task.DueDate.ToString("MM-dd-yyyy"),
+                        CompletionDate =task.CompletionDate.ToString("MM-dd-yyyy"),
+                        task.MenteeRating
+                    });
+
+                }
+
+                Ggoals.Add(new
+                {
+                    goal.GoalName,
+                    goal.MenteeRating,
+                    DueDate = goal.DueDate.ToString("MM-dd-yyyy"),
+                    CompletionDate = goal.CompletionDate.ToString("MM-dd-yyyy"),
+                    totalTasks = goal.tasks.Count(),
+                    delayedCompletedTasks,
+                    completedTasks,
+                    delayedTasks
+                });
 
             }
 
             return Json(new JavaScriptSerializer().Serialize(new {
-                diaries = new { AvgSentimentScore = Dscores.Average(),
-                                AvgFeeling = Dfeeling.Average(),
-                                Entries = Dentries
+                diaries = new
+                {
+                    AvgSentimentScore = Dscores.Average(),
+                    AvgFeeling = Dfeeling.Average(),
+                    Entries = Dentries
                 },
-                goals = goalsTasks
+                goals = new
+                {
+                    Goals = Ggoals,
+                    Tasks = Gtasks
+                }
             }));
         }
     }
