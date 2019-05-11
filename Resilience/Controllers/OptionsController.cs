@@ -96,6 +96,16 @@ namespace Resilience.Controllers
             return View(user);
         }
 
+        [Authorize(Roles = "Mentee")]
+        public ActionResult MenteeProgress()
+        {
+            ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId<int>());
+
+            Users userdb = db.Users.Find(user.Id);
+
+            return View(userdb);
+        }
+
         [Authorize]
         public JsonResult DashboardData(int Id)
         {

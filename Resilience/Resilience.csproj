@@ -322,6 +322,7 @@
     <Content Include="Content\main.css" />
     <Content Include="Content\orange-theme.css" />
     <Content Include="Content\pink-theme.css" />
+    <Content Include="Content\MenteeProgress_.css" />
     <Content Include="Content\Progress_.css" />
     <Content Include="Content\purple-theme.css" />
     <Content Include="Content\red-theme.css" />
@@ -482,6 +483,7 @@
     <Content Include="Scripts\popper-utils.min.js" />
     <Content Include="Scripts\popper.js" />
     <Content Include="Scripts\popper.min.js" />
+    <Content Include="Scripts\MenteeProgress_.js" />
     <Content Include="Scripts\Progress_.js" />
     <Content Include="Scripts\slick.js" />
     <Content Include="Scripts\umd\popper-utils.js" />
@@ -584,6 +586,7 @@
     <Content Include="Views\Shared\DisplayTemplates\MetaRobotsHelperModel.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\MenuHelperModel.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\CanonicalHelperModel.cshtml" />
+    <Content Include="Views\Options\MenteeProgress.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
