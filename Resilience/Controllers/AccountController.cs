@@ -84,9 +84,7 @@ namespace Resilience.Controllers
                     var currentuse = UserManager.FindByEmail(model.Email);
                     var user = db.Users.Find(currentuse.Id);
                     var claim = await UserManager.AddClaimAsync(currentuse.Id, new Claim("name", user.FirstName));                    
-                    var roles = UserManager.GetRoles(currentuse.Id);
-                    EmailController mail = new EmailController();
-                    mail.Email();
+                    var roles = UserManager.GetRoles(currentuse.Id);                      
                     
                     if (roles.Count == 2)
                     {
@@ -175,7 +173,9 @@ namespace Resilience.Controllers
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
-                var result = await UserManager.CreateAsync(user, model.Password);                             
+                var result = await UserManager.CreateAsync(user, model.Password);
+                EmailController mail = new EmailController();
+                mail.SendConfirmation(model.Email);
 
                 if (result.Succeeded)
                 {
