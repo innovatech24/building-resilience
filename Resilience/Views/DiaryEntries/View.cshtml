@@ -36,25 +36,29 @@
         Layout = "~/Views/Shared/_Layout.cshtml";
     }
     <style>
+        html, body {
+            height: 100%;
+            width: 100%;
+        }
         .view-diary-detail {
-            height: 900px;
-            background: url('../../Images/atmosphere-background-bright-19670.jpg') no-repeat center;
-            background-size: cover;
+            height: auto;
+            background: url('../../Images/atmosphere-background-bright-19670.jpg') center;
+            background-repeat: repeat-y;
         }
 
         .long-textbox {
-            height: 350px;
-            width: 750px;
+            height: 20%;
+            width: 40%;
             white-space: pre-wrap;
         }
 
         input, select, textarea {
-            max-width: 1000px;
+            max-width: 100%;
         }
 
         .gaugediv {
-            width: 800px;
-            height: 300px;
+            width: 50%;
+            height: 40%;
         }
 
     </style>
@@ -62,105 +66,105 @@
 <body>
     <div class="view-diary-detail">
         <h2>View</h2>
-
-        <table class="table">
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Entry)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.MentorFeedback)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.MenteeFeedback)
-                </th>
-            </tr>
-
-            @foreach (var item in Model)
-            {
+        <div style="overflow-x:auto;">
+            <table class="table">
                 <tr>
-                    <td>
-                        @*@Html.TextBoxFor(modelItem => item.Entry, new { @class = "entry", @readonly = "readonly" })*@
-                        <textarea class="entry" rows=15 cols=100>@item.Entry</textarea>
-                    </td>
-                    @if (item.MentorFeedback == null)
-                    {
-                        <td>
-                            @Html.ActionLink("Give Feedback", "Feedback", new { id = item.Id }, null)
-                        </td>
-                    }
-                    else
-                    {
-                        <td>
-                            @Html.DisplayFor(modelItem => item.MentorFeedback)
-                        </td>
-                    }
+                    <th>
+                        @Html.DisplayNameFor(model => model.Entry)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.MentorFeedback)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.MenteeFeedback)
+                    </th>
+                </tr>
 
-                    @if (item.MentorFeedback == null)
-                    {
+                @foreach (var item in Model)
+                {
+                    <tr>
                         <td>
-                            <text>
-                                You haven't given feedback that can be rated.
-                            </text>
+                            @*@Html.TextBoxFor(modelItem => item.Entry, new { @class = "entry", @readonly = "readonly" })*@
+                            <textarea class="entry" rows=15 cols=100 readonly ="readonly">@item.Entry</textarea>
                         </td>
-                    }
-                    else if (item.MenteeFeedback == null)
-                    {
-                        <td>
-                            <text>
-                                Your mentee has not given feedback yet.
-                            </text>
-                        </td>
-                    }
-                    else
-                    {
-                        <td>
-                            @Html.DisplayFor(modelItem => item.MenteeFeedback)
-                        </td>
-                    }
-                    @*<td>
+                        @if (item.MentorFeedback == null)
+                        {
+                            <td>
+                                @Html.ActionLink("Give Feedback", "Feedback", new { id = item.Id }, null)
+                            </td>
+                        }
+                        else
+                        {
+                            <td>
+                                @Html.DisplayFor(modelItem => item.MentorFeedback)
+                            </td>
+                        }
+
+                        @if (item.MentorFeedback == null)
+                        {
+                            <td>
+                                <text>
+                                    You haven't given feedback that can be rated.
+                                </text>
+                            </td>
+                        }
+                        else if (item.MenteeFeedback == null)
+                        {
+                            <td>
+                                <text>
+                                    Your mentee has not given feedback yet.
+                                </text>
+                            </td>
+                        }
+                        else
+                        {
+                            <td>
+                                @Html.DisplayFor(modelItem => item.MenteeFeedback)
+                            </td>
+                        }
+                        @*<td>
                         @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
                         @Html.ActionLink("Details", "Details", new { id = item.Id }) |
                         @Html.ActionLink("Delete", "Delete", new { id = item.Id })
                     </td>*@
-                </tr>
-            }
-        </table>
+                    </tr>
+                }
+            </table>
+        </div>
+            <div class="gaugediv"></div>
 
-        <div class="gaugediv"></div>
-
-        <script type="text/javascript">
+            <script type="text/javascript">
             var sentiment = @Html.Raw(Json.Encode(Model.ElementAt(0).SentimentScore));
-        </script>
+            </script>
 
-        <!-- jQuery library -->
-        <script src="~/Scripts/jquery.min.js"></script>
-        <!-- Include all compiled plugins (below), or include individual files as needed -->
-        <script src="~/Scripts/bootstrap.js"></script>
-        <!-- Slick slider -->
-        <script type="text/javascript" src="~/Scripts/slick.js"></script>
-        <!-- Counter -->
-        <script type="text/javascript" src="~/Scripts/waypoints.js"></script>
-        <script type="text/javascript" src="~/Scripts/jquery.counterup.js"></script>
-        <!-- Mixit slider -->
-        <script type="text/javascript" src="~/Scripts/jquery.mixitup.js"></script>
-        <!-- Add fancyBox -->
-        <script type="text/javascript" src="~/Scripts/jquery.fancybox.pack.js"></script>
-        <script src="~/Scripts/jqueryd.min.js"></script>
-        <!-- AM CHARTS-->
-        <script type="text/javascript" src="~/Scripts/AMcharts/core.js"></script>
-        <script type="text/javascript" src="~/Scripts/AMcharts/charts.js"></script>
-        <script type="text/javascript" src="~/Scripts/AMcharts/animated.js"></script>
-        <script type="text/javascript" src="~/Scripts/AMcharts/kelly.js"></script>
-        <!-- HIGHLIGHTING TEXT-->
-        <script type="text/javascript" src="~/Scripts/jquery.highlight-within-textarea.js"></script>
-        <!-- Custom js -->
-        <script type="text/javascript" src="~/Scripts/Additional_functions.js"></script>
-        <script src="~/Scripts/Sentiment.js"></script>
-        <script src="~/Scripts/custom.js"></script>
-        
+            <!-- jQuery library -->
+            <script src="~/Scripts/jquery.min.js"></script>
+            <!-- Include all compiled plugins (below), or include individual files as needed -->
+            <script src="~/Scripts/bootstrap.js"></script>
+            <!-- Slick slider -->
+            <script type="text/javascript" src="~/Scripts/slick.js"></script>
+            <!-- Counter -->
+            <script type="text/javascript" src="~/Scripts/waypoints.js"></script>
+            <script type="text/javascript" src="~/Scripts/jquery.counterup.js"></script>
+            <!-- Mixit slider -->
+            <script type="text/javascript" src="~/Scripts/jquery.mixitup.js"></script>
+            <!-- Add fancyBox -->
+            <script type="text/javascript" src="~/Scripts/jquery.fancybox.pack.js"></script>
+            <script src="~/Scripts/jqueryd.min.js"></script>
+            <!-- AM CHARTS-->
+            <script type="text/javascript" src="~/Scripts/AMcharts/core.js"></script>
+            <script type="text/javascript" src="~/Scripts/AMcharts/charts.js"></script>
+            <script type="text/javascript" src="~/Scripts/AMcharts/animated.js"></script>
+            <script type="text/javascript" src="~/Scripts/AMcharts/kelly.js"></script>
+            <!-- HIGHLIGHTING TEXT-->
+            <script type="text/javascript" src="~/Scripts/jquery.highlight-within-textarea.js"></script>
+            <!-- Custom js -->
+            <script type="text/javascript" src="~/Scripts/Additional_functions.js"></script>
+            <script src="~/Scripts/Sentiment.js"></script>
+            <script src="~/Scripts/custom.js"></script>
 
 
-    </div>
+
+        </div>
 </body>
 </html>

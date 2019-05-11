@@ -42,7 +42,7 @@
         .login-register-form {
             position: absolute;
             left: 35%;
-            top: 24%;
+            top: 8%;
             background-color: transparent;
             width: 33%;
             height: 50%;
@@ -72,14 +72,14 @@
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                     <div class="form-group">
                         @Html.LabelFor(m => m.Email, new { @class = "col-md-offset-1 col-md-2 control-label" })
-                        <div class="col-md-offset-1 col-md-6">
+                        <div class="col-md-6">
                             @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
                             @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
                         </div>
                     </div>
                     <div class="form-group">
                         @Html.LabelFor(m => m.Password, new { @class = "col-md-offset-1 col-md-2 control-label" })
-                        <div class="col-md-offset-1 col-md-6">
+                        <div class="col-md-6">
                             @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
                             @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
                         </div>

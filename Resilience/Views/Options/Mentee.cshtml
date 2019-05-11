@@ -27,15 +27,18 @@
     <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,400italic,300,300italic,500,700' rel='stylesheet' type='text/css'>
     <style>
+        html, body {
+            height: 100%;
+            width: 100%;
+        }
         .mentee-background {
-            height: 700px;
+            height: 100%;
+            width: 100%;
             background: url('../../Images/blank-composition-desk-317355.jpg') no-repeat center;
             background-size: cover;
         }
-            .mentee-ask{
-            position: absolute;
-            top: 24%;
-            left: 40%;
+        .mentee-ask {
+            text-align: center;
             color: black;
             @*box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
             *@
@@ -50,7 +53,7 @@
             transition-duration: 0.4s;
             cursor: pointer;
         }
-            .button1 {
+        .button1 {
             width: 20%;
             height: 10%;
             background-color: bisque;
@@ -59,8 +62,9 @@
             box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
             border-radius: 12px;
             position: absolute;
-            top: 40%;
-            left: 43%;
+            top: 25%;
+            left: 40%;
+            font-size: 1vw;
         }
 
 
@@ -78,8 +82,9 @@
             box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
             border-radius: 12px;
             position: absolute;
-            top: 60%;
-            left: 43%;
+            top: 42.5%;
+            left: 40%;
+            font-size: 1vw;
         }
 
 
@@ -97,12 +102,32 @@
             box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
             border-radius: 12px;
             position: absolute;
-            top: 80%;
-            left: 43%;
+            top: 60%;
+            left: 40%;
+            font-size: 1vw;
         }
 
 
             .button3:hover {
+                background-color: white;
+                color: black;
+            }
+        .button4 {
+            width: 20%;
+            height: 10%;
+            background-color: bisque;
+            color: white;
+            border: 2px solid black;
+            box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+            border-radius: 12px;
+            position: absolute;
+            top: 77.5%;
+            left: 40%;
+            font-size: 1vw;
+        }
+
+
+            .button4:hover {
                 background-color: white;
                 color: black;
             }
@@ -111,21 +136,24 @@
 <body>
     <div class="mentee-background">
         <div class="mentee-ask">
-            <h2>What do you want to do?</h2>
-        </div>
-        <button class="button1">
-            @Html.ActionLink("Add/Change your mentor", "ChooseMentor", "Users")
-        </button>
-        <button class="button4">
-            @Html.ActionLink("Create your goals and tasks", "Create", "Goals")
-        </button>
-        <button class="button2">
-            @Html.ActionLink("Write a new diary entry", "Create", "DiaryEntries")
-        </button>
-        <button class="button3">
-            @Html.ActionLink("View feedback from your mentor", "ViewFeedback", "DiaryEntries")
-        </button>
-
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <br />
+                <h2>What do you want to do?</h2>
+            </div>
+            </div>
+            <button class="button1">
+                @Html.ActionLink("Add/Change your mentor", "ChooseMentor", "Users")
+            </button>
+            <button class="button2">
+                @Html.ActionLink("Create your goals and tasks", "Create", "Goals")
+            </button>
+            <button class="button3">
+                @Html.ActionLink("Write a new diary entry", "Create", "DiaryEntries")
+            </button>
+            <button class="button4">
+                @Html.ActionLink("View feedback from your mentor", "ViewFeedback", "DiaryEntries")
+            </button>
+    
     </div>
 
     <!-- jQuery library -->
