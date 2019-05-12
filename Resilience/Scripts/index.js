@@ -11,7 +11,7 @@ $(document).ready(function () {
             // Employment in victoria 2018 by region
             barplot("region_plot", datasets.Employment_region, "Employment by Region in Victoria - 2018");
             // Employment by industry 2018 vs projection 2023
-            barplotcompound("industry_plot", datasets.Industry_empl_2018, "Employment by industry");
+            barplotcompound("industry_plot", datasets.Industry_empl_2018, "Employment projection by 2023");
             //Unemployment time series
             linetrendplot("history_plot", datasets.Hist_Vic_empl, "Trend of unemployment rate in Victoria");
         },

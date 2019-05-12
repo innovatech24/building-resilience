@@ -33,6 +33,7 @@
     float: right;
     font-size: 28px;
     font-weight: bold;
+    opacity: 0;
 }
 
     .close:hover,
