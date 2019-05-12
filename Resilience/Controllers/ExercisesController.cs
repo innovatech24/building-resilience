@@ -160,6 +160,54 @@ namespace Resilience.Controllers
             return RedirectToAction("Index");
         }
 
+        //GET        
+        public ActionResult EditCompletion(int Id)
+        {
+            var exercise = db.Exercises.Find(Id);
+            exercise.CompletionDate = DateTime.Now;
+            db.Entry(exercise).State = EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("Index", "Exercises", new { id = Id });
+        }
+
+        //GET
+        public ActionResult Comments(int Id)
+        {
+            Exercise exercise = db.Exercises.Find(Id);
+            ViewBag.GoalsId = new SelectList(db.Goals, "Id", "GoalName", exercise.GoalsId);
+            return View(exercise);
+        }
+
+        //POST
+        [HttpPost]
+        public ActionResult Comments(Exercise exercise)
+        {
+            var e = db.Exercises.Find(exercise.Id);
+            e.MenteeComments = exercise.MenteeComments;
+            db.Entry(e).State = EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("Index", "Exercises", new { id = e.Id });
+        }
+
+        //GET
+        public ActionResult Feedback(int Id)
+        {
+            Exercise exercise = db.Exercises.Find(Id);
+            ViewBag.GoalsId = new SelectList(db.Goals, "Id", "GoalName", exercise.GoalsId);
+            return View(exercise);
+        }
+
+        //POST
+        [HttpPost]
+        public ActionResult Feedback(Exercise exercise)
+        {
+            var e = db.Exercises.Find(exercise.Id);
+            e.MentorFeedback = exercise.MentorFeedback;
+            db.Entry(e).State = EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("Index", "Exercises", new { id = e.Id });
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

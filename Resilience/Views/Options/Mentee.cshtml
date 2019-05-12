@@ -63,8 +63,8 @@
             box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
             border-radius: 12px;
             position: absolute;
-            top: 15%;
-            left: 40%;
+            top: 25%;
+            left: 25%;
             font-size: 1vw;
         }
 
@@ -83,8 +83,8 @@
             box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
             border-radius: 12px;
             position: absolute;
-            top: 30%;
-            left: 40%;
+            top: 50%;
+            left: 25%;
             font-size: 1vw;
         }
 
@@ -103,8 +103,8 @@
             box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
             border-radius: 12px;
             position: absolute;
-            top: 45%;
-            left: 40%;
+            top: 75%;
+            left: 25%;
             font-size: 1vw;
         }
 
@@ -122,8 +122,8 @@
             box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
             border-radius: 12px;
             position: absolute;
-            top: 60%;
-            left: 40%;
+            top: 25%;
+            left: 55%;
             font-size: 1vw;
         }
 
@@ -141,13 +141,32 @@
             box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
             border-radius: 12px;
             position: absolute;
-            top: 75%;
-            left: 40%;
+            top: 50%;
+            left: 55%;
             font-size: 1vw;
         }
 
 
             .button5:hover {
+                background-color: white;
+                color: black;
+            }
+        .button6 {
+            width: 20%;
+            height: 10%;
+            background-color: bisque;
+            color: white;
+            border: 2px solid black;
+            box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+            border-radius: 12px;
+            position: absolute;
+            top: 75%;
+            left: 55%;
+            font-size: 1vw;
+        }
+
+
+            .button6:hover {
                 background-color: white;
                 color: black;
             }
@@ -168,12 +187,15 @@
             @Html.ActionLink("Create your goals and tasks", "Create", "Goals")
         </button>
         <button class="button3">
-            @Html.ActionLink("Write a new diary entry", "Create", "DiaryEntries")
+            @Html.ActionLink("View your goals and tasks", "Index", "Goals")
         </button>
         <button class="button4">
-            @Html.ActionLink("View feedback from your mentor", "ViewFeedback", "DiaryEntries")
+            @Html.ActionLink("Write a new diary entry", "Create", "DiaryEntries")
         </button>
         <button class="button5">
+            @Html.ActionLink("View feedback from your mentor", "ViewFeedback", "DiaryEntries")
+        </button>
+        <button class="button6">
             @Html.ActionLink("View your progress", "MenteeProgress", "Options")
         </button>
 

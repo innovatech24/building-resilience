@@ -591,6 +591,10 @@
     <Content Include="Views\Shared\DisplayTemplates\CanonicalHelperModel.cshtml" />
     <Content Include="Views\Options\MenteeProgress.cshtml" />
     <Content Include="Views\Error\NothingAdded.cshtml" />
+    <Content Include="Views\Goals\Comments.cshtml" />
+    <Content Include="Views\Exercises\Comments.cshtml" />
+    <Content Include="Views\Exercises\Feedback.cshtml" />
+    <Content Include="Views\Goals\Feedback.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

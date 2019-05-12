@@ -20,7 +20,8 @@ namespace Resilience.Controllers
         // GET: Goals
         public ActionResult Index()
         {
-            var goals = db.Goals.Include(g => g.User);
+            ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId<int>());            
+            var goals = db.Goals.Where(g => g.UsersId == user.Id);
             return View(goals.ToList());
         }
 
@@ -139,6 +140,54 @@ namespace Resilience.Controllers
         {            
             var goals = db.Goals.Where(g => g.UsersId == Id).ToList();
             return View(goals.ToList());
+        }
+
+        //GET        
+        public ActionResult EditCompletion(int Id)
+        {
+            var goals = db.Goals.Find(Id);
+            goals.CompletionDate = DateTime.Now;
+            db.Entry(goals).State = EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("Index", "Goals", new { id = Id });
+        }
+
+        //GET
+        public ActionResult Comments(int Id)
+        {
+            Goals goals = db.Goals.Find(Id);
+            ViewBag.UsersId = new SelectList(db.Users, "Id", "FirstName", goals.UsersId);
+            return View(goals);
+        }
+
+        //POST
+        [HttpPost]
+        public ActionResult Comments(Goals goal)
+        {
+            var g = db.Goals.Find(goal.Id);
+            g.MenteeComments = goal.MenteeComments;
+            db.Entry(g).State = EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("Index", "Goals", new { id = g.Id });
+        }
+
+        //GET
+        public ActionResult Feedback(int Id)
+        {
+            Goals goals = db.Goals.Find(Id);
+            ViewBag.UsersId = new SelectList(db.Users, "Id", "FirstName", goals.UsersId);
+            return View(goals);
+        }
+
+        //POST
+        [HttpPost]
+        public ActionResult Feedback(Goals goal)
+        {
+            var g = db.Goals.Find(goal.Id);
+            g.MentorFeedback = goal.MentorFeedback;
+            db.Entry(g).State = EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("Index", "Goals", new { id = g.Id });
         }
 
         protected override void Dispose(bool disposing)
