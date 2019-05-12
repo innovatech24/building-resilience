@@ -89,7 +89,7 @@
                 <div class="form-group">
                     @Html.LabelFor(model => model.TaskDescription, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        @Html.EditorFor(model => model.TaskDescription, new { htmlAttributes = new { @class = "col-md-offset-1 form-control" } })
+                        @Html.EditorFor(model => model.TaskDescription, new { htmlAttributes = new { @class = "col-md-offset-1 form-control", rows = "3" } })
                         @Html.ValidationMessageFor(model => model.TaskDescription, "", new { @class = "text-danger" })
                     </div>
                 </div>
