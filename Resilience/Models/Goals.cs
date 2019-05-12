@@ -11,7 +11,8 @@ namespace Resilience.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Goals
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -25,7 +26,9 @@ namespace Resilience.Models
         public string GoalDescription { get; set; }
         public System.DateTime DueDate { get; set; }
         public System.DateTime CompletionDate { get; set; }
+        [DataType(DataType.MultilineText)]
         public string MentorFeedback { get; set; }
+        [DataType(DataType.MultilineText)]
         public string MenteeComments { get; set; }
         public Nullable<int> MenteeRating { get; set; }
         public int UsersId { get; set; }

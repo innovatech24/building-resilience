@@ -127,12 +127,18 @@
                                     @Html.DisplayFor(modelItem => item.MenteeRating)
                                 </td>
                             }
-                            if (item.MentorFeedback == null)
+                            if (item.MentorFeedback == null && DateTime.Compare(item.CompletionDate, new DateTime(1990, 02, 10)) == 0)
                             {
                                 <td>
                                     <text>
-                                        You haven't given feedback yet. You can give feedback once the goal is completed.
+                                        The goal isn't completed yet. You can give feedback once the goal is completed.
                                     </text>
+                                </td>
+                            }
+                            else if (item.MentorFeedback == null)
+                            {
+                                <td>
+                                    @Html.ActionLink("Provide Feedback", "Feedback", "Exercises", new { id = item.Id }, null)
                                 </td>
                             }
                             else
@@ -140,7 +146,7 @@
                                 <td>
                                     @Html.DisplayFor(modelItem => item.MentorFeedback)
                                 </td>
-                            }
+                            }                            
                             <td>
                                 @Html.ActionLink("Propose change", "Edit", "Exercises", new { id = item.Id }, null)
                             </td>
@@ -159,7 +165,7 @@
                             {
                                 <td>
                                     <text>
-                                        @Html.ActionLink("Provide comments", "Comments", "Exercise")
+                                        @Html.ActionLink("Provide comments", "Comments", "Exercises", new { id = item.Id }, null)
                                     </text>
                                 </td>
                             }
@@ -186,19 +192,13 @@
                                 <td>
                                     @Html.DisplayFor(modelItem => item.MenteeRating)
                                 </td>
-                            }
-                            if (item.MentorFeedback == null && DateTime.Compare(item.CompletionDate, new DateTime(1990, 02, 10)) == 0)
+                            }         
+                            if (item.MentorFeedback == null)
                             {
                                 <td>
                                     <text>
-                                        The goal isn't completed yet. You can give feedback once the goal is completed.
+                                        Your mentor hasn't given feedback yet. They will typically do this once the task is completed.
                                     </text>
-                                </td>
-                            }
-                            else if (item.MentorFeedback == null)
-                            {
-                                <td>
-                                    @Html.ActionLink("ProvideFeedback", "Feedback", "Exercise")
                                 </td>
                             }
                             else
