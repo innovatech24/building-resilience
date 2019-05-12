@@ -28,128 +28,144 @@
     <!-- Google Fonts -->
     <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,400italic,300,300italic,500,700' rel='stylesheet' type='text/css'>
+    <style>
+        html, body {
+            height: 100%;
+            width: 100%;
+        }
+
+        .view-goals {
+            min-height: 100%;
+            height: auto;
+            background: url('../../Images/atmosphere-background-bright-19670.jpg') center;
+            background-repeat: repeat-y;
+        }
+    </style>
 </head>
 <body>
+    <div class="view-goals">
+        <h2>View Your Goals</h2>
+        <div style="overflow-x:auto;">
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.GoalName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.GoalDescription)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DueDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CompletionDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.MentorFeedback)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.MenteeComments)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.MenteeRating)
+                    </th>
+                    <th></th>
+                </tr>
 
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.GoalName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.GoalDescription)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DueDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CompletionDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MentorFeedback)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MenteeComments)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MenteeRating)
-            </th>
-            <th></th>
-        </tr>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.GoalName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.GoalDescription)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DueDate)
+                        </td>
+                        @if (DateTime.Compare(item.CompletionDate, new DateTime(1990, 02, 10)) == 0)
+                        {
+                            <td>
+                                @Html.ActionLink("Mark as completed", "EditCompletion", "Goals", new { id = item.Id }, new { htmlAttributes = new { @class = "btn btn-default" } })
+                            </td>
+                        }
+                        else
+                        {
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CompletionDate)
+                            </td>
+                        }
+                        @if (item.MentorFeedback == null && DateTime.Compare(item.CompletionDate, new DateTime(1990, 02, 10)) == 0)
+                        {
+                            <td>
+                                <text>
+                                    You have not completed the goal yet. Your mentor will provide feedback once the goal is completed.
+                                </text>
+                            </td>
+                        }
+                        else if (item.MentorFeedback == null)
+                        {
+                            <td>
+                                <text>
+                                    Your mentor has not provided feedback yet.
+                                </text>
+                            </td>
+                        }
+                        else
+                        {
+                            <td>
+                                @Html.DisplayFor(modelItem => item.MentorFeedback)
+                            </td>
+                        }
+                        @if (item.MenteeComments == null && DateTime.Compare(item.CompletionDate, new DateTime(1990, 02, 10)) == 0)
+                        {
+                            <td>
+                                <text>
+                                    You can provide your comments after you have completed the goal.
+                                </text>
+                            </td>
+                        }
+                        else if (item.MenteeComments == null)
+                        {
+                            <td>
+                                <text>
+                                    @Html.ActionLink("Provide comments", "Comments", "Goals", new { id = item.Id }, null)
+                                </text>
+                            </td>
+                        }
+                        else
+                        {
+                            <td>
+                                @Html.DisplayFor(modelItem => item.MenteeComments)
+                            </td>
+                        }
+                        @if (item.MenteeRating == null && DateTime.Compare(item.CompletionDate, new DateTime(1990, 02, 10)) == 0)
+                        {
+                            <td>
+                                <text>
+                                    You can rate this goal once you have completed it.
+                                </text>
+                            </td>
+                        }
+                        else if (item.MenteeRating == null)
+                        {
 
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.GoalName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.GoalDescription)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DueDate)
-                </td>
-                @if (DateTime.Compare(item.CompletionDate, new DateTime(1990, 02, 10)) == 0)
-                {
-                    <td>
-                        @Html.ActionLink("Mark as completed", "EditCompletion", "Goals", new { id = item.Id }, new { htmlAttributes = new { @class = "btn btn-default" } })
-                    </td>
+                        }
+                        else
+                        {
+                            <td>
+                                @Html.DisplayFor(modelItem => item.MenteeRating)
+                            </td>
+                        }
+                        <td>
+                            @Html.ActionLink("View tasks", "Index", "Exercises", new { id = item.Id }, null)
+                        </td>
+                    </tr>
                 }
-                else
-                {
-                    <td>
-                        @Html.DisplayFor(modelItem => item.CompletionDate)
-                    </td>
-                }                
-                @if (item.MentorFeedback == null && DateTime.Compare(item.CompletionDate, new DateTime(1990,02,10)) == 0)
-                {
-                    <td>
-                        <text>
-                            You have not completed the goal yet. Your mentor will provide feedback once the goal is completed. 
-                        </text>
-                    </td>
-                }
-                else if (item.MentorFeedback == null)
-                {
-                    <td>
-                        <text>
-                            Your mentor has not provided feedback yet.
-                        </text>
-                    </td>
-                }
-                else
-                {
-                    <td>
-                        @Html.DisplayFor(modelItem => item.MentorFeedback)
-                    </td>
-                }
-                @if (item.MenteeComments == null && DateTime.Compare(item.CompletionDate, new DateTime(1990, 02, 10)) == 0)
-                {
-                    <td>
-                        <text>
-                            You can provide your comments after you have completed the goal. 
-                        </text>
-                    </td>
-                }
-                else if (item.MenteeComments == null)
-                {
-                    <td>
-                        <text>
-                            @Html.ActionLink("Provide comments", "Comments", "Goals", new { id = item.Id }, null)
-                        </text>
-                    </td>
-                }
-                else
-                {
-                    <td>
-                        @Html.DisplayFor(modelItem => item.MenteeComments)
-                    </td>
-                }
-                @if (item.MenteeRating == null && DateTime.Compare(item.CompletionDate, new DateTime(1990, 02, 10)) == 0)
-                {
-                    <td>
-                        <text>
-                            You can rate this goal once you have completed it. 
-                        </text>
-                    </td>
-                }
-                else if (item.MenteeRating == null)
-                {
-
-                }
-                else
-                {
-                    <td>
-                        @Html.DisplayFor(modelItem => item.MenteeRating)
-                    </td>
-                }                                
-                <td>
-                    @Html.ActionLink("View tasks", "Index", "Exercises", new { id = item.Id }, null)
-                </td>
-            </tr>
-        }
-    </table>
-
+            </table>
+        </div>
+    </div>
     <!-- jQuery library -->
     <script src="~/Scripts/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->

@@ -41,82 +41,84 @@
         }
         .dashboard-list-mentee {
             position: relative;
-            height: 100%;
-            width: 100%;
-            background: url('../../Images/background-border-brown-628241.jpg') no-repeat center;
-            background-size: cover;
-        }
-        .list-mentee {
+            min-height: 100%;
+            height: auto;
+            background: url('../../Images/atmosphere-background-bright-19670.jpg') center;
+            background-repeat: repeat-y;
+            text-align: center;
+        }        
+       @* .list-mentee {*@
             position: absolute;
-            top: 1%;
-            left: 12%;
+            top: 15%;
+            left: 16.5%;
             background-color: transparent;
             width: 72%;
-            height: 87.2%;
+            height: auto;
             padding: 3% 0 0;
             margin: auto;
-            text-align: center;
+            
             @*box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
             *@
-        }              
+        }        
     </style>
 </head>
 <body>
     <div class="dashboard-list-mentee">
-        <div class="list-mentee">
+        <br/>
             <h2>Dashboard</h2>
             <h3>List of Mentees</h3>
-
-            <div class="row row-tile">
-                <div class="col-md-12 tile">
-                    <div class="row row-tile text-white">
-                        @foreach (var item in Model)
-                        {
-                        <div class="main-card">
-                            <div class="card">
-                                @Html.ActionLink(item.FirstName, "Landingpage", "Options", new { id = item.Id }, null)
-                                @*@Html.ActionLink(item.FirstName, "ViewUser", new { id = item.Id })*@
-                            </div>
-                            <div class="card">
-                                Amu
-                            </div>
-                            <div class="card">
-                                Arti
-                            </div>
-                            <div class="card">
-                                Dave
-                            </div>
-                            <div class="card">
-                                Amu
-                            </div>
-                            <div class="card">
-                                Arti
-                            </div>
-                            <div class="card">
-                                Dave
-                            </div>
+            <div class="list-mentee">
+                <div class="row row-tile">
+                    <div class="col-md-offset-1 col-md-12 tile">
+                        <div class="row row-tile text-white">
+                            @foreach (var item in Model)
+                            {
+                                <div class="main-card">
+                                    <div class="card">
+                                        @Html.ActionLink(item.FirstName, "Landingpage", "Options", new { id = item.Id }, null)
+                                        @*@Html.ActionLink(item.FirstName, "ViewUser", new { id = item.Id })*@
+                                    </div>
+                                    <div class="card">
+                                        Amu
+                                    </div>
+                                    <div class="card">
+                                        Arti
+                                    </div>
+                                    <div class="card">
+                                        Dave
+                                    </div>
+                                    <div class="card">
+                                        Amu
+                                    </div>
+                                    <div class="card">
+                                        Arti
+                                    </div>
+                                    <div class="card">
+                                        Dave
+                                    </div>
+                                </div>
+                            }
                         </div>
-                        }
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- jQuery library -->
-    <script src="~/Scripts/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="~/Scripts/bootstrap.js"></script>
-    <!-- Slick slider -->
-    <script type="text/javascript" src="~/Scripts/slick.js"></script>
-    <!-- Counter -->
-    <script type="text/javascript" src="~/Scripts/waypoints.js"></script>
-    <script type="text/javascript" src="~/Scripts/jquery.counterup.js"></script>
-    <!-- Mixit slider -->
-    <script type="text/javascript" src="~/Scripts/jquery.mixitup.js"></script>
-    <!-- Add fancyBox -->
-    <script type="text/javascript" src="~/Scripts/jquery.fancybox.pack.js"></script>
-    <script src="~/Scripts/Dashboard.js"></script>
-    <!-- Custom js -->
-    <script src="~/Scripts/custom.js"></script>
+    
+        <!-- jQuery library -->
+        <script src="~/Scripts/jquery.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="~/Scripts/bootstrap.js"></script>
+        <!-- Slick slider -->
+        <script type="text/javascript" src="~/Scripts/slick.js"></script>
+        <!-- Counter -->
+        <script type="text/javascript" src="~/Scripts/waypoints.js"></script>
+        <script type="text/javascript" src="~/Scripts/jquery.counterup.js"></script>
+        <!-- Mixit slider -->
+        <script type="text/javascript" src="~/Scripts/jquery.mixitup.js"></script>
+        <!-- Add fancyBox -->
+        <script type="text/javascript" src="~/Scripts/jquery.fancybox.pack.js"></script>
+        <script src="~/Scripts/Dashboard.js"></script>
+        <!-- Custom js -->
+        <script src="~/Scripts/custom.js"></script>
 </body>
 </html>
