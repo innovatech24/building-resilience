@@ -27,7 +27,9 @@
       <mvcSiteMapNode title="Add Mentor" controller="Users" action="ChooseMentor"/>
       <mvcSiteMapNode title="Write Diary Entry" controller="DiaryEntries" action="Create"/>
       <mvcSiteMapNode title="Mentor Not Added Error Message" controller="Error" action="NoMentorMapped"/>
-      <mvcSiteMapNode title="Create Goals and Tasks" controller="Goals" action="Create"/>
+      <mvcSiteMapNode title="Create Goals" controller="Goals" action="Create" preservedRouteParameters="id">
+        <mvcSiteMapNode title="Create Tasks" controller="Exercises" action="Create" preservedRouteParameters="id"/>
+      </mvcSiteMapNode>
       <mvcSiteMapNode title="View Feedback" controller="DiaryEntries" action="ViewFeedback"/>
       <mvcSiteMapNode title="Progress Summary" controller="Options" action="MenteeProgress"/>
     </mvcSiteMapNode>

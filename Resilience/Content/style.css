@@ -455,7 +455,7 @@ img {
     display: inline;
     float: left;
     width: 100%;
-    padding: 100px 0;
+    padding: 50px 0;
     background-color: antiquewhite;
 }
 #mu-about-us .mu-about-us-area {
@@ -516,8 +516,8 @@ img {
     display: inline;
     float: left;
     width: 100%;
-    padding: 100px 0;
-    background-color:antiquewhite;
+    padding: 50px 0;
+    background-color: antiquewhite;
 }
 
 #mu-how-can-we-help .mu-how-can-we-help-area {
@@ -546,6 +546,75 @@ img {
 #mu-how-can-we-help .mu-how-can-we-help-area .mu-how-can-we-help-left ul li {
     line-height: 30px;
     list-style: circle;
+}
+#mu-challenges {
+    display: inline;
+    float: left;
+    width: 100%;
+    padding: 50px 0;
+    background-color: cadetblue;
+}
+
+#mu-challenges .mu-challenges-area {
+    display: inline;
+    float: left;
+    width: 100%;
+}
+
+#mu-challenges .mu-challenges-area .mu-challenges-left {
+    display: inline;
+    float: left;
+    width: 100%;
+}
+
+#mu-challenges .mu-challenges-area .mu-challenges-left h2 {
+    font-size: 40px;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+#mu-challenges .mu-challenges-area .mu-challenges-left ul {
+    margin-left: 25px;
+    margin-bottom: 15px;
+}
+
+#mu-challenges .mu-challenges-area .mu-challenges-left ul li {
+    line-height: 30px;
+    list-style: circle;
+}
+
+#mu-challenges .mu-challenges-area .mu-challenges-right {
+    display: inline;
+    float: left;
+    width: 100%;
+    display: block;
+    width: 100%;
+    background-color: #ccc;
+}
+
+#mu-challenges .mu-challenges-area .mu-challenges-right a {
+    display: block;
+    width: 100%;
+    position: relative;
+}
+
+#mu-challenges .mu-challenges-area .mu-challenges-right a img {
+    width: 100%;
+}
+
+#mu-challenges .mu-challenges-area .mu-challenges-right a:after {
+    background-color: rgba(0, 0, 0, 0.8);
+    bottom: 0;
+    color: #ddd;
+    content: '\f04b';
+    font-family: fontAwesome;
+    font-size: 50px;
+    left: 0;
+    padding-top: 27%;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    top: 0;
 }
 
 
@@ -2115,6 +2184,10 @@ img {
         padding: 60px 0;
     }
 
+    #mu-challenges {
+        padding: 30px 0;
+    }
+
   #mu-about-us .mu-about-us-area .mu-about-us-right  {
     margin-top: 30px;
   }
@@ -2496,6 +2569,10 @@ img {
 
     @media (max-width: 360px) {
         #mu-how-can-we-help .mu-how-can-we-help-area .mu-how-can-we-help-left h2 {
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+        #mu-challenges .mu-challenges-area .mu-challenges-left h2 {
             font-size: 30px;
             margin-bottom: 10px;
         }
