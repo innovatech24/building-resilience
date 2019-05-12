@@ -217,6 +217,9 @@ function stackedbarplot(obj, data, Title){
     categoryAxis.renderer.cellStartLocation = 0.1;
     categoryAxis.renderer.cellEndLocation = 0.9;
 
+    var label = categoryAxis.renderer.labels.template;
+    label.wrap = true;
+    label.maxWidth = 170;
 
     var valueAxis = chart.xAxes.push(new am4charts.ValueAxis());
     valueAxis.min = 0;
