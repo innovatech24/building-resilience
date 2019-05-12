@@ -2,6 +2,7 @@
 $(document).ready(function () {
     
     //highlightText("#entry", true);
+    highlightText("#entry", true);
 
     // Create gauge plot in div 'gaugediv'
     window.gauge = createGauge(0, "gaugediv","Sentiment",true);

@@ -33,7 +33,7 @@ namespace Resilience.Models
             ProcessStartInfo start = new ProcessStartInfo();
             start.FileName = findPy();
             start.CreateNoWindow = true;
-            start.Arguments = string.Format("{0} \"{1}\"", args + cmd, args);
+            start.Arguments = string.Format("{0} \"{1}\"", AppDomain.CurrentDomain.BaseDirectory.Replace("\\", "/") + cmd, args);
             start.UseShellExecute = false;
             start.RedirectStandardOutput = true;           
             using (Process process = Process.Start(start))
@@ -63,7 +63,7 @@ namespace Resilience.Models
                     string result = reader.ReadToEnd();
                     //Console.Write(result);
                     //process.WaitForExit();
-                    result = @"C:\users\kiran\anaconda3\python.exe";
+                    //result = @"C:\users\kiran\anaconda3\python.exe";
                     return result;
                 }
             }
