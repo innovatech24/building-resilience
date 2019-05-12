@@ -86,7 +86,7 @@
                             <div class="form-group">
                                 @*@Html.LabelFor(model => model.TaskDescription, htmlAttributes: new { @class = "control-label col-md-2" })*@
                                 <div class="col-md-10">
-                                    @Html.EditorFor(model => model.TaskDescription, new { htmlAttributes = new { @class = "form-control", rows = "3" } })
+                                    @Html.EditorFor(model => model.TaskDescription, new { htmlAttributes = new { @class = "form-control", rows = "3" } })   
                                     @Html.ValidationMessageFor(model => model.TaskDescription, "", new { @class = "text-danger" })
                                 </div>
                             </div>
@@ -96,10 +96,7 @@
                             <div class="form-group">
                                 <div class="col-md-10">
                                     <div id="sandbox">
-                                        @Html.EditorFor(model => model.DueDate, new { htmlAttributes = new { @class = "form-control", @onchange = "dateChange(this)" } })
-                                        @*<span class="input-group-addon">
-                                            <span class="glyphicon glyphicon-th"></span>
-                                        </span>*@
+                                        @Html.EditorFor(model => model.DueDate, new { htmlAttributes = new { @class = "form-control", @onchange = "dateChange(this)" } })                                     
                                     </div>
                                     @Html.ValidationMessageFor(model => model.DueDate, "", new { @class = "text-danger" })
                                 </div>
@@ -147,8 +144,8 @@
             $(".btnAdd").click(function () {
                 $('#sandbox').datepicker('destroy');
                 var td1 = '<td><div class="form-group"><div class="col-md-10">@Html.EditorFor(modelItem => modelItem.TaskName, new { htmlAttributes = new { @class = "form-control" } })</div></div></td>';
-                var td2 = '<td><div class="form-group"><div class="col-md-10">@Html.EditorFor(modelItem => modelItem.TaskDescription, new { htmlAttributes = new { @class = "form-control" } })</div></div></td>';
-                var td3 = '<td><div class="form-group"><div class="col-md-10"><div id="sandbox">@Html.EditorFor(modelItem => modelItem.DueDate, new { htmlAttributes = new { @class = "form-control" ,@onchange="dateChange(this)"} })</div></div></div></td>';
+                var td2 = '<td><div class="form-group"><div class="col-md-10"><textarea class="form-control text-box multi-line" id="TaskDescription" name="TaskDescription" rows="3"></textarea></div></div></td>';
+                var td3 = '<td><div class="form-group"><div class="col-md-10"><div id="sandbox">@Html.EditorFor(modelItem => modelItem.DueDate, new { htmlAttributes = new { @class = "form-control", @onchange= "dateChange(this)" } })</div></div></div></td>';
                 $("tbody").append('<tr>' + td1 + td2 + td3 + '</tr>');
                 $('#sandbox input').datepicker({
                     autoclose: true,

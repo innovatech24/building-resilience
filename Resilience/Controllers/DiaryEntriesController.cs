@@ -217,7 +217,7 @@ namespace Resilience.Controllers
                 var UserManager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
                 var menteeUser = UserManager.FindById(mentfeedback.UsersId);
                 var mentee = db.Users.Find(mentfeedback.UsersId);
-                var mentor = db.Users.Find(mentfeedback.MentorId);
+                var mentor = db.Users.Find(mentee.MentorId);
                 EmailController mail = new EmailController();
                 mail.FeedbackProvided(menteeUser.Email, mentee.FirstName, mentor.FirstName, mentor.LastName);
                 return RedirectToAction("Dashboard", "DiaryEntries");
