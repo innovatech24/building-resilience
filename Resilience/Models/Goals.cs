@@ -22,14 +22,21 @@ namespace Resilience.Models
         }
     
         public int Id { get; set; }
+        [Display(Name = "Goal Name")]
         public string GoalName { get; set; }
+        [Display(Name = "Goal Description")]
         public string GoalDescription { get; set; }
+        [Display(Name = "Due Date")]
         public System.DateTime DueDate { get; set; }
+        [Display(Name = "Completion Date")]
         public System.DateTime CompletionDate { get; set; }
         [DataType(DataType.MultilineText)]
+        [Display(Name = "Mentor Feedback")]
         public string MentorFeedback { get; set; }
         [DataType(DataType.MultilineText)]
+        [Display(Name = "Mentee Comments")]
         public string MenteeComments { get; set; }
+        [Display(Name = "Mentee Rating")]
         public Nullable<int> MenteeRating { get; set; }
         public int UsersId { get; set; }
         public int MentorId { get; set; }
