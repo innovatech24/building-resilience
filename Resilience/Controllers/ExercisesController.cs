@@ -165,7 +165,7 @@ namespace Resilience.Controllers
             exercise.CompletionDate = DateTime.Now;
             db.Entry(exercise).State = EntityState.Modified;
             db.SaveChanges();
-            return RedirectToAction("Index", "Exercises", new { id = Id });
+            return RedirectToAction("Index", "Exercises", new { id = exercise.GoalsId });
         }
 
         //GET
