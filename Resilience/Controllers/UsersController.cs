@@ -171,7 +171,7 @@ namespace Resilience.Controllers
                 if (users == null)
                 {
                     // Type options : info, danger, success, warning
-                    TempData["UserMessage"] = new JavaScriptSerializer().Serialize(new { Type = "danger", Title = "Error:", Message = "E-mail not found" });
+                    TempData["UserMessage"] = new JavaScriptSerializer().Serialize(new { Type = "danger", Title = "Error:", Message = "User not found" });
 
                     return View();
                 }
@@ -198,7 +198,7 @@ namespace Resilience.Controllers
                 else
                 {
                     // Type options : info, danger, success, warning
-                    TempData["UserMessage"] = new JavaScriptSerializer().Serialize(new { Type = "warning", Title = "Warning:", Message = "E-mail not registered as mentor" });
+                    TempData["UserMessage"] = new JavaScriptSerializer().Serialize(new { Type = "warning", Title = "Warning:", Message = "User not registered as mentor" });
 
                     return View();
                 }                
@@ -231,7 +231,7 @@ namespace Resilience.Controllers
                 if (users == null)
                 {
                     // Type options : info, danger, success, warning
-                    TempData["UserMessage"] = new JavaScriptSerializer().Serialize(new { Type = "danger", Title = "Error:", Message = "E-mail not found" });
+                    TempData["UserMessage"] = new JavaScriptSerializer().Serialize(new { Type = "danger", Title = "Error:", Message = "User not found" });
 
                     return View();
                 }

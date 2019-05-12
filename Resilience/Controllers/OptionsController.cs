@@ -45,8 +45,11 @@ namespace Resilience.Controllers
         public ActionResult Index()
         {
             ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId<int>());
-            var roles = UserManager.GetRoles(user.Id);
-
+            var roles = UserManager.GetRoles(user.Id);            
+            if (db.Users.Find(user.Id) == null)
+            {
+                return RedirectToAction("Create", "Users");
+            }
             if (roles.Count == 2)
             {
                 return RedirectToAction("Choice");
