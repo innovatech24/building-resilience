@@ -92,42 +92,15 @@
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul id="top-menu" class="nav navbar-nav navbar-right main-nav">
                         <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                        <!--Iteration 1 Code -->
-                        @*<li class="dropdown">
-                                <a href="~/Views/Challenges/Index.cshtml" class="dropdown-toggle" data-toggle="dropdown">Challenges <span class="fas fa-angle-down"></span></a>
-                                <ul class="dropdown-menu" role="menu">
-                                    <li>@Html.ActionLink("Bullying", "Bullying", "Challenges")</li>
-                                    <li>@Html.ActionLink("Child Abuse", "Abuse", "Challenges")</li>
-                                    <li>@Html.ActionLink("Family Violence", "Violence", "Challenges")</li>
-                                </ul>
-                            </li>*@
                         <li>@Html.ActionLink("Why resilience?", "Index", "Home", null, null, "mu-about-us", null, null)</li>
                         <li>@Html.Partial("_LoginPartial")</li>
-                        <!--Iteration 1 Code-->
-                        @*<li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Building resilience <span class="fa fa-angle-down"></span></a>
-                                <ul class="dropdown-menu" role="menu">
-                                    <li><a href="blog-archive.html">Activity 1</a></li>
-                                    <li><a href="blog-single.html">Activity 2</a></li>
-                                </ul>
-                            </li>*@
-                        @*<li><a href="contact.html">Contact</a></li>*@
                     </ul>
-                </div><!--/.nav-collapse -->
+                </div>
+                <!--/.nav-collapse -->
             </div>
         </nav>
     </section>
     <!-- End menu -->
-    @*<div class="breadcrumbs">
-            <div class="crumbs">
-                <ul>
-                    <li>You are Here: @Html.MvcSiteMap().SiteMapPath()</li>
-                </ul>
-            </div>
-            <p>
-                @RenderBody()
-            </p>
-        </div>*@
 
     <div class="breadcrumbs">
         <div class="crumbs">
@@ -140,28 +113,7 @@
     </div>
     @RenderBody()
     <!-- Start footer -->
-    <footer id="mu-footer">
-        <!-- start footer top -->
-        @*<div class="mu-footer-top">
-                <div class="container">
-                    <div class="mu-footer-top-area">
-                        <div class="row">
-                            <div class="col-lg-3 col-md-3 col-sm-3">
-                                <div class="mu-footer-widget">
-                                    <h4>Information</h4>
-                                    <ul>
-                                        <li>@Html.ActionLink("Bullying", "Bullying", "Challenges")</li>
-                                        <li>@Html.ActionLink("Child Abuse", "Abuse", "Challenges")</li>
-                                        <li>@Html.ActionLink("Family Violence", "Violence", "Challenges")</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>*@
-        <!-- end footer top -->
-        <!-- start footer bottom -->
+    <footer id="mu-footer">        
         <div class="mu-footer-bottom">
             <div class="container">
                 <div class="mu-footer-bottom-area">
