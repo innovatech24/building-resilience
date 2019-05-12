@@ -83,8 +83,12 @@ namespace Resilience.Controllers
                 case SignInStatus.Success:
                     var currentuse = UserManager.FindByEmail(model.Email);
                     var user = db.Users.Find(currentuse.Id);
+                    if (db.Users.Find(currentuse.Id) == null)
+                    {
+                        return RedirectToAction("Create", "Users");
+                    }
                     var claim = await UserManager.AddClaimAsync(currentuse.Id, new Claim("name", user.FirstName));                    
-                    var roles = UserManager.GetRoles(currentuse.Id);                      
+                    var roles = UserManager.GetRoles(currentuse.Id);                    
                     
                     if (roles.Count == 2)
                     {
