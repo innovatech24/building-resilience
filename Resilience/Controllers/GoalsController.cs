@@ -20,7 +20,8 @@ namespace Resilience.Controllers
         // GET: Goals
         public ActionResult Index()
         {
-            var goals = db.Goals.Include(g => g.User);
+            ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId<int>());            
+            var goals = db.Goals.Where(g => g.UsersId == user.Id);
             return View(goals.ToList());
         }
 
