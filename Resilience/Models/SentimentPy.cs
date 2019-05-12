@@ -22,12 +22,18 @@ namespace Resilience.Models
             return (res); //Json format string
         }
 
+        public string getDatasets()
+        {
+            string res = run_cmd("Scripts/py/load_datasets.py", AppDomain.CurrentDomain.BaseDirectory.Replace("\\", "/"));
+            return (res); //Json format string
+        }
+
         private string run_cmd(string cmd, string args)
         {
             ProcessStartInfo start = new ProcessStartInfo();
             start.FileName = findPy();
             start.CreateNoWindow = true;
-            start.Arguments = string.Format("{0} \"{1}\"", AppDomain.CurrentDomain.BaseDirectory.Replace("\\", "/") + cmd, args);
+            start.Arguments = string.Format("{0} \"{1}\"", args + cmd, args);
             start.UseShellExecute = false;
             start.RedirectStandardOutput = true;           
             using (Process process = Process.Start(start))
@@ -57,7 +63,7 @@ namespace Resilience.Models
                     string result = reader.ReadToEnd();
                     //Console.Write(result);
                     //process.WaitForExit();
-                    result = @"C:\users\kiran\anaconda3\python.exe";
+                    //result = @"C:\users\kiran\anaconda3\python.exe";
                     return result;
                 }
             }

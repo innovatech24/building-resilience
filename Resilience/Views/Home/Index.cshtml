@@ -27,6 +27,8 @@
 
     <!-- Main style sheet -->
     <link href="~/Content/style.css" rel="stylesheet">
+    <!-- Main style sheet -->
+    <link href="~/Content/HomeIndex.css" rel="stylesheet">
 
     <script>
         // Hide the body if is not validated yet.
@@ -166,6 +168,39 @@
                                         <li>WE HAVE ANALYSED THE OVERALL TONE OF THE DIARY AND HIGHLIGHTED THE KEY SENTENCES FOR YOUR PERUSAL</li>
                                         <li>You can provide feedback for your mentees</li>
                                     </ul>
+
+                                    <!-- Trigger/Open The Modal -->
+                                    <p><strong id="regionPlot">Employment in Victoria by region</strong></p>
+                                    <p><strong id="industryPlot">Industry employment</strong></p>
+                                    <p><strong id="histEmpl">Employment history in VIC</strong></p>
+                                    <!-- The Modal -->
+                                    <div id="myModal" class="modal">
+
+                                        <!-- Modal content -->
+                                        <div class="modal-content">
+                                            <span class="close">&times;</span>
+                                            <div id="region_plot"></div>
+                                        </div>
+
+                                    </div>
+                                    <div id="myModal2" class="modal">
+
+                                        <!-- Modal content -->
+                                        <div class="modal-content">
+                                            <span class="close">&times;</span>
+                                            Otra
+                                        </div>
+                                    </div>
+                                    <div id="myModal3" class="modal">
+
+                                        <!-- Modal content -->
+                                        <div class="modal-content">
+                                            <span class="close">&times;</span>
+                                            One last
+                                        </div>
+
+                                    </div>
+
                                     <h2 class="nav navbar-nav navbar-left">So what are you waiting for?</h2>
                                     <h2>@Html.Partial("_LoginPartial")</h2>
                                 </div>
@@ -176,6 +211,9 @@
             </div>
         </div>
     </section>
+
+    <div id="region_plot"></div>
+
     <!--End How can we help-->
     <!-- jQuery library -->
     <script src="~/Scripts/jquery.min.js"></script>
@@ -191,17 +229,21 @@
     <script type="text/javascript" src="~/Scripts/jquery.mixitup.js"></script>
     <!-- Add fancyBox -->
     <script type="text/javascript" src="~/Scripts/jquery.fancybox.pack.js"></script>
-
+    <!-- AM CHARTS-->
+    <script type="text/javascript" src="~/Scripts/AMcharts/core.js"></script>
+    <script type="text/javascript" src="~/Scripts/AMcharts/charts.js"></script>
+    <script type="text/javascript" src="~/Scripts/AMcharts/animated.js"></script>
+    <script type="text/javascript" src="~/Scripts/AMcharts/kelly.js"></script>
     <!-- Custom js -->
     <script src="~/Scripts/custom.js"></script>
     <script src="~/Scripts/index.js"></script>
-    
+
     <script>
         // Code to get access to the page under a password
         if ("@Session["validated"]" == "") {
             validate();
         };
-   
+
     </script>
 </body>
 </html>
