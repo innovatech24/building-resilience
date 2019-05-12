@@ -1,20 +1,20 @@
 Industry	Employment_2018_000	Employment_2023_000
-Agriculture, Forestry and Fishing	325,5548846	324,1459502
-Mining	234,3146334	239,9181829
-Manufacturing	940,287337	948,7987823
-Electricity, Gas, Water and Waste Services	150,3487275	156,4593689
-Construction	1182,556635	1301,315121
-Wholesale Trade	364,4142408	354,7068839
-Retail Trade	1290,584439	1338,138572
-Accommodation and Food Services	897,5376235	978,920377
-Transport, Postal and Warehousing	627,5593202	654,4599706
-Information Media and Telecommunications	227,1325491	237,8853289
-Financial and Insurance Services	441,4739588	455,6404698
-Rental, Hiring and Real Estate Services	220,2395908	233,3004371
-Professional, Scientific and Technical Services	1050,018637	1156,655431
-Administrative and Support Services	418,8473276	446,6992262
-Public Administration and Safety	755,0231742	792,763618
-Education and Training	1013,029654	1126,043163
-Health Care and Social Assistance	1680,872601	1931,179313
-Arts and Recreation Services	251,7343883	273,7431131
-Other Services	478,4749458	485,3599991
+Electricity, Gas, Water and Waste Services	150	156
+Rental, Hiring and Real Estate Services	220	233
+Information Media and Telecommunications	227	238
+Mining	234	240
+Arts and Recreation Services	252	274
+Agriculture, Forestry and Fishing	326	324
+Wholesale Trade	364	355
+Administrative and Support Services	419	447
+Financial and Insurance Services	441	456
+Other Services	478	485
+Transport, Postal and Warehousing	628	654
+Public Administration and Safety	755	793
+Accommodation and Food Services	898	979
+Manufacturing	940	949
+Education and Training	1013	1126
+Professional, Scientific and Technical Services	1050	1157
+Construction	1183	1301
+Retail Trade	1291	1338
+Health Care and Social Assistance	1681	1931
