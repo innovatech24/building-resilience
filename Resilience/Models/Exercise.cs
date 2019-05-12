@@ -16,15 +16,23 @@ namespace Resilience.Models
     public partial class Exercise
     {
         public int Id { get; set; }
+        [Display(Name = "Task Name")]
         public string TaskName { get; set; }
+        [DataType(DataType.MultilineText)]
+        [Display(Name = "Task Description")]
         public string TaskDescription { get; set; }
         public Nullable<int> MentorId { get; set; }
+        [Display(Name = "Due Date")]
         public System.DateTime DueDate { get; set; }
+        [Display(Name = "Completion Date")]
         public System.DateTime CompletionDate { get; set; }
         [DataType(DataType.MultilineText)]
+        [Display(Name = "Mentor Feedback")]
         public string MentorFeedback { get; set; }
         [DataType(DataType.MultilineText)]
+        [Display(Name = "Mentee Comments")]
         public string MenteeComments { get; set; }
+        [Display(Name = "Mentee Rating")]
         public string MenteeRating { get; set; }
         public int GoalsId { get; set; }
     

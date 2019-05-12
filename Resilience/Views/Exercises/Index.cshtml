@@ -146,10 +146,13 @@
                                 <td>
                                     @Html.DisplayFor(modelItem => item.MentorFeedback)
                                 </td>
-                            }                            
-                            <td>
-                                @Html.ActionLink("Propose change", "Edit", "Exercises", new { id = item.Id }, null)
-                            </td>
+                            }
+                            if (DateTime.Compare(item.CompletionDate, new DateTime(1990, 02, 10)) == 0)
+                            { 
+                                <td>
+                                    @Html.ActionLink("Propose change", "Edit", "Exercises", new { id = item.Id }, null)
+                                </td>
+                            }
                         }
                         else
                         {
@@ -207,9 +210,12 @@
                                     @Html.DisplayFor(modelItem => item.MentorFeedback)
                                 </td>
                             }
-                            <td>
-                                @Html.ActionLink("Edit task", "Edit", "Exercises", new { id = item.Id }, null)
-                            </td>
+                            if (DateTime.Compare(item.CompletionDate, new DateTime(1990, 02, 10)) == 0)
+                            { 
+                                <td>
+                                    @Html.ActionLink("Edit task", "Edit", "Exercises", new { id = item.Id }, null)
+                                </td>
+                            }
                         }
                     </tr>
                 }

@@ -17,13 +17,16 @@ namespace Resilience.Models
     {
         public int Id { get; set; }
         [DataType(DataType.MultilineText)]
+        [Display(Name = "Diary Entry")]
         public string Entry { get; set; }
         public int UsersId { get; set; }
         public int MentorId { get; set; }
         public Nullable<double> SentimentScore { get; set; }
         [DataType(DataType.MultilineText)]
+        [Display(Name = "Mentor Feedback")]
         public string MentorFeedback { get; set; }
         public System.DateTime Date { get; set; }
+        [Display(Name = "Mentee Feedback")]
         public Nullable<int> MenteeFeedback { get; set; }
     
         public virtual Users User { get; set; }
