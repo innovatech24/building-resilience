@@ -88,54 +88,124 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.CompletionDate)
                         </td>
-                        @if (item.MenteeComments == null)
+                        @if (this.User.IsInRole("Mentor"))
                         {
+                            if (item.MenteeComments == null)
+                            {
+                                <td>
+                                    <text>
+                                        Your mentee hasn't left any comments yet. They would typically do this once they complete the goal.
+                                    </text>
+                                </td>
+                            }
+                            else
+                            {
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.MenteeComments)
+                                </td>
+                            }
+                            if (item.MenteeRating == null)
+                            {
+                                <td>
+                                    <text>
+                                        Your mentee hasn't told us how they felt with this goal. They would typically do this once they complete the goal.
+                                    </text>
+                                </td>
+                            }
+                            else
+                            {
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.MenteeRating)
+                                </td>
+                            }
+                            if (item.MentorFeedback == null)
+                            {
+                                <td>
+                                    <text>
+                                        You haven't given feedback yet. You can give feedback once the goal is completed.
+                                    </text>
+                                </td>
+                            }
+                            else
+                            {
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.MentorFeedback)
+                                </td>
+                            }
                             <td>
-                                <text>
-                                    Your mentee hasn't left any comments yet. They would typically do this once they complete the goal.
-                                </text>
+                                @Html.ActionLink("Propose change", "Edit", "Exercises", new { id = item.Id }, null)
                             </td>
                         }
                         else
                         {
+                            if (item.MenteeComments == null && DateTime.Compare(item.CompletionDate, new DateTime(1990, 02, 10)) == 0)
+                            {
+                                <td>
+                                    <text>
+                                        You haven't completed the task. You can provide comments once the task is completed.
+                                    </text>
+                                </td>
+                            }
+                            else if (item.MenteeComments == null)
+                            {
+                                <td>
+                                    <text>
+                                        @Html.ActionLink("Provide comments", "Comments", "Exercise")
+                                    </text>
+                                </td>
+                            }
+                            else
+                            {
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.MenteeComments)
+                                </td>
+                            }
+                            if (item.MenteeRating == null && DateTime.Compare(item.CompletionDate, new DateTime(1990, 02, 10)) == 0)
+                            {
+                                <td>
+                                    <text>
+                                        You haven't completed the task. You can provide a rating once the task is completed.
+                                    </text>
+                                </td>
+                            }
+                            else if (item.MenteeRating == null)
+                            {
+                                <td>
+                                   
+                                </td>
+                            }
+                            else
+                            {
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.MenteeRating)
+                                </td>
+                            }
+                            if (item.MentorFeedback == null && DateTime.Compare(item.CompletionDate, new DateTime(1990, 02, 10)) == 0)
+                            {
+                                <td>
+                                    <text>
+                                        The goal isn't completed yet. You can give feedback once the goal is completed.
+                                    </text>
+                                </td>
+                            }
+                            else if (item.MentorFeedback == null)
+                            {
+                                <td>
+                                    @Html.ActionLink("ProvideFeedback", "Feedback", "Exercise")
+                                </td>
+                            }
+                            else
+                            {
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.MentorFeedback)
+                                </td>
+                            }
                             <td>
-                                @Html.DisplayFor(modelItem => item.MenteeComments)
+                                @Html.ActionLink("Edit task", "Edit", "Exercises", new { id = item.Id }, null)
                             </td>
                         }
-                        @if (item.MenteeRating == null)
-                        {
-                            <td>
-                                <text>
-                                    Your mentee hasn't told us how they felt with this goal. They would typically do this once they complete the goal.
-                                </text>
-                            </td>
-                        }
-                        else
-                        {
-                            <td>
-                                @Html.DisplayFor(modelItem => item.MenteeRating)
-                            </td>
-                        }
-                        @if (item.MentorFeedback == null)
-                        {
-                            <td>
-                                <text>
-                                    You haven't given feedback yet. You can give feedback once the goal is completed.
-                                </text>
-                            </td>
-                        }
-                        else
-                        {
-                            <td>
-                                @Html.DisplayFor(modelItem => item.MentorFeedback)
-                            </td>
-                        }
-                        <td>
-                            @Html.ActionLink("Propose change", "Edit", "Exercises", new { id = item.Id }, null)
-                        </td>
                     </tr>
                 }
-
             </table>
         </div>
     </div>
