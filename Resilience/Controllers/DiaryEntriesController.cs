@@ -43,6 +43,7 @@ namespace Resilience.Controllers
         }
 
         //GET: View/5
+        [SiteMapTitle("title")]
         [Authorize(Roles = "Mentor")]
         public ActionResult View(int Id)
         {
@@ -187,6 +188,7 @@ namespace Resilience.Controllers
         }
 
         //GET: Feedback/5
+        [SiteMapTitle("title")]
         [Authorize(Roles = "Mentor")]
         public ActionResult Feedback(int Id)
         {
