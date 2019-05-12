@@ -148,7 +148,7 @@
                                 </td>
                             }
                             if (DateTime.Compare(item.CompletionDate, new DateTime(1990, 02, 10)) == 0)
-                            { 
+                            {
                                 <td>
                                     @Html.ActionLink("Propose change", "Edit", "Exercises", new { id = item.Id }, null)
                                 </td>
@@ -188,14 +188,16 @@
                             }
                             else if (item.MenteeRating == null)
                             {
-                                <td></td>
+                                <td>
+                                    <div class="ratingEnabled" iid=@item.Id rate=0></div>
+                                </td>
                             }
                             else
                             {
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.MenteeRating)
+                                    <div class="ratingDisabled" iid=@item.Id rate=@item.MenteeRating></div>
                                 </td>
-                            }         
+                            }
                             if (item.MentorFeedback == null)
                             {
                                 <td>
@@ -211,7 +213,7 @@
                                 </td>
                             }
                             if (DateTime.Compare(item.CompletionDate, new DateTime(1990, 02, 10)) == 0)
-                            { 
+                            {
                                 <td>
                                     @Html.ActionLink("Edit task", "Edit", "Exercises", new { id = item.Id }, null)
                                 </td>
@@ -237,7 +239,10 @@
     <!-- Add fancyBox -->
     <script type="text/javascript" src="~/Scripts/jquery.fancybox.pack.js"></script>
     <script src="~/Scripts/Dashboard.js"></script>
+    <!-- Emoticon rating-->
+    <script type="text/javascript" src="~/Scripts/emoticon_rating.js"></script>
     <!-- Custom js -->
     <script src="~/Scripts/custom.js"></script>
+    <script src="~/Scripts/ExercisesIndex.js"></script>
 </body>
 </html>

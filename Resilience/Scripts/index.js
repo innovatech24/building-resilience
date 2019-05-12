@@ -13,7 +13,7 @@ $(document).ready(function () {
             // Employment by industry 2018 vs projection 2023
             barplotcompound("industry_plot", datasets.Industry_empl_2018, "Employment by industry");
             //Unemployment time series
-            linetrendplot("history_plot", datasets.Hist_Vic_empl, "Trend of unemployment in Victoria");
+            linetrendplot("history_plot", datasets.Hist_Vic_empl, "Trend of unemployment rate in Victoria");
         },
         errlr: function (response) { console.log(response);}
     });
@@ -242,6 +242,7 @@ function linetrendplot(obj, data, Title) {
     categoryAxis.dataFields.category = "year";
     categoryAxis.startLocation = 0.4;
     categoryAxis.endLocation = 0.6;
+    categoryAxis.title.text = "Year";
     //var valueAxis2 = chart.xAxes.push(new am4charts.ValueAxis());
     var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
 

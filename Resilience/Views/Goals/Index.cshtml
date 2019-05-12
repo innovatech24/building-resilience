@@ -150,12 +150,17 @@
                         }
                         else if (item.MenteeRating == null)
                         {
-
+                            <td>
+                                <div class="ratingEnabled" iid=@item.Id rate=0></div>
+                                @*@Html.HiddenFor(model => item.MenteeRating);*@
+                            </td>
+                            
                         }
                         else
                         {
                             <td>
-                                @Html.DisplayFor(modelItem => item.MenteeRating)
+                                @*<div class="ratingEnabled" iid=@item.Id rate=@item.MenteeRating></div>*@
+                                <div class="ratingDisabled" iid=@item.Id rate=@item.MenteeRating></div>
                             </td>
                         }
                         <td>
@@ -180,7 +185,11 @@
     <!-- Add fancyBox -->
     <script type="text/javascript" src="~/Scripts/jquery.fancybox.pack.js"></script>
     <script src="~/Scripts/Dashboard.js"></script>
+    <!-- Emoticon rating-->
+    <script type="text/javascript" src="~/Scripts/emoticon_rating.js"></script>
+
     <!-- Custom js -->
     <script src="~/Scripts/custom.js"></script>
+    <script src="~/Scripts/GoalsIndex.js"></script>
 </body>
 </html>
