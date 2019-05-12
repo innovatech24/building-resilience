@@ -311,6 +311,7 @@
     <Content Include="Content\burlywood-theme.css" />
     <Content Include="Content\dark-red-theme.css" />
     <Content Include="Content\dashboard.css" />
+    <Content Include="Content\Dashboard2.css" />
     <Content Include="Content\default-theme.css" />
     <Content Include="Content\diarycreate.css" />
     <Content Include="Content\font-awesome.css" />

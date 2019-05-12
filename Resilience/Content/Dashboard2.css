@@ -1,0 +1,20 @@
+﻿.main-card {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 150px));
+    grid-auto-rows: 94px;
+    grid-gap: 20px;
+}
+
+.card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    align-items: center;
+    background-color: #e3e4e6;
+    -webkit-box-shadow: 4px 4px 15px -3px rgba(0,0,0,0.39);
+    -moz-box-shadow: 4px 4px 15px -3px rgba(0,0,0,0.39);
+    box-shadow: 4px 4px 15px -3px rgba(0,0,0,0.39);
+    border-radius: 4px;
+    /*margin: 20px;*/
+}

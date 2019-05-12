@@ -24,7 +24,7 @@
     <!-- Main style sheet -->
     <link href="~/Content/style.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="~/Content/dashboard.css" type="text/css" />
+    <link rel="stylesheet" href="~/Content/dashboard2.css" type="text/css" />
 
 
     <!-- Google Fonts -->
@@ -68,16 +68,34 @@
             <h3>List of Mentees</h3>
 
             <div class="row row-tile">
-                <div class="col-md-8 tile">
+                <div class="col-md-12 tile">
                     <div class="row row-tile text-white">
                         @foreach (var item in Model)
                         {
-                            <div class="col-sm-2 col-xs-6 tile square ">
-                                <div class="tile-content">
-                                    @Html.ActionLink(item.FirstName, "Landingpage", "Options", new { id = item.Id }, null)
-                                    @*@Html.ActionLink(item.FirstName, "ViewUser", new { id = item.Id })*@
-                                </div>
+                        <div class="main-card">
+                            <div class="card">
+                                @Html.ActionLink(item.FirstName, "Landingpage", "Options", new { id = item.Id }, null)
+                                @*@Html.ActionLink(item.FirstName, "ViewUser", new { id = item.Id })*@
                             </div>
+                            <div class="card">
+                                Amu
+                            </div>
+                            <div class="card">
+                                Arti
+                            </div>
+                            <div class="card">
+                                Dave
+                            </div>
+                            <div class="card">
+                                Amu
+                            </div>
+                            <div class="card">
+                                Arti
+                            </div>
+                            <div class="card">
+                                Dave
+                            </div>
+                        </div>
                         }
                     </div>
                 </div>
