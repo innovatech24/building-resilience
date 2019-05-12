@@ -214,5 +214,17 @@ namespace Resilience.Controllers
             }
             base.Dispose(disposing);
         }
+
+        [Authorize(Roles = "Mentee")]
+        [HttpPost]
+        public void setExerciseMenteeRate(int Id, int rate)
+        {
+            Exercise ex = db.Exercises.Find(Id);
+            ex.MenteeRating = rate.ToString();
+            db.Entry(ex).State = EntityState.Modified;
+            db.SaveChanges();
+
+            //return View(diaryEntries);
+        }
     }
 }

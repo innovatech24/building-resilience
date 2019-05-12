@@ -198,5 +198,18 @@ namespace Resilience.Controllers
             }
             base.Dispose(disposing);
         }
+
+        [Authorize(Roles = "Mentee")]
+        [HttpPost]
+        public void setGoalMenteeRate(int Id, int rate)
+        {
+            Goals goal = db.Goals.Find(Id);
+            goal.MenteeRating= rate;
+            db.Entry(goal).State = EntityState.Modified;
+            db.SaveChanges();
+
+            //return View(diaryEntries);
+        }
     }
 }
+ 
