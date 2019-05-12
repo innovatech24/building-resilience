@@ -317,6 +317,7 @@
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\gaugediv.css" />
     <Content Include="Content\green-theme.css" />
+    <Content Include="Content\HomeIndex.css" />
     <Content Include="Content\jquery.fancybox.css" />
     <Content Include="Content\jquery.highlight-within-textarea.css" />
     <Content Include="Content\main.css" />
@@ -485,6 +486,7 @@
     <Content Include="Scripts\popper.min.js" />
     <Content Include="Scripts\MenteeProgress_.js" />
     <Content Include="Scripts\Progress_.js" />
+    <Content Include="Scripts\py\load_datasets.py" />
     <Content Include="Scripts\slick.js" />
     <Content Include="Scripts\umd\popper-utils.js" />
     <Content Include="Scripts\umd\popper-utils.min.js" />

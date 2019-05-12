@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Resilience.Models;
 
 namespace Resilience.Controllers
 {
     public class HomeController : Controller
     {
-        [HandleError]
+        
         public ActionResult Index()
         {
             return View();
@@ -54,6 +55,15 @@ namespace Resilience.Controllers
             }
 
             return Json(pass.Equals(entry));
+        }
+
+
+        public string GetDatasets()
+        {
+            SentimentPy s = new SentimentPy();
+            string res = s.getDatasets();
+
+            return res;
         }
     }
 }
