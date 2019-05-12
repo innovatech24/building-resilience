@@ -16,8 +16,8 @@ namespace Resilience.Controllers
             var from = new EmailAddress("no-reply@buildingresilience.tk", "Building Resilience");
             var subject = "Welcome to Building Resilience!";
             var to = new EmailAddress(toEmail, "");
-            var plainTextContent = "Welcome to Building Resilience! ";
-            var htmlContent = "<strong>and easy to do anywhere, even with C#</strong>";
+            var plainTextContent = "Welcome to Building Resilience!\nThis is your one stop shop to track your goals and develop yourself professionally!\nDon't have time to meet your mentors? Your mentees are too far away?\nUse Building Resilience to connect with them online and achieve everything that you would with a face to face meeting!";
+            var htmlContent = "<strong>Welcome to Building Resilience!</strong><p>This is your one stop shop to track your goals and develop yourself professionally!</p><p>Don't have time to meet your mentors? Your mentees are too far away?</p><p>Use Building Resilience to connect with them online and achieve everything that you would with a face to face meeting!</p>";
             var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
             var response = client.SendEmailAsync(msg);
         }
