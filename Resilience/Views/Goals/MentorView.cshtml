@@ -79,73 +79,84 @@
 
                 @foreach (var item in Model)
                 {
-                    <tr>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.GoalName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.GoalDescription)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DueDate)
+                    </td>
+                    @if (DateTime.Compare(item.CompletionDate, new DateTime(1990, 02, 10)) == 0)
+                    {
                         <td>
-                            @Html.DisplayFor(modelItem => item.GoalName)
+                            <text>
+                                This task hasn't been completed yet.
+                            </text>
                         </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.GoalDescription)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.DueDate)
-                        </td>
+                    }
+                    else
+                    {
                         <td>
                             @Html.DisplayFor(modelItem => item.CompletionDate)
                         </td>
-                        @if (item.MenteeComments == null)
-                        {
-                            <td>
-                                <text>
-                                    Your mentee hasn't left any comments yet. They would typically do this once they complete the goal.
-                                </text>
-                            </td>
-                        }
-                        else
-                        {
-                            <td>
-                                @Html.DisplayFor(modelItem => item.MenteeComments)
-                            </td>
-                        }
-                        @if (item.MenteeRating == null)
-                        {
-                            <td>
-                                <text>
-                                    Your mentee hasn't told us how they felt with this goal. They would typically do this once they complete the goal.
-                                </text>
-                            </td>
-                        }
-                        else
-                        {
-                            <td>
-                                @Html.DisplayFor(modelItem => item.MenteeRating)
-                            </td>
-                        }
-                        @if (item.MentorFeedback == null)
-                        {
-                            <td>
-                                <text>
-                                    You haven't given feedback yet. You can give feedback once the goal is completed.
-                                </text>
-                            </td>
-                        }
-                        else
-                        {
-                            <td>
-                                @Html.DisplayFor(modelItem => item.MentorFeedback)
-                            </td>
-                        }
-                        @*<td>
-                            @Html.DisplayFor(modelItem => item.MentorId)
-                        </td>*@
-                        @*<td>
-                            @Html.DisplayFor(modelItem => item.User.FirstName)
-                        </td>*@
+                    }
+                    @if (item.MenteeComments == null)
+                    {
                         <td>
-                            @Html.ActionLink("View tasks", "Index", "Exercises", new { id = item.Id }, null)
-                            @*@Html.ActionLink("Details", "Details", new { id = item.Id }) |*@
-                            @*@Html.ActionLink("Delete", "Delete", new { id = item.Id })*@
+                            <text>
+                                Your mentee hasn't left any comments yet. They would typically do this once they complete the goal.
+                            </text>
                         </td>
-                    </tr>
+                    }
+                    else
+                    {
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MenteeComments)
+                        </td>
+                    }
+                    @if (item.MenteeRating == null)
+                    {
+                        <td>
+                            <text>
+                                Your mentee hasn't told us how they felt with this goal. They would typically do this once they complete the goal.
+                            </text>
+                        </td>
+                    }
+                    else
+                    {
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MenteeRating)
+                        </td>
+                    }
+                    @if (item.MentorFeedback == null && DateTime.Compare(item.CompletionDate, new DateTime(1990, 02, 10)) == 0)
+                    {
+                    <td>
+                        <text>
+                            The goal isn't completed yet. You can give feedback once the goal is completed.
+                        </text>
+                    </td>
+                    }
+                    else if (item.MentorFeedback == null)
+                    {
+                    <td>
+                        @Html.ActionLink("Provide Feedback", "Feedback", "Goals", new { id = item.Id }, null)
+                    </td>
+                    }
+                    else
+                    {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MentorFeedback)
+                    </td>
+                    }
+                    <td>
+                        @Html.ActionLink("View tasks", "Index", "Exercises", new { id = item.Id }, null)
+                        @*@Html.ActionLink("Details", "Details", new { id = item.Id }) |*@
+                        @*@Html.ActionLink("Delete", "Delete", new { id = item.Id })*@
+                    </td>
+                </tr>
                 }
 
             </table>

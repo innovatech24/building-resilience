@@ -11,7 +11,8 @@ namespace Resilience.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Exercise
     {
         public int Id { get; set; }
@@ -20,7 +21,9 @@ namespace Resilience.Models
         public Nullable<int> MentorId { get; set; }
         public System.DateTime DueDate { get; set; }
         public System.DateTime CompletionDate { get; set; }
+        [DataType(DataType.MultilineText)]
         public string MentorFeedback { get; set; }
+        [DataType(DataType.MultilineText)]
         public string MenteeComments { get; set; }
         public string MenteeRating { get; set; }
         public int GoalsId { get; set; }
