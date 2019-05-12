@@ -11,8 +11,14 @@
       <mvcSiteMapNode title="Add Mentee" controller="Users" action="ChooseMentee"/>
       <mvcSiteMapNode title="Select Mentees Dashboard" controller="DiaryEntries" action="Dashboard">
         <mvcSiteMapNode title="View Mentees Progress" controller="Options" action="Landingpage" preservedRouteParameters="id">
-          <mvcSiteMapNode title="View Goals and Tasks" controller="Goals" action="MentorView" preservedRouteParameters="id"/>
-          <mvcSiteMapNode title="View Diary Entries" controller="DiaryEntries" action="ViewUser" preservedRouteParameters="id"/>
+          <mvcSiteMapNode title="View Goals" controller="Goals" action="MentorView" preservedRouteParameters="id">
+            <mvcSiteMapNode title="View Tasks" controller="Exercises" action="Index" preservedRouteParameters="id"/>
+          </mvcSiteMapNode>  
+          <mvcSiteMapNode title="View Diary Entries" controller="DiaryEntries" action="ViewUser" preservedRouteParameters="id">
+            <mvcSiteMapNode title="View Entry" controller="DiaryEntries" action="View" preservedRouteParameters="id">
+              <mvcSiteMapNode title="Give Feedback" controller="DiaryEntries" action="Feedback" preservedRouteParameters="id"/>
+            </mvcSiteMapNode>
+          </mvcSiteMapNode>
           <mvcSiteMapNode title="Progress Summary" controller="Options" action="Progress" preservedRouteParameters="id"/>
         </mvcSiteMapNode>
       </mvcSiteMapNode>
