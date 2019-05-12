@@ -58,10 +58,68 @@
         }
 
         .gaugediv {
-            width: 60%;
+            width: 40%;
             height: 40%;
         }
+        .switch {
+          position: relative;
+          display: inline-block;
+          width: 40px;
+          height: 20px;
+        }
 
+        .switch input { 
+          opacity: 0;
+          width: 0;
+          height: 0;
+        }
+
+        .slider {
+          position: absolute;
+          cursor: pointer;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background-color: #ccc;
+          -webkit-transition: .4s;
+          transition: .4s;
+        }
+
+        .slider:before {
+          position: absolute;
+          content: "";
+          height: 13px;
+          width: 13px;
+          left: 0px;
+          bottom: 4px;
+          background-color: white;
+          -webkit-transition: .4s;
+          transition: .4s;
+        }
+
+        input:checked + .slider {
+          background-color: #2196F3;
+        }
+
+        input:focus + .slider {
+          box-shadow: 0 0 1px #2196F3;
+        }
+
+        input:checked + .slider:before {
+          -webkit-transform: translateX(26px);
+          -ms-transform: translateX(26px);
+          transform: translateX(26px);
+        }
+
+        /* Rounded sliders */
+        .slider.round {
+          border-radius: 34px;
+        }
+
+        .slider.round:before {
+          border-radius: 50%;
+        }
     </style>
 </head>
 <body>
@@ -87,7 +145,6 @@
                         <td>
                             @*@Html.TextBoxFor(modelItem => item.Entry, new { @class = "entry", @readonly = "readonly" })*@
                             <textarea id="entry" rows=15 cols=100 readonly ="readonly">@item.Entry</textarea>
-                            <input id="highlight" type="checkbox">Highlight
                         </td>
                         @if (item.MenteeFeedback == null)
                         {
@@ -123,11 +180,19 @@
                         @Html.ActionLink("Delete", "Delete", new { id = item.Id })
                     </td>*@
                     </tr>
+                    <tr>
+                        <td>
+                            <label class="switch"><input id="highlight" type="checkbox" checked><span class="slider round"/></label> Turn on Highlighting to view the most positive (Green) and most negative (Red) statement in the Diary, if they exist! If highlighting is not seen, there is no strong positive/negative statement in the diary.
+                        </td>
+                    </tr>
                 }
             </table>
         </div>
-            <div class="gaugediv"></div>
+            <div class="col-md-offset-2 gaugediv"></div>
+            <br>   
+            <p class="col-md-offset-2">Sentiment Meter: Overall Sentiment of the Diary</p>
         </div>
+ 
         <script type="text/javascript">
             var sentiment = @Html.Raw(Json.Encode(Model.ElementAt(0).SentimentScore));
         </script>
@@ -159,9 +224,5 @@
         <script type="text/javascript" src="~/Scripts/Additional_functions.js"></script>
         <script type="text/javascript" src="~/Scripts/DiaryEntryView.js"></script>
         <script type="text/javascript" src="~/Scripts/custom.js"></script>
-
-
-
-
 </body>
 </html>
