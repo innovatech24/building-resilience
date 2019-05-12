@@ -20,6 +20,11 @@ namespace Resilience.Controllers
             return View();
         }
 
+        public ActionResult NothingAdded()
+        {
+            return View();
+        }
+
         //GET: NoMentorMapped
         public ActionResult NoMentorMapped()
         {

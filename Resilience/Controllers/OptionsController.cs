@@ -125,7 +125,7 @@ namespace Resilience.Controllers
                     tasks = db.Exercises
                     .Where(e => e.GoalsId==d.Id)
                     .Select(e => new {e.TaskName,e.DueDate,e.CompletionDate,e.MenteeRating }).ToList() })
-                .ToList();
+                .ToList();            
 
             // DIARY ENTRY. Format output
             var Dscores = new List<double>();
@@ -215,23 +215,31 @@ namespace Resilience.Controllers
                 });
 
             }
-
-            return Json(new JavaScriptSerializer().Serialize(new {
-                diaries = new
+            try
+            {
+                return Json(new JavaScriptSerializer().Serialize(new
                 {
-                    AvgSentimentScore = Dscores.Average(),
-                    AvgFeeling = Dfeeling.Average(),
-                    NumDiaries = Dentries.Count(),
-                    Entries = Dentries
-                },
-                goals = new
-                {
-                    Goals = Ggoals,
-                    OpenGoals = openGoals,
-                    CloseGoals = closeGoals,
-                    Tasks = Gtasks
-                }
-            }));
+                    diaries = new
+                    {
+                        AvgSentimentScore = Dscores.Average(),
+                        AvgFeeling = Dfeeling.Average(),
+                        NumDiaries = Dentries.Count(),
+                        Entries = Dentries
+                    },
+                    goals = new
+                    {
+                        Goals = Ggoals,
+                        OpenGoals = openGoals,
+                        CloseGoals = closeGoals,
+                        Tasks = Gtasks
+                    }
+                }));
+            }
+            catch
+            {
+                return Json("error");
+            }
+            
         }
     }
 }

@@ -8,34 +8,40 @@
         },
         success: function (response) {
 
-            var data = JSON.parse(response);
+            var newUrl = '/Error/NothingAdded';
+            if (response == "error") {
+                window.location.href = newUrl;
+            }
+            else {            
+                var data = JSON.parse(response);
 
-            // Feelings rating
-            var emotionsArray = ['crying', 'disappointed', 'meh', 'happy', 'smile'];
-            $("#rating").emotionsRating({
-                bgEmotion: 'happy',
-                emotions: emotionsArray,
-                emotionSize: 25,
-                disabled: true,
-                initialRating: Math.round(data.diaries.AvgFeeling)
-            });
+                // Feelings rating
+                var emotionsArray = ['crying', 'disappointed', 'meh', 'happy', 'smile'];
+                $("#rating").emotionsRating({
+                    bgEmotion: 'happy',
+                    emotions: emotionsArray,
+                    emotionSize: 25,
+                    disabled: true,
+                    initialRating: Math.round(data.diaries.AvgFeeling)
+                });
 
-            // Create gauge plot in div 'gaugediv'
-            window.gauge = createGauge(0, "gaugediv","",true);
-            // Set value of the plot to the sentiment score value
-            updateGaugeValue(window.gauge, data.diaries.AvgSentimentScore);
+                // Create gauge plot in div 'gaugediv'
+                window.gauge = createGauge(0, "gaugediv","",true);
+                // Set value of the plot to the sentiment score value
+                updateGaugeValue(window.gauge, data.diaries.AvgSentimentScore);
 
 
-            // Timeseries for diary entry
-            timeseriesplot("timeplotdiv",data.diaries.Entries,Title = "");
+                // Timeseries for diary entry
+                timeseriesplot("timeplotdiv",data.diaries.Entries,Title = "");
 
-            // Stacked bar plot of goals
-            stackedbarplot("bardiv", data.goals.Goals, "");
+                // Stacked bar plot of goals
+                stackedbarplot("bardiv", data.goals.Goals, "");
 
-            //Information overview divs
-            document.getElementById("openGoals").appendChild(document.createTextNode(data.goals.OpenGoals));
-            document.getElementById("closeGoals").appendChild(document.createTextNode(data.goals.CloseGoals));
-            document.getElementById("nDiaries").appendChild(document.createTextNode(data.diaries.NumDiaries));
+                //Information overview divs
+                document.getElementById("openGoals").appendChild(document.createTextNode(data.goals.OpenGoals));
+                document.getElementById("closeGoals").appendChild(document.createTextNode(data.goals.CloseGoals));
+                document.getElementById("nDiaries").appendChild(document.createTextNode(data.diaries.NumDiaries));
+            }
         }
     });
 });
