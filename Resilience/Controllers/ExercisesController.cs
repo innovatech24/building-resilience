@@ -158,6 +158,16 @@ namespace Resilience.Controllers
             return RedirectToAction("Index");
         }
 
+        //GET        
+        public ActionResult EditCompletion(int Id)
+        {
+            var exercise = db.Exercises.Find(Id);
+            exercise.CompletionDate = DateTime.Now;
+            db.Entry(exercise).State = EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("Index", "Exercises", new { id = Id });
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

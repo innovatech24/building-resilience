@@ -85,9 +85,18 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.DueDate)
                         </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.CompletionDate)
-                        </td>
+                        @if (DateTime.Compare(item.CompletionDate, new DateTime(1990, 02, 10)) == 0)
+                        {
+                            <td>
+                                @Html.ActionLink("Mark as completed", "EditCompletion", "Exercises", new { id = item.Id }, new { htmlAttributes = new { @class = "btn btn-default" } })
+                            </td>
+                        }
+                        else
+                        {
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CompletionDate)
+                            </td>
+                        }
                         @if (this.User.IsInRole("Mentor"))
                         {
                             if (item.MenteeComments == null)
@@ -170,9 +179,7 @@
                             }
                             else if (item.MenteeRating == null)
                             {
-                                <td>
-                                   
-                                </td>
+                                <td></td>
                             }
                             else
                             {

@@ -141,6 +141,16 @@ namespace Resilience.Controllers
             return View(goals.ToList());
         }
 
+        //GET        
+        public ActionResult EditCompletion(int Id)
+        {
+            var goals = db.Goals.Find(Id);
+            goals.CompletionDate = DateTime.Now;
+            db.Entry(goals).State = EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("Index", "Goals", new { id = Id });
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
