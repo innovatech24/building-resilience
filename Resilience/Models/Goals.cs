@@ -23,6 +23,7 @@ namespace Resilience.Models
     
         public int Id { get; set; }
         public string GoalName { get; set; }
+        [DataType(DataType.MultilineText)]
         public string GoalDescription { get; set; }
         public System.DateTime DueDate { get; set; }
         public System.DateTime CompletionDate { get; set; }

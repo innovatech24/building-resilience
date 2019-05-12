@@ -17,6 +17,7 @@ namespace Resilience.Models
     {
         public int Id { get; set; }
         public string TaskName { get; set; }
+        [DataType(DataType.MultilineText)]
         public string TaskDescription { get; set; }
         public Nullable<int> MentorId { get; set; }
         public System.DateTime DueDate { get; set; }
