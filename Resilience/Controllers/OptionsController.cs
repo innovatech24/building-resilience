@@ -162,7 +162,7 @@ namespace Resilience.Controllers
                 foreach (var task in goal.tasks)
                 {
 
-                    if(DateTime.Compare(task.CompletionDate.Date,DateTime.Parse("10-02-1990"))!=0)
+                    if(DateTime.Compare(task.CompletionDate.Date,new DateTime(1990,2,10).Date)!=0)
                     {
                         if (DateTime.Compare(task.CompletionDate.Date,task.DueDate.Date) > 0)
                         {
