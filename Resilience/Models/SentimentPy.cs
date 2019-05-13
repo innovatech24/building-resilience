@@ -64,7 +64,7 @@ namespace Resilience.Models
                     //Console.Write(result);
                     //process.WaitForExit();
                     //result = @"C:\users\kiran\anaconda3\python.exe";
-                    result = @"C:\users\amulya\anaconda3\python.exe";
+                    //result = @"C:\users\amulya\anaconda3\python.exe";
                     return result;
                 }
             }
