@@ -195,16 +195,28 @@ namespace Resilience.Controllers
                 }
 
                 //If goal has no completion date. It's open
-                if (DateTime.Compare(goal.CompletionDate.Date, DateTime.Parse("10-02-1990")) != 0)
+                if (DateTime.Compare(goal.CompletionDate.Date, new DateTime(1990, 2, 10).Date) == 0)
                 {
                     openGoals++;
+                    Ggoals.Add(new
+                    {
+                        goal.GoalName,
+                        goal.MenteeRating,
+                        DueDate = goal.DueDate.ToString("MM-dd-yyyy"),
+                        CompletionDate = goal.CompletionDate.ToString("MM-dd-yyyy"),
+                        totalTasks = goal.tasks.Count(),
+                        delayedCompletedTasks,
+                        completedTasks,
+                        delayedTasks,
+                        pendingTasks
+                    });
                 }
                 else
                 {
                     closeGoals++;
                 }
 
-                Ggoals.Add(new
+                /*Ggoals.Add(new
                 {
                     goal.GoalName,
                     goal.MenteeRating,
@@ -215,7 +227,7 @@ namespace Resilience.Controllers
                     completedTasks,
                     delayedTasks,
                     pendingTasks
-                });
+                });*/
 
             }
             try
