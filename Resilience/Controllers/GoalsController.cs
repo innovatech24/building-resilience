@@ -195,7 +195,7 @@ namespace Resilience.Controllers
             db.SaveChanges();
 
             // Type options : info, danger, success, warning
-            TempData["UserMessage"] = new JavaScriptSerializer().Serialize(new { Type = "success", Title = "Success!", Message = "Comment added correctly!" });
+            TempData["UserMessage"] = new JavaScriptSerializer().Serialize(new { Type = "success", Title = "Success!", Message = "Feedback added correctly!" });
 
             return View(g);
         }

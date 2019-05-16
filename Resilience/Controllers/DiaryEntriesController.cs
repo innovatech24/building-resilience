@@ -228,7 +228,7 @@ namespace Resilience.Controllers
                 mail.FeedbackProvided(menteeUser.Email, mentee.FirstName, mentor.FirstName, mentor.LastName);
                 
                 // Type options : info, danger, success, warning
-                TempData["UserMessage"] = new JavaScriptSerializer().Serialize(new { Type = "success", Title = "Success!", Message = "Diary entry added correctly!" });
+                TempData["UserMessage"] = new JavaScriptSerializer().Serialize(new { Type = "success", Title = "Success!", Message = "Feedback added correctly!" });
 
                 //return RedirectToAction("Dashboard", "DiaryEntries");
                 return View(diaryEntries);

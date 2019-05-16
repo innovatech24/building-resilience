@@ -133,7 +133,12 @@ namespace Resilience.Controllers
                 var ment = db.Users.Find(mentorUser.Id);
                 EmailController mail = new EmailController();
                 mail.EditTask(menteeUser.Email, mentee.FirstName, ment.FirstName, ment.LastName);
-                return RedirectToAction("Index", new { id = exercise.GoalsId });
+                
+                // Type options : info, danger, success, warning
+                TempData["UserMessage"] = new JavaScriptSerializer().Serialize(new { Type = "success", Title = "Success!", Message = "Task updated correctly!" });
+
+
+                return View(exercise);
             }
             ViewBag.GoalsId = new SelectList(db.Goals, "Id", "GoalName", exercise.GoalsId);
             return View(exercise);
@@ -217,7 +222,7 @@ namespace Resilience.Controllers
             db.SaveChanges();
 
             // Type options : info, danger, success, warning
-            TempData["UserMessage"] = new JavaScriptSerializer().Serialize(new { Type = "success", Title = "Success!", Message = "Comment added correctly!" });
+            TempData["UserMessage"] = new JavaScriptSerializer().Serialize(new { Type = "success", Title = "Success!", Message = "Feedback added correctly!" });
 
 
             return View(e);

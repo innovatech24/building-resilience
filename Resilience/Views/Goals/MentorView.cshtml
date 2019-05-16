@@ -87,7 +87,7 @@
                             @Html.DisplayFor(modelItem => item.GoalDescription)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.DueDate)
+                            @item.DueDate.ToShortDateString()
                         </td>
                         @if (DateTime.Compare(item.CompletionDate, new DateTime(1990, 02, 10)) == 0)
                         {
@@ -100,7 +100,7 @@
                         else
                         {
                             <td>
-                                @Html.DisplayFor(modelItem => item.CompletionDate)
+                                @item.CompletionDate.ToShortDateString()
                             </td>
                         }
                         @if (item.MenteeComments == null)

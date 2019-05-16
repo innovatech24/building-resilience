@@ -60,6 +60,10 @@
             text-align: center;
         }
     </style>
+    <script type="text/javascript">
+        var message = "@TempData["UserMessage"]";
+        var iid = @Model.GoalsId;
+    </script>
 </head>
 <body>
     <div class="edit-task-page">
@@ -70,94 +74,99 @@
             {
                 @Html.AntiForgeryToken()
 
-            <div class="form-horizontal">
-
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                @Html.HiddenFor(model => model.Id)
-                @Html.HiddenFor(model => model.MentorId)
-                @Html.HiddenFor(model => model.CompletionDate)
-                @Html.HiddenFor(model => model.GoalsId)
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.TaskName, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.TaskName, new { htmlAttributes = new { @class = "col-md-offset-1 form-control" } })
-                        @Html.ValidationMessageFor(model => model.TaskName, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.TaskDescription, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.TaskDescription, new { htmlAttributes = new { @class = "col-md-offset-1 form-control", rows = "3" } })
-                        @Html.ValidationMessageFor(model => model.TaskDescription, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                @*<div class="form-group">
-            @Html.LabelFor(model => model.MentorId, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.MentorId, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.MentorId, "", new { @class = "text-danger" })
-            </div>
-        </div>*@
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.DueDate, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        <div id="sandbox">
-                            @Html.EditorFor(model => model.DueDate, new { htmlAttributes = new { @class = "col-md-offset-1 form-control", @onchange = "dateChange(this)" } })
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <div class="col-md-offset-1 col-md-9">
+                            <div id="SubmitMessage" style="width:100%;" class="alert" hidden>
+                            </div>
                         </div>
-                        @Html.ValidationMessageFor(model => model.DueDate, "", new { @class = "text-danger" })
+                    </div>
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(model => model.Id)
+                    @Html.HiddenFor(model => model.MentorId)
+                    @Html.HiddenFor(model => model.CompletionDate)
+                    @Html.HiddenFor(model => model.GoalsId)
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.TaskName, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.TaskName, new { htmlAttributes = new { @class = "col-md-offset-1 form-control" } })
+                            @Html.ValidationMessageFor(model => model.TaskName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.TaskDescription, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.TaskDescription, new { htmlAttributes = new { @class = "col-md-offset-1 form-control", rows = "3" } })
+                            @Html.ValidationMessageFor(model => model.TaskDescription, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    @*<div class="form-group">
+                            @Html.LabelFor(model => model.MentorId, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.MentorId, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.MentorId, "", new { @class = "text-danger" })
+                            </div>
+                        </div>*@
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.DueDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <div id="sandbox">
+                                @Html.EditorFor(model => model.DueDate, new { htmlAttributes = new { @class = "col-md-offset-1 form-control", @onchange = "dateChange(this)" } })
+                            </div>
+                            @Html.ValidationMessageFor(model => model.DueDate, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    @*<div class="form-group">
+                            @Html.LabelFor(model => model.CompletionDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.CompletionDate, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.CompletionDate, "", new { @class = "text-danger" })
+                            </div>
+                        </div>*@
+
+                    @*<div class="form-group">
+                            @Html.LabelFor(model => model.MentorFeedback, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.MentorFeedback, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.MentorFeedback, "", new { @class = "text-danger" })
+                            </div>
+                        </div>*@
+
+                    @*<div class="form-group">
+                            @Html.LabelFor(model => model.MenteeComments, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.MenteeComments, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.MenteeComments, "", new { @class = "text-danger" })
+                            </div>
+                        </div>*@
+
+                    @*<div class="form-group">
+                            @Html.LabelFor(model => model.MenteeRating, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.MenteeRating, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.MenteeRating, "", new { @class = "text-danger" })
+                            </div>
+                        </div>*@
+
+                    @*<div class="form-group">
+                            @Html.LabelFor(model => model.GoalsId, "GoalsId", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.DropDownList("GoalsId", null, htmlAttributes: new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.GoalsId, "", new { @class = "text-danger" })
+                            </div>
+                        </div>*@
+                    <hr />
+                    <div class="form-group">
+                        <div class="col-md-offset-1 col-md-10">
+                            <input type="submit" value="Save" class="btn btn-default" />
+                        </div>
                     </div>
                 </div>
-
-                @*<div class="form-group">
-            @Html.LabelFor(model => model.CompletionDate, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CompletionDate, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.CompletionDate, "", new { @class = "text-danger" })
-            </div>
-        </div>*@
-
-                @*<div class="form-group">
-            @Html.LabelFor(model => model.MentorFeedback, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.MentorFeedback, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.MentorFeedback, "", new { @class = "text-danger" })
-            </div>
-        </div>*@
-
-                @*<div class="form-group">
-            @Html.LabelFor(model => model.MenteeComments, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.MenteeComments, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.MenteeComments, "", new { @class = "text-danger" })
-            </div>
-        </div>*@
-
-                @*<div class="form-group">
-            @Html.LabelFor(model => model.MenteeRating, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.MenteeRating, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.MenteeRating, "", new { @class = "text-danger" })
-            </div>
-        </div>*@
-
-                @*<div class="form-group">
-            @Html.LabelFor(model => model.GoalsId, "GoalsId", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("GoalsId", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.GoalsId, "", new { @class = "text-danger" })
-            </div>
-        </div>*@
-                <hr />
-                <div class="form-group">
-                    <div class="col-md-offset-1 col-md-10">
-                        <input type="submit" value="Save" class="btn btn-default" />
-                    </div>
-                </div>
-            </div>
             }
         </div>
     </div>
@@ -174,7 +183,36 @@
                 todayHighlight: true,
                 format: "dd-M-yyyy"
             });
+            $(document).ready(function () {
+    
+                showMessage("SubmitMessage", message, "../Index/"+iid);
+
+
+            });
+
+            function showMessage(obj, messageObj, href) {
+            if (messageObj != "") {
+
+                // Convert message from the server into json and get div element
+                var message = JSON.parse(messageObj.replace(/&quot;/g, '"'));
+                var element = document.getElementById(obj);
+
+                // Modify div name with message data
+                element.classList.add("alert-" + message.Type);
+                var s = document.createElement("strong");
+                s.appendChild(document.createTextNode(message.Title));
+                element.appendChild(s);
+                element.appendChild(document.createTextNode(" " + message.Message));
+                element.hidden = false;
+
+                // If success redirect to mentees options
+                if (message.Type == "success") {
+                    setTimeout(() => { window.location.href = href; }, 1500);
+                };
+            };
+        };
         </script>
     }
+
 </body>
 </html>
