@@ -22,11 +22,14 @@ namespace Resilience.Models
         }
     
         public int Id { get; set; }
+        [Required(ErrorMessage = "Please enter a name for your goal")]
         [Display(Name = "Goal Name")]
         public string GoalName { get; set; }
+        [Required(ErrorMessage = "Please enter a description for your goal")]
         [DataType(DataType.MultilineText)]
         [Display(Name = "Goal Description")]
         public string GoalDescription { get; set; }
+        [Required(ErrorMessage = "Please enter a due date for your goal")]
         [Display(Name = "Due Date")]
         public System.DateTime DueDate { get; set; }
         [Display(Name = "Completion Date")]

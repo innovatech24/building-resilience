@@ -16,6 +16,7 @@ namespace Resilience.Models
     public partial class DiaryEntries
     {
         public int Id { get; set; }
+        [Required(ErrorMessage = "Your diary entry cannot be empty")]
         [DataType(DataType.MultilineText)]
         [Display(Name = "Diary Entry")]
         public string Entry { get; set; }
@@ -25,6 +26,7 @@ namespace Resilience.Models
         [DataType(DataType.MultilineText)]
         [Display(Name = "Mentor Feedback")]
         public string MentorFeedback { get; set; }
+        [Display(Name = "Entry Date")]
         public System.DateTime Date { get; set; }
         [Display(Name = "Mentee Feedback")]
         public Nullable<int> MenteeFeedback { get; set; }

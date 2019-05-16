@@ -16,12 +16,14 @@ namespace Resilience.Models
     public partial class Exercise
     {
         public int Id { get; set; }
+        [Required(ErrorMessage = "Please enter a task name")]
         [Display(Name = "Task Name")]
         public string TaskName { get; set; }
         [DataType(DataType.MultilineText)]
         [Display(Name = "Task Description")]
         public string TaskDescription { get; set; }
         public Nullable<int> MentorId { get; set; }
+        [Required(ErrorMessage = "Please enter a due date for your task")]
         [Display(Name = "Due Date")]
         public System.DateTime DueDate { get; set; }
         [Display(Name = "Completion Date")]
