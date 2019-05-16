@@ -186,7 +186,7 @@ namespace Resilience.Controllers
             e.MenteeComments = exercise.MenteeComments;
             db.Entry(e).State = EntityState.Modified;
             db.SaveChanges();
-            return RedirectToAction("Index", "Exercises", new { id = e.Id });
+            return RedirectToAction("Index", "Exercises", new { id = e.GoalsId });
         }
 
         //GET
@@ -205,7 +205,7 @@ namespace Resilience.Controllers
             e.MentorFeedback = exercise.MentorFeedback;
             db.Entry(e).State = EntityState.Modified;
             db.SaveChanges();
-            return RedirectToAction("Index", "Exercises", new { id = e.Id });
+            return RedirectToAction("Index", "Exercises", new { id = e.GoalsId });
         }
 
         protected override void Dispose(bool disposing)
