@@ -5,7 +5,7 @@
 
     // Define range of emoticons
     var emotionsArray = ['crying', 'disappointed', 'meh', 'happy', 'smile'];
-
+    
     // Loop over rating divs
     for (var i = 0; i < rates.length; i++) {
 
@@ -17,6 +17,7 @@
             bgEmotion: 'happy',
             emotions: emotionsArray,
             disabled: true,
+            count: 1,
             initialRating: element.getAttribute("rate")
         });
     };

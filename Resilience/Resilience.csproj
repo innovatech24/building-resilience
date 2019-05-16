@@ -467,6 +467,7 @@
     <Content Include="Scripts\browser.min.js" />
     <Content Include="Scripts\ExercisesIndex.js" />
     <Content Include="Scripts\GoalsIndex.js" />
+    <Content Include="Scripts\GoalsMentorView.js" />
     <Content Include="Scripts\index.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

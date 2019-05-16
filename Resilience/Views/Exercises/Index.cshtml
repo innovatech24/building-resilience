@@ -124,7 +124,7 @@
                             else
                             {
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.MenteeRating)
+                                    <div class="ratingDisabled" iid=@item.Id rate=@item.MenteeRating></div>
                                 </td>
                             }
                             if (item.MentorFeedback == null && DateTime.Compare(item.CompletionDate, new DateTime(1990, 02, 10)) == 0)
