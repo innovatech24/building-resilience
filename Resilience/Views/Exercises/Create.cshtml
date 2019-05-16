@@ -63,6 +63,7 @@
                         @*@Html.DisplayNameFor(model => model.DueDate)*@
                         Due date
                     </th>
+                    <th></th>
                 </tr>
             </thead>
 
@@ -101,7 +102,7 @@
                                     @Html.ValidationMessageFor(model => model.DueDate, "", new { @class = "text-danger" })
                                 </div>
                             </div>
-                        </td>
+                        </td>                                        
                     }
                 </tr>
             </tbody>
@@ -141,69 +142,77 @@
                 });
             </script>
             <script>
-            $(".btnAdd").click(function () {
-                $('#sandbox').datepicker('destroy');
-                var td1 = '<td><div class="form-group"><div class="col-md-10">@Html.EditorFor(modelItem => modelItem.TaskName, new { htmlAttributes = new { @class = "form-control" } })</div></div></td>';
-                var td2 = '<td><div class="form-group"><div class="col-md-10"><textarea class="form-control text-box multi-line" id="TaskDescription" name="TaskDescription" rows="3"></textarea></div></div></td>';
-                var td3 = '<td><div class="form-group"><div class="col-md-10"><div id="sandbox">@Html.EditorFor(modelItem => modelItem.DueDate, new { htmlAttributes = new { @class = "form-control", @onchange= "dateChange(this)" } })</div></div></div></td>';
-                $("tbody").append('<tr>' + td1 + td2 + td3 + '</tr>');
-                $('#sandbox input').datepicker({
-                    autoclose: true,
-                    todayHighlight: true,
-                    format: "dd-M-yyyy"
+                $(".btnAdd").click(function () {
+                    $('#sandbox').datepicker('destroy');
+                    var td1 = '<td><div class="form-group"><div class="col-md-10">@Html.EditorFor(modelItem => modelItem.TaskName, new { htmlAttributes = new { @class = "form-control" } })</div></div></td>';
+                    var td2 = '<td><div class="form-group"><div class="col-md-10"><textarea class="form-control text-box multi-line" id="TaskDescription" name="TaskDescription" rows="3"></textarea></div></div></td>';
+                    var td3 = '<td><div class="form-group"><div class="col-md-10"><div id="sandbox">@Html.EditorFor(modelItem => modelItem.DueDate, new { htmlAttributes = new { @class = "form-control", @onchange= "dateChange(this)" } })</div></div></div></td>';
+                    var td4 = '<td><div class="form-group"><div id="remove"><input type="button" value="Remove task" class="btnRemove btn btn-danger" /></div></div></td>';
+                    var row = '<tr>' + td1 + td2 + td3 + td4 + '</tr>';
+                    $("tbody").append(row);
+                    $('#sandbox input').datepicker({
+                        autoclose: true,
+                        todayHighlight: true,
+                        format: "dd-M-yyyy"
+                    });
                 });
-            });
 
-            function getAllData() {
-                var data = [];
-                $('tbody tr').each(function () {
-                    var TaskName = $(this).find('#TaskName').val();
-                    var TaskDescription = $(this).find('#TaskDescription').val();
-                    var DueDate = $(this).find('#DueDate').val();
-                    var GoalsId = '@ViewBag.goalId';
-                    var MentorId = '@ViewBag.mentorId';
-
-                    var alldata = {
-                        'TaskName': TaskName,
-                        'TaskDescription': TaskDescription,
-                        'DueDate': DueDate,
-                        'GoalsId': GoalsId,
-                        'MentorId': MentorId,
-                    }
-                    //console.log(data);
-                    data.push(alldata);
+                $(".btnRemove").click(function () {
+                    $(this).parents('#row').remove();
                 });
-                return data;
-            }
 
-            function dateChange(element) {
-                var goalDate = new Date("@ViewBag.DueDate");
-                var taskDate = new Date(element.value);
+                function getAllData() {
+                    var data = [];
+                    $('tbody tr').each(function () {
+                        var TaskName = $(this).find('#TaskName').val();                        
+                        var TaskDescription = $(this).find('#TaskDescription').val();                        
+                        var DueDate = $(this).find('#DueDate').val();                        
+                        var GoalsId = '@ViewBag.goalId';
+                        var MentorId = '@ViewBag.mentorId';
 
-                if (taskDate > goalDate) {
-                    alert("Task date can't be after goal date");
-                    element.value = "";
-                    element.focus();
+                        var alldata = {
+                            'TaskName': TaskName,
+                            'TaskDescription': TaskDescription,
+                            'DueDate': DueDate,
+                            'GoalsId': GoalsId,
+                            'MentorId': MentorId,
+                        }
+                        //console.log(data);
+                        if (TaskName) {
+                            data.push(alldata);
+                        }                        
+                    });
+                    return data;
+                }
+
+                function dateChange(element) {
+                    var goalDate = new Date("@ViewBag.DueDate");
+                    var taskDate = new Date(element.value);
+
+                    if (taskDate > goalDate) {
+                        alert("Task date can't be after goal date");
+                        element.value = "";
+                        element.focus();
+                    };
                 };
-            };
 
-            $('#btnSubmit').click(function () {
-                var data = JSON.stringify(getAllData());
-                //console.log(data);
-                $.ajax({
-                    url: '/Exercises/Create',
-                    type: 'POST',
-                    dataType: 'json',
-                    contentType: 'application/json; charset=utf-8',
-                    data: JSON.stringify({ 'data': data }),
-                    success: function () {
-                        window.location.replace("/Options/Mentee");
-                    },
-                    error: function () {
-                        window.location.replace("Error/NotFound");
-                    }
+                $('#btnSubmit').click(function () {
+                    var data = JSON.stringify(getAllData());
+                    console.log(data);
+                    $.ajax({
+                        url: '/Exercises/Create',
+                        type: 'POST',
+                        dataType: 'json',
+                        contentType: 'application/json; charset=utf-8',
+                        data: JSON.stringify({ 'data': data }),
+                        success: function () {
+                            window.location.replace("/Options/Mentee");
+                        },
+                        error: function () {
+                            window.location.replace("Error/NotFound");
+                        }
+                    });
                 });
-            });
             </script>
         }
 
