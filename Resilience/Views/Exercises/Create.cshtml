@@ -37,12 +37,16 @@
         }
 
         .col-md-12 {
-            min-height:80%;
+            min-height: 80%;
             height: auto;
             background: url('../../Images/atmosphere-background-bright-19670.jpg') center;
             background-repeat: repeat-y;
         }
     </style>
+
+    <script type="text/javascript">
+        var message = "@TempData["UserMessage"]";
+    </script>
 </head>
 <body>
     <div class="col-md-12">
@@ -86,7 +90,7 @@
                             <div class="form-group">
                                 @*@Html.LabelFor(model => model.TaskDescription, htmlAttributes: new { @class = "control-label col-md-2" })*@
                                 <div class="col-md-10">
-                                    @Html.EditorFor(model => model.TaskDescription, new { htmlAttributes = new { @class = "form-control", rows = "3" } })   
+                                    @Html.EditorFor(model => model.TaskDescription, new { htmlAttributes = new { @class = "form-control", rows = "3" } })
                                     @Html.ValidationMessageFor(model => model.TaskDescription, "", new { @class = "text-danger" })
                                 </div>
                             </div>
@@ -96,7 +100,7 @@
                             <div class="form-group">
                                 <div class="col-md-10">
                                     <div id="sandbox">
-                                        @Html.EditorFor(model => model.DueDate, new { htmlAttributes = new { @class = "form-control", @onchange = "dateChange(this)" } })                                     
+                                        @Html.EditorFor(model => model.DueDate, new { htmlAttributes = new { @class = "form-control", @onchange = "dateChange(this)" } })
                                     </div>
                                     @Html.ValidationMessageFor(model => model.DueDate, "", new { @class = "text-danger" })
                                 </div>
@@ -123,24 +127,28 @@
                         </div>
                     </td>
                 </tr>
+                <tr>
+                    <div id="SubmitMessage" class="alert" hidden>
+                    </div>
+                </tr>
             </tfoot>
         </table>
     </div>
-        @section Scripts{
+    @section Scripts{
 
-            <!-- jQuery library -->
-            @Scripts.Render("~/bundles/jquery")
-            @Scripts.Render("~/bundles/jqueryval")
-            <script src="~/Scripts/bootstrap-datepicker.min.js"></script>
-            <script>
-                $('#sandbox input').datepicker({
-                    autoclose: true,
-                    todayHighlight: true,
-                    format: "dd-M-yyyy",
-                    startDate: "today"
-                });
-            </script>
-            <script>
+        <!-- jQuery library -->
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/jqueryval")
+        <script src="~/Scripts/bootstrap-datepicker.min.js"></script>
+        <script>
+            $('#sandbox input').datepicker({
+                autoclose: true,
+                todayHighlight: true,
+                format: "dd-M-yyyy",
+                startDate: "today"
+            });
+        </script>
+        <script>
             $(".btnAdd").click(function () {
                 $('#sandbox').datepicker('destroy');
                 var td1 = '<td><div class="form-group"><div class="col-md-10">@Html.EditorFor(modelItem => modelItem.TaskName, new { htmlAttributes = new { @class = "form-control" } })</div></div></td>';
@@ -196,16 +204,40 @@
                     dataType: 'json',
                     contentType: 'application/json; charset=utf-8',
                     data: JSON.stringify({ 'data': data }),
-                    success: function () {
-                        window.location.replace("/Options/Mentee");
+                    success: function (response) {
+                        //window.location.replace("/Options/Mentee");
+                        
+                        showMessage("SubmitMessage", response, "../../Options/Mentee");
                     },
                     error: function () {
                         window.location.replace("Error/NotFound");
                     }
                 });
             });
-            </script>
-        }
 
+            
+        function showMessage(obj, messageObj, href) {
+            if (messageObj != "") {
+
+                // Convert message from the server into json and get div element
+                var message = JSON.parse(messageObj.replace(/&quot;/g, '"'));
+                var element = document.getElementById(obj);
+
+                // Modify div name with message data
+                element.classList.add("alert-" + message.Type);
+                var s = document.createElement("strong");
+                s.appendChild(document.createTextNode(message.Title));
+                element.appendChild(s);
+                element.appendChild(document.createTextNode(" " + message.Message));
+                element.hidden = false;
+
+                // If success redirect to mentees options
+                if (message.Type == "success") {
+                    setTimeout(() => { window.location.href = href; }, 1500);
+                };
+            };
+        };
+        </script>
+    }
 </body>
 </html>

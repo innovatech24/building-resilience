@@ -403,6 +403,7 @@
     <Content Include="Scripts\ChooseMentor_.js" />
     <Content Include="Scripts\custom.js" />
     <Content Include="Scripts\Dashboard.js" />
+    <Content Include="Scripts\DiaryEntriesFeedback.js" />
     <Content Include="Scripts\DiaryEntryCreate.js" />
     <Content Include="Scripts\DiaryEntryView.js" />
     <Content Include="Scripts\emoticon_rating.js" />
@@ -465,7 +466,12 @@
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\breakpoints.min.js" />
     <Content Include="Scripts\browser.min.js" />
+    <Content Include="Scripts\ExercisesComments.js" />
+    <Content Include="Scripts\ExercisesCreate.js" />
+    <Content Include="Scripts\ExercisesFeedback.js" />
     <Content Include="Scripts\ExercisesIndex.js" />
+    <Content Include="Scripts\GoalsComments.js" />
+    <Content Include="Scripts\GoalsFeedback.js" />
     <Content Include="Scripts\GoalsIndex.js" />
     <Content Include="Scripts\GoalsMentorView.js" />
     <Content Include="Scripts\index.js" />

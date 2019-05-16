@@ -11,6 +11,7 @@ using Microsoft.AspNet.Identity.Owin;
 using MvcSiteMapProvider.Web.Mvc.Filters;
 using Newtonsoft.Json;
 using Resilience.Models;
+using System.Web.Script.Serialization;
 
 namespace Resilience.Controllers
 {
@@ -85,7 +86,11 @@ namespace Resilience.Controllers
                 var ment = db.Users.Find(mentor);
                 EmailController mail = new EmailController();
                 mail.NewTask(mentorUser.Email, ment.FirstName, mentee.FirstName, mentee.LastName);
-                return Json("success");
+
+                // Type options : info, danger, success, warning
+                var res = new JavaScriptSerializer().Serialize(new { Type = "success", Title = "Success!", Message = "Taks added correctly!" });
+
+                return Json(res);
             }
             catch
             {
@@ -186,7 +191,12 @@ namespace Resilience.Controllers
             e.MenteeComments = exercise.MenteeComments;
             db.Entry(e).State = EntityState.Modified;
             db.SaveChanges();
-            return RedirectToAction("Index", "Exercises", new { id = e.Id });
+
+            // Type options : info, danger, success, warning
+            TempData["UserMessage"] = new JavaScriptSerializer().Serialize(new { Type = "success", Title = "Success!", Message = "Comment added correctly!" });
+
+
+            return View(e);
         }
 
         //GET
@@ -205,7 +215,12 @@ namespace Resilience.Controllers
             e.MentorFeedback = exercise.MentorFeedback;
             db.Entry(e).State = EntityState.Modified;
             db.SaveChanges();
-            return RedirectToAction("Index", "Exercises", new { id = e.Id });
+
+            // Type options : info, danger, success, warning
+            TempData["UserMessage"] = new JavaScriptSerializer().Serialize(new { Type = "success", Title = "Success!", Message = "Comment added correctly!" });
+
+
+            return View(e);
         }
 
         protected override void Dispose(bool disposing)

@@ -117,7 +117,11 @@ namespace Resilience.Controllers
                 var users = UserManager.FindById(diaryEntries.MentorId);
                 Users mentor = db.Users.Find(users.Id);
                 mail.NewDiary(users.Email, mentor.FirstName, currentUser.FirstName, currentUser.LastName);
-                return RedirectToAction("ViewFeedback");
+
+                // Type options : info, danger, success, warning
+                TempData["UserMessage"] = new JavaScriptSerializer().Serialize(new { Type = "success", Title = "Success!", Message = "Diary entry added correctly!" });
+
+                return View();
             }
 
             ViewBag.UsersId = new SelectList(db.Users, "Id", "FirstName", diaryEntries.UsersId);
@@ -222,7 +226,12 @@ namespace Resilience.Controllers
                 var mentor = db.Users.Find(mentee.MentorId);
                 EmailController mail = new EmailController();
                 mail.FeedbackProvided(menteeUser.Email, mentee.FirstName, mentor.FirstName, mentor.LastName);
-                return RedirectToAction("Dashboard", "DiaryEntries");
+                
+                // Type options : info, danger, success, warning
+                TempData["UserMessage"] = new JavaScriptSerializer().Serialize(new { Type = "success", Title = "Success!", Message = "Diary entry added correctly!" });
+
+                //return RedirectToAction("Dashboard", "DiaryEntries");
+                return View(diaryEntries);
             }
             return View();
         }
