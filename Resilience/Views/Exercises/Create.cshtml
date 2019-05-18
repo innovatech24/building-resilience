@@ -87,7 +87,7 @@
                             <div class="form-group">
                                 @*@Html.LabelFor(model => model.TaskDescription, htmlAttributes: new { @class = "control-label col-md-2" })*@
                                 <div class="col-md-10">
-                                    @Html.EditorFor(model => model.TaskDescription, new { htmlAttributes = new { @class = "form-control", rows = "3" } })   
+                                    @Html.EditorFor(model => model.TaskDescription, new { htmlAttributes = new { @class = "form-control", rows = "3" } })
                                     @Html.ValidationMessageFor(model => model.TaskDescription, "", new { @class = "text-danger" })
                                 </div>
                             </div>
@@ -97,12 +97,20 @@
                             <div class="form-group">
                                 <div class="col-md-10">
                                     <div id="sandbox">
-                                        @Html.EditorFor(model => model.DueDate, new { htmlAttributes = new { @class = "form-control", @onchange = "dateChange(this)" } })                                     
+                                        @Html.EditorFor(model => model.DueDate, new { htmlAttributes = new { @class = "form-control", @onchange = "dateChange(this)" } })
+                                        @Html.ValidationMessageFor(model => model.DueDate, "", new { @class = "text-danger" })
                                     </div>
-                                    @Html.ValidationMessageFor(model => model.DueDate, "", new { @class = "text-danger" })
                                 </div>
                             </div>
-                        </td>                                        
+                        </td>
+
+                        @*<td>
+                            <div class="form-group">
+                                <div id="remove" hidden>
+                                    <input type="button" value="Remove task" class="btnRemove btn btn-danger" />
+                                </div>
+                            </div>
+                        </td>*@
                     }
                 </tr>
             </tbody>
@@ -125,7 +133,12 @@
                     </td>
                 </tr>
             </tfoot>
+
         </table>
+        <div class="alert alert-danger alert-dismissible" hidden id="alertIfEmpty">
+            <button class="close" type="button" aria-label="close" data-dismiss="alert">×</button>
+            <strong>You have to enter a task name and/or a due date for your task.</strong>
+        </div>        
     </div>
         @section Scripts{
 
@@ -144,11 +157,11 @@
             <script>
                 $(".btnAdd").click(function () {
                     $('#sandbox').datepicker('destroy');
-                    var td1 = '<td><div class="form-group"><div class="col-md-10">@Html.EditorFor(modelItem => modelItem.TaskName, new { htmlAttributes = new { @class = "form-control" } })</div></div></td>';
-                    var td2 = '<td><div class="form-group"><div class="col-md-10"><textarea class="form-control text-box multi-line" id="TaskDescription" name="TaskDescription" rows="3"></textarea></div></div></td>';
-                    var td3 = '<td><div class="form-group"><div class="col-md-10"><div id="sandbox">@Html.EditorFor(modelItem => modelItem.DueDate, new { htmlAttributes = new { @class = "form-control", @onchange= "dateChange(this)" } })</div></div></div></td>';
+                    var td1 = '<td><div class="form-group"><div class="col-md-10">@Html.EditorFor(modelItem => modelItem.TaskName, new { htmlAttributes = new { @class = "form-control" } })@Html.ValidationMessageFor(model => model.TaskName, "", new { @class = "text-danger" })</div></div></td>';
+                    var td2 = '<td><div class="form-group"><div class="col-md-10"><textarea class="form-control text-box multi-line" id="TaskDescription" name="TaskDescription" rows="3"></textarea>@Html.ValidationMessageFor(model => model.TaskDescription, "", new { @class = "text-danger" })</div></div></td>';
+                    var td3 = '<td><div class="form-group"><div class="col-md-10"><div id="sandbox">@Html.EditorFor(modelItem => modelItem.DueDate, new { htmlAttributes = new { @class = "form-control", @onchange= "dateChange(this)" } })@Html.ValidationMessageFor(model => model.DueDate, "", new { @class = "text-danger" })</div></div></div></td>';
                     var td4 = '<td><div class="form-group"><div id="remove"><input type="button" value="Remove task" class="btnRemove btn btn-danger" /></div></div></td>';
-                    var row = '<tr>' + td1 + td2 + td3 + td4 + '</tr>';
+                    var row = '<tr id="newRow">' + td1 + td2 + td3 + td4 + '</tr>';
                     $("tbody").append(row);
                     $('#sandbox input').datepicker({
                         autoclose: true,
@@ -157,8 +170,15 @@
                     });
                 });
 
-                $(".btnRemove").click(function () {
-                    $(this).parents('#row').remove();
+                function removeRow() {
+                    document.querySelector(#);
+                }
+
+                $('.form-group').on('click', '.btnRemove', function () {
+                    var trow = $(this).closest('tr');
+                    console.log(trow);
+                    console.log("wassup");
+                    trow.remove();
                 });
 
                 function getAllData() {
@@ -177,8 +197,10 @@
                             'GoalsId': GoalsId,
                             'MentorId': MentorId,
                         }
-                        //console.log(data);
-                        if (TaskName) {
+                        //console.log(alldata);
+                        if (TaskName != "") {
+                            //console.log(TaskName);
+                            //console.log(alldata);
                             data.push(alldata);
                         }                        
                     });
@@ -198,20 +220,28 @@
 
                 $('#btnSubmit').click(function () {
                     var data = JSON.stringify(getAllData());
-                    console.log(data);
-                    $.ajax({
-                        url: '/Exercises/Create',
-                        type: 'POST',
-                        dataType: 'json',
-                        contentType: 'application/json; charset=utf-8',
-                        data: JSON.stringify({ 'data': data }),
-                        success: function () {
-                            window.location.replace("/Options/Mentee");
-                        },
-                        error: function () {
-                            window.location.replace("Error/NotFound");
-                        }
-                    });
+                    //console.log(data);
+                    //console.log(data.length);
+                    if (data.length > 2) {
+                        $.ajax({
+                            url: '/Exercises/Create',
+                            type: 'POST',
+                            dataType: 'json',
+                            contentType: 'application/json; charset=utf-8',
+                            data: JSON.stringify({ 'data': data }),
+                            success: function () {
+                                window.location.replace("/Options/Mentee");
+                            },
+                            error: function () {
+                                window.location.replace("Error/NotFound");
+                            }
+                        });
+                    }
+                    else {                        
+                        $("#alertIfEmpty").fadeTo(2000, 500).slideUp(500, function () {
+                            $("#alertIfEmpty").slideUp(500);
+                        });   
+                    }
                 });
             </script>
         }

@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using MvcSiteMapProvider.Web.Mvc.Filters;
 using Resilience.Models;
+using System.Web.Script.Serialization;
 
 namespace Resilience.Controllers
 {
@@ -146,12 +147,26 @@ namespace Resilience.Controllers
         public ActionResult EditCompletion(int Id)
         {
             var goals = db.Goals.Find(Id);
-            goals.CompletionDate = DateTime.Now;
-            db.Entry(goals).State = EntityState.Modified;
-            db.SaveChanges();
+            var tasks = db.Exercises.Where(t => t.GoalsId == Id);
+            var counter = 0;
+            foreach (var task in tasks)
+            {
+                if (DateTime.Compare(task.CompletionDate, new DateTime(1990, 02, 10)) == 0)
+                {
+                    counter++;
+                }
+            }
+            if (counter == 0)
+            {
+                goals.CompletionDate = DateTime.Now;
+                db.Entry(goals).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index", "Goals", new { id = Id });
+            }
+            Session["GoalMessage"] = new JavaScriptSerializer().Serialize(new { Type = "danger", Title = "Error:", Message = "There are tasks in the goal that are not completed. Please complete all tasks before completing a goal." });
             return RedirectToAction("Index", "Goals", new { id = Id });
         }
-
+        
         //GET
         public ActionResult Comments(int Id)
         {
