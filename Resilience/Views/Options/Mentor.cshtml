@@ -94,10 +94,10 @@
             <h2>What do you want to do?</h2>
         </div>
             <button class="button1">
-                @Html.ActionLink("Add your Mentees", "ChooseMentee", "Users", new { @style = "color:white" })
+                @Html.ActionLink("Add your Mentees", "ChooseMentee", "Users", null, new { id = "OT", style = "color: white" })
             </button>
             <button class="button2">
-                @Html.ActionLink("Check Mentees Dashboard", "Dashboard", "DiaryEntries", new { @style = "color:white" })
+                @Html.ActionLink("Check Mentees Dashboard", "Dashboard", "DiaryEntries", null, new { id = "OT", style = "color: white" })
             </button>
         
     </div>
