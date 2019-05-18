@@ -36,64 +36,53 @@
             width: 100%;
         }
         .mentor-background {
-            position:relative;
-            height: 100%;
+            position: relative;
+            height: 75%;
             width: 100%;
-            background: url('../../Images/blank-composition-desk-317355.jpg') no-repeat center;
-            background-size: cover;
+            background-color: antiquewhite;
         }
         .mentor-ask {
             text-align: center;
             color: black;
             /*box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);*/
         }
-        .button {
-            border: none;
-            text-align: center;
-            text-transform: uppercase;
-            text-decoration: none;
-            display: inline-block;
-            -webkit-transition-duration: 0.4s; /* Safari */
-            transition-duration: 0.4s;
-            cursor: pointer;
-        }
         .button1 {
-            width: 20%;
-            height: 10%;
-            background-color: bisque;
+            width: 21%;
+            height: 30%;
+            background-color: #FE938C;
             color: white;
-            border: 2px solid black;
+            border: 0px solid black;
             box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-            border-radius: 12px;
+            border-radius: 0px;
             position: absolute;
-            top: 30%;
-            left: 40%;
-            font-size: 1vw;
+            top: 35%;
+            left: 29%;
+            font-size: 1.5vw;
         }
 
 
         .button1:hover {
-            background-color: white;
+            background-color: black;
             color: black;
         }
 
         .button2 {
             width: 20%;
-            height: 10%;
-            background-color: bisque;
+            height: 30%;
+            background-color: #73D2DE;
             color: white;
-            border: 2px solid black;
+            border: 0px solid black;
             box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-            border-radius: 12px;
+            border-radius: 0px;
             position: absolute;
-            top: 55%;
-            left: 40%;
-            font-size: 1vw;
+            top: 35%;
+            left: 50%;
+            font-size: 1.5vw;
         }
 
 
             .button2:hover {
-                background-color: white;
+                background-color: black;
                 color: black;
             }
     </style>
@@ -105,10 +94,10 @@
             <h2>What do you want to do?</h2>
         </div>
             <button class="button1">
-                @Html.ActionLink("Add your Mentees", "ChooseMentee", "Users")
+                @Html.ActionLink("Add your Mentees", "ChooseMentee", "Users", new { @style = "color:white" })
             </button>
             <button class="button2">
-                @Html.ActionLink("Check Mentees Dashboard", "Dashboard", "DiaryEntries")
+                @Html.ActionLink("Check Mentees Dashboard", "Dashboard", "DiaryEntries", new { @style = "color:white" })
             </button>
         
     </div>
