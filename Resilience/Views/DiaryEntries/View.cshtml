@@ -39,11 +39,13 @@
         html, body {
             height: 100%;
             width: 100%;
+            background: url('../../Images/atmosphere-background-bright-19670.jpg') center;
         }
         .view-diary-detail {
             min-height: 100%;
             height: auto;
-            background: url('../../Images/atmosphere-background-bright-19670.jpg') center;
+            /*background: url('../../Images/atmosphere-background-bright-19670.jpg') center;*/
+            /*background-color:#f2f8fd;*/
             background-repeat: repeat-y;
         }
 
@@ -124,73 +126,146 @@
 </head>
 <body>
     <div class="view-diary-detail">
-        <h2>View</h2>
-        <div style="overflow-x:auto;">
-            <table class="table">
+        <!-- <h2>View</h2>
+    <div style="overflow-x:auto;">
+        <table class="table">
+            <tr>
+                <th>
+                    Diary
+                </th>
+                <th>
+                    Feeling
+                </th>
+                <th>
+                    Your feedback
+                </th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
                 <tr>
-                    <th>
-                        Diary
-                    </th>
-                    <th>
-                        Feeling
-                    </th>
-                    <th>
-                        Your feedback
-                    </th>
+                    <td>
+                        @*@Html.TextBoxFor(modelItem => item.Entry, new { @class = "entry", @readonly = "readonly" })*@
+                        <textarea id="entry" rows=15 cols=100 readonly ="readonly">@item.Entry</textarea>
+                    </td>
+                    @if (item.MenteeFeedback == null)
+                    {
+                        <td>
+                            <text>
+                                Your mentee did not share it.
+                            </text>
+                        </td>
+                    }
+                    else
+                    {
+                        <td width="16%">
+                            <div id="rating" rate=@item.MenteeFeedback></div>
+                        </td>
+                    }
+                    @if (item.MentorFeedback == null)
+                    {
+                        <td>
+                            @Html.ActionLink("Give Feedback", "Feedback", new { id = item.Id }, new { @class = "btn btn-default", @style = "color:black" })
+                        </td>
+                    }
+                    else
+                    {
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MentorFeedback)
+                        </td>
+                    }
+
+
                 </tr>
+                <tr>
+                    <td>
+                        <label class="switch"><input id="highlight" type="checkbox" checked><span class="slider round"/></label> Turn on Highlighting to view the most positive (Green) and most negative (Red) statement in the Diary, if they exist! If highlighting is not seen, there is no strong positive/negative statement in the diary.
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+        <div class="col-md-offset-2 gaugediv"></div>
+        <br>
+        <p class="col-md-offset-2">Sentiment Meter: Overall Sentiment of the Diary</p> -->
+        @foreach (var item in Model)
+        {
+        <div class="col-md-offset-1 col-md-12">
+            <h2>View diary</h2>
+            <hr />
+            <div class="col-md-offset-4 form-horizontal">
 
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        <td>
-                            @*@Html.TextBoxFor(modelItem => item.Entry, new { @class = "entry", @readonly = "readonly" })*@
-                            <textarea id="entry" rows=15 cols=100 readonly ="readonly">@item.Entry</textarea>
-                        </td>
-                        @if (item.MenteeFeedback == null)
-                        {
-                            <td>
-                                <text>
-                                    Your mentee did not share it.
-                                </text>
-                            </td>
-                        }
-                        else
-                        {
-                            <td width="16%">
-                                <div id="rating" rate=@item.MenteeFeedback></div>
-                            </td>
-                        }
-                        @if (item.MentorFeedback == null)
-                        {
-                            <td>
-                                @Html.ActionLink("Give Feedback", "Feedback", new { id = item.Id }, new { @class = "btn btn-default", @style = "color:black" })
-                            </td>
-                        }
-                        else
-                        {
-                            <td>
-                                @Html.DisplayFor(modelItem => item.MentorFeedback)
-                            </td>
-                        }
+                <div class="gaugediv"></div>
+                <i>Sentiment Meter: Overall Sentiment of the Diary</i>
+            </div>
+            <hr />
+            <div class="col-md-offset-0 form-horizontal">
+
+                <label class="control-label col-md-2">Diary</label>
+
+                <div class="col-md-10">
+                    <textarea id="entry" rows=15 cols=100 readonly="readonly">@item.Entry</textarea>
+
+                </div>
 
 
-                        @*<td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-                    </td>*@
-                    </tr>
-                    <tr>
-                        <td>
-                            <label class="switch"><input id="highlight" type="checkbox" checked><span class="slider round"/></label> Turn on Highlighting to view the most positive (Green) and most negative (Red) statement in the Diary, if they exist! If highlighting is not seen, there is no strong positive/negative statement in the diary.
-                        </td>
-                    </tr>
-                }
-            </table>
+            </div>
+
+            <div class="col-md-offset-0 form-horizontal">
+                <label class="control-label col-md-2"></label>
+                <div class="col-md-10">
+                    <label class="switch"><input id="highlight" type="checkbox" checked><span class="slider round" /></label> Turn on Highlighting to view the most positive (Green) and most negative (Red) statement in the Diary, if they exist! 
+                    <p style="margin:0px">If highlighting is not seen, there is no strong positive/negative statement in the diary.</p>
+                </div>
+            </div>
+            <hr />
+
+            <div class="col-md-offset-0 form-horizontal">
+                <label class="control-label col-md-2">Mood</label>
+
+                <div class="col-md-10">
+
+                    @if (item.MenteeFeedback == null)
+                    {
+                        <i>Your mentee did not share it.</i>
+                    }
+                    else
+                    {
+                        <div id="rating" rate=@item.MenteeFeedback>
+                        </div>
+                    }
+
+
+                </div>
+            </div>
+
+            <hr />
+
+            <div class="col-md-offset-0 form-horizontal">
+
+                <label class="control-label col-md-2">Feedback</label>
+
+                <div class="col-md-10">
+                    @if (item.MentorFeedback == null)
+                    {
+
+                        @Html.ActionLink("Give Feedback", "Feedback", new { id = item.Id }, new { @class = "btn btn-default", @style = "color:black" })
+
+                    }
+                    else
+                    {
+
+                        <textarea id="entry" rows=10 cols=100 readonly="readonly">@item.MentorFeedback</textarea>
+
+                    }
+
+                </div>
+
+            </div>
+
+
         </div>
-            <div class="col-md-offset-2 gaugediv"></div>
-            <br>   
-            <p class="col-md-offset-2">Sentiment Meter: Overall Sentiment of the Diary</p>
+        }
         </div>
  
         <script type="text/javascript">
