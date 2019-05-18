@@ -350,19 +350,31 @@
     <Content Include="Images\art-artist-black-and-white-265047.jpg" />
     <Content Include="Images\art-background-blue-1037992.jpg" />
     <Content Include="Images\atmosphere-background-bright-19670.jpg" />
+    <Content Include="Images\background-black-blank-733857.jpg" />
     <Content Include="Images\background-border-brown-628241.jpg" />
     <Content Include="Images\background-design-material-850796.jpg" />
     <Content Include="Images\backgrounds-blank-blue-953214.jpg" />
+    <Content Include="Images\balance-cobblestone-conceptual.jpg" />
     <Content Include="Images\banner.jpg" />
     <Content Include="Images\blank-composition-desk-317355.jpg" />
+    <Content Include="Images\close-up-dry-leaves-environment.jpg" />
     <Content Include="Images\Diary.jpg" />
+    <Content Include="Images\Employment_proyection_2023.PNG" />
+    <Content Include="Images\Employment_Vic_2018.PNG" />
+    <Content Include="Images\icon2.png" />
+    <Content Include="Images\info.png" />
     <Content Include="Images\pic01.jpg" />
     <Content Include="Images\pic02.jpg" />
     <Content Include="Images\pic03.jpg" />
     <Content Include="Images\pic04.jpg" />
     <Content Include="Images\pic05.jpg" />
+    <Content Include="Images\Picture2.png" />
+    <Content Include="Images\question.png" />
     <Content Include="Images\run-1321278_1280.jpg" />
     <Content Include="Images\silhouette-3095150_1280.png" />
+    <Content Include="Images\trends icon.png" />
+    <Content Include="Images\Trends.png" />
+    <Content Include="Images\Unemployment_rate.PNG" />
     <Content Include="Models\DiaryEntries.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>DiaryEntries.Context.cs</LastGenOutput>
