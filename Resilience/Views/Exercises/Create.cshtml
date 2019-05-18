@@ -251,52 +251,30 @@
                         });   
                     }
                 });
-            </script>
-        }
-
-            $('#btnSubmit').click(function () {
-                var data = JSON.stringify(getAllData());
-                //console.log(data);
-                $.ajax({
-                    url: '/Exercises/Create',
-                    type: 'POST',
-                    dataType: 'json',
-                    contentType: 'application/json; charset=utf-8',
-                    data: JSON.stringify({ 'data': data }),
-                    success: function (response) {
-                        //window.location.replace("/Options/Mentee");
-                        
-                        showMessage("SubmitMessage", response, "../../Options/Mentee");
-                    },
-                    error: function () {
-                        window.location.replace("Error/NotFound");
-                    }
-                });
-            });
-
+                 
             
-        function showMessage(obj, messageObj, href) {
-            if (messageObj != "") {
+                function showMessage(obj, messageObj, href) {
+                    if (messageObj != "") {
 
-                // Convert message from the server into json and get div element
-                var message = JSON.parse(messageObj.replace(/&quot;/g, '"'));
-                var element = document.getElementById(obj);
+                        // Convert message from the server into json and get div element
+                        var message = JSON.parse(messageObj.replace(/&quot;/g, '"'));
+                        var element = document.getElementById(obj);
 
-                // Modify div name with message data
-                element.classList.add("alert-" + message.Type);
-                var s = document.createElement("strong");
-                s.appendChild(document.createTextNode(message.Title));
-                element.appendChild(s);
-                element.appendChild(document.createTextNode(" " + message.Message));
-                element.hidden = false;
+                        // Modify div name with message data
+                        element.classList.add("alert-" + message.Type);
+                        var s = document.createElement("strong");
+                        s.appendChild(document.createTextNode(message.Title));
+                        element.appendChild(s);
+                        element.appendChild(document.createTextNode(" " + message.Message));
+                        element.hidden = false;
 
-                // If success redirect to mentees options
-                if (message.Type == "success") {
-                    setTimeout(() => { window.location.href = href; }, 1500);
+                        // If success redirect to mentees options
+                        if (message.Type == "success") {
+                            setTimeout(() => { window.location.href = href; }, 1500);
+                        };
+                    };
                 };
-            };
-        };
-        </script>
+            </script>
     }
 </body>
 </html>
