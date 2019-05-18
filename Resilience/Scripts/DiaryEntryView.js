@@ -16,6 +16,7 @@ $(document).ready(function () {
         bgEmotion: 'happy',
         emotions: emotionsArray,
         disabled: true,
+        count:1,
         initialRating: document.getElementById("rating").getAttribute("rate")
     });
 });

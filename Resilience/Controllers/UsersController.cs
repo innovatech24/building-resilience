@@ -256,7 +256,10 @@ namespace Resilience.Controllers
                 }
                 else
                 {
-                    return HttpNotFound();
+                    // Type options : info, danger, success, warning
+                    TempData["UserMessage"] = new JavaScriptSerializer().Serialize(new { Type = "warning", Title = "Warning:", Message = "User not registered as mentee" });
+
+                    return View();
                 }                
             }
             return View();

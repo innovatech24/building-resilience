@@ -183,7 +183,12 @@ namespace Resilience.Controllers
             g.MenteeComments = goal.MenteeComments;
             db.Entry(g).State = EntityState.Modified;
             db.SaveChanges();
-            return RedirectToAction("Index", "Goals", new { id = g.Id });
+
+            // Type options : info, danger, success, warning
+            TempData["UserMessage"] = new JavaScriptSerializer().Serialize(new { Type = "success", Title = "Success!", Message = "Comment added correctly!" });
+
+
+            return View();
         }
 
         //GET
@@ -202,7 +207,11 @@ namespace Resilience.Controllers
             g.MentorFeedback = goal.MentorFeedback;
             db.Entry(g).State = EntityState.Modified;
             db.SaveChanges();
-            return RedirectToAction("Index", "Goals", new { id = g.Id });
+
+            // Type options : info, danger, success, warning
+            TempData["UserMessage"] = new JavaScriptSerializer().Serialize(new { Type = "success", Title = "Success!", Message = "Feedback added correctly!" });
+
+            return View(g);
         }
 
         protected override void Dispose(bool disposing)

@@ -15,7 +15,8 @@
             $("#rating").emotionsRating({
                 bgEmotion: 'happy',
                 emotions: emotionsArray,
-                emotionSize: 25,
+                emotionSize: 40,
+                count:1,
                 disabled: true,
                 initialRating: Math.round(data.diaries.AvgFeeling)
             });
@@ -119,7 +120,7 @@ function timeseriesplot(obj,data,Title) {
         valueAxis.renderer.grid.template.disabled = true;
     }
 
-    createAxisAndSeries("feeling", "Feeling rate", false, "rectangle", 0, 5);
+    createAxisAndSeries("feeling", "Mood scale", false, "rectangle", 0, 5);
     //createAxisAndSeries("score", "Sentiment Score", true, "circle",-1,1);
     //createAxisAndSeries("views", "Views", true, "triangle");
 

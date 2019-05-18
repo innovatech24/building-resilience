@@ -16,7 +16,6 @@ $(document).ready(function () {
 
         onUpdate: function (value) {
             $(this.element).attr("rate", value);
-            $(this.element).children().prop('disabled', true);
 
             iid = $(this.element).attr("iid");
 
@@ -26,9 +25,6 @@ $(document).ready(function () {
                 data: {
                     Id: iid,
                     rate: value
-                },
-                success: function (response) {
-                    console.log("cool");
                 }
             });
         }
@@ -56,6 +52,7 @@ function buildDisabledRating(element){
         bgEmotion: 'happy',
         emotions: emotionsArray,
         disabled: true,
+        count:1,
         initialRating: element.getAttribute("rate")
     });
 };

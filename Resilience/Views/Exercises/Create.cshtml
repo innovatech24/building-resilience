@@ -37,12 +37,16 @@
         }
 
         .col-md-12 {
-            min-height:80%;
+            min-height: 80%;
             height: auto;
             background: url('../../Images/atmosphere-background-bright-19670.jpg') center;
             background-repeat: repeat-y;
         }
     </style>
+
+    <script type="text/javascript">
+        var message = "@TempData["UserMessage"]";
+    </script>
 </head>
 <body>
     <div class="col-md-12">
@@ -98,8 +102,8 @@
                                 <div class="col-md-10">
                                     <div id="sandbox">
                                         @Html.EditorFor(model => model.DueDate, new { htmlAttributes = new { @class = "form-control", @onchange = "dateChange(this)" } })
-                                        @Html.ValidationMessageFor(model => model.DueDate, "", new { @class = "text-danger" })
                                     </div>
+                                    @Html.ValidationMessageFor(model => model.DueDate, "", new { @class = "text-danger" })
                                 </div>
                             </div>
                         </td>
@@ -131,6 +135,10 @@
                             </div>
                         </div>
                     </td>
+                </tr>
+                <tr>
+                    <div id="SubmitMessage" class="alert" hidden>
+                    </div>
                 </tr>
             </tfoot>
 
@@ -246,5 +254,49 @@
             </script>
         }
 
+            $('#btnSubmit').click(function () {
+                var data = JSON.stringify(getAllData());
+                //console.log(data);
+                $.ajax({
+                    url: '/Exercises/Create',
+                    type: 'POST',
+                    dataType: 'json',
+                    contentType: 'application/json; charset=utf-8',
+                    data: JSON.stringify({ 'data': data }),
+                    success: function (response) {
+                        //window.location.replace("/Options/Mentee");
+                        
+                        showMessage("SubmitMessage", response, "../../Options/Mentee");
+                    },
+                    error: function () {
+                        window.location.replace("Error/NotFound");
+                    }
+                });
+            });
+
+            
+        function showMessage(obj, messageObj, href) {
+            if (messageObj != "") {
+
+                // Convert message from the server into json and get div element
+                var message = JSON.parse(messageObj.replace(/&quot;/g, '"'));
+                var element = document.getElementById(obj);
+
+                // Modify div name with message data
+                element.classList.add("alert-" + message.Type);
+                var s = document.createElement("strong");
+                s.appendChild(document.createTextNode(message.Title));
+                element.appendChild(s);
+                element.appendChild(document.createTextNode(" " + message.Message));
+                element.hidden = false;
+
+                // If success redirect to mentees options
+                if (message.Type == "success") {
+                    setTimeout(() => { window.location.href = href; }, 1500);
+                };
+            };
+        };
+        </script>
+    }
 </body>
 </html>

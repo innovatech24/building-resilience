@@ -5,32 +5,6 @@ var emotionsArray = ['crying', 'disappointed', 'meh', 'happy', 'smile'];
 $(document).ready(function () {
 
 
-    // Set div with rating
-    $(".ratingEnabled").emotionsRating({
-
-        // Back ground emoticon
-        bgEmotion: 'happy',
-
-        // Set array of emoticons
-        emotions: emotionsArray,
-
-        onUpdate: function (value) {
-            $(this.element).attr("rate", value);
-
-            iid = $(this.element).attr("iid");
-
-            $.ajax({
-                url: '/Exercises/setExerciseMenteeRate',
-                type: 'POST',
-                data: {
-                    Id: iid,
-                    rate: value
-                }
-            });
-        }
-
-    });
-
     // Get list of rating divs
     var ratingDis = document.getElementsByClassName("ratingDisabled");
 
@@ -52,7 +26,7 @@ function buildDisabledRating(element) {
         bgEmotion: 'happy',
         emotions: emotionsArray,
         disabled: true,
-        count:1,
+        count: 1,
         initialRating: element.getAttribute("rate")
     });
 };

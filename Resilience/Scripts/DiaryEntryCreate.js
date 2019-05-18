@@ -1,5 +1,7 @@
 ﻿$(document).ready(function () {
 
+    showMessage("SubmitMessage", message, "../DiaryEntries/ViewFeedback");
+
     window.onbeforeunload = function () {
         return true;
     };

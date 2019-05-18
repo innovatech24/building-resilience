@@ -57,6 +57,10 @@
             max-width: 80%;
         }
     </style>
+    <script type="text/javascript">
+        var message = "@TempData["UserMessage"]";
+        var iid = @Model.UsersId;
+    </script>
 </head>
 <body>
 
@@ -79,7 +83,12 @@
                 @Html.AntiForgeryToken()
 
                 <div class="col-md-offset-1 form-horizontal">
-
+                    <div class="form-group">
+                        <div class="col-md-offset-1 col-md-9">
+                            <div id="SubmitMessage" style="width:100%;" class="alert" hidden>
+                            </div>
+                        </div>
+                    </div>
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
                     <div class="form-group">
@@ -128,8 +137,8 @@
     <script type="text/javascript" src="~/Scripts/jquery.highlight-within-textarea.js"></script>
     <!-- Custom js -->
     <script type="text/javascript" src="~/Scripts/Additional_functions.js"></script>
-    <script src="~/Scripts/Sentiment.js"></script>
     <script src="~/Scripts/custom.js"></script>
+    <script src="~/Scripts/GoalsFeedback.js"></script>
 
 </body>
 </html>

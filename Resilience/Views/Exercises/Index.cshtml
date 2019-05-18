@@ -84,7 +84,7 @@
                             @Html.DisplayFor(modelItem => item.TaskDescription)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.DueDate)
+                            @item.DueDate.ToShortDateString()
                         </td>
                         @if (DateTime.Compare(item.CompletionDate, new DateTime(1990, 02, 10)) == 0)
                         {
@@ -95,7 +95,7 @@
                         else
                         {
                             <td>
-                                @Html.DisplayFor(modelItem => item.CompletionDate)
+                                @item.CompletionDate.ToShortDateString()
                             </td>
                         }
                         @if (this.User.IsInRole("Mentor"))
@@ -125,7 +125,7 @@
                             else
                             {
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.MenteeRating)
+                                    <div class="ratingDisabled" iid=@item.Id rate=@item.MenteeRating></div>
                                 </td>
                             }
                             if (item.MentorFeedback == null && DateTime.Compare(item.CompletionDate, new DateTime(1990, 02, 10)) == 0)

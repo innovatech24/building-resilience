@@ -59,16 +59,27 @@
         }
     </style>
 </head>
+<script type="text/javascript">
+        var message = "@TempData["UserMessage"]";
+        var iid = @Model.Id;
+</script>
 <body>
 
     <div class="feedback-background">
-        
+
         <div class="col-md-offset-1 col-md-11">
             <h2>Give Feedback</h2>
             <hr />
             <div class="col-md-offset-1 form-horizontal">
                 @*@Html.LabelFor(model => model.Entry, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                <div class="form-group">
+                    <div class="col-md-offset-1 col-md-9">
+                        <div id="SubmitMessage" style="width:100%;" class="alert" hidden>
+                        </div>
+                    </div>
+                </div>
                 <label class="control-label col-md-2">Diary</label>
+
                 <div class="col-md-10">
                     @Html.EditorFor(model => model.Entry, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly", rows = "8" } })
                     <hr />
@@ -80,6 +91,8 @@
                 @Html.AntiForgeryToken()
 
                 <div class="col-md-offset-1 form-horizontal">
+                    
+
                     @Html.HiddenFor(model => model.UsersId)
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
@@ -103,8 +116,8 @@
             }
 
             @*<div>
-            @Html.ActionLink("Back to List", "Index")
-        </div>*@
+                    @Html.ActionLink("Back to List", "Index")
+                </div>*@
         </div>
     </div>
 
@@ -131,8 +144,7 @@
     <script type="text/javascript" src="~/Scripts/jquery.highlight-within-textarea.js"></script>
     <!-- Custom js -->
     <script type="text/javascript" src="~/Scripts/Additional_functions.js"></script>
-    <script src="~/Scripts/Sentiment.js"></script>
     <script src="~/Scripts/custom.js"></script>
-
+    <script src="~/Scripts/DiaryEntriesFeedback.js"></script>
 </body>
 </html>

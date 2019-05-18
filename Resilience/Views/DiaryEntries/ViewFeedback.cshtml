@@ -80,8 +80,8 @@
                 {
 
                     <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Date)
+                        <td >
+                            @item.Date.ToShortDateString()
                         </td>
                         <td>
                             @*@Html.TextBoxFor(modelItem => item.Entry, new { @class = "entry", @readonly = "readonly" })*@
