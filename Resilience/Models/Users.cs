@@ -36,6 +36,91 @@ namespace Resilience.Models
         public virtual ICollection<DiaryEntries> DiaryEntries { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Goals> Goals { get; set; }
+
+        public int getOpenGoalsCount()
+        {
+            int open = 0;
+            
+            foreach(Goals g in this.Goals)
+            {
+                if(DateTime.Compare(g.CompletionDate.Date, new DateTime(1990, 2, 10).Date) == 0)
+                {
+                    open++;
+                }
+            }
+
+            return open;
+        }
+
+        public int getDelayedTasksCount()
+        {
+            int dtasks = 0;
+
+            foreach (Goals g in this.Goals)
+            {
+                if (DateTime.Compare(g.CompletionDate.Date, new DateTime(1990, 2, 10).Date) == 0)
+                {
+                    foreach(Exercise e in g.Exercises)
+                    {
+                        if(DateTime.Compare(DateTime.Now.Date, e.DueDate.Date) > 0)
+                        {
+                            dtasks++;
+                        }
+                    }
+                }
+            }
+
+            return dtasks;
+        }
+
+        public string getLastDiaryDate()
+        {
+            string lastDiaryDate = "No diaries";
+
+            foreach (DiaryEntries d in this.DiaryEntries)
+            {
+                lastDiaryDate = d.Date.ToShortDateString();
+            }
+            return lastDiaryDate;
+        }
+
+        public int getLastDiaryMood()
+        {
+            int lastDiaryMood = 1;
+
+            foreach (DiaryEntries d in this.DiaryEntries)
+            {
+                lastDiaryMood = d.MenteeFeedback.Value;
+            }
+
+            return lastDiaryMood;
+        }
+
+        public bool getLastDiaryReviewed()
+        {
+            bool lastDiaryState = false;
+            foreach (DiaryEntries d in this.DiaryEntries)
+            {
+                lastDiaryState = d.MentorFeedback != null;
+            }
+            return lastDiaryState;
+        }
+
+        public object getLastDiary()
+        {
+            bool lastDiaryState = false;
+            int lastDiaryMood = 1;
+            string lastDiaryDate = "No diaries";
+
+            foreach (DiaryEntries d in this.DiaryEntries)
+            {
+                lastDiaryState = d.MentorFeedback != null;
+                lastDiaryMood = d.MenteeFeedback.Value;
+                lastDiaryDate = d.Date.ToShortDateString();
+            }
+
+            return new { lastDiaryDate, lastDiaryState , lastDiaryMood };
+        }
     }
 
     public class AddMentor
