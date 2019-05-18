@@ -41,12 +41,7 @@
             background: url('../../Images/atmosphere-background-bright-19670.jpg') center;
             background-repeat: repeat-y;
         }
-    </style>
-    <script type="text/javascript">
-        var message = "@Session["GoalMessage"]";
-        console.log(message);
-        console.log("Hi");
-    </script>
+    </style>    
 </head>
 <body>
     <div id="completionTask" class="alert" hidden></div>    
@@ -249,29 +244,6 @@
     <script type="text/javascript" src="~/Scripts/emoticon_rating.js"></script>
     <!-- Custom js -->
     <script src="~/Scripts/custom.js"></script>
-    <script src="~/Scripts/ExercisesIndex.js"></script>
-    <script>
-        $(document).ready(function () {
-            showMessage("completionTask", message);           
-        });
-
-        function showMessage(obj, messageObj) {
-            if (messageObj != "") {
-
-                // Convert message from the server into json and get div element
-                var message = JSON.parse(messageObj.replace(/&quot;/g, '"'));
-                var element = document.getElementById(obj);
-
-                // Modify div name with message data
-                element.classList.add("alert-" + message.Type);
-                var s = document.createElement("strong");
-                s.appendChild(document.createTextNode(message.Title));
-                element.appendChild(s);
-                element.appendChild(document.createTextNode(" " + message.Message));
-                element.hidden = false;
-                console.log("wassup");
-            };
-        };
-    </script>
+    <script src="~/Scripts/ExercisesIndex.js"></script>    
 </body>
 </html>

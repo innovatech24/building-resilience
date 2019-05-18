@@ -41,6 +41,11 @@
             background-repeat: repeat-y;
         }
     </style>
+    <script type="text/javascript">
+        var message = "@Session["GoalMessage"]";
+        console.log(message);
+        console.log("Hi");
+    </script>
 </head>
 <body>
     <div class="view-goals">
@@ -154,7 +159,7 @@
                                 <div class="ratingEnabled" iid=@item.Id rate=0></div>
                                 @*@Html.HiddenFor(model => item.MenteeRating);*@
                             </td>
-                            
+
                         }
                         else
                         {
@@ -191,5 +196,10 @@
     <!-- Custom js -->
     <script src="~/Scripts/custom.js"></script>
     <script src="~/Scripts/GoalsIndex.js"></script>
+    <script>
+        $(document).ready(function () {
+            showMessage("completionTask", message);
+        });        
+    </script>
 </body>
 </html>
