@@ -163,7 +163,7 @@
                         @if (item.MentorFeedback == null)
                         {
                             <td>
-                                @Html.ActionLink("Give Feedback", "Feedback", new { id = item.Id }, null)
+                                @Html.ActionLink("Give Feedback", "Feedback", new { id = item.Id }, new { @class = "btn btn-default", @style = "color:black" })
                             </td>
                         }
                         else

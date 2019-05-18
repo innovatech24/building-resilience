@@ -28,159 +28,317 @@
     <!-- Google Fonts -->
     <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,400italic,300,300italic,500,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family==Roboto:400,500,700,300,100' rel='stylesheet' type='text/css'>
     <style>
         html, body {
             height: 100%;
             width: 100%;
         }
-        .view-goals {
+
+        @*.view-goals {
             min-height: 100%;
             height: auto;
             background: url('../../Images/atmosphere-background-bright-19670.jpg') center;
             background-repeat: repeat-y;
+        }*@
+
+        @*.table {
+        }*@
+
+        .table-page {
+            min-height: 100%;
+            height: auto;
+            background-color: antiquewhite;
+            font-family: "Roboto", helvetica, arial, sans-serif;
+            font-size: 16px;
+            font-weight: 400;
+            text-rendering: optimizeLegibility;
         }
-        </style>
+
+        div.table-title {
+            display: block;
+            margin: auto;
+            max-width: 600px;
+            padding: 5px;
+            width: 100%;
+        }
+
+        .table-title h3 {
+            color: black;
+            font-size: 30px;
+            font-weight: 400;
+            font-style: normal;
+            font-family: "Roboto", helvetica, arial, sans-serif;
+            text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
+            text-transform: uppercase;
+            text-align:center;
+        }
+
+
+        /*** Table Styles **/
+
+        .table-fill {
+            background: white;
+            border-radius: 3px;
+            border-collapse: collapse;
+            height: 320px;
+            margin: auto;
+            max-width: 250px;
+            padding: 5px;
+            width: 100%;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            animation: float 5s infinite;
+        }
+
+        th {
+            color: #D5DDE5;
+            background: #1b1e24;
+            border-bottom: 4px solid #9ea7af;
+            border-right: 1px solid #343a45;
+            font-size: 23px;
+            font-weight: 100;
+            padding: 24px;
+            text-align: left;
+            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+            vertical-align: middle;
+        }
+
+            th:first-child {
+                border-top-left-radius: 3px;
+            }
+
+            th:last-child {
+                border-top-right-radius: 3px;
+                border-right: none;
+            }
+
+        tr {
+            border-top: 1px solid #C1C3D1;
+            border-bottom: 1px solid #C1C3D1;
+            color: #666B85;
+            font-size: 16px;
+            font-weight: normal;
+            text-shadow: 0 1px 1px rgba(256, 256, 256, 0.1);
+        }
+
+            tr:hover td {
+                background: #4E5066;
+                color: #FFFFFF;
+                border-top: 1px solid #22262e;
+            }
+
+            tr:first-child {
+                border-top: none;
+            }
+
+            tr:last-child {
+                border-bottom: none;
+            }
+
+            tr:nth-child(odd) td {
+                background: #EBEBEB;
+            }
+
+            tr:nth-child(odd):hover td {
+                background: #4E5066;
+            }
+
+            tr:last-child td:first-child {
+                border-bottom-left-radius: 3px;
+            }
+
+            tr:last-child td:last-child {
+                border-bottom-right-radius: 3px;
+            }
+
+        td {
+            background: #FFFFFF;
+            padding: 20px;
+            text-align: left;
+            vertical-align: middle;
+            font-weight: 300;
+            font-size: 18px;
+            text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
+            border-right: 1px solid #C1C3D1;
+            max-width: 200px;
+            word-wrap:break-word;
+        }
+
+            td:last-child {
+                border-right: 0px;
+            }
+
+        th.text-left {
+            text-align: left;
+
+        }
+
+        th.text-center {
+            text-align: center;
+        }
+
+        th.text-right {
+            text-align: right;
+        }
+
+        td.text-left {
+            text-align: left;
+        }
+
+        td.text-center {
+            text-align: center;
+        }
+
+        td.text-right {
+            text-align: right;
+        }
+    </style>
 </head>
 <body>
-    <div class="view-goals">
-        <h2>View Goals</h2>
-        <div style="overflow-x:auto;">
-            <table class="table">
-                <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.GoalName)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.GoalDescription)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.DueDate)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.CompletionDate)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.MenteeComments)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.MenteeRating)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.MentorFeedback)
-                    </th>
-                    @*<th>
-                            @Html.DisplayNameFor(model => model.MentorId)
-                        </th>*@
-                    @*<th>
-                            @Html.DisplayNameFor(model => model.User.FirstName)
-                        </th>*@
-                    <th></th>
-                </tr>
+    <div class="table-page">
+        <div class="table-title">
 
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.GoalName)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.GoalDescription)
-                        </td>
-                        <td>
-                            @item.DueDate.ToShortDateString()
-                        </td>
-                        @if (DateTime.Compare(item.CompletionDate, new DateTime(1990, 02, 10)) == 0)
-                        {
-                            <td>
-                                <text>
-                                    This task hasn't been completed yet.
-                                </text>
-                            </td>
-                        }
-                        else
-                        {
-                            <td>
-                                @item.CompletionDate.ToShortDateString()
-                            </td>
-                        }
-                        @if (item.MenteeComments == null)
-                        {
-                            <td>
-                                <text>
-                                    Your mentee hasn't left any comments yet. They would typically do this once they complete the goal.
-                                </text>
-                            </td>
-                        }
-                        else
-                        {
-                            <td>
-                                @Html.DisplayFor(modelItem => item.MenteeComments)
-                            </td>
-                        }
-                        @if (item.MenteeRating == null)
-                        {
-                            <td>
-                                <text>
-                                    Your mentee hasn't told us how they felt with this goal. They would typically do this once they complete the goal.
-                                </text>
-                            </td>
-                        }
-                        else
-                        {
-                            <td>
-                                <div class="ratingDisabled" iid=@item.Id rate=@item.MenteeRating></div>
-                            </td>
-                        }
-                        @if (item.MentorFeedback == null && DateTime.Compare(item.CompletionDate, new DateTime(1990, 02, 10)) == 0)
-                        {
-                            <td>
-                                <text>
-                                    The goal isn't completed yet. You can give feedback once the goal is completed.
-                                </text>
-                            </td>
-                        }
-                        else if (item.MentorFeedback == null)
-                        {
-                            <td>
-                                @Html.ActionLink("Provide Feedback", "Feedback", "Goals", new { id = item.Id }, null)
-                            </td>
-                        }
-                        else
-                        {
-                            <td>
-                                @Html.DisplayFor(modelItem => item.MentorFeedback)
-                            </td>
-                        }
-                        <td>
-                            @Html.ActionLink("View tasks", "Index", "Exercises", new { id = item.Id }, null)
-                            @*@Html.ActionLink("Details", "Details", new { id = item.Id }) |*@
-                            @*@Html.ActionLink("Delete", "Delete", new { id = item.Id })*@
-                        </td>
-                    </tr>
-                }
-
-            </table>
+            <h3>View Goals</h3>
         </div>
+            <div style="overflow-x:auto;">
+                <table class="table-fill">
+                    <thead>
+                        <tr>
+                            <th class="text-left">
+                                @Html.DisplayNameFor(model => model.GoalName)
+                            </th>
+                            <th class="text-left">
+                                @Html.DisplayNameFor(model => model.GoalDescription)
+                            </th>
+                            <th class="text-left">
+                                @Html.DisplayNameFor(model => model.DueDate)
+                            </th>
+                            <th class="text-left">
+                                @Html.DisplayNameFor(model => model.CompletionDate)
+                            </th>
+                            <th class="text-left">
+                                @Html.DisplayNameFor(model => model.MenteeComments)
+                            </th>
+                            <th class="text-left">
+                                @Html.DisplayNameFor(model => model.MenteeRating)
+                            </th>
+                            <th class="text-left">
+                                @Html.DisplayNameFor(model => model.MentorFeedback)
+                            </th>
+                            @*<th>
+                    @Html.DisplayNameFor(model => model.MentorId)
+                </th>*@
+                            @*<th>
+                    @Html.DisplayNameFor(model => model.User.FirstName)
+                </th>*@
+                            <th class="text-left"></th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-hover">
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td class="text-left">
+                                    @Html.DisplayFor(modelItem => item.GoalName)
+                                </td>
+                                <td class="text-left">
+                                    @Html.DisplayFor(modelItem => item.GoalDescription)
+                                </td>
+                                <td class="text-left">
+                                    @item.DueDate.ToShortDateString()
+                                </td>
+                                @if (DateTime.Compare(item.CompletionDate, new DateTime(1990, 02, 10)) == 0)
+                                {
+                                    <td class="text-left">
+                                        <text>
+                                            This task hasn't been completed yet.
+                                        </text>
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td class="text-left">
+                                        @item.CompletionDate.ToShortDateString()
+                                    </td>
+                                }
+                                @if (item.MenteeComments == null)
+                                {
+                                    <td class="text-left">
+                                        <text>
+                                            Your mentee hasn't left any comments yet. They would typically do this once they complete the goal.
+                                        </text>
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td class="text-left">
+                                        @Html.DisplayFor(modelItem => item.MenteeComments)
+                                    </td>
+                                }
+                                @if (item.MenteeRating == null)
+                                {
+                                    <td class="text-left">
+                                        <text>
+                                            Your mentee hasn't told us how they felt with this goal. They would typically do this once they complete the goal.
+                                        </text>
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td class="text-left">
+                                        <div class="ratingDisabled" iid=@item.Id rate=@item.MenteeRating></div>
+                                    </td>
+                                }
+                                @if (item.MentorFeedback == null && DateTime.Compare(item.CompletionDate, new DateTime(1990, 02, 10)) == 0)
+                                {
+                                    <td class="text-left">
+                                        <text>
+                                            The goal isn't completed yet. You can give feedback once the goal is completed.
+                                        </text>
+                                    </td>
+                                }
+                                else if (item.MentorFeedback == null)
+                                {
+                                    <td class="text-left">
+                                        @Html.ActionLink("Provide Feedback", "Feedback", "Goals", new { id = item.Id }, new { @class = "btn btn-default", @style = "color:black" })
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td class="text-left">
+                                        @Html.DisplayFor(modelItem => item.MentorFeedback)
+                                    </td>
+                                }
+                                <td class="text-left">
+                                    @Html.ActionLink("View tasks", "Index", "Exercises", new { id = item.Id }, new { @class = "btn btn-default", @style = "color:black" })
+                                    @*@Html.ActionLink("Details", "Details", new { id = item.Id }) |*@
+                                    @*@Html.ActionLink("Delete", "Delete", new { id = item.Id })*@
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        
     </div>
-
-    <!-- jQuery library -->
-    <script src="~/Scripts/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="~/Scripts/bootstrap.js"></script>
-    <!-- Slick slider -->
-    <script type="text/javascript" src="~/Scripts/slick.js"></script>
-    <!-- Counter -->
-    <script type="text/javascript" src="~/Scripts/waypoints.js"></script>
-    <script type="text/javascript" src="~/Scripts/jquery.counterup.js"></script>
-    <!-- Mixit slider -->
-    <script type="text/javascript" src="~/Scripts/jquery.mixitup.js"></script>
-    <!-- Add fancyBox -->
-    <script type="text/javascript" src="~/Scripts/jquery.fancybox.pack.js"></script>
-    <script src="~/Scripts/Dashboard.js"></script>
-    <!-- Emoticon rating-->
-    <script type="text/javascript" src="~/Scripts/emoticon_rating.js"></script>
-    <!-- Custom js -->
-    <script src="~/Scripts/GoalsMentorView.js"></script>
-    <script src="~/Scripts/custom.js"></script>
+        <!-- jQuery library -->
+        <script src="~/Scripts/jquery.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="~/Scripts/bootstrap.js"></script>
+        <!-- Slick slider -->
+        <script type="text/javascript" src="~/Scripts/slick.js"></script>
+        <!-- Counter -->
+        <script type="text/javascript" src="~/Scripts/waypoints.js"></script>
+        <script type="text/javascript" src="~/Scripts/jquery.counterup.js"></script>
+        <!-- Mixit slider -->
+        <script type="text/javascript" src="~/Scripts/jquery.mixitup.js"></script>
+        <!-- Add fancyBox -->
+        <script type="text/javascript" src="~/Scripts/jquery.fancybox.pack.js"></script>
+        <script src="~/Scripts/Dashboard.js"></script>
+        <!-- Emoticon rating-->
+        <script type="text/javascript" src="~/Scripts/emoticon_rating.js"></script>
+        <!-- Custom js -->
+        <script src="~/Scripts/GoalsMentorView.js"></script>
+        <script src="~/Scripts/custom.js"></script>
 </body>
 </html>
