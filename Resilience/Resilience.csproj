@@ -404,6 +404,7 @@
     <Content Include="Scripts\custom.js" />
     <Content Include="Scripts\Dashboard.js" />
     <Content Include="Scripts\DiaryEntriesFeedback.js" />
+    <Content Include="Scripts\DiaryEntriesViewUser.js" />
     <Content Include="Scripts\DiaryEntryCreate.js" />
     <Content Include="Scripts\DiaryEntryView.js" />
     <Content Include="Scripts\emoticon_rating.js" />
