@@ -22,7 +22,7 @@
 
     <!-- Main style sheet -->
     <link href="~/Content/style.css" rel="stylesheet">
-
+    <link rel="stylesheet" type="text/css" href="~/Content/user-create.css">
 
     <!-- Google Fonts -->
     <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
@@ -31,49 +31,25 @@
     @{
         Layout = "~/Views/Shared/_Layout.cshtml";
     }
-    <style>
-        .name-page {
-            height: 800px;
-            background: url('../../Images/album-background-blank-1089842.jpg') no-repeat center;
-            background-size: cover;
-        }
-        .name-form {
-            position: static;
-            left: 35%;
-            top: 24%;
-            background-color: white;
-            width: 450px;
-            height: 400px;
-            padding: 3% 0 0;
-            margin: auto;
-            text-align: center;
-            @*box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);*@
-        }
-
-        .form-group {
-            position: center;
-            text-align: center;
-        }
-    </style>
 </head>
 <body>
     <div class="name-page">
         <div class="name-form">
-            <h2>User Profile Information</h2>
+            <h2>User Profile</h2>
 
             @using (Html.BeginForm())
             {
                 @Html.AntiForgeryToken()
 
                 <div class="form-horizontal">
-                    <h4>Users</h4>
+                    
                     <hr />
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
                     <div class="form-group">
                         @*@Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })*@
-                        <label class="control-label col-md-4">First name</label>
-                        <div class="col-md-8">
+                        <label class="control-label col-md-3">First name</label>
+                        <div class="col-md-9">
                             @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
                             @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
                         </div>
@@ -81,8 +57,8 @@
 
                     <div class="form-group">
                         @*@Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-2" })*@
-                        <label class="control-label col-md-4">Last name</label>
-                        <div class="col-md-8">
+                        <label class="control-label col-md-3">Last name</label>
+                        <div class="col-md-9">
                             @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
                             @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
                         </div>

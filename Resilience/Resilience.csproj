@@ -328,6 +328,7 @@
     <Content Include="Content\shared-error.css" />
     <Content Include="Content\slick.css" />
     <Content Include="Content\style.css" />
+    <Content Include="Content\user-create.css" />
     <Content Include="Content\users-choosementee.css" />
     <Content Include="Content\users-choosementor.css" />
     <Content Include="Content\violet-theme.css" />
