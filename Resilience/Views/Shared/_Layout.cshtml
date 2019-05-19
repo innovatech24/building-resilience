@@ -73,7 +73,7 @@
 
     <!-- Start menu -->
     <section id="mu-menu">
-        <nav class="navbar navbar-default" role="navigation">
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
             <div class="container">
                 <div class="navbar-header">
                     <!-- FOR MOBILE VIEW COLLAPSED BUTTON -->
@@ -99,17 +99,17 @@
     </section>
     <!-- End menu -->
 
-    <div class="breadcrumbs">
+    @*<div class="breadcrumbs">
         <div class="crumbs">
             @*<ul>
                 <li>
                     You are Here: @Html.MvcSiteMap().SiteMapPath()
                 </li>
-            </ul>*@          
+            </ul>      
         </div>
-    </div>
+    </div>*@
     
-        @RenderBody()
+       @RenderBody()
     
     
     <!-- Start footer -->
