@@ -99,160 +99,161 @@
                     <div>
                         <h2><text class="fas fa-star fa-rotate-90"></text>WHAT WE OFFER?<text class="fas fa-star fa-rotate-270"></text></h2>
                     </div>
-                    <table>
-                        <tr>
-                            <td>
-                                <span id="whyRes" class="btn btn-lg popup-button"><img src="~/Images/info.png" height="100" width="100" /></span>
-                                <p class="popup-name">About Resilience</p>
-                                
-                            </td>
-                            <td>
-                                <span id="howCanWeHelp" class="btn btn-lg popup-button"><img src="~/Images/question.png" height="100" width="100" /></span>
-                                <p class="popup-name">Let's be Resilient</p>
-                                
-                            </td>
-                            <td>
-                                <span id="challenges" class="btn btn-lg popup-button"><img src="~/Images/trends icon.png" height="100" width="100" /></span>
-                                <p class="popup-name">&nbsp &nbsp Trends</p>
-                            </td>
-                            <td>
-                                <h2 class="fas fa-chart-area"> Graphs</h2>
-                                <p>This below graph shows the employment rate in Victoria by region.</p>
-                                <strong id="regionPlot" class="btn btn-sm btn-primary">Employment in Victoria (by region)</strong>
-                                <p>This below graph shows the projected rate of employment in 2023.</p>
-                                <strong id="industryPlot" class="btn btn-sm btn-primary">Employment Projection by 2023</strong>
-                                <p>This below graph shows the unemployment trend in Victoria.</p>
-                                <strong id="histEmpl" class="btn btn-sm btn-primary">Unemployment rate in Victoria</strong>
-                            </td>
-                        </tr>
-                    </table>
+                    <div style="overflow-x:auto;">
+                        <table>
+                            <tr>
+                                <td>
+                                    <span id="whyRes" class="btn btn-lg popup-button"><img src="~/Images/info.png" height="100" width="100" /></span>
+                                    <p class="popup-name">About Resilience</p>
 
-                    <!--Why Resilience Pop-up  -->
-                    <div id="whyresilience" class="modal">
-                        <!-- Modal content -->
-                        <div class="popup-content">
-                            <div class="mu-title">
-                                <h2>Why should you care about Resilience</h2>
-                            </div>
-                            <br />
-                            <div class="col-lg-6 col-md-6">
-                                <div>                                    
-                                    <p>Resilience is very important for a person's mental health. <br />It's about learning from the process so we can be stronger and look forward to the next challenge </p>
-                                    <p>By being resilient, a person can: </p>
-                                    <ul>
-                                        <li>Dream big</li>
-                                        <li>Have the courage to fail and learn from it</li>
-                                        <li>Inspire everyone and be optimistic</li>                                        
-                                        <li>Be in harmony with others and nature</li>
-                                        <li>Communicate their problems better</li>
-                                    </ul>
-                                    <p>For this purpose, we require someone who is willing to mentor us. </p>                                    
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6">
-                                <div>
-                                    <figure>
-                                        <img src="~/Images/balance-cobblestone-conceptual.jpg" height="400" width="350" alt="img" />
-                                    </figure>
-                                </div>
-                            </div>
-                            <p style="text-align:center">[To close window, click outside the popup]</p>
-                        </div>
-                    </div>
-                    <!--How can we help? Pop-up  -->
-                    <div id="howcanwehelp" class="modal">
-                        <!-- Modal content -->
-                        <div class="popup-content">
-                            <div class="mu-title">
-                                <h2>How can we help?</h2>
-                            </div>
-                            <br />
-                            <div class="col-lg-6 col-md-6">
-                                <div>
-                                    <p>It's amazing if we have someone who we can converse with regularly but what if they are overseas or your schedules don't mesh well?</p>
-                                    <p>We are providing a platform for mentors and mentees to connect</p>
-                                    <ul>
-                                        <li>Mentees can set goals and tasks, write experiences and share them with their mentor</li>                                                                              
-                                        <li>Mentors can keep track of their mentees and provide feedback</li>                                        
-                                    </ul>
-                                    <text style="font-weight:bold">KEY FEATURE: Sentiment Analysis for Mentors about their Mentee's mood</text>
-                                    <hr />
-                                    <p>For exploring further and accessing all features: </p>
-                                    <p>@Html.Partial("_LoginPartial")</p>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6">
-                                <div class="mu-about-us-right">
-                                    <figure>
-                                        <img src="~/Images/close-up-dry-leaves-environment.jpg" height="225" width="350" alt="img" />
-                                        <img src="~/Images/Picture2.png" height="225" width="350" alt="img" />
-                                    </figure>
-                                </div>
-                            </div>
-                            <p style="text-align:center">[To close window, click outside the popup]</p>
-                        </div>
-                    </div>
-                    <!--Challenges Pop-up  -->
-                    <div id="challengesPopup" class="modal">
-                        <!-- Modal content -->
-                        <div class="popup-content">
-                            <div class="mu-title">
-                                <h2>Employment Trends</h2>
-                            </div>
-                            <br />
-                            <div class="col-lg-6 col-md-6">
-                                <div class="mu-about-us-left">
-                                    <p>The graphs show the competition that is present in the industry and how unemployment is on a rising trend</p>
-                                    <ul>
-                                        <li>In the 1st graph, it can be seen that Employment rate in the Inner Region Melbourne is the highest in the Year 2018.</li>
-                                        <li>In the 2nd graph, the Employment Projection by 2023 (by Industry). Health Care, by far, has the most projected scope in Employment</li>
-                                        <li>In the 3rd graph, we can see that Unemployment rate has been gradually increasing over the years.</li>
-                                    </ul>
-                                    <p>These are just few reasons why you need to focus on upping your career and being ahead of the curve</p>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6">
-                                <div class="mu-about-us-right">
-                                    <figure>
-                                        <img src="~/Images/Employment_Vic_2018.png" height="150" width="350" alt="img" />
-                                        <img src="~/Images/Employment_proyection_2023.png" height="150" width="350" alt="img" />
-                                        <img src="~/Images/Unemployment_rate.png" height="150" width="350" alt="img" />
-                                    </figure>
-                                </div>
-                            </div>
-                            <p style="text-align:center">[To close window, click outside the popup]</p>
-                        </div>
-                    </div>
-                    <!-- The Modal -->
-                    <div id="myModal" class="modal">
+                                </td>
+                                <td>
+                                    <span id="howCanWeHelp" class="btn btn-lg popup-button"><img src="~/Images/question.png" height="100" width="100" /></span>
+                                    <p class="popup-name">Let's be Resilient</p>
 
-                        <!-- Modal content -->
-                        <div class="modal-content">
-                            <span class="close">&times;</span>
-                            <div id="region_plot" class="divplot"></div>
-                            <p style="text-align:center">[To close window, click outside the popup]</p>
+                                </td>
+                                <td>
+                                    <span id="challenges" class="btn btn-lg popup-button"><img src="~/Images/trends icon.png" height="100" width="100" /></span>
+                                    <p class="popup-name">&nbsp &nbsp Trends</p>
+                                </td>
+                                <td>
+                                    <h2 class="fas fa-chart-area"> Graphs</h2>
+                                    <p>This below graph shows the employment rate in Victoria by region.</p>
+                                    <strong id="regionPlot" class="btn btn-sm btn-primary">Employment in Victoria (by region)</strong>
+                                    <p>This below graph shows the projected rate of employment in 2023.</p>
+                                    <strong id="industryPlot" class="btn btn-sm btn-primary">Employment Projection by 2023</strong>
+                                    <p>This below graph shows the unemployment trend in Victoria.</p>
+                                    <strong id="histEmpl" class="btn btn-sm btn-primary">Unemployment rate in Victoria</strong>
+                                </td>
+                            </tr>
+                        </table>
                         </div>
-
-                    </div>
-                    <div id="myModal2" class="modal">
-
-                        <!-- Modal content -->
-                        <div class="modal-content">
-                            <span class="close">&times;</span>
-                            <div id="industry_plot" class="divplot"></div>
-                            <p style="text-align:center">[To close window, click outside the popup]</p>
+                        <!--Why Resilience Pop-up  -->
+                        <div id="whyresilience" class="modal">
+                            <!-- Modal content -->
+                            <div class="popup-content">
+                                <div class="mu-title">
+                                    <h2>Why should you care about Resilience</h2>
+                                </div>
+                                <br />
+                                <div class="col-lg-6 col-md-6">
+                                    <div>
+                                        <p>Resilience is very important for a person's mental health. <br />It's about learning from the process so we can be stronger and look forward to the next challenge </p>
+                                        <p>By being resilient, a person can: </p>
+                                        <ul>
+                                            <li>Dream big</li>
+                                            <li>Have the courage to fail and learn from it</li>
+                                            <li>Inspire everyone and be optimistic</li>
+                                            <li>Be in harmony with others and nature</li>
+                                            <li>Communicate their problems better</li>
+                                        </ul>
+                                        <p>For this purpose, we require someone who is willing to mentor us. </p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6">
+                                    <div>
+                                        <figure>
+                                            <img src="~/Images/balance-cobblestone-conceptual.jpg" height="400" width="350" alt="img" />
+                                        </figure>
+                                    </div>
+                                </div>
+                                <p style="text-align:center">[To close window, click outside the popup]</p>
+                            </div>
                         </div>
-                    </div>
-                    <div id="myModal3" class="modal">
-                        <!-- Modal content -->
-                        <div class="modal-content">
-                            <span class="close">&times;</span>
-                            <div id="history_plot" class="divplot"></div>
-                            <p style="text-align:center">[To close window, click outside the popup]</p>
+                        <!--How can we help? Pop-up  -->
+                        <div id="howcanwehelp" class="modal">
+                            <!-- Modal content -->
+                            <div class="popup-content">
+                                <div class="mu-title">
+                                    <h2>How can we help?</h2>
+                                </div>
+                                <br />
+                                <div class="col-lg-6 col-md-6">
+                                    <div>
+                                        <p>It's amazing if we have someone who we can converse with regularly but what if they are overseas or your schedules don't mesh well?</p>
+                                        <p>We are providing a platform for mentors and mentees to connect</p>
+                                        <ul>
+                                            <li>Mentees can set goals and tasks, write experiences and share them with their mentor</li>
+                                            <li>Mentors can keep track of their mentees and provide feedback</li>
+                                        </ul>
+                                        <text style="font-weight:bold">KEY FEATURE: Sentiment Analysis for Mentors about their Mentee's mood</text>
+                                        <hr />
+                                        <p>For exploring further and accessing all features: </p>
+                                        <p>@Html.Partial("_LoginPartial")</p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="mu-about-us-right">
+                                        <figure>
+                                            <img src="~/Images/close-up-dry-leaves-environment.jpg" height="225" width="350" alt="img" />
+                                            <img src="~/Images/Picture2.png" height="225" width="350" alt="img" />
+                                        </figure>
+                                    </div>
+                                </div>
+                                <p style="text-align:center">[To close window, click outside the popup]</p>
+                            </div>
+                        </div>
+                        <!--Challenges Pop-up  -->
+                        <div id="challengesPopup" class="modal">
+                            <!-- Modal content -->
+                            <div class="popup-content">
+                                <div class="mu-title">
+                                    <h2>Employment Trends</h2>
+                                </div>
+                                <br />
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="mu-about-us-left">
+                                        <p>The graphs show the competition that is present in the industry and how unemployment is on a rising trend</p>
+                                        <ul>
+                                            <li>In the 1st graph, it can be seen that Employment rate in the Inner Region Melbourne is the highest in the Year 2018.</li>
+                                            <li>In the 2nd graph, the Employment Projection by 2023 (by Industry). Health Care, by far, has the most projected scope in Employment</li>
+                                            <li>In the 3rd graph, we can see that Unemployment rate has been gradually increasing over the years.</li>
+                                        </ul>
+                                        <p>These are just few reasons why you need to focus on upping your career and being ahead of the curve</p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="mu-about-us-right">
+                                        <figure>
+                                            <img src="~/Images/Employment_Vic_2018.png" height="150" width="350" alt="img" />
+                                            <img src="~/Images/Employment_proyection_2023.png" height="150" width="350" alt="img" />
+                                            <img src="~/Images/Unemployment_rate.png" height="150" width="350" alt="img" />
+                                        </figure>
+                                    </div>
+                                </div>
+                                <p style="text-align:center">[To close window, click outside the popup]</p>
+                            </div>
+                        </div>
+                        <!-- The Modal -->
+                        <div id="myModal" class="modal">
+
+                            <!-- Modal content -->
+                            <div class="modal-content">
+                                <span class="close">&times;</span>
+                                <div id="region_plot" class="divplot"></div>
+                                <p style="text-align:center">[To close window, click outside the popup]</p>
+                            </div>
+
+                        </div>
+                        <div id="myModal2" class="modal">
+
+                            <!-- Modal content -->
+                            <div class="modal-content">
+                                <span class="close">&times;</span>
+                                <div id="industry_plot" class="divplot"></div>
+                                <p style="text-align:center">[To close window, click outside the popup]</p>
+                            </div>
+                        </div>
+                        <div id="myModal3" class="modal">
+                            <!-- Modal content -->
+                            <div class="modal-content">
+                                <span class="close">&times;</span>
+                                <div id="history_plot" class="divplot"></div>
+                                <p style="text-align:center">[To close window, click outside the popup]</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
         </div>
     </section>
 
