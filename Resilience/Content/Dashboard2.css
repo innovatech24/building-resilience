@@ -1,10 +1,10 @@
 ﻿.main-card {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 200px));
-    grid-auto-rows: 320px;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 240px));
+    grid-auto-rows: 360px;
     /*grid-template-rows: repeat(auto-fit, minmax(20px, 200px));
     grid-auto-columns: 200px;*/
-    grid-gap: 20px;
+    grid-gap: 5px;
 }
 
 .card {
@@ -19,7 +19,7 @@
     box-shadow: 4px 4px 15px -3px rgba(0,0,0,0.39);
     border-radius: 20px;
     border-style: outset;
-    /*margin: 20px;*/
+    margin: 20px;
 }
 
 .card__title{
