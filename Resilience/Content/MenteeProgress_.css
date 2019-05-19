@@ -1,5 +1,6 @@
 ﻿
 .main {
+    margin-top: 90px;
     grid-area: main;
     /*background-color: #8fd4d9;*/
 }
@@ -13,7 +14,7 @@
     background-color: #e3e4e6;
     color: slategray;
     font-weight: bold;
-    font-size: 2vw;
+    font-size: larger;
     -webkit-box-shadow: 4px 4px 15px -3px rgba(0,0,0,0.39);
     -moz-box-shadow: 4px 4px 15px -3px rgba(0,0,0,0.39);
     box-shadow: 4px 4px 15px -3px rgba(0,0,0,0.39);
@@ -38,6 +39,7 @@
     -moz-box-shadow: 4px 4px 15px -3px rgba(0,0,0,0.39);
     box-shadow: 4px 4px 15px -3px rgba(0,0,0,0.39);
     border-radius: 4px;
+    font-size: larger;
     /*margin: 20px;*/
 }
 

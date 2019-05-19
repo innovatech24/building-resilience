@@ -1,7 +1,7 @@
 ﻿
 
 $(document).ready(function () {
-    showMessage("addMentorMessage", message);
+    showMessage_("addMentorMessage", message);
 
     $.ajax({
         url: '/Users/getUser',
@@ -25,7 +25,7 @@ $(document).ready(function () {
     });
 });
 
-function showMessage(obj, messageObj) {
+function showMessage_(obj, messageObj) {
     if (messageObj != "") {
 
         // Convert message from the server into json and get div element
