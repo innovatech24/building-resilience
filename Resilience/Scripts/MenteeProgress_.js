@@ -26,12 +26,15 @@
             // Set value of the plot to the sentiment score value
             //updateGaugeValue(window.gauge, data.diaries.AvgSentimentScore);
 
+            if (data.diaries.NumDiaries > 0) {
+                // Timeseries for diary entry
+                timeseriesplot("timeplotdiv", data.diaries.Entries, Title = "");
+            };
 
-            // Timeseries for diary entry
-            timeseriesplot("timeplotdiv",data.diaries.Entries,Title = "");
-
-            // Stacked bar plot of goals
-            stackedbarplot("bardiv", data.goals.Goals, "");
+            if (data.goals.OpenGoals + data.goals.CloseGoals > 0) {
+                // Stacked bar plot of goals
+                stackedbarplot("bardiv", data.goals.Goals, "");
+            };
 
             //Information overview divs
             document.getElementById("openGoals").appendChild(document.createTextNode(data.goals.OpenGoals));
