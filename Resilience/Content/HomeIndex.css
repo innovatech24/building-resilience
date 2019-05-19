@@ -3,6 +3,62 @@
     height: 100%;
 }
 
+.popup-content {
+    background-color: #fefefe;
+    margin: 2% auto; /* 15% from the top and centered */
+    padding: 40px;
+    border: 10px solid #A89B9D;
+    width: 800px; /* Could be more or less, depending on screen size */
+    height: 600px;
+}
+
+.popup-content p{
+    text-decoration:solid;
+}
+
+.popup-content ul {
+    margin-left: 25px;
+    margin-bottom: 15px;
+}
+
+.popup-content ul li {
+    line-height: 30px;
+    list-style: circle;
+}
+
+.popup-name {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 25px;
+}
+
+.popup-button {
+    cursor: pointer;
+}
+
+.popup-button:hover {
+    background-color: #A89B9D;
+}
+
+.animation {
+    position: relative;
+    -webkit-animation-duration: 2s;
+    -webkit-animation-name: moveit;
+}
+
+@-webkit-keyframes moveit {
+    from {
+        left: 25%;
+    }
+
+    to {
+        left: 0;
+    }
+}
+
+td{
+    width: 300px;
+}
+
 /* The Modal (background) */
 .modal {
     display: none; /* Hidden by default */
@@ -26,7 +82,6 @@
     width: 800px; /* Could be more or less, depending on screen size */
     height: 700px;
 }
-
 /* The Close Button */
 .close {
     color: #aaa;
@@ -36,9 +91,267 @@
     opacity: 0;
 }
 
-    .close:hover,
-    .close:focus {
-        color: black;
-        text-decoration: none;
-        cursor: pointer;
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/*==================
+ ABOUT SECTION
+====================*/
+
+#mu-about-us {
+    display: inline;
+    float: left;
+    width: 100%;
+    padding: 50px 0;
+    background-color: antiquewhite;
+}
+
+#mu-about-us .mu-about-us-area {
+    display: inline;
+    float: left;
+    width: 100%;
+}
+
+#mu-about-us .mu-about-us-area .mu-about-us-left {
+    display: inline;
+    float: left;
+    width: 100%;
+}
+
+#mu-about-us .mu-about-us-area .mu-about-us-left h2 {
+    font-size: 40px;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+#mu-about-us .mu-about-us-area .mu-about-us-left ul {
+    margin-left: 25px;
+    margin-bottom: 15px;
+}
+
+#mu-about-us .mu-about-us-area .mu-about-us-left ul li {
+    line-height: 30px;
+    list-style: circle;
+}
+
+#mu-about-us .mu-about-us-area .mu-about-us-right {
+    display: inline;
+    float: left;
+    width: 100%;
+    display: block;
+    width: 100%;
+    background-color: #ccc;
+}
+
+#mu-about-us .mu-about-us-area .mu-about-us-right a {
+    display: block;
+    width: 100%;
+    position: relative;
+}
+
+#mu-about-us .mu-about-us-area .mu-about-us-right a img {
+    width: 100%;
+}
+
+#mu-about-us .mu-about-us-area .mu-about-us-right a:after {
+    background-color: rgba(0, 0, 0, 0.8);
+    bottom: 0;
+    color: #ddd;
+    content: '\f04b';
+    font-family: fontAwesome;
+    font-size: 50px;
+    left: 0;
+    padding-top: 27%;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    top: 0;
+}
+
+#mu-about-us {
+    padding: 60px 0;
+}
+
+#mu-about-us .mu-about-us-area .mu-about-us-right {
+    margin-top: 30px;
+}
+
+@media (max-width: 360px) {
+    #mu-about-us .mu-about-us-area .mu-about-us-left h2 {
+        font-size: 30px;
+        margin-bottom: 10px;
     }
+}
+
+/*==================
+ SLIDER SECTION
+====================*/
+#mu-slider {
+    display: inline;
+    float: left;
+    width: 100%;
+}
+
+#mu-slider .mu-slider-single {
+    display: inline;
+    float: left;
+    width: 100%;
+    position: relative;
+}
+
+#mu-slider .mu-slider-single .mu-slider-img {
+    display: inline;
+    float: left;
+    width: 100%;
+    height: 500px;
+}
+
+#mu-slider .mu-slider-single .mu-slider-img:after {
+    background-color: rgba(0, 0, 0, 0.5);
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+#mu-slider .mu-slider-single .mu-slider-img figure {
+    height: 100%;
+    width: 100%;
+}
+
+#mu-slider .mu-slider-single .mu-slider-img figure img {
+    width: 100%;
+    height: 100%;
+}
+
+#mu-slider .mu-slider-single .mu-slider-content {
+    color: #fff;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 20%;
+    padding: 0 15%;
+    width: 100%;
+    text-align: center;
+    height: 100%;
+}
+
+#mu-slider .mu-slider-single .mu-slider-content h4 {
+    letter-spacing: 1px;
+    margin-bottom: 0;
+}
+
+#mu-slider .mu-slider-single .mu-slider-content span {
+    display: inline-block;
+    height: 1px;
+    width: 100px;
+}
+
+#mu-slider .mu-slider-single .mu-slider-content h2 {
+    font-size: 80px;
+    line-height: 80px;
+    margin-bottom: 10px;
+    font-style: italic;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-shadow: 0 0 15px rgba(255,255,255,.5), 0 0 10px rgba(255,255,255,.5), -9px 5px 9px #A89B9D;
+}
+
+#mu-slider .mu-slider-single .mu-slider-content p {
+    font-size: 18px;
+    letter-spacing: 0.5px;
+    line-height: 28px;
+}
+
+#mu-slider .mu-slider-single .mu-slider-content a {
+    margin-top: 25px;
+}
+
+#mu-slider .slick-prev,
+#mu-slider .slick-next {
+    height: 60px;
+    width: 60px;
+}
+
+#mu-slider .slick-prev:before,
+#mu-slider .slick-next:before {
+    color: #fff;
+    font-size: 25px;
+}
+
+#mu-slider .mu-slider-single .mu-slider-content .scrollDown {
+    font-size: 40px;
+    display: block;
+    position:fixed;
+    padding: 100% 50% 0 50%;
+}
+
+.mu-title {
+    display: inline;
+    float: left;
+    text-align: center;
+    width: 100%;
+}
+
+.mu-title h2 {
+    color: #000;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.mu-title p {
+    color: #555;
+    letter-spacing: 0.3px;
+    line-height: 1.7;
+    padding: 0 120px;
+}
+.mu-title p {
+    padding: 0 20px;
+}
+
+.scrollDown {
+    border-radius: 4px;
+    bottom: 60px;
+    color: #fff;
+    display: none;
+    font-size: 30px;
+    line-height: 50px;
+    height: 50px;
+    font-family: "Montserrat", sans-serif;
+    padding: 5px 0;
+    position: fixed;
+    right: 20px;
+    text-align: center;
+    text-decoration: none;
+    width: 50px;
+    z-index: 999;
+    -webkit-transition: all 0.5s ease 0s;
+    -moz-transition: all 0.5s ease 0s;
+    -ms-transition: all 0.5s ease 0s;
+    -o-transition: all 0.5s ease 0s;
+    transition: all 0.5s ease 0s;
+}
+
+.scrollDown i {
+    display: block;
+}
+
+.scrollDown span {
+    display: block;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.scrollDown:hover,
+.scrollDown:focus {
+    color: #fff;
+}
+
+
+

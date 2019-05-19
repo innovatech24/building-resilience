@@ -32,5 +32,6 @@ namespace Resilience.Models
         public Nullable<int> MenteeFeedback { get; set; }
     
         public virtual Users User { get; set; }
+
     }
 }

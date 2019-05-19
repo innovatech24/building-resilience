@@ -1,20 +1,69 @@
 ﻿.main-card {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 150px));
-    grid-auto-rows: 94px;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 200px));
+    grid-auto-rows: 300px;
+    /*grid-template-rows: repeat(auto-fit, minmax(20px, 200px));
+    grid-auto-columns: 200px;*/
     grid-gap: 20px;
 }
 
 .card {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    padding: 20px;
-    align-items: center;
-    background-color: #e3e4e6;
+    /*justify-content:center;*/
+    padding: 10px;
+    background-color: antiquewhite/*#e3e4e6*/;
     -webkit-box-shadow: 4px 4px 15px -3px rgba(0,0,0,0.39);
     -moz-box-shadow: 4px 4px 15px -3px rgba(0,0,0,0.39);
     box-shadow: 4px 4px 15px -3px rgba(0,0,0,0.39);
-    border-radius: 4px;
+    border-radius: 20px;
+    border-style: outset;
     /*margin: 20px;*/
+}
+
+.card__title{
+    font-weight:bold;
+    font-size:large;
+}
+
+.card__content{
+    text-align:left;
+    width:100%;
+    height:100%;
+}
+
+a.ptitle{
+    font-weight:bold;
+    margin-top:0px;
+}
+
+.pitem{
+    margin-left:15px;
+    margin-top:6px;
+}
+
+a.ptitle:link, a.ptitle:visited {
+    background-color: antiquewhite;
+    border: 2px #A89B9D solid;
+    border-radius: 5px;
+    padding: 3px 5px;
+}
+
+a.ptitle:hover, a.ptitle:active {
+    background-color: #A89B9D;
+    padding: 3px 5px;
+    text-align: center;
+    text-decoration: none;
+    /*display: inline-block;*/
+    border-radius: 5px;
+    color: white;
+}
+
+a.apending:link, a.apending:visited {
+    color: red;
+}
+
+a.apending:hover{
+    text-decoration:underline;
 }

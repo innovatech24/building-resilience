@@ -203,7 +203,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\ChallengesController.cs" />
     <Compile Include="Controllers\DiaryEntriesController.cs" />
     <Compile Include="Controllers\EmailController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
@@ -218,12 +217,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\Behaviour.cs">
-      <DependentUpon>PlotData.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Bullying.cs">
-      <DependentUpon>PlotData.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\DBConnect.cs" />
     <Compile Include="Models\DiaryEntries.Context.cs">
       <AutoGen>True</AutoGen>
@@ -246,35 +239,11 @@
     <Compile Include="Models\Exercise.cs">
       <DependentUpon>DiaryEntries.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\FamilyStress.cs">
-      <DependentUpon>PlotData.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\FamilyViolence.cs">
-      <DependentUpon>PlotData.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Goals.cs">
       <DependentUpon>DiaryEntries.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\PlotData.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>PlotData.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\PlotData.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>PlotData.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\PlotData.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>PlotData.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Region.cs">
-      <DependentUpon>PlotData.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\SentimentPy.cs" />
     <Compile Include="Models\Users.cs">
       <DependentUpon>DiaryEntries.tt</DependentUpon>
@@ -350,19 +319,31 @@
     <Content Include="Images\art-artist-black-and-white-265047.jpg" />
     <Content Include="Images\art-background-blue-1037992.jpg" />
     <Content Include="Images\atmosphere-background-bright-19670.jpg" />
+    <Content Include="Images\background-black-blank-733857.jpg" />
     <Content Include="Images\background-border-brown-628241.jpg" />
     <Content Include="Images\background-design-material-850796.jpg" />
     <Content Include="Images\backgrounds-blank-blue-953214.jpg" />
+    <Content Include="Images\balance-cobblestone-conceptual.jpg" />
     <Content Include="Images\banner.jpg" />
     <Content Include="Images\blank-composition-desk-317355.jpg" />
+    <Content Include="Images\close-up-dry-leaves-environment.jpg" />
     <Content Include="Images\Diary.jpg" />
+    <Content Include="Images\Employment_proyection_2023.PNG" />
+    <Content Include="Images\Employment_Vic_2018.PNG" />
+    <Content Include="Images\icon2.png" />
+    <Content Include="Images\info.png" />
     <Content Include="Images\pic01.jpg" />
     <Content Include="Images\pic02.jpg" />
     <Content Include="Images\pic03.jpg" />
     <Content Include="Images\pic04.jpg" />
     <Content Include="Images\pic05.jpg" />
+    <Content Include="Images\Picture2.png" />
+    <Content Include="Images\question.png" />
     <Content Include="Images\run-1321278_1280.jpg" />
     <Content Include="Images\silhouette-3095150_1280.png" />
+    <Content Include="Images\trends icon.png" />
+    <Content Include="Images\Trends.png" />
+    <Content Include="Images\Unemployment_rate.PNG" />
     <Content Include="Models\DiaryEntries.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>DiaryEntries.Context.cs</LastGenOutput>
@@ -373,17 +354,6 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>DiaryEntries1.cs</LastGenOutput>
       <DependentUpon>DiaryEntries.edmx</DependentUpon>
-    </Content>
-    <Content Include="Models\PlotData.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>PlotData.Context.cs</LastGenOutput>
-      <DependentUpon>PlotData.edmx</DependentUpon>
-    </Content>
-    <Content Include="Models\PlotData.edmx.sql" />
-    <Content Include="Models\PlotData.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>PlotData.cs</LastGenOutput>
-      <DependentUpon>PlotData.edmx</DependentUpon>
     </Content>
     <Content Include="Scripts\Additional_functions.js" />
     <Content Include="Scripts\all.js" />
@@ -404,6 +374,7 @@
     <Content Include="Scripts\custom.js" />
     <Content Include="Scripts\Dashboard.js" />
     <Content Include="Scripts\DiaryEntriesFeedback.js" />
+    <Content Include="Scripts\DiaryEntriesViewUser.js" />
     <Content Include="Scripts\DiaryEntryCreate.js" />
     <Content Include="Scripts\DiaryEntryView.js" />
     <Content Include="Scripts\emoticon_rating.js" />
@@ -441,13 +412,6 @@
     <Content Include="Fonts\fa-solid-900.ttf" />
     <Content Include="Fonts\fa-solid-900.woff" />
     <Content Include="Fonts\fa-solid-900.woff2" />
-    <EntityDeploy Include="Models\PlotData.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>PlotData.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\PlotData.edmx.diagram">
-      <DependentUpon>PlotData.edmx</DependentUpon>
-    </Content>
     <EntityDeploy Include="Models\DiaryEntries.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>DiaryEntries.Designer.cs</LastGenOutput>
@@ -553,10 +517,6 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-    <Content Include="Views\Challenges\Bullying.cshtml" />
-    <Content Include="Views\Challenges\Abuse.cshtml" />
-    <Content Include="Views\Challenges\Violence.cshtml" />
-    <Content Include="Views\Challenges\Index.cshtml" />
     <Content Include="Views\Options\Mentee.cshtml" />
     <Content Include="Views\DiaryEntries\Create.cshtml" />
     <Content Include="Views\DiaryEntries\Delete.cshtml" />

@@ -4,9 +4,6 @@ var emotionsArray = ['crying', 'disappointed', 'meh', 'happy', 'smile'];
 
 $(document).ready(function () {
 
-    $("#goalTitle").click(function () {
-        window.location.href = "Goals/MentorView/" + $(this).getAttribute("iid");
-    });
 
     // Get list of rating divs
     var ratingDis = document.getElementsByClassName("ratingDisabled");
@@ -30,13 +27,6 @@ function buildDisabledRating(element) {
         emotions: emotionsArray,
         disabled: true,
         count: 1,
-        initialRating: element.getAttribute("rate"),
-        emotionSize:20
+        initialRating: element.getAttribute("rate")
     });
 };
-
-/*
-jQuery(".card").click(function (e) {     
-    //window.location = jQuery(this).find("a").attr("href");
-    return false;
-});*/

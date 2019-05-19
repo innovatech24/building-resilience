@@ -53,6 +53,41 @@ $(document).ready(function () {
         modal3.style.display = "block";
     }
 
+    // WHY RESILIENCE SECTION
+    // Get the modal
+    var modal4 = document.getElementById('whyresilience');
+
+    // Get the button that opens the modal
+    var btn4 = document.getElementById("whyRes");
+
+    // When the user clicks on the button, open the modal 
+    btn4.onclick = function () {
+        modal4.style.display = "block";
+    }
+
+    // HOW CAN WE HELP SECTION
+    // Get the modal
+    var modal5 = document.getElementById('howcanwehelp');
+
+    // Get the button that opens the modal
+    var btn5 = document.getElementById("howCanWeHelp");
+
+    // When the user clicks on the button, open the modal 
+    btn5.onclick = function () {
+        modal5.style.display = "block";
+    }
+
+    // CHALLENGES SECTION
+    // Get the modal
+    var modal6 = document.getElementById('challengesPopup');
+
+    // Get the button that opens the modal
+    var btn6 = document.getElementById("challenges");
+
+    // When the user clicks on the button, open the modal 
+    btn6.onclick = function () {
+        modal6.style.display = "block";
+    }
 
     // Get the <span> element that closes the modal
     var span = document.getElementsByClassName("close")[0];
@@ -62,6 +97,9 @@ $(document).ready(function () {
         modal.style.display = "none";
         modal2.style.display = "none";
         modal3.style.display = "none";
+        modal4.style.display = "none";
+        modal5.style.display = "none";
+        modal6.style.display = "none";
     }
 
     // When the user clicks anywhere outside of the modal, close it
@@ -75,9 +113,17 @@ $(document).ready(function () {
         if (event.target == modal3) {
             modal3.style.display = "none";
         }
+        if (event.target == modal4) {
+            modal4.style.display = "none";
+        }
+        if (event.target == modal5) {
+            modal5.style.display = "none";
+        }
+        if (event.target == modal6) {
+            modal6.style.display = "none";
+        }
     }
 
-    
 });
 
 function validate() {
