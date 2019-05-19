@@ -84,7 +84,7 @@
             border-collapse: collapse;
             height: 320px;
             margin: auto;
-            max-width: 250px;
+            max-width: 95%;
             padding: 5px;
             width: 100%;
             box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
@@ -154,7 +154,7 @@
 
         td {
             background: #FFFFFF;
-            padding: 20px;
+            padding: 15px;
             text-align: left;
             vertical-align: middle;
             font-weight: 300;
@@ -193,12 +193,16 @@
         td.text-right {
             text-align: right;
         }
+
+        i {
+            font-size:smaller;
+        }
     </style>
 </head>
 <body>
     <div class="table-page">
         <div class="table-title">
-            <h3>View Tasks</h3>
+            <h3>@Model.First().Goal.User.FirstName @Model.First().Goal.User.LastName - @Model.First().Goal.GoalName</h3>
         </div>
         <div style="overflow-x:auto;">
             <table class="table-fill">
@@ -233,7 +237,8 @@
                     {
                         <tr>
                             <td class="text-left">
-                                @Html.DisplayFor(modelItem => item.TaskName)
+                                <strong>@Html.DisplayFor(modelItem => item.TaskName)</strong>
+
                             </td>
                             <td class="text-left">
                                 @Html.DisplayFor(modelItem => item.TaskDescription)
@@ -258,9 +263,9 @@
                                 if (item.MenteeComments == null)
                                 {
                                     <td class="text-left">
-                                        <text>
+                                        <i>
                                             Your mentee hasn't left any comments yet. They would typically do this once they complete the goal.
-                                        </text>
+                                        </i>
                                     </td>
                                 }
                                 else
@@ -272,23 +277,23 @@
                                 if (item.MenteeRating == null)
                                 {
                                     <td class="text-left">
-                                        <text>
+                                        <i>
                                             Your mentee hasn't told us how they felt with this goal. They would typically do this once they complete the goal.
-                                        </text>
+                                        </i>
                                     </td>
                                 }
                                 else
                                 {
-                                    <td class="text-left">
+                                    <td class="text-center">
                                         <div class="ratingDisabled" iid=@item.Id rate=@item.MenteeRating></div>
                                     </td>
                                 }
                                 if (item.MentorFeedback == null && DateTime.Compare(item.CompletionDate, new DateTime(1990, 02, 10)) == 0)
                                 {
                                     <td class="text-left">
-                                        <text>
+                                        <i>
                                             The goal isn't completed yet. You can give feedback once the goal is completed.
-                                        </text>
+                                        </i>
                                     </td>
                                 }
                                 else if (item.MentorFeedback == null)
@@ -315,9 +320,9 @@
                                 if (item.MenteeComments == null && DateTime.Compare(item.CompletionDate, new DateTime(1990, 02, 10)) == 0)
                                 {
                                     <td class="text-left">
-                                        <text>
+                                        <i>
                                             You haven't completed the task. You can provide comments once the task is completed.
-                                        </text>
+                                        </i>
                                     </td>
                                 }
                                 else if (item.MenteeComments == null)
@@ -337,14 +342,14 @@
                                 if (item.MenteeRating == null && DateTime.Compare(item.CompletionDate, new DateTime(1990, 02, 10)) == 0)
                                 {
                                     <td class="text-left">
-                                        <text>
+                                        <i>
                                             You haven't completed the task. You can provide a rating once the task is completed.
-                                        </text>
+                                        </i>
                                     </td>
                                 }
                                 else if (item.MenteeRating == null)
                                 {
-                                    <td class="text-left">
+                                    <td class="text-center">
                                         <div class="ratingEnabled" iid=@item.Id rate=0></div>
                                     </td>
                                 }
@@ -357,9 +362,9 @@
                                 if (item.MentorFeedback == null)
                                 {
                                     <td class="text-left">
-                                        <text>
+                                        <i>
                                             Your mentor hasn't given feedback yet. They will typically do this once the task is completed.
-                                        </text>
+                                        </i>
                                     </td>
                                 }
                                 else

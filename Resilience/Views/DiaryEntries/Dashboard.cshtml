@@ -64,43 +64,87 @@
 </head>
 <body>
     <div class="dashboard-list-mentee">
-        <br/>
-            <h2>Dashboard</h2>
-            <h3>List of Mentees</h3>
-            <div class="list-mentee">
-                <div class="row row-tile">
-                    <div class="col-md-offset-1 col-md-12 tile">
-                        <div class="row row-tile text-white">
+        <br />
+        <h2>Dashboard</h2>
+        <h3>List of Mentees</h3>
+        <div class="list-mentee">
+            <div class="row row-tile">
+                <div class="col-md-offset-1 col-md-12 tile">
+                    <div class="row row-tile text-white">
+                        <div class="main-card">
                             @foreach (var item in Model)
                             {
-                                <div class="main-card">
-                                    <div class="card">
-                                        @Html.ActionLink(item.FirstName, "Landingpage", "Options", new { id = item.Id }, null)
-                                        @*@Html.ActionLink(item.FirstName, "ViewUser", new { id = item.Id })*@
+                                <div class="card">
+                                    <div class="card__title">@item.FirstName @item.LastName</div>
+                                    <div class="card__content">
+                                        <hr style="margin:3px;" />
+                                        
+                                        <div>
+                                            <a class="ptitle" href="~/Goals/MentorView/@item.Id">Goals: <i>@item.Goals.Count</i></a>
+                                        </div>
+                                        <div class="pitem">
+                                            Open: <i>@item.getOpenGoalsCount()</i>
+                                        </div>
+                                        <div class="pitem">
+                                            Delayed tasks: <i>@item.getDelayedTasksCount()</i>
+                                        </div>
+                                        <hr style="margin:4px;" />
+                                        
+                                        
+                                        <a class="ptitle" href="~/DiaryEntries/ViewUser/@item.Id">Diaries: <i>@item.DiaryEntries.Count</i></a>
+                                        
+                                        <div class="pitem">
+                                            Last diary: <i>@item.getLastDiaryDate()</i>
+                                        </div>
+                                        <div class="pitem">
+
+                                            @if (item.getLastDiaryReviewed())
+                                            {
+                                                <i>Already reviewed</i>
+                                            }
+                                            else
+                                            {
+                                                <a class="apending" href="~/DiaryEntries/View/@item.DiaryEntries.Last().Id"><i>Pending to review</i></a>
+                                            }
+
+                                        </div>
+                                        <div class="pitem">
+                                            <div class="ratingDisabled" style="align-items:flex-end;" iid=@item.Id rate=@item.getLastDiaryMood()></div>
+                                        </div>
+                                        <hr style="margin:4px;" />
+
+                                        <div>
+                                            <a class="ptitle" href="~/Options/Progress/@item.Id">Check progress</a>
+                                        </div>
                                     </div>
                                 </div>
+
                             }
+
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    
-        <!-- jQuery library -->
-        <script src="~/Scripts/jquery.min.js"></script>
-        <!-- Include all compiled plugins (below), or include individual files as needed -->
-        <script src="~/Scripts/bootstrap.js"></script>
-        <!-- Slick slider -->
-        <script type="text/javascript" src="~/Scripts/slick.js"></script>
-        <!-- Counter -->
-        <script type="text/javascript" src="~/Scripts/waypoints.js"></script>
-        <script type="text/javascript" src="~/Scripts/jquery.counterup.js"></script>
-        <!-- Mixit slider -->
-        <script type="text/javascript" src="~/Scripts/jquery.mixitup.js"></script>
-        <!-- Add fancyBox -->
-        <script type="text/javascript" src="~/Scripts/jquery.fancybox.pack.js"></script>
-        <script src="~/Scripts/Dashboard.js"></script>
-        <!-- Custom js -->
-        <script src="~/Scripts/custom.js"></script>
+    </div>
+
+    <!-- jQuery library -->
+    <script src="~/Scripts/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="~/Scripts/bootstrap.js"></script>
+    <!-- Slick slider -->
+    <script type="text/javascript" src="~/Scripts/slick.js"></script>
+    <!-- Counter -->
+    <script type="text/javascript" src="~/Scripts/waypoints.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.counterup.js"></script>
+    <!-- Mixit slider -->
+    <script type="text/javascript" src="~/Scripts/jquery.mixitup.js"></script>
+    <!-- Add fancyBox -->
+    <script type="text/javascript" src="~/Scripts/jquery.fancybox.pack.js"></script>
+    <!-- Emoticon rating-->
+    <script type="text/javascript" src="~/Scripts/emoticon_rating.js"></script>
+    <!-- Custom js -->
+    <script src="~/Scripts/Dashboard.js"></script>
+    <script src="~/Scripts/custom.js"></script>
 </body>
 </html>

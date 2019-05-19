@@ -89,7 +89,7 @@
             border-collapse: collapse;
             height: 320px;
             margin: auto;
-            max-width: 250px;
+            max-width: 95%;
             padding: 5px;
             width: 100%;
             box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
@@ -159,14 +159,15 @@
 
         td {
             background: #FFFFFF;
-            padding: 20px;
+            padding: 15px;
             text-align: left;
             vertical-align: middle;
             font-weight: 300;
             font-size: 18px;
             text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
             border-right: 1px solid #C1C3D1;
-            max-width: 200px;
+            min-width:100px;
+            max-width: 250px;
             word-wrap:break-word;
         }
 
@@ -198,69 +199,112 @@
         td.text-right {
             text-align: right;
         }
+        i {
+            font-size:smaller;
+        }
     </style>
 </head>
 <body>
     <div class="table-page">
         <div class="table-title">
-            <h3>Choose a diary entry</h3>
-        </div>            
-            <div style="overflow-x:auto;">
-                <table class="table-fill">
-                    <thead>
-                        <tr>
-                            <th class="text-left">
-                                @Html.DisplayText("No.")
-                            </th>                           
-                            <th class="text-left">
-                                @Html.DisplayNameFor(model => model.Date)
-                            </th>
-                            <th class="text-left"></th>
-                        </tr>
-                    </thead>
-                    <tbody class="table-hover">
-                        @{ int rowNo = 0; }
-
-                        @foreach (var item in Model)
-                        {
-                        <tr>
-                            <td class="text-left">
-                                @(rowNo += 1)
-                            </td>
-                            <td class="text-left">
-                                @item.Date.ToShortDateString()
-                            </td>
-
-                            <td class="text-left">
-                                @Html.ActionLink("View Feedback", "ViewFeedback", new { id = item.Id }, new { @class = "btn btn-default", @style = "color:black" })
-                            </td>
-                            @*<td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-        </td>*@
-                        </tr>
-                        }
-                    </tbody>
-                </table>
-            </div>
+            <h3>Your diary entries</h3>
         </div>
-        <!-- jQuery library -->
-        <script src="~/Scripts/jquery.min.js"></script>
-        <!-- Include all compiled plugins (below), or include individual files as needed -->
-        <script src="~/Scripts/bootstrap.js"></script>
-        <!-- Slick slider -->
-        <script type="text/javascript" src="~/Scripts/slick.js"></script>
-        <!-- Counter -->
-        <script type="text/javascript" src="~/Scripts/waypoints.js"></script>
-        <script type="text/javascript" src="~/Scripts/jquery.counterup.js"></script>
-        <!-- Mixit slider -->
-        <script type="text/javascript" src="~/Scripts/jquery.mixitup.js"></script>
-        <!-- Add fancyBox -->
-        <script type="text/javascript" src="~/Scripts/jquery.fancybox.pack.js"></script>
+        <div style="overflow-x:auto;">
+            <table class="table-fill">
+                <thead>
+                    <tr>
+                        @*<th class="text-left">
+            @Html.DisplayText("No.")
+        </th>*@
+                        <th class="text-left">
+                            @Html.DisplayNameFor(model => model.Date)
+                        </th>
+                        <th class="text-left">
+                            @Html.DisplayNameFor(model => model.Entry)
+                        </th>
+                        <th class="text-left">
+                            @Html.DisplayNameFor(model => model.MenteeFeedback)
+                        </th>
+                        <th class="text-left">
+                            @Html.DisplayNameFor(model => model.MentorFeedback)
+                        </th>
+                        <th class="text-left">
+                            Mentor
+                        </th>
+                        <th class="text-left"></th>
+                    </tr>
+                </thead>
+                <tbody class="table-hover">
 
+                    @foreach (var item in Model)
+                    {
+                    <tr>
+                        @*<td class="text-left">
+            @(rowNo += 1)
+        </td>*@
+                        <td class="text-left">
+                            @item.Date.ToShortDateString()
+                        </td>
+                        <td class="text-left">
+                            @(item.Entry.Length > 100 ? item.Entry.Substring(0, 95) + "..." : item.Entry)
+                        </td>
+                        @if (item.MenteeFeedback == null || item.MenteeFeedback == 0)
+                        {
+                            <td class="text-left">
+                                <i>
+                                    You didn't select any mood.
+                                </i>
+                            </td>
+                        }
+                        else
+                        {
+                            <td class="text-center">
+                                <div class="ratingDisabled" iid=@item.Id rate=@item.MenteeFeedback></div>
+                            </td>
+                        }
+                        @if (item.MentorFeedback == null)
+                        {
+                            <td class="text-left">
+                                <i>Pending to review</i>
+                            </td>
+                        }
+                        else
+                        {
+                            <td class="text-left">
+                                @(item.MentorFeedback.Length > 100 ? item.MentorFeedback.Substring(0, 95) + "..." : item.MentorFeedback)
+                            </td>
+                        }
+                        <td class="text-left">
+                            @item.User.FirstName @item.User.LastName
+                        </td>
+                        <td class="text-left">
+                            @Html.ActionLink("View Entry", "ViewFeedback", new { id = item.Id }, new { @class = "btn btn-default", @style = "color:black" })
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- jQuery library -->
+    <script src="~/Scripts/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="~/Scripts/bootstrap.js"></script>
+    <!-- Slick slider -->
+    <script type="text/javascript" src="~/Scripts/slick.js"></script>
+    <!-- Counter -->
+    <script type="text/javascript" src="~/Scripts/waypoints.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.counterup.js"></script>
+    <!-- Mixit slider -->
+    <script type="text/javascript" src="~/Scripts/jquery.mixitup.js"></script>
+    <!-- Add fancyBox -->
+    <script type="text/javascript" src="~/Scripts/jquery.fancybox.pack.js"></script>
+    <!-- Emoticon rating-->
+    <script type="text/javascript" src="~/Scripts/emoticon_rating.js"></script>
+    <!-- Custom js -->
+    <script src="~/Scripts/DiaryEntriesViewUser.js"></script>
 
-        <!-- Custom js -->
-        <script src="~/Scripts/custom.js"></script>
+    <!-- Custom js -->
+    <script src="~/Scripts/custom.js"></script>
 </body>
 </html>
