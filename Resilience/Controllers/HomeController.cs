@@ -46,7 +46,7 @@ namespace Resilience.Controllers
 
         public JsonResult Validate(string entry)
         {
-            string pass = "123";
+            string pass = "IT@2019";
             //string pass = DateTime.Now.ToString("ddd_ddMM");
 
             if (pass.Equals(entry))
