@@ -215,8 +215,8 @@ namespace Resilience.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Feedback(DiaryEntries mentfeedback)
         {            
-            if (ModelState.IsValid)
-            {
+            //if (ModelState.IsValid)
+            //{
                 if (string.IsNullOrEmpty(mentfeedback.MentorFeedback))
                 {
                     return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -241,8 +241,8 @@ namespace Resilience.Controllers
 
                 //return RedirectToAction("Dashboard", "DiaryEntries");
                 return View(diaryEntries);
-            }
-            return View();
+            //}
+            //return View();
         }
 
         //GET: ViewFeedback
