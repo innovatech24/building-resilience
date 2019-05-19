@@ -1,31 +1,20 @@
-﻿@using Microsoft.AspNet.Identity
-@if (Request.IsAuthenticated)
+﻿@if (Request.IsAuthenticated)
 {
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
     {
-    @Html.AntiForgeryToken()
-
-
-        var claim = ((System.Security.Claims.ClaimsIdentity)User.Identity).FindFirst("name");
-        var name = "Hello";
-        if ( claim != null )
-        {
-            name = claim.Value.ToString();
-        }
-        else
-        {
-            name = User.Identity.GetUserName();
-        }
-
-    <ul class="nav navbar-nav navbar-right">
-        <li>            
-            @Html.ActionLink("My options", "Index", "Options", routeValues: null, htmlAttributes: new { title = "Manage" })
-        </li>
-        <li>
-            @Html.ActionLink("Hello " + name + "!", "Index", "Options", routeValues: null, htmlAttributes: new { title = "Manage" })
-        </li>
-        <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
-    </ul>
+    @Html.AntiForgeryToken()           
+        <ul class="nav navbar-nav navbar-right">            
+            <li>
+                @Html.ActionLink("My options", "Index", "Options", routeValues: null, htmlAttributes: new { title = "Manage" })
+            </li>
+            @if (User.IsInRole("Mentor"))
+            {
+                <li>
+                    @Html.ActionLink("Dashboard", "Dashboard", "DiaryEntries")
+                </li>
+            }            
+            <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+        </ul>
     }
 }
 else

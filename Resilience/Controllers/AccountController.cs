@@ -86,8 +86,7 @@ namespace Resilience.Controllers
                     if (db.Users.Find(currentuse.Id) == null)
                     {
                         return RedirectToAction("Create", "Users");
-                    }
-                    var claim = await UserManager.AddClaimAsync(currentuse.Id, new Claim("name", user.FirstName));                    
+                    }                    
                     var roles = UserManager.GetRoles(currentuse.Id);                    
                     
                     if (roles.Count == 2)
