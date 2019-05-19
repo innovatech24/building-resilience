@@ -1,0 +1,67 @@
+﻿html, body {
+    height: 100%;
+    width: 100%;
+}
+
+.nomentor-background {
+    height: 100%;
+    width: 100%;
+    background: url('../../Images/anime-art-artistic-262272.jpg') no-repeat center;
+    background-size: cover;
+}
+
+.nomentor-ask {
+    position: absolute;
+    top: 30%;
+    left: 10%;
+    color: orangered;
+}
+
+.button {
+    border: none;
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: none;
+    display: inline-block;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.button1 {
+    width: 20%;
+    height: 10%;
+    background-color: transparent;
+    color: white;
+    border: 2px solid black;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    border-radius: 12px;
+    position: absolute;
+    top: 70%;
+    left: 10%;
+    font-size: 1.5vw;
+}
+
+    .button1:hover {
+        background-color: white;
+        color: black;
+    }
+
+.button2 {
+    width: 20%;
+    height: 10%;
+    background-color: transparent;
+    color: white;
+    border: 2px solid black;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    border-radius: 12px;
+    position: absolute;
+    top: 70%;
+    left: 40%;
+    font-size: 1.5vw;
+}
+
+    .button2:hover {
+        background-color: white;
+        color: black;
+    }
