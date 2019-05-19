@@ -19,6 +19,12 @@ $(document).ready(function () {
         buildDisabledRating(element);
     };
 
+    $(".linkbox").click(function (e) {
+        
+        if (e.target.className != "apending") {
+            window.location.href = this.getAttribute("ref") + this.getAttribute("iid");
+        }
+    });
 
 });
 
