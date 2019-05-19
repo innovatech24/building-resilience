@@ -287,8 +287,8 @@ td{
 #mu-slider .mu-slider-single .mu-slider-content .scrollDown {
     font-size: 40px;
     display: block;
-    position:fixed;
-    /*padding: 100% 50% 0 50%;*/
+    position:fixed;    
+    padding-right: 50%;
 }
 
 .mu-title {

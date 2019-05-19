@@ -478,6 +478,7 @@
     <Content Include="Scripts\jquery.highlight-within-textarea.js" />
     <Content Include="Scripts\jquery.min.js" />
     <Content Include="Scripts\jquery.mixitup.js" />
+    <Content Include="Scripts\jquery.scrollTo.js" />
     <Content Include="Scripts\jquery.scrolly.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
