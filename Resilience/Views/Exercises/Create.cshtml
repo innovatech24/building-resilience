@@ -235,7 +235,7 @@
                             contentType: 'application/json; charset=utf-8',
                             data: JSON.stringify({ 'data': data }),
                             success: function () {
-                                window.location.replace("/Options/Mentee");
+                                showMessage("SubmitMessage", response, "../../Options/Mentee");
                             },
                             error: function () {
                                 window.location.replace("Error/NotFound");

@@ -24,6 +24,7 @@
 
     <!-- Main style sheet -->
     <link href="~/Content/style.css" rel="stylesheet">
+    
 
     <!-- Google Fonts -->
     <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
@@ -42,9 +43,7 @@
             background: url('../../Images/atmosphere-background-bright-19670.jpg') center;
             background-repeat: repeat-y;
         }*@
-
-        @*.table {
-        }*@
+        
 
         .table-page {
             min-height: 100%;
@@ -201,16 +200,20 @@
 
     </style>
     <script type="text/javascript">
-        var message = "@Session["GoalMessage"]";
+        var message = "@TempData["GoalMessage"]";
         console.log(message);
         console.log("Hi");
     </script>
 </head>
-<body>
+<body>  
     <div class="table-page">
         <div class="table-title">
+            <hr />
+            <hr />
+            <hr />
             <h3>View Your Goals</h3>
         </div>
+        <div id="completionTask" class="alert" hidden><span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span></div>
         <div style="overflow-x:auto;">
             <table class="table-fill">
                 <thead>
@@ -329,7 +332,6 @@
                             else
                             {
                                 <td class="text-center">
-                                    @*<div class="ratingEnabled" iid=@item.Id rate=@item.MenteeRating></div>*@
                                     <div class="ratingDisabled" iid=@item.Id rate=@item.MenteeRating></div>
                                 </td>
                             }
@@ -361,14 +363,6 @@
 
         <!-- Custom js -->
         <script src="~/Scripts/custom.js"></script>
-        <script src="~/Scripts/GoalsIndex.js"></script>
-    <!-- Custom js -->
-    <script src="~/Scripts/custom.js"></script>
-    <script src="~/Scripts/GoalsIndex.js"></script>
-    <script>
-        $(document).ready(function () {
-            showMessage("completionTask", message);
-        });        
-    </script>
+        <script src="~/Scripts/GoalsIndex.js"></script> 
 </body>
 </html>

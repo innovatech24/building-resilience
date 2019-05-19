@@ -163,7 +163,7 @@ namespace Resilience.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index", "Goals", new { id = Id });
             }
-            Session["GoalMessage"] = new JavaScriptSerializer().Serialize(new { Type = "danger", Title = "Error:", Message = "There are tasks in the goal that are not completed. Please complete all tasks before completing a goal." });
+            TempData["GoalMessage"] = new JavaScriptSerializer().Serialize(new { Type = "danger", Title = "Error:", Message = "There are tasks in the goal that are not completed. Please complete all tasks before completing a goal." });
             return RedirectToAction("Index", "Goals", new { id = Id });
         }
         
