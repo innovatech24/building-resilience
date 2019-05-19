@@ -230,30 +230,25 @@ namespace Resilience.Controllers
                 });*/
 
             }
-            try
+            
+            return Json(new JavaScriptSerializer().Serialize(new
             {
-                return Json(new JavaScriptSerializer().Serialize(new
+                diaries = new
                 {
-                    diaries = new
-                    {
-                        AvgSentimentScore = Dscores.Average(),
-                        AvgFeeling = Dfeeling.Average(),
-                        NumDiaries = Dentries.Count(),
-                        Entries = Dentries
-                    },
-                    goals = new
-                    {
-                        Goals = Ggoals,
-                        OpenGoals = openGoals,
-                        CloseGoals = closeGoals,
-                        Tasks = Gtasks
-                    }
-                }));
-            }
-            catch
-            {
-                return Json("error");
-            }
+                    AvgSentimentScore = Dscores.Count==0?0:Dscores.Average(),
+                    AvgFeeling = Dfeeling.Count==0?0:Dfeeling.Average(),
+                    NumDiaries = Dentries.Count,
+                    Entries = Dentries
+                },
+                goals = new
+                {
+                    Goals = Ggoals,
+                    OpenGoals = openGoals,
+                    CloseGoals = closeGoals,
+                    Tasks = Gtasks
+                }
+            }));
+            
             
         }
     }

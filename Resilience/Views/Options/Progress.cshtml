@@ -46,13 +46,26 @@
             </div>
             <div class="overviewcard" >
                 <div class="overviewcard__icon"><strong>Average mood</strong></div>
-                <div class="overviewcard__info"><div id="rating"></div></div>
+                <div class="overviewcard__info">
+                    @if (Model.DiaryEntries.Count > 0)
+                    {
+                        <div id="rating"></div>
+
+                    }
+                    else
+                    {
+                        <text>No diary entries</text>
+                    }
+                </div>
             </div>
         </div>
 
         <div class="main-cards">
             <div class="card"><strong>Goals progress summary</strong><div id="bardiv" class="amChart"></div></div>
-            <div class="card"><strong>Average sentiment in reflective diaries</strong><div id="gaugediv" class="amChart"></div></div>
+            <div class="card">
+                <strong>Average sentiment in reflective diaries</strong>
+                <div id="gaugediv" class="amChart"></div>
+            </div>
             <div class="card"><strong>Mood scale VS Sentiment score over time</strong><div id="timeplotdiv" class="amChart"></div></div>
         </div>
     </main>
