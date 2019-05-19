@@ -30,7 +30,12 @@ namespace Resilience.Controllers
         [SiteMapTitle("title")]
         public ActionResult Index(int Id)
         {
-            var exercises = db.Exercises.Where(e => e.GoalsId == Id);
+            var exercises = db.Exercises.Where(e => e.GoalsId == Id).ToList();
+            if (!exercises.Any())
+            {
+                TempData["UserMessage"] = new JavaScriptSerializer().Serialize(new { Type = "warning", Title = "Warning:", Message = "There were no tasks for this goal, so please create some." });
+                return RedirectToAction("Create", "Exercises", new { id = Id });
+            }
             return View(exercises.ToList());
         }
 
