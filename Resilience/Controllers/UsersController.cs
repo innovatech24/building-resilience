@@ -242,6 +242,25 @@ namespace Resilience.Controllers
                     ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId<int>());
                     Users currentUser = db.Users.Find(user.Id);
                     Users menteeUser = db.Users.Find(userId);
+
+                    if(menteeUser.MentorId != null)
+                    {
+                        if(menteeUser.MentorId == currentUser.Id)
+                        {
+                            // Type options : info, danger, success, warning
+                            TempData["UserMessage"] = new JavaScriptSerializer().Serialize(new { Type = "warning", Title = "Warning:", Message = "This user is already your mentee!" });
+
+                            return View();
+                        }
+                        else
+                        {
+                            // Type options : info, danger, success, warning
+                            TempData["UserMessage"] = new JavaScriptSerializer().Serialize(new { Type = "warning", Title = "Warning:", Message = "This user is allocated to another mentor!" });
+
+                            return View();
+                        }
+                    }
+
                     menteeUser.MentorId = currentUser.Id;
                     db.Entry(currentUser).State = EntityState.Modified;
                     db.SaveChanges();

@@ -78,19 +78,44 @@
                                     <div class="card__title">@item.FirstName @item.LastName</div>
                                     <div class="card__content">
                                         <hr style="margin:3px;" />
-                                        <div><a class="ptitle" href="~/Goals/MentorView/@item.Id">Goals: <i>@item.Goals.Count</i></a></div>
-                                        <div class="pitem">Open: <i>@item.getOpenGoalsCount()</i></div>
-                                        <div class="pitem">Delayed tasks: <i>@item.getDelayedTasksCount()</i></div>
+                                        
+                                        <div>
+                                            <a class="ptitle" href="~/Goals/MentorView/@item.Id">Goals: <i>@item.Goals.Count</i></a>
+                                        </div>
+                                        <div class="pitem">
+                                            Open: <i>@item.getOpenGoalsCount()</i>
+                                        </div>
+                                        <div class="pitem">
+                                            Delayed tasks: <i>@item.getDelayedTasksCount()</i>
+                                        </div>
                                         <hr style="margin:4px;" />
-                                        <div><a class="ptitle" href="~/DiaryEntries/ViewUser/@item.Id">Diaries: <i>@item.DiaryEntries.Count</i></a></div>
-                                        <div class="pitem">Last diary: <i>@item.getLastDiaryDate()</i></div>
-                                        @*<div class="pitem">@item.getLastDiaryMood()</div>*@
-                                        <div class="pitem"><i>@(item.getLastDiaryReviewed() ? "Already reviewed" : "Pending to review")</i></div>
+                                        
+                                        
+                                        <a class="ptitle" href="~/DiaryEntries/ViewUser/@item.Id">Diaries: <i>@item.DiaryEntries.Count</i></a>
+                                        
+                                        <div class="pitem">
+                                            Last diary: <i>@item.getLastDiaryDate()</i>
+                                        </div>
+                                        <div class="pitem">
+
+                                            @if (item.getLastDiaryReviewed())
+                                            {
+                                                <i>Already reviewed</i>
+                                            }
+                                            else
+                                            {
+                                                <a class="apending" href="~/DiaryEntries/View/@item.DiaryEntries.Last().Id"><i>Pending to review</i></a>
+                                            }
+
+                                        </div>
                                         <div class="pitem">
                                             <div class="ratingDisabled" style="align-items:flex-end;" iid=@item.Id rate=@item.getLastDiaryMood()></div>
                                         </div>
                                         <hr style="margin:4px;" />
-                                        <div><a class="ptitle" href="~/Options/Progress/@item.Id">Check progress</a></div>
+
+                                        <div>
+                                            <a class="ptitle" href="~/Options/Progress/@item.Id">Check progress</a>
+                                        </div>
                                     </div>
                                 </div>
 

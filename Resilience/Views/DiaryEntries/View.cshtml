@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     @{
-        ViewBag.title = "Dashboard - Building Resilience";
+        ViewBag.title = "View - Building Resilience";
     }
 
     <!-- Font awesome -->
@@ -126,68 +126,7 @@
 </head>
 <body>
     <div class="view-diary-detail">
-        <!-- <h2>View</h2>
-    <div style="overflow-x:auto;">
-        <table class="table">
-            <tr>
-                <th>
-                    Diary
-                </th>
-                <th>
-                    Feeling
-                </th>
-                <th>
-                    Your feedback
-                </th>
-            </tr>
-
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @*@Html.TextBoxFor(modelItem => item.Entry, new { @class = "entry", @readonly = "readonly" })*@
-                        <textarea id="entry" rows=15 cols=100 readonly ="readonly">@item.Entry</textarea>
-                    </td>
-                    @if (item.MenteeFeedback == null)
-                    {
-                        <td>
-                            <text>
-                                Your mentee did not share it.
-                            </text>
-                        </td>
-                    }
-                    else
-                    {
-                        <td width="16%">
-                            <div id="rating" rate=@item.MenteeFeedback></div>
-                        </td>
-                    }
-                    @if (item.MentorFeedback == null)
-                    {
-                        <td>
-                            @Html.ActionLink("Give Feedback", "Feedback", new { id = item.Id }, new { @class = "btn btn-default", @style = "color:black" })
-                        </td>
-                    }
-                    else
-                    {
-                        <td>
-                            @Html.DisplayFor(modelItem => item.MentorFeedback)
-                        </td>
-                    }
-
-
-                </tr>
-                <tr>
-                    <td>
-                        <label class="switch"><input id="highlight" type="checkbox" checked><span class="slider round"/></label> Turn on Highlighting to view the most positive (Green) and most negative (Red) statement in the Diary, if they exist! If highlighting is not seen, there is no strong positive/negative statement in the diary.
-                    </td>
-                </tr>
-            }
-        </table>
-    </div>
-        <div class="col-md-offset-2 gaugediv"></div>
-        <br>
-        <p class="col-md-offset-2">Sentiment Meter: Overall Sentiment of the Diary</p> -->
+        
         @foreach (var item in Model)
         {
         <div class="col-md-offset-1 col-md-12">
@@ -260,10 +199,7 @@
                     }
 
                 </div>
-
             </div>
-
-
         </div>
         }
         </div>

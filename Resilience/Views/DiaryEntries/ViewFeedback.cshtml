@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<Resilience.Models.DiaryEntries>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,8 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     @{
-        ViewBag.title = "View Feedback - Building Resilience";
-        Layout = "~/Views/Shared/_Layout.cshtml";
+        ViewBag.title = "View - Building Resilience";
     }
 
     <!-- Font awesome -->
@@ -20,25 +20,32 @@
     <link rel="stylesheet" href="~/Content/jquery.fancybox.css" type="text/css" media="screen" />
     <!-- Theme color -->
     <link id="switcher" href="~/Content/default-theme.css" rel="stylesheet">
-    <!-- RateYo -->
-    @*<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">*@
-
+    <!-- Highlighter function -->
+    <link rel="stylesheet" href="~/Content/jquery.highlight-within-textarea.css" />
     <!-- Main style sheet -->
-    <link href="~/Content/style.css" rel="stylesheet">
+    <link href="~/Content/style.css" type="text/css" rel="stylesheet" />
+
 
 
     <!-- Google Fonts -->
     <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,400italic,300,300italic,500,700' rel='stylesheet' type='text/css'>
+
+    @{
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
     <style>
         html, body {
             height: 100%;
             width: 100%;
-        }
-        .view-feedback {
-            min-height:100%;
-            height: auto;
             background: url('../../Images/atmosphere-background-bright-19670.jpg') center;
+        }
+
+        .view-diary-detail {
+            min-height: 100%;
+            height: auto;
+            /*background: url('../../Images/atmosphere-background-bright-19670.jpg') center;*/
+            /*background-color:#f2f8fd;*/
             background-repeat: repeat-y;
         }
 
@@ -49,103 +56,163 @@
         }
 
         input, select, textarea {
-            max-width: 90%;
+            max-width: 100%;
         }
+
+        .gaugediv {
+            width: 40%;
+            height: 40%;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 40px;
+            height: 20px;
+        }
+
+            .switch input {
+                opacity: 0;
+                width: 0;
+                height: 0;
+            }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+
+            .slider:before {
+                position: absolute;
+                content: "";
+                height: 13px;
+                width: 13px;
+                left: 0px;
+                bottom: 4px;
+                background-color: white;
+                -webkit-transition: .4s;
+                transition: .4s;
+            }
+
+        input:checked + .slider {
+            background-color: #2196F3;
+        }
+
+        input:focus + .slider {
+            box-shadow: 0 0 1px #2196F3;
+        }
+
+        input:checked + .slider:before {
+            -webkit-transform: translateX(26px);
+            -ms-transform: translateX(26px);
+            transform: translateX(26px);
+        }
+
+        /* Rounded sliders */
+        .slider.round {
+            border-radius: 34px;
+        }
+
+            .slider.round:before {
+                border-radius: 50%;
+            }
     </style>
 </head>
 <body>
-    <div class="view-feedback">
-        <h2>View Feedback</h2>
-        <div style="overflow-x:auto;">
-            <table class="table">
-                <tr>
-                    <th>
-                        Date
-                    </th>
-                    <th>
-                        Diary
-                    </th>
-                    <th>
-                        Feeling
-                    </th>
-                    <th>
-                        Mentor
-                    </th>
-                    <th>
-                        Feedback
-                    </th>
-                </tr>
+    <div class="view-diary-detail">
 
-                @foreach (var item in Model)
-                {
+        @foreach (var item in Model)
+        {
+            <div class="col-md-offset-1 col-md-12">
+                <h2>View diary</h2>
+                <hr />
+                <div class="col-md-offset-0 form-horizontal">
 
-                    <tr>
-                        <td >
-                            @item.Date.ToShortDateString()
-                        </td>
-                        <td>
-                            @*@Html.TextBoxFor(modelItem => item.Entry, new { @class = "entry", @readonly = "readonly" })*@
-                            <textarea class="entry" rows=15 cols=100 readonly="readonly">@item.Entry</textarea>
-                        </td>
-                        @if (item.MenteeFeedback == null)
+                    <label class="control-label col-md-2">Diary</label>
+
+                    <div class="col-md-10">
+                        <textarea id="entry" rows=15 cols=100 readonly="readonly">@item.Entry</textarea>
+
+                    </div>
+
+
+                </div>
+
+                <div class="col-md-offset-0 form-horizontal">
+                    <label class="control-label col-md-2" >Mood</label>
+
+                    <div class="col-md-10">
+
+                        @if (item.MenteeFeedback == null || item.MenteeFeedback==0)
                         {
-                            <td>
-                                <div class="rating" rate=0></div>
-                            </td>
+                        <p style="margin-top:10px; margin-bottom:10px"><i>You didn't share it.</i></p>
                         }
                         else
                         {
-                            <td>
-                                <div class="rating" rate=@item.MenteeFeedback></div>
-                            </td>
+                            <div id="rating" rate=@item.MenteeFeedback>
+                            </div>
                         }
-                        <td>
-                            @item.User.FirstName @item.User.LastName
-                        </td>
+                    </div>
+                </div>
+
+                <hr />
+
+                <div class="col-md-offset-0 form-horizontal">
+
+                    <label class="control-label col-md-2">Feedback</label>
+
+                    <div class="col-md-10">
                         @if (item.MentorFeedback == null)
                         {
-                            <td>
-                                <text>
-                                    Your mentor hasn't given feedback yet.
-                                </text>
-                            </td>
+
+                            <i>Pending to review</i>
                         }
                         else
                         {
-                            <td>
-                                @*@Html.DisplayFor(modelItem => item.MentorFeedback)*@
-                                <textarea class="feedback" rows=15 cols=100>@item.MentorFeedback</textarea>
-                            </td>
+
+                            <textarea id="entry" rows=10 cols=100 readonly="readonly">@item.MentorFeedback</textarea>
+
                         }
 
-                    </tr>
-                }
-            </table>
-        </div>
-            <div id="rating"></div>
-        </div>
-        <!-- jQuery library -->
-        <script src="~/Scripts/jquery.min.js"></script>
-        <!-- Include all compiled plugins (below), or include individual files as needed -->
-        <script src="~/Scripts/bootstrap.js"></script>
-        <!-- Slick slider -->
-        <script type="text/javascript" src="~/Scripts/slick.js"></script>
-        <!-- Counter -->
-        <script type="text/javascript" src="~/Scripts/waypoints.js"></script>
-        <script type="text/javascript" src="~/Scripts/jquery.counterup.js"></script>
-        <!-- Mixit slider -->
-        <script type="text/javascript" src="~/Scripts/jquery.mixitup.js"></script>
-        <!-- Add fancyBox -->
-        <script type="text/javascript" src="~/Scripts/jquery.fancybox.pack.js"></script>
-        <script src="~/Scripts/jqueryd.min.js"></script>
-        <!-- Emoticon rating-->
-        @*<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>*@
-        <script type="text/javascript" src="~/Scripts/emoticon_rating.js"></script>
-        <!-- AM CHARTS-->
-        <script src="~/Scripts/custom.js"></script>
-        <script src="~/Scripts/ViewFeedback_.js"></script>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
 
+    <!-- jQuery library -->
+    <script src="~/Scripts/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="~/Scripts/bootstrap.js"></script>
+    <!-- Slick slider -->
+    <script type="text/javascript" src="~/Scripts/slick.js"></script>
+    <!-- Counter -->
+    <script type="text/javascript" src="~/Scripts/waypoints.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.counterup.js"></script>
+    <!-- Mixit slider -->
+    <script type="text/javascript" src="~/Scripts/jquery.mixitup.js"></script>
+    <!-- Add fancyBox -->
+    <script type="text/javascript" src="~/Scripts/jquery.fancybox.pack.js"></script>
+    <script src="~/Scripts/jqueryd.min.js"></script>
+    <!-- AM CHARTS-->
+    <script type="text/javascript" src="~/Scripts/AMcharts/core.js"></script>
+    <script type="text/javascript" src="~/Scripts/AMcharts/charts.js"></script>
+    <script type="text/javascript" src="~/Scripts/AMcharts/animated.js"></script>
+    <script type="text/javascript" src="~/Scripts/AMcharts/kelly.js"></script>
+    <!-- HIGHLIGHTING TEXT-->
+    <script type="text/javascript" src="~/Scripts/jquery.highlight-within-textarea.js"></script>
+    <!-- Emoticon rating-->
+    <script type="text/javascript" src="~/Scripts/emoticon_rating.js"></script>
+    <!-- Custom js -->
+    <script type="text/javascript" src="~/Scripts/ViewFeedback_.js"></script>
+    <script type="text/javascript" src="~/Scripts/custom.js"></script>
 </body>
 </html>
-
 

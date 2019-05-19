@@ -19,6 +19,9 @@
 
     <ul class="nav navbar-nav navbar-right">
         <li>            
+            @Html.ActionLink("My options", "Index", "Options", routeValues: null, htmlAttributes: new { title = "Manage" })
+        </li>
+        <li>
             @Html.ActionLink("Hello " + name + "!", "Index", "Options", routeValues: null, htmlAttributes: new { title = "Manage" })
         </li>
         <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
