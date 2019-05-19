@@ -21,36 +21,10 @@
     <link href="~/Content/style.css" rel="stylesheet">
     <!-- datepicker -->
     <link href="~/Content/bootstrap-datepicker3.css" rel="stylesheet" />
-
+    <link rel="stylesheet" type="text/css" href="~/Content/goals-create.css">
     <!-- Google Fonts -->
     <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,400italic,300,300italic,500,700' rel='stylesheet' type='text/css'>
-    <style>
-        html, body {
-            height: 100%;
-            width: 100%;
-        }
-        .set-goal-background {
-            position: static;
-            height: 115%;
-            width: 100%;
-            background: url('../../Images/album-background-blank-1089842.jpg') no-repeat center;
-            background-size: cover;
-        }
-        .set-goal-form {
-            position: absolute;
-            left: 35%;
-            top: 8.5%;
-            background-color: transparent;
-            width: 33%;
-            height: 50%;
-            padding: 3% 0 0;
-            margin: auto;
-            text-align: center;
-            @*box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-            *@
-        }
-    </style>
 </head>
 <body>
     <div class="set-goal-background">
@@ -77,7 +51,7 @@
                     @*@Html.LabelFor(model => model.GoalDescription, htmlAttributes: new { @class = "control-label col-md-2" })*@
                     <label class="control-label col-md-2">Description</label>
                     <div class="col-md-10">
-                        @Html.EditorFor(model => model.GoalDescription, new { htmlAttributes = new { @class = "form-control", rows = "13" } })
+                        @Html.EditorFor(model => model.GoalDescription, new { htmlAttributes = new { @class = "form-control", rows = "9" } })
                         @Html.ValidationMessageFor(model => model.GoalDescription, "", new { @class = "text-danger" })
                     </div>
                 </div>

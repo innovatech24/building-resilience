@@ -11,6 +11,8 @@ using Resilience.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using System.Web.Script.Serialization;
+using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace Resilience.Controllers
 {
@@ -89,8 +91,7 @@ namespace Resilience.Controllers
             if (ModelState.IsValid)
             {
                 db.Users.Add(users);
-                db.SaveChanges();
-                
+                db.SaveChanges();                
                 var roles = UserManager.GetRoles(user.Id);
                 
                 if (roles.Count == 2)
