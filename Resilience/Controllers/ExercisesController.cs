@@ -93,7 +93,7 @@ namespace Resilience.Controllers
                 mail.NewTask(mentorUser.Email, ment.FirstName, mentee.FirstName, mentee.LastName);
 
                 // Type options : info, danger, success, warning
-                var res = new JavaScriptSerializer().Serialize(new { Type = "success", Title = "Success!", Message = "Taks added correctly!" });
+                var res = new JavaScriptSerializer().Serialize(new { Type = "success", Title = "Success!", Message = "Task(s) added correctly!" });
 
                 return Json(res);
             }
