@@ -288,7 +288,7 @@ td{
     font-size: 40px;
     display: block;
     position:fixed;
-    padding: 100% 50% 0 50%;
+    /*padding: 100% 50% 0 50%;*/
 }
 
 .mu-title {
@@ -351,6 +351,10 @@ td{
 .scrollDown:hover,
 .scrollDown:focus {
     color: #fff;
+}
+
+#start,#login{
+
 }
 
 

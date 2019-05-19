@@ -17,6 +17,11 @@ $(document).ready(function () {
         },
         errlr: function (response) { console.log(response);}
     });
+
+    $("#start").click(function (e) {
+        console.log("click");
+    });
+
     // REGION PLOT
     // Get the modal
     var modal = document.getElementById('myModal');
