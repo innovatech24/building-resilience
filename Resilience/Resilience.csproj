@@ -218,12 +218,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\Behaviour.cs">
-      <DependentUpon>PlotData.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Bullying.cs">
-      <DependentUpon>PlotData.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\DBConnect.cs" />
     <Compile Include="Models\DiaryEntries.Context.cs">
       <AutoGen>True</AutoGen>
@@ -246,35 +240,11 @@
     <Compile Include="Models\Exercise.cs">
       <DependentUpon>DiaryEntries.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\FamilyStress.cs">
-      <DependentUpon>PlotData.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\FamilyViolence.cs">
-      <DependentUpon>PlotData.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Goals.cs">
       <DependentUpon>DiaryEntries.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\PlotData.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>PlotData.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\PlotData.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>PlotData.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\PlotData.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>PlotData.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Region.cs">
-      <DependentUpon>PlotData.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\SentimentPy.cs" />
     <Compile Include="Models\Users.cs">
       <DependentUpon>DiaryEntries.tt</DependentUpon>
@@ -374,17 +344,6 @@
       <LastGenOutput>DiaryEntries1.cs</LastGenOutput>
       <DependentUpon>DiaryEntries.edmx</DependentUpon>
     </Content>
-    <Content Include="Models\PlotData.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>PlotData.Context.cs</LastGenOutput>
-      <DependentUpon>PlotData.edmx</DependentUpon>
-    </Content>
-    <Content Include="Models\PlotData.edmx.sql" />
-    <Content Include="Models\PlotData.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>PlotData.cs</LastGenOutput>
-      <DependentUpon>PlotData.edmx</DependentUpon>
-    </Content>
     <Content Include="Scripts\Additional_functions.js" />
     <Content Include="Scripts\all.js" />
     <Content Include="Scripts\all.min.js" />
@@ -441,13 +400,6 @@
     <Content Include="Fonts\fa-solid-900.ttf" />
     <Content Include="Fonts\fa-solid-900.woff" />
     <Content Include="Fonts\fa-solid-900.woff2" />
-    <EntityDeploy Include="Models\PlotData.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>PlotData.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\PlotData.edmx.diagram">
-      <DependentUpon>PlotData.edmx</DependentUpon>
-    </Content>
     <EntityDeploy Include="Models\DiaryEntries.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>DiaryEntries.Designer.cs</LastGenOutput>
