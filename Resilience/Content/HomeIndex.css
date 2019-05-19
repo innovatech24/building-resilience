@@ -353,9 +353,15 @@ td{
     color: #fff;
 }
 
-#start,#login{
-
+#start, #login {
+    padding: 25px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    font-size:larger;
 }
 
-
+    #start:hover, #login:hover {
+        background-color: #3bc7e6;
+        color: white;
+    }
 

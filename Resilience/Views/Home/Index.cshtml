@@ -69,12 +69,21 @@
                 <h2 class="animation">Road to Resilience</h2>
                 <span></span>
                 <p>Resilience means the capacity to recover quickly from difficulties. Being Resilient could mean the difference between handling pressure well or losing your cool</p>
-                <div class="btn btn-default" id="start">Start now</div>
-                <div class="btn btn-default" id="login">Log in</div>
+                @if (Request.IsAuthenticated)
+                {
+                    <div class="btn btn-default" id="start" ref="Options">My options</div>
+                }
+                else
+                {
+                    <div class="btn btn-default" id="start" ref="Account/Register">Start now!</div>
+                    <div class="btn btn-default" id="login" ref="Account/Login">Log in</div>
+                }
 
-                <a class="scrollDown" onclick="$.scrollTo('#mu-about-us', 800, { duration: 2000 });" href="#mu-about-us">
-                    <i class="fa fa-angle-down"></i>
-                </a>
+                <div class="scrollButton">
+                    <a class="scrollDown" onclick="$.scrollTo('#mu-about-us', 800, { duration: 2000 });" href="#mu-about-us">
+                        <i class="fa fa-angle-down"></i>
+                    </a>
+                </div>
             </div>
             
         </div>

@@ -18,8 +18,11 @@ $(document).ready(function () {
         errlr: function (response) { console.log(response);}
     });
 
+    $("#login").click(function (e) {
+        window.location.href = e.target.getAttribute("ref");
+    });
     $("#start").click(function (e) {
-        console.log("click");
+        window.location.href = e.target.getAttribute("ref")
     });
 
     // REGION PLOT
