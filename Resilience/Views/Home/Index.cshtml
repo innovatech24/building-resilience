@@ -69,7 +69,7 @@
                 <h2 class="animation">Road to Resilience</h2>
                 <span></span>
                 <p>Resilience means the capacity to recover quickly from difficulties. Being Resilient could mean the difference between handling pressure well or losing your cool</p>
-                <a class="scrollDown" href="#mu-about-us">
+                <a class="scrollDown" onclick="$.scrollTo('#mu-about-us', 800, { duration: 2000 });" href="#mu-about-us">
                     <i class="fa fa-angle-down"></i>
                 </a>
             </div>           
@@ -265,202 +265,13 @@
         <!-- Custom js -->
         <script src="~/Scripts/choice.js"></script>
         <script src="~/Scripts/custom.js"></script>
-        <script src="~/Scripts/index.js"></script>        
+        <script src="~/Scripts/index.js"></script>
+        <script src="~/Scripts/jquery.scrollTo.js"></script>
         <script>
-        // Code to get access to the page under a password
-        if ("@Session["validated"]" == "") {
-            validate();
-        };
-
+            // Code to get access to the page under a password
+            if ("@Session["validated"]" == "") {
+                validate();
+            };        
         </script>
-
-
-        @*<!-- Start service  -->
-        <section id="mu-service">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12 col-md-12">
-                        <div class="mu-service-area">
-                            <!-- Start single service -->
-                            <div class="mu-service-single">
-                                <span class="fas fa-question-circle"></span>
-                                <h3>@Html.ActionLink("Why Resilience?", "Index", "Home", null, null, "mu-about-us", null, null)</h3>
-                                <p>Why should we consider being resilient in our life?</p>
-                            </div>
-                            <!-- Start single service -->
-                            <div class="mu-service-single">
-                                <span class="fas fa-chart-bar"></span>
-                                <h3>@Html.ActionLink("Challenges", "Index", "Home", null, null, "mu-challenges", null, null)</h3>
-                                <p>Employment trends faced by professionals in various industries</p>
-                            </div>
-                            <!-- Start single service -->
-                            <div class="mu-service-single">
-                                <span class="fas fa-wrench"></span>
-
-                                <h3>@Html.ActionLink("How can we help?", "Index", "Home", null, null, "mu-how-can-we-help", null, null)</h3>
-
-                                <p>By enhancing the communication channel available to you</p>
-                            </div>
-                            <!-- Start single service -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>*@
-
-        @*<!-- Start about us -->
-        <section id="mu-about-us">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="mu-about-us-area">
-                            <div class="row">
-                                <div class="col-lg-12 col-md-12">
-                                    <div class="mu-about-us-left">
-                                        <!-- Start Title -->
-                                        <div class="mu-title">
-                                            <h2>Why do you need to care about resilience?</h2>
-                                        </div>
-                                        <!-- End Title -->
-                                        <p>It's very important for a person's mental health. It's about learning from the process so we can be stronger and look forward to the next challenge. By being resilient, a person can: </p>
-                                        <ul>
-                                            <li>Learn to manage Stress</li>
-                                            <li>Keep working on your skills</li>
-                                            <li>Maintain a positive outlook</li>
-                                            <li>Be Optimistic</li>
-                                            <li>Embrace Change</li>
-                                            <li>Communicate their problems better</li>
-                                        </ul>
-                                        <p>Being a sensible adult in handling situations is tough, building resilience helps in the process.</p>
-                                        <p>For this purpose, we require people that have been through similar situations and who can guide us to make better decisions. Someone who is willing to mentor us. It's amazing if we have someone who we can converse with regularly but what if they are overseas or your schedules don't mesh well?</p>
-                                        <br />
-                                        <button class="button1">
-                                            <h4>@Html.ActionLink("So why not?", "Index", "Home", null, null, "mu-challenges", null, null)</h4>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- End about us -->
-        <!-- Start about us -->
-        <section id="mu-challenges">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="mu-challenges-area">
-                            <div class="row">
-                                <div class="col-lg-12 col-md-12">
-                                    <div class="mu-challenges-left">
-                                        <!-- Start Title -->
-                                        <div class="mu-title">
-                                            <h2>Challenges</h2>
-                                        </div>
-                                        <!-- End Title -->
-                                        <!-- Trigger/Open The Modal -->
-                                        <h4>The below visualizations show the competition that is present in the industry and how unemployment is on a rising trend</h4>
-                                        <ul style="list-style-type:square;">
-                                            <li>
-                                                <p>This graph shows the employment rate in Victoria by region. Click below to have a look!</p>
-                                                <p><strong id="regionPlot">Employment in Victoria (by region)</strong></p>
-                                            </li>
-                                            <li>
-                                                <p>This graph shows the projected rate of employment in 2023. Click below to have a look!</p>
-                                                <p><strong id="industryPlot">Employment Projection by 2023</strong></p>
-                                            </li>
-                                            <li>
-                                                <p>This graph shows the unemployment trend in Victoria. Click below to have a look!</p>
-                                                <p><strong id="histEmpl">Unemployment rate in Victoria</strong></p>
-                                            </li>
-                                        </ul>
-                                        <!-- The Modal -->
-                                        <div id="myModal" class="modal">
-
-                                            <!-- Modal content -->
-                                            <div class="modal-content">
-                                                <span class="close">&times;</span>
-                                                <div id="region_plot" class="divplot"></div>
-                                            </div>
-
-                                        </div>
-                                        <div id="myModal2" class="modal">
-
-                                            <!-- Modal content -->
-                                            <div class="modal-content">
-                                                <span class="close">&times;</span>
-                                                <div id="industry_plot" class="divplot"></div>
-                                            </div>
-                                        </div>
-                                        <div id="myModal3" class="modal">
-
-                                            <!-- Modal content -->
-                                            <div class="modal-content">
-                                                <span class="close">&times;</span>
-                                                <div id="history_plot" class="divplot"></div>
-                                            </div>
-
-                                        </div>
-                                        <h4>All the more reason to use our platform</h4>
-                                        <br />
-                                        <button class="button1">
-                                            <h4>@Html.ActionLink("We can help! But How?", "Index", "Home", null, null, "mu-how-can-we-help", null, null)</h4>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </section>*@
-        <!-- End about us -->
-        <!-- Start How can we help -->
-        @*<section id="mu-how-can-we-help">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="mu-how-can-we-help-area">
-                            <div class="row">
-                                <div class="col-lg-12 col-md-12">
-                                    <div class="mu-how-can-we-help-left">
-                                        <!-- Start Title -->
-                                        <div class="mu-title">
-                                            <h2>How can we help?</h2>
-                                        </div>
-                                        <!-- End Title -->
-                                        <p>We have provided a communication channel that used by mentors and mentees. We provide a view for both</p>
-                                        <p>For Mentees:</p>
-                                        <ul>
-                                            <li>You can use the website to communicate with your chosen mentor</li>
-                                            <li>You can set goals and tasks</li>
-                                            <li>You can write your experiences in the form of a diary</li>
-                                            <li>The diary and goals can be shared with your mentor</li>
-                                            <li>Mentor can provide feeback and the Mentee can respond to them</li>
-                                        </ul>
-                                        <p>For Mentors:</p>
-                                        <ul>
-                                            <li>You can use the website to respond and give feedback to your mentees.</li>
-                                            <li>You can read the diary that the mentee has written and sent to you</li>
-                                            <li>You can provide feedback about the tasks for a goal, based on your expertise</li>
-                                            <li>WE HAVE ANALYSED THE OVERALL TONE OF THE DIARY AND HIGHLIGHTED THE KEY SENTENCES FOR YOUR PERUSAL</li>
-                                            <li>You can provide feedback for your mentees</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>*@
-
-        @*<div id="region_plot"></div>*@
-
-        <!--End How can we help-->
-
 </body>
 </html>
