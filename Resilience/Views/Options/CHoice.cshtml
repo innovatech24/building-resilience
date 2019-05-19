@@ -41,8 +41,10 @@
             background: url('../../Images/art-background-blue-1037992.jpg') no-repeat center;
             background-size: cover;
         }
-            .choice-ask{            
-            text-align:center;
+        .col-md-12 {
+            position: absolute;
+            top: 15%;
+            text-align: center;
             color: white;
             @*box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
             *@
@@ -98,11 +100,10 @@
 </head>
 <body>
     <div class="choice-background">
-        <div class="choice-ask">
-            <div class="col-lg-12 col-md-12 col-sm-12">
-                <br />
+        <div class="col-md-12">
+            
                 <h2>Where would you like to go?</h2>
-            </div>
+            
             </div>
             <button class="button1">
                 @Html.ActionLink("MENTOR VIEW", "Mentor", "Options")
