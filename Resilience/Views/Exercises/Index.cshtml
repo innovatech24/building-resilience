@@ -24,370 +24,206 @@
 
     <!-- Main style sheet -->
     <link href="~/Content/style.css" rel="stylesheet">
-
+    <link rel="stylesheet" type="text/css" href="~/Content/exercise-index.css">
 
     <!-- Google Fonts -->
     <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,400italic,300,300italic,500,700' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family==Roboto:400,500,700,300,100' rel='stylesheet' type='text/css'>
-    <style>
-        html, body {
-            height: 100%;
-            width: 100%;
-        }
-
-        @*.view-goals {
-            min-height: 100%;
-            height: auto;
-            background: url('../../Images/atmosphere-background-bright-19670.jpg') center;
-            background-repeat: repeat-y;
-        }*@
-
-        @*.table {
-        }*@
-
-        .table-page {
-            min-height: 100%;
-            height: auto;
-            background-color: antiquewhite;
-            font-family: "Roboto", helvetica, arial, sans-serif;
-            font-size: 16px;
-            font-weight: 400;
-            text-rendering: optimizeLegibility;
-        }
-
-        div.table-title {
-            display: block;
-            margin: auto;
-            max-width: 600px;
-            padding: 5px;
-            width: 100%;
-        }
-
-        .table-title h3 {
-            color: black;
-            font-size: 30px;
-            font-weight: 400;
-            font-style: normal;
-            font-family: "Roboto", helvetica, arial, sans-serif;
-            text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
-            text-transform: uppercase;
-            text-align:center;
-        }
-
-
-        /*** Table Styles **/
-
-        .table-fill {
-            background: white;
-            border-radius: 3px;
-            border-collapse: collapse;
-            height: 320px;
-            margin: auto;
-            max-width: 95%;
-            padding: 5px;
-            width: 100%;
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-            animation: float 5s infinite;
-        }
-
-        th {
-            color: #D5DDE5;
-            background: #1b1e24;
-            border-bottom: 4px solid #9ea7af;
-            border-right: 1px solid #343a45;
-            font-size: 23px;
-            font-weight: 100;
-            padding: 24px;
-            text-align: left;
-            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
-            vertical-align: middle;
-        }
-
-            th:first-child {
-                border-top-left-radius: 3px;
-            }
-
-            th:last-child {
-                border-top-right-radius: 3px;
-                border-right: none;
-            }
-
-        tr {
-            border-top: 1px solid #C1C3D1;
-            border-bottom: 1px solid #C1C3D1;
-            color: #666B85;
-            font-size: 16px;
-            font-weight: normal;
-            text-shadow: 0 1px 1px rgba(256, 256, 256, 0.1);
-        }
-
-            tr:hover td {
-                background: #4E5066;
-                color: #FFFFFF;
-                border-top: 1px solid #22262e;
-            }
-
-            tr:first-child {
-                border-top: none;
-            }
-
-            tr:last-child {
-                border-bottom: none;
-            }
-
-            tr:nth-child(odd) td {
-                background: #EBEBEB;
-            }
-
-            tr:nth-child(odd):hover td {
-                background: #4E5066;
-            }
-
-            tr:last-child td:first-child {
-                border-bottom-left-radius: 3px;
-            }
-
-            tr:last-child td:last-child {
-                border-bottom-right-radius: 3px;
-            }
-
-        td {
-            background: #FFFFFF;
-            padding: 15px;
-            text-align: left;
-            vertical-align: middle;
-            font-weight: 300;
-            font-size: 18px;
-            text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
-            border-right: 1px solid #C1C3D1;
-            max-width: 200px;
-            word-wrap:break-word;
-        }
-
-            td:last-child {
-                border-right: 0px;
-            }
-
-        th.text-left {
-            text-align: left;
-
-        }
-
-        th.text-center {
-            text-align: center;
-        }
-
-        th.text-right {
-            text-align: right;
-        }
-
-        td.text-left {
-            text-align: left;
-        }
-
-        td.text-center {
-            text-align: center;
-        }
-
-        td.text-right {
-            text-align: right;
-        }
-
-        i {
-            font-size:smaller;
-        }
-    </style>
 </head>
 <body>
     <div class="table-page">
         <div class="table-title">
+            <hr />
+            <hr />
+            <hr />
             <h3>@Model.First().Goal.User.FirstName @Model.First().Goal.User.LastName - @Model.First().Goal.GoalName</h3>
         </div>
-    <div id="completionTask" class="alert" hidden></div>    
-    <div class="view-tasks">
-        <h2>View Tasks</h2>
-        <div style="overflow-x:auto;">
-            <table class="table-fill">
-                <thead>
-                    <tr>
-                        <th class="text-left">
-                            @Html.DisplayNameFor(model => model.TaskName)
-                        </th>
-                        <th class="text-left">
-                            @Html.DisplayNameFor(model => model.TaskDescription)
-                        </th>
-                        <th class="text-left">
-                            @Html.DisplayNameFor(model => model.DueDate)
-                        </th>
-                        <th class="text-left">
-                            @Html.DisplayNameFor(model => model.CompletionDate)
-                        </th>
-                        <th class="text-left">
-                            @Html.DisplayNameFor(model => model.MenteeComments)
-                        </th>
-                        <th class="text-left">
-                            @Html.DisplayNameFor(model => model.MenteeRating)
-                        </th>
-                        <th class="text-left">
-                            @Html.DisplayNameFor(model => model.MentorFeedback)
-                        </th>
-                        <th class="text-left"></th>
-                    </tr>
-                </thead>
-                <tbody class="table-hover">
-                    @foreach (var item in Model)
-                    {
+        <div id="completionTask" class="alert" hidden></div>
+        <div class="view-tasks">
+            <h2>View Tasks</h2>
+            <div style="overflow-x:auto;">
+                <table class="table-fill">
+                    <thead>
                         <tr>
-                            <td class="text-left">
-                                <strong>@Html.DisplayFor(modelItem => item.TaskName)</strong>
-
-                            </td>
-                            <td class="text-left">
-                                @Html.DisplayFor(modelItem => item.TaskDescription)
-                            </td>
-                            <td class="text-left">
-                                @item.DueDate.ToShortDateString()
-                            </td>
-                            @if (DateTime.Compare(item.CompletionDate, new DateTime(1990, 02, 10)) == 0)
-                            {
-                                <td class="text-left">
-                                    @Html.ActionLink("Mark as completed", "EditCompletion", "Exercises", new { id = item.Id }, new { @class = "btn btn-default", @style = "color:black" })
-                                </td>
-                            }
-                            else
-                            {
-                                <td class="text-left">
-                                    @item.CompletionDate.ToShortDateString()
-                                </td>
-                            }
-                            @if (this.User.IsInRole("Mentor"))
-                            {
-                                if (item.MenteeComments == null)
-                                {
-                                    <td class="text-left">
-                                        <i>
-                                            Your mentee hasn't left any comments yet. They would typically do this once they complete the goal.
-                                        </i>
-                                    </td>
-                                }
-                                else
-                                {
-                                    <td class="text-left">
-                                        @Html.DisplayFor(modelItem => item.MenteeComments)
-                                    </td>
-                                }
-                                if (item.MenteeRating == null)
-                                {
-                                    <td class="text-left">
-                                        <i>
-                                            Your mentee hasn't told us how they felt with this goal. They would typically do this once they complete the goal.
-                                        </i>
-                                    </td>
-                                }
-                                else
-                                {
-                                    <td class="text-center">
-                                        <div class="ratingDisabled" iid=@item.Id rate=@item.MenteeRating></div>
-                                    </td>
-                                }
-                                if (item.MentorFeedback == null && DateTime.Compare(item.CompletionDate, new DateTime(1990, 02, 10)) == 0)
-                                {
-                                    <td class="text-left">
-                                        <i>
-                                            The goal isn't completed yet. You can give feedback once the goal is completed.
-                                        </i>
-                                    </td>
-                                }
-                                else if (item.MentorFeedback == null)
-                                {
-                                    <td class="text-left">
-                                        @Html.ActionLink("Provide Feedback", "Feedback", "Exercises", new { id = item.Id }, new { @class = "btn btn-default", @style = "color:black" })
-                                    </td>
-                                }
-                                else
-                                {
-                                    <td class="text-left">
-                                        @Html.DisplayFor(modelItem => item.MentorFeedback)
-                                    </td>
-                                }
-                                if (DateTime.Compare(item.CompletionDate, new DateTime(1990, 02, 10)) == 0)
-                                {
-                                    <td class="text-left">
-                                        @Html.ActionLink("Propose change", "Edit", "Exercises", new { id = item.Id }, new { @class = "btn btn-default", @style = "color:black" })
-                                    </td>
-                                }
-                            }
-                            else
-                            {
-                                if (item.MenteeComments == null && DateTime.Compare(item.CompletionDate, new DateTime(1990, 02, 10)) == 0)
-                                {
-                                    <td class="text-left">
-                                        <i>
-                                            You haven't completed the task. You can provide comments once the task is completed.
-                                        </i>
-                                    </td>
-                                }
-                                else if (item.MenteeComments == null)
-                                {
-                                    <td class="text-left">
-                                        <text>
-                                            @Html.ActionLink("Provide comments", "Comments", "Exercises", new { id = item.Id }, new { @class = "btn btn-default", @style = "color:black" })
-                                        </text>
-                                    </td>
-                                }
-                                else
-                                {
-                                    <td class="text-left">
-                                        @Html.DisplayFor(modelItem => item.MenteeComments)
-                                    </td>
-                                }
-                                if (item.MenteeRating == null && DateTime.Compare(item.CompletionDate, new DateTime(1990, 02, 10)) == 0)
-                                {
-                                    <td class="text-left">
-                                        <i>
-                                            You haven't completed the task. You can provide a rating once the task is completed.
-                                        </i>
-                                    </td>
-                                }
-                                else if (item.MenteeRating == null)
-                                {
-                                    <td class="text-center">
-                                        <div class="ratingEnabled" iid=@item.Id rate=0></div>
-                                    </td>
-                                }
-                                else
-                                {
-                                    <td class="text-left">
-                                        <div class="ratingDisabled" iid=@item.Id rate=@item.MenteeRating></div>
-                                    </td>
-                                }
-                                if (item.MentorFeedback == null)
-                                {
-                                    <td class="text-left">
-                                        <i>
-                                            Your mentor hasn't given feedback yet. They will typically do this once the task is completed.
-                                        </i>
-                                    </td>
-                                }
-                                else
-                                {
-                                    <td class="text-left">
-                                        @Html.DisplayFor(modelItem => item.MentorFeedback)
-                                    </td>
-                                }
-                                if (DateTime.Compare(item.CompletionDate, new DateTime(1990, 02, 10)) == 0)
-                                {
-                                    <td class="text-left">
-                                        @Html.ActionLink("Edit task", "Edit", "Exercises", new { id = item.Id }, new { @class = "btn btn-default", @style = "color:black" })
-                                    </td>
-                                }
-                            }
+                            <th class="text-left">
+                                @Html.DisplayNameFor(model => model.TaskName)
+                            </th>
+                            <th class="text-left">
+                                @Html.DisplayNameFor(model => model.TaskDescription)
+                            </th>
+                            <th class="text-left">
+                                @Html.DisplayNameFor(model => model.DueDate)
+                            </th>
+                            <th class="text-left">
+                                @Html.DisplayNameFor(model => model.CompletionDate)
+                            </th>
+                            <th class="text-left">
+                                @Html.DisplayNameFor(model => model.MenteeComments)
+                            </th>
+                            <th class="text-left">
+                                @Html.DisplayNameFor(model => model.MenteeRating)
+                            </th>
+                            <th class="text-left">
+                                @Html.DisplayNameFor(model => model.MentorFeedback)
+                            </th>
+                            <th class="text-left"></th>
                         </tr>
-                    }
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody class="table-hover">
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td class="text-left">
+                                    <strong>@Html.DisplayFor(modelItem => item.TaskName)</strong>
 
+                                </td>
+                                <td class="text-left">
+                                    @Html.DisplayFor(modelItem => item.TaskDescription)
+                                </td>
+                                <td class="text-left">
+                                    @item.DueDate.ToShortDateString()
+                                </td>
+                                @if (DateTime.Compare(item.CompletionDate, new DateTime(1990, 02, 10)) == 0)
+                                {
+                                    <td class="text-left">
+                                        @Html.ActionLink("Mark as completed", "EditCompletion", "Exercises", new { id = item.Id }, new { @class = "btn btn-default", @style = "color:black" })
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td class="text-left">
+                                        @item.CompletionDate.ToShortDateString()
+                                    </td>
+                                }
+                                @if (this.User.IsInRole("Mentor"))
+                                {
+                                    if (item.MenteeComments == null)
+                                    {
+                                        <td class="text-left">
+                                            <i>
+                                                Your mentee hasn't left any comments yet. They would typically do this once they complete the goal.
+                                            </i>
+                                        </td>
+                                    }
+                                    else
+                                    {
+                                        <td class="text-left">
+                                            @Html.DisplayFor(modelItem => item.MenteeComments)
+                                        </td>
+                                    }
+                                    if (item.MenteeRating == null)
+                                    {
+                                        <td class="text-left">
+                                            <i>
+                                                Your mentee hasn't told us how they felt with this goal. They would typically do this once they complete the goal.
+                                            </i>
+                                        </td>
+                                    }
+                                    else
+                                    {
+                                        <td class="text-center">
+                                            <div class="ratingDisabled" iid=@item.Id rate=@item.MenteeRating></div>
+                                        </td>
+                                    }
+                                    if (item.MentorFeedback == null && DateTime.Compare(item.CompletionDate, new DateTime(1990, 02, 10)) == 0)
+                                    {
+                                        <td class="text-left">
+                                            <i>
+                                                The goal isn't completed yet. You can give feedback once the goal is completed.
+                                            </i>
+                                        </td>
+                                    }
+                                    else if (item.MentorFeedback == null)
+                                    {
+                                        <td class="text-left">
+                                            @Html.ActionLink("Provide Feedback", "Feedback", "Exercises", new { id = item.Id }, new { @class = "btn btn-default", @style = "color:black" })
+                                        </td>
+                                    }
+                                    else
+                                    {
+                                        <td class="text-left">
+                                            @Html.DisplayFor(modelItem => item.MentorFeedback)
+                                        </td>
+                                    }
+                                    if (DateTime.Compare(item.CompletionDate, new DateTime(1990, 02, 10)) == 0)
+                                    {
+                                        <td class="text-left">
+                                            @Html.ActionLink("Propose change", "Edit", "Exercises", new { id = item.Id }, new { @class = "btn btn-default", @style = "color:black" })
+                                        </td>
+                                    }
+                                }
+                                else
+                                {
+                                    if (item.MenteeComments == null && DateTime.Compare(item.CompletionDate, new DateTime(1990, 02, 10)) == 0)
+                                    {
+                                        <td class="text-left">
+                                            <i>
+                                                You haven't completed the task. You can provide comments once the task is completed.
+                                            </i>
+                                        </td>
+                                    }
+                                    else if (item.MenteeComments == null)
+                                    {
+                                        <td class="text-left">
+                                            <text>
+                                                @Html.ActionLink("Provide comments", "Comments", "Exercises", new { id = item.Id }, new { @class = "btn btn-default", @style = "color:black" })
+                                            </text>
+                                        </td>
+                                    }
+                                    else
+                                    {
+                                        <td class="text-left">
+                                            @Html.DisplayFor(modelItem => item.MenteeComments)
+                                        </td>
+                                    }
+                                    if (item.MenteeRating == null && DateTime.Compare(item.CompletionDate, new DateTime(1990, 02, 10)) == 0)
+                                    {
+                                        <td class="text-left">
+                                            <i>
+                                                You haven't completed the task. You can provide a rating once the task is completed.
+                                            </i>
+                                        </td>
+                                    }
+                                    else if (item.MenteeRating == null)
+                                    {
+                                        <td class="text-center">
+                                            <div class="ratingEnabled" iid=@item.Id rate=0></div>
+                                        </td>
+                                    }
+                                    else
+                                    {
+                                        <td class="text-left">
+                                            <div class="ratingDisabled" iid=@item.Id rate=@item.MenteeRating></div>
+                                        </td>
+                                    }
+                                    if (item.MentorFeedback == null)
+                                    {
+                                        <td class="text-left">
+                                            <i>
+                                                Your mentor hasn't given feedback yet. They will typically do this once the task is completed.
+                                            </i>
+                                        </td>
+                                    }
+                                    else
+                                    {
+                                        <td class="text-left">
+                                            @Html.DisplayFor(modelItem => item.MentorFeedback)
+                                        </td>
+                                    }
+                                    if (DateTime.Compare(item.CompletionDate, new DateTime(1990, 02, 10)) == 0)
+                                    {
+                                        <td class="text-left">
+                                            @Html.ActionLink("Edit task", "Edit", "Exercises", new { id = item.Id }, new { @class = "btn btn-default", @style = "color:black" })
+                                        </td>
+                                    }
+                                }
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+            </div>
         </div>
     </div>
 

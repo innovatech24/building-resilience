@@ -1,0 +1,25 @@
+﻿html, body {
+    height: 100%;
+    width: 100%;
+}
+
+.feedback-background {
+    position: static;
+    height: 125%;
+    width: 100%;
+    background: url('../../Images/art-artist-black-and-white-265047.jpg') no-repeat center;
+    background-size: cover;
+}
+
+.col-md-11 {
+    background-color: transparent;
+    width: 90%;
+    height: 60%;
+    padding: 3% 0 0;
+    margin: auto;
+    text-align: center;
+}
+
+.multi-line {
+    max-width: 80%;
+}

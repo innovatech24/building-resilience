@@ -1,0 +1,11 @@
+﻿html, body {
+    height: 100%;
+    width: 100%;
+}
+
+.col-md-12 {
+    min-height: 80%;
+    height: auto;
+    background: url('../../Images/atmosphere-background-bright-19670.jpg') center;
+    background-repeat: repeat-y;
+}
