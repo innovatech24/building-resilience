@@ -37,7 +37,7 @@
             width: 100%;
             background-color: antiquewhite;           
         }
-        .mentee-ask {
+        .col-md-12 {
             text-align: center;
             color: black;
             @*box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
@@ -52,7 +52,7 @@
             box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
             border-radius: 0px;
             position: absolute;
-            top: 20%;
+            top: 30%;
             left: 20%;
             font-size: 1.5vw;
         }
@@ -72,7 +72,7 @@
             box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
             border-radius: 0px;
             position: absolute;
-            top: 20%;
+            top: 30%;
             left: 40%;
             font-size: 1.5vw;
         }
@@ -92,7 +92,7 @@
             box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
             border-radius: 0px;
             position: absolute;
-            top: 20%;
+            top: 30%;
             left: 60%;
             font-size: 1.5vw;
         }
@@ -111,7 +111,7 @@
             box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
             border-radius: 0px;
             position: absolute;
-            top: 50%;
+            top: 60%;
             left: 20%;
             font-size: 1.5vw;
         }
@@ -130,7 +130,7 @@
             box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
             border-radius: 0px;
             position: absolute;
-            top: 50%;
+            top: 60%;
             left: 40%;
             font-size: 1.5vw;
         }
@@ -149,7 +149,7 @@
             box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
             border-radius: 0px;
             position: absolute;
-            top: 50%;
+            top: 60%;
             left: 60%;
             font-size: 1.5vw;
         }
@@ -163,11 +163,9 @@
 </head>
 <body>
     <div class="mentee-background">
-        <div class="mentee-ask">
-            <div class="col-lg-12 col-md-12 col-sm-12">
-                <br />
-                <h2>What do you want to do?</h2>
-            </div>
+        <div class="col-md-12">            
+                
+                <h2>What do you want to do?</h2>            
         </div>
         <button class="button1">
             @Html.ActionLink("Add/Change your mentor", "ChooseMentor", "Users", null, new { id = "OT", style = "color: white" })
