@@ -182,7 +182,14 @@ namespace Resilience.Controllers
                 {
                     ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId<int>());
                     Users currentUser = db.Users.Find(user.Id);
-                    currentUser.MentorId = users.Id;
+                    if (currentUser.Id == users.Id)
+                    {
+                        // Type options : info, danger, success, warning
+                        TempData["UserMessage"] = new JavaScriptSerializer().Serialize(new { Type = "warning", Title = "Warning:", Message = "You cannot add yourself as a mentor!" });
+
+                        return View();
+                    }
+                    currentUser.MentorId = users.Id;                    
                     db.Entry(currentUser).State = EntityState.Modified;
                     db.SaveChanges();
                     EmailController mail = new EmailController();
@@ -249,6 +256,13 @@ namespace Resilience.Controllers
                         {
                             // Type options : info, danger, success, warning
                             TempData["UserMessage"] = new JavaScriptSerializer().Serialize(new { Type = "warning", Title = "Warning:", Message = "This user is already your mentee!" });
+
+                            return View();
+                        }
+                        else if (currentUser.Id == menteeUser.Id)
+                        {
+                            // Type options : info, danger, success, warning
+                            TempData["UserMessage"] = new JavaScriptSerializer().Serialize(new { Type = "warning", Title = "Warning:", Message = "You cannot add yourself as a mentee!" });
 
                             return View();
                         }
