@@ -46,7 +46,17 @@
             </div>
             <div class="overviewcard" >
                 <div class="overviewcard__icon"><strong>Average mood</strong></div>
-                <div class="overviewcard__info"><div id="rating"></div></div>
+                <div class="overviewcard__info">
+                    @if (Model.DiaryEntries.Count > 0)
+                    {
+                        <div id="rating"></div>
+
+                    }
+                    else
+                    {
+                        <text>No diary entries</text>
+                    }
+                </div>
             </div>
         </div>
 
