@@ -23,7 +23,7 @@ namespace Resilience.Controllers
         {
             ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId<int>());            
             var goals = db.Goals.Where(g => g.UsersId == user.Id);
-            return View(goals.ToList());
+            return View(goals.OrderByDescending(g => g.Id).ToList());
         }
 
         // GET: Goals/Details/5
@@ -140,7 +140,7 @@ namespace Resilience.Controllers
         public ActionResult MentorView(int Id)
         {            
             var goals = db.Goals.Where(g => g.UsersId == Id).ToList();
-            return View(goals.ToList());
+            return View(goals.OrderByDescending(g => g.Id).ToList());
         }
 
         //GET        

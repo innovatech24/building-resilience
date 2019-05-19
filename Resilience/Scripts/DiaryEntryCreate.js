@@ -1,6 +1,6 @@
 ﻿$(document).ready(function () {
 
-    showMessage("SubmitMessage", message, "../DiaryEntries/ViewFeedback");
+    showMessage("SubmitMessage", message, "../Options/Mentee");
 
     window.onbeforeunload = function () {
         return true;
