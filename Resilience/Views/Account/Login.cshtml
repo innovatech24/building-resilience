@@ -34,7 +34,7 @@
             width: 100%;
         }
         .login-register-page {
-            position:relative;
+            position:static;
             height: 100%;
             width: 100%;
             background: url('../../Images/album-background-blank-1089842.jpg') no-repeat center;
@@ -85,14 +85,14 @@
                             @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
                         </div>
                     </div>
-                    <div class="form-group">
+                    @*<div class="form-group">
                         <div class="col-md-offset-1 col-md-10">
                             <div class="checkbox">
                                 @Html.CheckBoxFor(m => m.RememberMe)
                                 @Html.LabelFor(m => m.RememberMe)
                             </div>
                         </div>
-                    </div>
+                    </div>*@
                     <div class="form-group">
                         <hr />
                         <div class="col-md-offset-1 col-md-10">
