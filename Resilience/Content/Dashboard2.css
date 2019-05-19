@@ -1,7 +1,7 @@
 ﻿.main-card {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 200px));
-    grid-auto-rows: 300px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 200px));
+    grid-auto-rows: 320px;
     /*grid-template-rows: repeat(auto-fit, minmax(20px, 200px));
     grid-auto-columns: 200px;*/
     grid-gap: 20px;
@@ -39,18 +39,11 @@ a.ptitle{
 }
 
 .pitem{
-    margin-left:15px;
+    margin-left:10px;
     margin-top:6px;
 }
 
-a.ptitle:link, a.ptitle:visited {
-    background-color: antiquewhite;
-    border: 2px #A89B9D solid;
-    border-radius: 5px;
-    padding: 3px 5px;
-}
-
-a.ptitle:hover, a.ptitle:active {
+a.ptitle:link, a.ptitle:visited, .test:link, .test:visited {
     background-color: #A89B9D;
     padding: 3px 5px;
     text-align: center;
@@ -58,6 +51,20 @@ a.ptitle:hover, a.ptitle:active {
     /*display: inline-block;*/
     border-radius: 5px;
     color: white;
+    border: 2px #A89B9D solid;
+}
+
+a.ptitle:hover, a.ptitle:active {
+    background-color: antiquewhite;
+    border: 2px #A89B9D solid;
+    border-radius: 5px;
+    padding: 3px 5px;
+    color: black;
+    cursor: pointer;
+}
+
+.apending{
+    font-style:italic;
 }
 
 a.apending:link, a.apending:visited {
@@ -66,4 +73,34 @@ a.apending:link, a.apending:visited {
 
 a.apending:hover{
     text-decoration:underline;
+}
+
+.linkbox {
+    background-color: #D8BFAA; /* #A89B9D;*/
+    padding: 3px 5px;
+    text-decoration: none;
+    /*display: inline-block;*/
+    border-radius: 5px;
+    color: white;
+    border: 2px #D8BFAA solid;
+    /*-webkit-box-shadow: 4px 4px 15px -3px rgba(0,0,0,0.39);
+    -moz-box-shadow: 4px 4px 15px -3px rgba(0,0,0,0.39);
+    box-shadow: 4px 4px 15px -3px rgba(0,0,0,0.39);*/
+}
+    .linkbox:hover, .linkbox:active {
+        background-color: antiquewhite;
+        border: 2px #D8BFAA solid;
+        border-radius: 5px;
+        padding: 3px 5px;
+        color: black;
+        cursor: pointer;
+    }
+
+.ptitle {
+    font-weight: bold;
+    margin-top: 0px;
+}
+
+hr{
+    margin:4px;
 }
