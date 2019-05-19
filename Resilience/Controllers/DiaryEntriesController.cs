@@ -37,8 +37,7 @@ namespace Resilience.Controllers
                 d.User.LastName = mentor.LastName;
 
             }
-
-            return View(diaryEntries.ToList());
+            return View(diaryEntries.OrderByDescending(d => d.Date).ToList());
         }
 
         //GET: Dashboard
@@ -67,7 +66,7 @@ namespace Resilience.Controllers
         public ActionResult ViewUser(int Id)
         {
             var diaryEntries = db.DiaryEntries.Where(d => d.UsersId == Id);
-            return View(diaryEntries);
+            return View(diaryEntries.OrderByDescending(d => d.Date));
         }
 
 

@@ -248,21 +248,23 @@
                             </td>
                             <td class="text-left">
                                 @item.DueDate.ToShortDateString()
-                            </td>
-                            @if (DateTime.Compare(item.CompletionDate, new DateTime(1990, 02, 10)) == 0)
-                            {
-                                <td class="text-left">
-                                    @Html.ActionLink("Mark as completed", "EditCompletion", "Exercises", new { id = item.Id }, new { @class = "btn btn-default", @style = "color:black" })
-                                </td>
-                            }
-                            else
-                            {
-                                <td class="text-left">
-                                    @item.CompletionDate.ToShortDateString()
-                                </td>
-                            }
+                            </td>                            
                             @if (this.User.IsInRole("Mentor"))
                             {
+                                if (DateTime.Compare(item.CompletionDate, new DateTime(1990, 02, 10)) == 0)
+                                {
+                                    <td class="text-left">
+                                        <i>
+                                            Your mentee hasn't completed the task yet.
+                                        </i>
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td class="text-left">
+                                        @item.CompletionDate.ToShortDateString()
+                                    </td>
+                                }
                                 if (item.MenteeComments == null)
                                 {
                                     <td class="text-left">
@@ -320,6 +322,18 @@
                             }
                             else
                             {
+                                if (DateTime.Compare(item.CompletionDate, new DateTime(1990, 02, 10)) == 0)
+                                {
+                                    <td class="text-left">
+                                        @Html.ActionLink("Mark as completed", "EditCompletion", "Exercises", new { id = item.Id }, new { @class = "btn btn-default", @style = "color:black" })
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td class="text-left">
+                                        @item.CompletionDate.ToShortDateString()
+                                    </td>
+                                }
                                 if (item.MenteeComments == null && DateTime.Compare(item.CompletionDate, new DateTime(1990, 02, 10)) == 0)
                                 {
                                     <td class="text-left">

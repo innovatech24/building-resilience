@@ -170,8 +170,8 @@
                     $('#sandbox').datepicker('destroy');
                     var td1 = '<td><div class="form-group"><div class="col-md-10">@Html.EditorFor(modelItem => modelItem.TaskName, new { htmlAttributes = new { @class = "form-control" } })@Html.ValidationMessageFor(model => model.TaskName, "", new { @class = "text-danger" })</div></div></td>';
                     var td2 = '<td><div class="form-group"><div class="col-md-10"><textarea class="form-control text-box multi-line" id="TaskDescription" name="TaskDescription" rows="3"></textarea>@Html.ValidationMessageFor(model => model.TaskDescription, "", new { @class = "text-danger" })</div></div></td>';
-                    var td3 = '<td><div class="form-group"><div class="col-md-10"><div id="sandbox">@Html.EditorFor(modelItem => modelItem.DueDate, new { htmlAttributes = new { @class = "form-control", @onchange= "dateChange(this)" } })@Html.ValidationMessageFor(model => model.DueDate, "", new { @class = "text-danger" })</div></div></div></td>';
-                    var td4 = '<td><div class="form-group"><div id="remove"><input type="button" value="Remove task" class="btnRemove btn btn-danger" /></div></div></td>';
+                    var td3 = '<td><div class="form-group"><div class="col-md-10"><div id="sandbox">@Html.EditorFor(modelItem => modelItem.DueDate, new { htmlAttributes = new { @class = "form-control", @onchange = "dateChange(this)" } })@Html.ValidationMessageFor(model => model.DueDate, "", new { @class = "text-danger" })</div></div></div></td>';
+                    var td4 = '<td><div class="form-group"><div id="remove"><input type="button" value="Remove task" class="btnRemove btn btn-danger" onclick="removeRow(this)" /></div></div></td>';
                     var row = '<tr id="newRow">' + td1 + td2 + td3 + td4 + '</tr>';
                     $("tbody").append(row);
                     $('#sandbox input').datepicker({
@@ -179,18 +179,12 @@
                         todayHighlight: true,
                         format: "dd-M-yyyy"
                     });
-                });
+                });           
 
-                function removeRow() {
-                    document.querySelector(#);
-                }
-
-                $('.form-group').on('click', '.btnRemove', function () {
-                    var trow = $(this).closest('tr');
-                    console.log(trow);
-                    console.log("wassup");
+                function removeRow(element) {
+                    var trow = $(element).closest('tr');                    
                     trow.remove();
-                });
+                }
 
                 function getAllData() {
                     var data = [];
@@ -253,8 +247,7 @@
                             $("#alertIfEmpty").slideUp(500);
                         });   
                     }
-                });
-                 
+                });                 
             
                 function showMessage(obj, messageObj, href) {
                     if (messageObj != "") {
