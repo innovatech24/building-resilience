@@ -59,3 +59,11 @@ a.ptitle:hover, a.ptitle:active {
     border-radius: 5px;
     color: white;
 }
+
+a.apending:link, a.apending:visited {
+    color: red;
+}
+
+a.apending:hover{
+    text-decoration:underline;
+}

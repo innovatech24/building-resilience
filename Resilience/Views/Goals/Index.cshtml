@@ -84,7 +84,7 @@
             border-collapse: collapse;
             height: 320px;
             margin: auto;
-            max-width: 250px;
+            max-width: 95%;
             padding: 5px;
             width: 100%;
             box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
@@ -154,14 +154,14 @@
 
         td {
             background: #FFFFFF;
-            padding: 20px;
+            padding: 15px;
             text-align: left;
             vertical-align: middle;
             font-weight: 300;
             font-size: 18px;
             text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
             border-right: 1px solid #C1C3D1;
-            max-width: 200px;
+            max-width: 250px;
             word-wrap:break-word;
         }
 
@@ -193,6 +193,12 @@
         td.text-right {
             text-align: right;
         }
+
+        
+        i {
+            font-size:smaller;
+        }
+
     </style>
 </head>
 <body>
@@ -234,7 +240,7 @@
                         <tr>
                             <td class="text-left">
 
-                                @Html.DisplayFor(modelItem => item.GoalName)
+                                <strong>@Html.DisplayFor(modelItem => item.GoalName)</strong>
 
                             </td>
                             <td class="text-left">
@@ -258,17 +264,17 @@
                             @if (item.MentorFeedback == null && DateTime.Compare(item.CompletionDate, new DateTime(1990, 02, 10)) == 0)
                             {
                                 <td class="text-left">
-                                    <text>
+                                    <i>
                                         You have not completed the goal yet. Your mentor will provide feedback once the goal is completed.
-                                    </text>
+                                    </i>
                                 </td>
                             }
                             else if (item.MentorFeedback == null)
                             {
                                 <td class="text-left">
-                                    <text>
+                                    <i>
                                         Your mentor has not provided feedback yet.
-                                    </text>
+                                    </i>
                                 </td>
                             }
                             else
@@ -280,9 +286,9 @@
                             @if (item.MenteeComments == null && DateTime.Compare(item.CompletionDate, new DateTime(1990, 02, 10)) == 0)
                             {
                                 <td class="text-left">
-                                    <text>
+                                    <i>
                                         You can provide your comments after you have completed the goal.
-                                    </text>
+                                    </i>
                                 </td>
                             }
                             else if (item.MenteeComments == null)
@@ -302,14 +308,14 @@
                             @if (item.MenteeRating == null && DateTime.Compare(item.CompletionDate, new DateTime(1990, 02, 10)) == 0)
                             {
                                 <td class="text-left">
-                                    <text>
+                                    <i>
                                         You can rate this goal once you have completed it.
-                                    </text>
+                                    </i>
                                 </td>
                             }
                             else if (item.MenteeRating == null)
                             {
-                                <td class="text-left">
+                                <td class="text-center">
                                     <div class="ratingEnabled" iid=@item.Id rate=0></div>
                                     @*@Html.HiddenFor(model => item.MenteeRating);*@
                                 </td>
@@ -317,7 +323,7 @@
                             }
                             else
                             {
-                                <td class="text-left">
+                                <td class="text-center">
                                     @*<div class="ratingEnabled" iid=@item.Id rate=@item.MenteeRating></div>*@
                                     <div class="ratingDisabled" iid=@item.Id rate=@item.MenteeRating></div>
                                 </td>

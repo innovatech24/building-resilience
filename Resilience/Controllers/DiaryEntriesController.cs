@@ -28,6 +28,16 @@ namespace Resilience.Controllers
             ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId<int>());
             Users currentUser = db.Users.Find(user.Id);
             var diaryEntries = db.DiaryEntries.Where(d => d.UsersId == currentUser.Id).ToList();
+
+            // The name and last name of the mentor is going in unused variables
+            foreach (DiaryEntries d in diaryEntries)
+            {
+                var mentor = db.Users.Find(d.MentorId);
+                d.User.FirstName = mentor.FirstName;
+                d.User.LastName = mentor.LastName;
+
+            }
+
             return View(diaryEntries.ToList());
         }
 
@@ -238,22 +248,10 @@ namespace Resilience.Controllers
 
         //GET: ViewFeedback
         [Authorize (Roles = "Mentee")]
-        public ActionResult ViewFeedback()
+        public ActionResult ViewFeedback(int Id)
         {
-            ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId<int>());
-            Users currentUser = db.Users.Find(user.Id);
-            var diaryEntries = db.DiaryEntries.Where(d => d.UsersId == currentUser.Id);
-            
-            // The name and last name of the mentor is going in unused variables
-            foreach(DiaryEntries d in diaryEntries)
-            {
-                var mentor = db.Users.Find(d.MentorId);
-                d.User.FirstName = mentor.FirstName;
-                d.User.LastName = mentor.LastName;
-               
-            }
-
-            return View(diaryEntries);
+            var diaryEntries = db.DiaryEntries.Where(d => d.Id == Id).ToList();
+            return View(diaryEntries.ToList());
         }
 
         /*[Authorize(Roles = "Mentee")]
