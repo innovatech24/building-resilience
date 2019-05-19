@@ -1,6 +1,6 @@
 ﻿.main-card {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 240px));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 280px));
     grid-auto-rows: 360px;
     /*grid-template-rows: repeat(auto-fit, minmax(20px, 200px));
     grid-auto-columns: 200px;*/

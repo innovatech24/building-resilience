@@ -500,6 +500,7 @@
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="Scripts\UserCreate.js" />
     <Content Include="Scripts\util.js" />
     <Content Include="Scripts\validate-entry.js" />
     <Content Include="Scripts\ViewFeedback_.js" />
