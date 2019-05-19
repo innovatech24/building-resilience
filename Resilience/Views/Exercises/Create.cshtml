@@ -234,7 +234,7 @@
                             dataType: 'json',
                             contentType: 'application/json; charset=utf-8',
                             data: JSON.stringify({ 'data': data }),
-                            success: function () {
+                            success: function (response) {
                                 showMessage("SubmitMessage", response, "../../Options/Mentee");
                             },
                             error: function () {

@@ -79,7 +79,7 @@
                                     <div class="card__content">
                                         <hr />
 
-                                        <div class="linkbox" ref="~/Goals/MentorView/" iid="@item.Id">
+                                        <div class="linkbox" ref="~/Goals/MentorView/" iid="@item.Id" val=@item.Goals.Count>
                                             @*<a class="ptitle" href="~/Goals/MentorView/@item.Id">Goals: <i>@item.Goals.Count</i></a>*@
                                             <div class="ptitle" >Goals: <i>@item.Goals.Count</i></div>
                                             <div class="pitem">
@@ -93,7 +93,7 @@
                                         
                                         <hr />
 
-                                        <div class="linkbox" ref="~/DiaryEntries/ViewUser/" iid="@item.Id">
+                                        <div class="linkbox" ref="~/DiaryEntries/ViewUser/" iid="@item.Id" val=@item.DiaryEntries.Count>
                                             <div class="ptitle">Diaries: <i>@item.DiaryEntries.Count</i></div>
                                             <div class="pitem">
                                                 Last diary: <i>@item.getLastDiaryDate()</i>
@@ -104,22 +104,35 @@
                                                 {
                                                     <i>Already reviewed</i>
                                                 }
-                                                else
+                                                else if (item.DiaryEntries.Count > 0)
                                                 {
                                                     <a class="apending" href="~/DiaryEntries/View/@item.DiaryEntries.Last().Id">Pending to review</a>
                                                 }
+                                                else
+                                                {
+                                                    <i>No diary entries</i>
+                                                }
 
                                             </div>
-                                            <div class="pitem">
-                                                <div class="ratingDisabled" style="align-items:flex-end;" iid=@item.Id rate=@item.getLastDiaryMood()></div>
-                                            </div>
+
+                                            @if (item.getLastDiaryMood() > 0)
+                                            {
+                                                <div class="pitem">
+                                                    <div class="ratingDisabled" style="align-items:flex-end;" iid=@item.Id rate=@item.getLastDiaryMood()></div>
+                                                </div>
+                                            }
+                                            else
+                                            {
+
+                                            }
+
                                         </div>
                                         @*<a class="ptitle" href="~/DiaryEntries/ViewUser/@item.Id">Diaries: <i>@item.DiaryEntries.Count</i></a>*@
 
                                         
                                         <hr />
 
-                                        <div class="linkbox" ref="~/Options/Progress/" iid="@item.Id">
+                                        <div class="linkbox" ref="~/Options/Progress/" iid="@item.Id" val=@(item.Goals.Count+item.DiaryEntries.Count)>
                                             <div class="ptitle">Check progress</div>
                                         </div>
                                     </div>

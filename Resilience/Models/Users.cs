@@ -75,7 +75,7 @@ namespace Resilience.Models
 
         public string getLastDiaryDate()
         {
-            string lastDiaryDate = "No diaries";
+            string lastDiaryDate = "";
 
             foreach (DiaryEntries d in this.DiaryEntries)
             {
@@ -86,7 +86,7 @@ namespace Resilience.Models
 
         public int getLastDiaryMood()
         {
-            int lastDiaryMood = 1;
+            int lastDiaryMood = 0;
 
             foreach (DiaryEntries d in this.DiaryEntries)
             {
@@ -106,21 +106,6 @@ namespace Resilience.Models
             return lastDiaryState;
         }
 
-        public object getLastDiary()
-        {
-            bool lastDiaryState = false;
-            int lastDiaryMood = 1;
-            string lastDiaryDate = "No diaries";
-
-            foreach (DiaryEntries d in this.DiaryEntries)
-            {
-                lastDiaryState = d.MentorFeedback != null;
-                lastDiaryMood = d.MenteeFeedback.Value;
-                lastDiaryDate = d.Date.ToShortDateString();
-            }
-
-            return new { lastDiaryDate, lastDiaryState , lastDiaryMood };
-        }
     }
 
     public class AddMentor

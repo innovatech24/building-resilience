@@ -5,6 +5,7 @@ var emotionsArray = ['crying', 'disappointed', 'meh', 'happy', 'smile'];
 $(document).ready(function () {
 
     $("#goalTitle").click(function () {
+        
         window.location.href = "Goals/MentorView/" + $(this).getAttribute("iid");
     });
 
@@ -21,9 +22,15 @@ $(document).ready(function () {
 
     $(".linkbox").click(function (e) {
         
-        if (e.target.className != "apending") {
-            window.location.href = this.getAttribute("ref") + this.getAttribute("iid");
+        if (e.target.className != "apending" ) {
+            if (this.getAttribute("val") == 0) {
+                alert("No data to review.")
+            } else {
+                window.location.href = this.getAttribute("ref") + this.getAttribute("iid");
+            }
+            
         }
+        
     });
 
 });
