@@ -94,7 +94,10 @@ namespace Resilience.Controllers
                 db.SaveChanges();                
                 var roles = UserManager.GetRoles(user.Id);
                 
-                if (roles.Count == 2)
+                // Type options : info, danger, success, warning
+                TempData["UserMessage"] = new JavaScriptSerializer().Serialize(new { Type = "success", Title = "Success!", Message = "Registration successful!" });
+
+                /*if (roles.Count == 2)
                 {
                     return RedirectToAction("Choice", "Options");
                 }
@@ -108,7 +111,8 @@ namespace Resilience.Controllers
                     {
                         return RedirectToAction("Mentee", "Options");
                     }
-                }                
+                }*/
+                return View();
             }
 
             return View(users);

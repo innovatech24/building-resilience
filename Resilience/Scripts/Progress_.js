@@ -224,7 +224,7 @@ function stackedbarplot(obj, data, Title){
     // Create axes
     var categoryAxis = chart.yAxes.push(new am4charts.CategoryAxis());
     categoryAxis.dataFields.category = "GoalName";
-    categoryAxis.title.text = "Goals";
+    categoryAxis.title.text = "Ongoing Goals";
     categoryAxis.renderer.grid.template.location = 0;
     categoryAxis.renderer.minGridDistance = 20;
     categoryAxis.renderer.cellStartLocation = 0.1;
