@@ -291,6 +291,7 @@ function linetrendplot(obj, data, Title) {
     categoryAxis.title.text = "Year";
     //var valueAxis2 = chart.xAxes.push(new am4charts.ValueAxis());
     var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+    valueAxis.title.text = "Unemployment rate";
 
     // Create series
     var series = chart.series.push(new am4charts.LineSeries());
