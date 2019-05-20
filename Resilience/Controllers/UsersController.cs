@@ -96,22 +96,7 @@ namespace Resilience.Controllers
                 
                 // Type options : info, danger, success, warning
                 TempData["UserMessage"] = new JavaScriptSerializer().Serialize(new { Type = "success", Title = "Success!", Message = "Registration successful!" });
-
-                /*if (roles.Count == 2)
-                {
-                    return RedirectToAction("Choice", "Options");
-                }
-                else
-                {
-                    if (roles.Contains("Mentor"))
-                    {
-                        return RedirectToAction("Mentor", "Options");
-                    }
-                    else
-                    {
-                        return RedirectToAction("Mentee", "Options");
-                    }
-                }*/
+                
                 return View();
             }
 
@@ -263,14 +248,7 @@ namespace Resilience.Controllers
                             TempData["UserMessage"] = new JavaScriptSerializer().Serialize(new { Type = "warning", Title = "Warning:", Message = "This user is already your mentee!" });
 
                             return View();
-                        }
-                        else if (currentUser.Id == menteeUser.Id)
-                        {
-                            // Type options : info, danger, success, warning
-                            TempData["UserMessage"] = new JavaScriptSerializer().Serialize(new { Type = "warning", Title = "Warning:", Message = "You cannot add yourself as a mentee!" });
-
-                            return View();
-                        }
+                        }                        
                         else
                         {
                             // Type options : info, danger, success, warning
@@ -278,6 +256,14 @@ namespace Resilience.Controllers
 
                             return View();
                         }
+                    }
+
+                    if (currentUser.Id == menteeUser.Id)
+                    {
+                        // Type options : info, danger, success, warning
+                        TempData["UserMessage"] = new JavaScriptSerializer().Serialize(new { Type = "warning", Title = "Warning:", Message = "You cannot add yourself as a mentee!" });
+
+                        return View();
                     }
 
                     menteeUser.MentorId = currentUser.Id;
