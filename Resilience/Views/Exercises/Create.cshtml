@@ -35,108 +35,113 @@
     </script>
 </head>
 <body>
-    <div class="col-md-12">
-        <br />
-        <br />
-        <br />
-        <br />
-        <h2>Create tasks for your goal - @ViewBag.goalName</h2>
+    <div class="table-page">
+        <div class="table-title">
+            
+            <hr />
+            <hr />
+            <hr />
+            
+            <h3>Create tasks for your goal - @ViewBag.goalName</h3>
+            
+        </div>
+        <div style="overflow-x:auto;">
+            <table class="table-fill">
+                <thead>
+                    <tr>
+                        <th class="text-left">
+                            @*@Html.DisplayNameFor(model => model.TaskName)*@
+                            Task name
+                        </th>
+                        <th class="text-left">
+                            @*@Html.DisplayNameFor(model => model.TaskDescription)*@
+                            Description
+                        </th>
+                        <th class="text-left">
+                            @*@Html.DisplayNameFor(model => model.DueDate)*@
+                            Due date
+                        </th>
+                        <th class="text-left"></th>
+                    </tr>
+                </thead>
 
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>
-                        @*@Html.DisplayNameFor(model => model.TaskName)*@
-                        Task name
-                    </th>
-                    <th>
-                        @*@Html.DisplayNameFor(model => model.TaskDescription)*@
-                        Description
-                    </th>
-                    <th>
-                        @*@Html.DisplayNameFor(model => model.DueDate)*@
-                        Due date
-                    </th>
-                    <th></th>
-                </tr>
-            </thead>
-
-            <tbody>
-                <tr>
-                    @using (Html.BeginForm())
-                    {
-                        @Html.AntiForgeryToken()
-                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                        <td>
-                            <div class="form-group">
-                                @*@Html.LabelFor(model => model.TaskName, htmlAttributes: new { @class = "control-label col-md-2" })*@
-                                <div class="col-md-10">
-                                    @Html.EditorFor(model => model.TaskName, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.TaskName, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-                        </td>
-
-                        <td>
-                            <div class="form-group">
-                                @*Html.LabelFor(model => model.TaskDescription, htmlAttributes: new { @class = "control-label col-md-2" })*@
-                                <div class="col-md-10">
-                                    @Html.EditorFor(model => model.TaskDescription, new { htmlAttributes = new { @class = "form-control", rows = "3" } })
-                                    @Html.ValidationMessageFor(model => model.TaskDescription, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-                        </td>
-
-                        <td>
-                            <div class="form-group">
-                                <div class="col-md-10">
-                                    <div id="sandbox">
-                                        @Html.EditorFor(model => model.DueDate, new { htmlAttributes = new { @class = "form-control", @onchange = "dateChange(this)" } })
+                <tbody class="table-hover">
+                    <tr>
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <td class="text-left">
+                                <div class="form-group">
+                                    @*@Html.LabelFor(model => model.TaskName, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.TaskName, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.TaskName, "", new { @class = "text-danger" })
                                     </div>
-                                    @Html.ValidationMessageFor(model => model.DueDate, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-                        </td>
+                                    </div>
+                            </td>
 
-                        @*<td>
+                            <td class="text-left">
+                                <div class="form-group">
+                                    @*Html.LabelFor(model => model.TaskDescription, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.TaskDescription, new { htmlAttributes = new { @class = "form-control", rows = "3" } })
+                                        @Html.ValidationMessageFor(model => model.TaskDescription, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </td>
+
+                            <td class="text-left">
+                                <div class="form-group">
+                                    <div class="col-md-10">
+                                        <div id="sandbox">
+                                            @Html.EditorFor(model => model.DueDate, new { htmlAttributes = new { @class = "form-control", @onchange = "dateChange(this)" } })
+                                        </div>
+                                        @Html.ValidationMessageFor(model => model.DueDate, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </td>
+
+                            @*<td>
                             <div class="form-group">
                                 <div id="remove" hidden>
                                     <input type="button" value="Remove task" class="btnRemove btn btn-danger" />
                                 </div>
                             </div>
                         </td>*@
-                    }
-                </tr>
-            </tbody>
+                        }
+                    </tr>
+                </tbody>
 
-            <tfoot>
-                <tr>
-                    <td>
-                        <div class="form-group">
-                            <div class="col-md-offset-4 col-md-10">
-                                <input type="button" value="Add a task" class="btnAdd btn btn-default" />
+                <tfoot>
+                    <tr>
+                        <td>
+                            <div class="form-group">
+                                <div class="col-md-offset-4 col-md-10">
+                                    <input type="button" value="Add a task" class="btnAdd btn btn-primary" />
+                                </div>
                             </div>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-group">
-                            <div class="col-md-offset-2 col-md-10">
-                                <input id="btnSubmit" type="submit" value="Create" class="btn btn-default" />
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input id="btnSubmit" type="submit" value="Create" class="btn btn-primary" />
+                                </div>
                             </div>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <div id="SubmitMessage" class="alert" hidden><span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span></div>
-                </tr>
-            </tfoot>
+                        </td>
+                    </tr>
+                    <tr>
+                        <div id="SubmitMessage" class="alert" hidden><span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span></div>
+                    </tr>
+                </tfoot>
 
-        </table>
-        <div class="alert alert-danger alert-dismissible" hidden id="alertIfEmpty">
-            <button class="close" type="button" aria-label="close" data-dismiss="alert">×</button>
-            <strong>You have to enter a task name and/or a due date for your task.</strong>
+            </table>
         </div>
-    </div>
+            <div class="alert alert-danger alert-dismissible" hidden id="alertIfEmpty">
+                <button class="close" type="button" aria-label="close" data-dismiss="alert">×</button>
+                <strong>You have to enter a task name and/or a due date for your task.</strong>
+            </div>
+        </div>
         @section Scripts{
 
             <!-- jQuery library -->
@@ -169,19 +174,19 @@
                         todayHighlight: true,
                         format: "dd-M-yyyy"
                     });
-                });           
+                });
 
                 function removeRow(element) {
-                    var trow = $(element).closest('tr');                    
+                    var trow = $(element).closest('tr');
                     trow.remove();
                 }
 
                 function getAllData() {
                     var data = [];
                     $('tbody tr').each(function () {
-                        var TaskName = $(this).find('#TaskName').val();                        
-                        var TaskDescription = $(this).find('#TaskDescription').val();                        
-                        var DueDate = $(this).find('#DueDate').val();                        
+                        var TaskName = $(this).find('#TaskName').val();
+                        var TaskDescription = $(this).find('#TaskDescription').val();
+                        var DueDate = $(this).find('#DueDate').val();
                         var GoalsId = '@ViewBag.goalId';
                         var MentorId = '@ViewBag.mentorId';
 
@@ -197,7 +202,7 @@
                             //console.log(TaskName);
                             //console.log(alldata);
                             data.push(alldata);
-                        }                        
+                        }
                     });
                     return data;
                 }
@@ -232,13 +237,13 @@
                             }
                         });
                     }
-                    else {                        
+                    else {
                         $("#alertIfEmpty").fadeTo(2000, 500).slideUp(500, function () {
                             $("#alertIfEmpty").slideUp(500);
-                        });   
+                        });
                     }
-                });                 
-            
+                });
+
                 function showMessage(obj, messageObj, href) {
                     if (messageObj != "") {
 
@@ -261,6 +266,6 @@
                     };
                 };
             </script>
-    }
+        }
 </body>
 </html>
