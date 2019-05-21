@@ -80,6 +80,7 @@ namespace Resilience.Models
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
 
+        [Display(Name = "Role name")]
         public string RoleName { get; set; }
     }
 
