@@ -51,12 +51,6 @@
     <Reference Include="SendGrid, Version=9.11.0.0, Culture=neutral, PublicKeyToken=4f047e93159395ca, processorArchitecture=MSIL">
       <HintPath>..\packages\Sendgrid.9.11.0\lib\net452\SendGrid.dll</HintPath>
     </Reference>
-    <Reference Include="MvcSiteMapProvider, Version=4.6.26.0, Culture=neutral, PublicKeyToken=1923abe4657913cc, processorArchitecture=MSIL">
-      <HintPath>..\packages\MvcSiteMapProvider.MVC5.Core.4.6.26\lib\net45\MvcSiteMapProvider.dll</HintPath>
-    </Reference>
-    <Reference Include="MvcSiteMapProvider.WebActivator, Version=4.6.26.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MvcSiteMapProvider.MVC5.4.6.26\lib\net45\MvcSiteMapProvider.WebActivator.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -263,10 +257,6 @@
     </Content>
     <Content Include="App_Data\Employment_region_VIC.txt" />
     <Content Include="App_Data\Historical_Victorian_employment.txt" />
-    <Content Include="App_Data\PlotData.mdf" />
-    <Content Include="App_Data\PlotData_log.ldf">
-      <DependentUpon>PlotData.mdf</DependentUpon>
-    </Content>
     <Content Include="App_Data\Users.mdf" />
     <Content Include="App_Data\Users_log.ldf" />
     <Content Include="Content\account-login.css" />
@@ -282,12 +272,9 @@
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\burlywood-theme.css" />
     <Content Include="Content\dairyentries-create.css" />
-    <Content Include="Content\dark-red-theme.css" />
     <Content Include="Content\dashboard.css" />
     <Content Include="Content\Dashboard2.css" />
-    <Content Include="Content\default-theme.css" />
     <Content Include="Content\diarycreate.css" />
     <Content Include="Content\diaryentries-dashboard.css" />
     <Content Include="Content\diaryentries-feedback.css" />
@@ -305,34 +292,28 @@
     <Content Include="Content\exercise-index.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\fontMontserrat.css" />
+    <Content Include="Content\fontRoboto.css" />
     <Content Include="Content\gaugediv.css" />
     <Content Include="Content\goals-comments.css" />
     <Content Include="Content\goals-create.css" />
     <Content Include="Content\goals-feedback.css" />
     <Content Include="Content\goals-index.css" />
     <Content Include="Content\goals-mentorview.css" />
-    <Content Include="Content\green-theme.css" />
     <Content Include="Content\HomeIndex.css" />
-    <Content Include="Content\jquery.fancybox.css" />
     <Content Include="Content\jquery.highlight-within-textarea.css" />
+    <Content Include="Content\LandingPage.css" />
     <Content Include="Content\main.css" />
     <Content Include="Content\option-choice.css" />
     <Content Include="Content\option-mentee.css" />
     <Content Include="Content\option-mentor.css" />
-    <Content Include="Content\orange-theme.css" />
-    <Content Include="Content\pink-theme.css" />
     <Content Include="Content\MenteeProgress_.css" />
     <Content Include="Content\Progress_.css" />
-    <Content Include="Content\purple-theme.css" />
-    <Content Include="Content\red-theme.css" />
     <Content Include="Content\shared-error.css" />
-    <Content Include="Content\slick.css" />
     <Content Include="Content\style.css" />
     <Content Include="Content\user-create.css" />
     <Content Include="Content\users-choosementee.css" />
     <Content Include="Content\users-choosementor.css" />
-    <Content Include="Content\violet-theme.css" />
-    <Content Include="Content\yellow-theme.css" />
     <Content Include="favicon.ico" />
     <Content Include="Fonts\fa-brands-400.svg" />
     <Content Include="Fonts\fa-regular-400.svg" />
@@ -452,12 +433,7 @@
     <Content Include="Content\bootstrap-datepicker.css.map" />
     <Content Include="Content\bootstrap-datepicker.min.css.map" />
     <Content Include="Content\bootstrap-datepicker3.css.map" />
-    <Content Include="Mvc.sitemap" />
-    <None Include="MvcSiteMapSchema.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
-    <Content Include="Scripts\breakpoints.min.js" />
     <Content Include="Scripts\browser.min.js" />
     <Content Include="Scripts\ExercisesComments.js" />
     <Content Include="Scripts\ExercisesCreate.js" />
@@ -473,14 +449,9 @@
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\jquery.counterup.js" />
-    <Content Include="Scripts\jquery.dropotron.min.js" />
-    <Content Include="Scripts\jquery.fancybox.pack.js" />
     <Content Include="Scripts\jquery.highlight-within-textarea.js" />
     <Content Include="Scripts\jquery.min.js" />
-    <Content Include="Scripts\jquery.mixitup.js" />
     <Content Include="Scripts\jquery.scrollTo.js" />
-    <Content Include="Scripts\jquery.scrolly.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -495,7 +466,6 @@
     <Content Include="Scripts\MenteeProgress_.js" />
     <Content Include="Scripts\Progress_.js" />
     <Content Include="Scripts\py\load_datasets.py" />
-    <Content Include="Scripts\slick.js" />
     <Content Include="Scripts\umd\popper-utils.js" />
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
@@ -504,7 +474,6 @@
     <Content Include="Scripts\util.js" />
     <Content Include="Scripts\validate-entry.js" />
     <Content Include="Scripts\ViewFeedback_.js" />
-    <Content Include="Scripts\waypoints.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -516,8 +485,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
@@ -550,15 +517,8 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Options\Mentee.cshtml" />
     <Content Include="Views\DiaryEntries\Create.cshtml" />
-    <Content Include="Views\DiaryEntries\Delete.cshtml" />
-    <Content Include="Views\DiaryEntries\Details.cshtml" />
-    <Content Include="Views\DiaryEntries\Edit.cshtml" />
     <Content Include="Views\DiaryEntries\Index.cshtml" />
     <Content Include="Views\Users\Create.cshtml" />
-    <Content Include="Views\Users\Delete.cshtml" />
-    <Content Include="Views\Users\Details.cshtml" />
-    <Content Include="Views\Users\Edit.cshtml" />
-    <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\Options\Choice.cshtml" />
     <Content Include="Views\Options\Mentor.cshtml" />
     <Content Include="Views\Users\ChooseMentor.cshtml" />
@@ -572,27 +532,14 @@
     <Content Include="Views\Error\NotFound.cshtml" />
     <Content Include="Views\Error\NoMentorMapped.cshtml" />
     <Content Include="Views\Goals\Create.cshtml" />
-    <Content Include="Views\Goals\Delete.cshtml" />
-    <Content Include="Views\Goals\Details.cshtml" />
-    <Content Include="Views\Goals\Edit.cshtml" />
     <Content Include="Views\Goals\Index.cshtml" />
     <Content Include="Views\Exercises\Create.cshtml" />
-    <Content Include="Views\Exercises\Delete.cshtml" />
-    <Content Include="Views\Exercises\Details.cshtml" />
     <Content Include="Views\Exercises\Edit.cshtml" />
     <Content Include="Views\Exercises\Index.cshtml" />
     <Content Include="Views\DiaryEntries\ViewFeedback.cshtml" />
     <Content Include="Views\Options\Landingpage.cshtml" />
     <Content Include="Views\Goals\MentorView.cshtml" />
     <Content Include="Views\Options\Progress.cshtml" />
-    <Content Include="Views\Shared\DisplayTemplates\SiteMapTitleHelperModel.cshtml" />
-    <Content Include="Views\Shared\DisplayTemplates\SiteMapPathHelperModel.cshtml" />
-    <Content Include="Views\Shared\DisplayTemplates\SiteMapNodeModelList.cshtml" />
-    <Content Include="Views\Shared\DisplayTemplates\SiteMapNodeModel.cshtml" />
-    <Content Include="Views\Shared\DisplayTemplates\SiteMapHelperModel.cshtml" />
-    <Content Include="Views\Shared\DisplayTemplates\MetaRobotsHelperModel.cshtml" />
-    <Content Include="Views\Shared\DisplayTemplates\MenuHelperModel.cshtml" />
-    <Content Include="Views\Shared\DisplayTemplates\CanonicalHelperModel.cshtml" />
     <Content Include="Views\Options\MenteeProgress.cshtml" />
     <Content Include="Views\Error\NothingAdded.cshtml" />
     <Content Include="Views\Goals\Comments.cshtml" />

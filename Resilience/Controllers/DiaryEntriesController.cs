@@ -68,23 +68,6 @@ namespace Resilience.Controllers
             return View(diaryEntries.OrderByDescending(d => d.Date));
         }
 
-
-        // GET: DiaryEntries/Details/5
-        [Authorize]
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            DiaryEntries diaryEntries = db.DiaryEntries.Find(id);
-            if (diaryEntries == null)
-            {
-                return HttpNotFound();
-            }
-            return View(diaryEntries);
-        }
-
         // GET: DiaryEntries/Create
         [Authorize]
         public ActionResult Create()
@@ -134,69 +117,6 @@ namespace Resilience.Controllers
 
             ViewBag.UsersId = new SelectList(db.Users, "Id", "FirstName", diaryEntries.UsersId);
             return View(diaryEntries);
-        }
-
-        // GET: DiaryEntries/Edit/5
-        [Authorize]
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            DiaryEntries diaryEntries = db.DiaryEntries.Find(id);
-            if (diaryEntries == null)
-            {
-                return HttpNotFound();
-            }
-            ViewBag.UsersId = new SelectList(db.Users, "Id", "FirstName", diaryEntries.UsersId);
-            return View(diaryEntries);
-        }
-
-        // POST: DiaryEntries/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [Authorize]
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Entry,UsersId,MentorId,SentimentScore,MentorFeedback,Date,MenteeFeedback")] DiaryEntries diaryEntries)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(diaryEntries).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            ViewBag.UsersId = new SelectList(db.Users, "Id", "FirstName", diaryEntries.UsersId);
-            return View(diaryEntries);
-        }
-
-        // GET: DiaryEntries/Delete/5
-        [Authorize(Roles = "Mentee")]
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            DiaryEntries diaryEntries = db.DiaryEntries.Find(id);
-            if (diaryEntries == null)
-            {
-                return HttpNotFound();
-            }
-            return View(diaryEntries);
-        }
-
-        // POST: DiaryEntries/Delete/5
-        [Authorize(Roles = "Mentee")]
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            DiaryEntries diaryEntries = db.DiaryEntries.Find(id);
-            db.DiaryEntries.Remove(diaryEntries);
-            db.SaveChanges();
-            return RedirectToAction("Index");
         }
 
         //GET: Feedback/5
@@ -251,19 +171,6 @@ namespace Resilience.Controllers
             var diaryEntries = db.DiaryEntries.Where(d => d.Id == Id).ToList();
             return View(diaryEntries.ToList());
         }
-
-        /*[Authorize(Roles = "Mentee")]
-        [HttpPost]
-        public void ViewFeedback(int Id, int rate)
-        {
-            DiaryEntries diaryEntries = db.DiaryEntries.Find(Id);
-            diaryEntries.MenteeFeedback = rate;
-            db.Entry(diaryEntries).State = EntityState.Modified;
-            db.SaveChanges();
-
-            //return View(diaryEntries);
-        }
-        */
 
         protected override void Dispose(bool disposing)
         {

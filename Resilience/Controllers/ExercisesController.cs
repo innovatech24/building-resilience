@@ -19,13 +19,6 @@ namespace Resilience.Controllers
     {
         private DiaryEntriesContainer db = new DiaryEntriesContainer();
 
-        // GET: Exercises
-        /*public ActionResult Index()
-        {
-            var exercises = db.Exercises.Include(e => e.Goal);
-            return View(exercises.ToList());
-        }*/
-
         //GET: Exercises/5
         [SiteMapTitle("title")]
         public ActionResult Index(int Id)
@@ -37,21 +30,6 @@ namespace Resilience.Controllers
                 return RedirectToAction("Create", "Exercises", new { id = Id });
             }
             return View(exercises.ToList());
-        }
-
-        // GET: Exercises/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Exercise exercise = db.Exercises.Find(id);
-            if (exercise == null)
-            {
-                return HttpNotFound();
-            }
-            return View(exercise);
         }
 
         // GET: Exercises/Create
@@ -149,33 +127,7 @@ namespace Resilience.Controllers
             return View(exercise);
         }
 
-        // GET: Exercises/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Exercise exercise = db.Exercises.Find(id);
-            if (exercise == null)
-            {
-                return HttpNotFound();
-            }
-            return View(exercise);
-        }
-
-        // POST: Exercises/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Exercise exercise = db.Exercises.Find(id);
-            db.Exercises.Remove(exercise);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
-
-        //GET        
+        //GET EditCompletion/5 
         public ActionResult EditCompletion(int Id)
         {
             var exercise = db.Exercises.Find(Id);
@@ -185,7 +137,7 @@ namespace Resilience.Controllers
             return RedirectToAction("Index", "Exercises", new { id = exercise.GoalsId });
         }
 
-        //GET
+        //GET Comments/5
         public ActionResult Comments(int Id)
         {
             Exercise exercise = db.Exercises.Find(Id);
@@ -193,7 +145,7 @@ namespace Resilience.Controllers
             return View(exercise);
         }
 
-        //POST
+        //POST Comments
         [HttpPost]
         public ActionResult Comments(Exercise exercise)
         {
@@ -209,7 +161,7 @@ namespace Resilience.Controllers
             return View(e);
         }
 
-        //GET
+        //GET Feedback/5
         public ActionResult Feedback(int Id)
         {
             Exercise exercise = db.Exercises.Find(Id);
@@ -217,7 +169,7 @@ namespace Resilience.Controllers
             return View(exercise);
         }
 
-        //POST
+        //POST Feedback
         [HttpPost]
         public ActionResult Feedback(Exercise exercise)
         {
@@ -233,15 +185,6 @@ namespace Resilience.Controllers
             return View(e);
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
         [Authorize(Roles = "Mentee")]
         [HttpPost]
         public void setExerciseMenteeRate(int Id, int rate)
@@ -252,6 +195,15 @@ namespace Resilience.Controllers
             db.SaveChanges();
 
             //return View(diaryEntries);
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
         }
     }
 }

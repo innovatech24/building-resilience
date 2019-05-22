@@ -1,0 +1,90 @@
+﻿html, body {
+    height: 100%;
+    width: 100%;
+}
+
+.landing-background {
+    position: static;
+    height: 100%;
+    width: 100%;
+    background: url('../../Images/blank-composition-desk-317355.jpg') no-repeat center;
+    background-size: cover;
+}
+
+.ask {
+    text-align: center;
+    color: black;
+    @*box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    *@
+}
+
+.button {
+    border: none;
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: none;
+    display: inline-block;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.button1 {
+    width: 20%;
+    height: 10%;
+    background-color: bisque;
+    color: white;
+    border: 2px solid black;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    border-radius: 12px;
+    position: absolute;
+    top: 20%;
+    left: 40%;
+    font-size: 1vw;
+}
+
+
+    .button1:hover {
+        background-color: white;
+        color: black;
+    }
+
+.button2 {
+    width: 20%;
+    height: 10%;
+    background-color: bisque;
+    color: white;
+    border: 2px solid black;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    border-radius: 12px;
+    position: absolute;
+    top: 42.5%;
+    left: 40%;
+    font-size: 1vw;
+}
+
+
+    .button2:hover {
+        background-color: white;
+        color: black;
+    }
+
+.button3 {
+    width: 20%;
+    height: 10%;
+    background-color: bisque;
+    color: white;
+    border: 2px solid black;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    border-radius: 12px;
+    position: absolute;
+    top: 65%;
+    left: 40%;
+    font-size: 1vw;
+}
+
+
+    .button3:hover {
+        background-color: white;
+        color: black;
+    }

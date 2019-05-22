@@ -26,21 +26,6 @@ namespace Resilience.Controllers
             return View(goals.OrderByDescending(g => g.Id).ToList());
         }
 
-        // GET: Goals/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Goals goals = db.Goals.Find(id);
-            if (goals == null)
-            {
-                return HttpNotFound();
-            }
-            return View(goals);
-        }
-
         // GET: Goals/Create
         public ActionResult Create()
         {
@@ -77,65 +62,6 @@ namespace Resilience.Controllers
             return View(goals);
         }
 
-        // GET: Goals/Edit/5
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Goals goals = db.Goals.Find(id);
-            if (goals == null)
-            {
-                return HttpNotFound();
-            }
-            ViewBag.UsersId = new SelectList(db.Users, "Id", "FirstName", goals.UsersId);
-            return View(goals);
-        }
-
-        // POST: Goals/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,GoalName,GoalDescription,DueDate,CompletionDate,MentorFeedback,MenteeComments,MenteeRating,UsersId,MentorId")] Goals goals)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(goals).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            ViewBag.UsersId = new SelectList(db.Users, "Id", "FirstName", goals.UsersId);
-            return View(goals);
-        }
-
-        // GET: Goals/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Goals goals = db.Goals.Find(id);
-            if (goals == null)
-            {
-                return HttpNotFound();
-            }
-            return View(goals);
-        }
-
-        // POST: Goals/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Goals goals = db.Goals.Find(id);
-            db.Goals.Remove(goals);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
-
         [SiteMapTitle("title")]
         public ActionResult MentorView(int Id)
         {            
@@ -167,7 +93,7 @@ namespace Resilience.Controllers
             return RedirectToAction("Index", "Goals", new { id = Id });
         }
         
-        //GET
+        //GET Comments
         public ActionResult Comments(int Id)
         {
             Goals goals = db.Goals.Find(Id);
@@ -175,7 +101,7 @@ namespace Resilience.Controllers
             return View(goals);
         }
 
-        //POST
+        //POST Comments
         [HttpPost]
         public ActionResult Comments(Goals goal)
         {
@@ -187,11 +113,10 @@ namespace Resilience.Controllers
             // Type options : info, danger, success, warning
             TempData["UserMessage"] = new JavaScriptSerializer().Serialize(new { Type = "success", Title = "Success!", Message = "Comment added correctly!" });
 
-
             return View();
         }
 
-        //GET
+        //GET Feedback
         public ActionResult Feedback(int Id)
         {
             Goals goals = db.Goals.Find(Id);
@@ -199,7 +124,7 @@ namespace Resilience.Controllers
             return View(goals);
         }
 
-        //POST
+        //POST Feedback
         [HttpPost]
         public ActionResult Feedback(Goals goal)
         {
@@ -214,6 +139,18 @@ namespace Resilience.Controllers
             return View(g);
         }
 
+        [Authorize(Roles = "Mentee")]
+        [HttpPost]
+        public void SetGoalMenteeRate(int Id, int rate)
+        {
+            Goals goal = db.Goals.Find(Id);
+            goal.MenteeRating = rate;
+            db.Entry(goal).State = EntityState.Modified;
+            db.SaveChanges();
+
+            //return View(diaryEntries);
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -221,19 +158,7 @@ namespace Resilience.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
-        }
-
-        [Authorize(Roles = "Mentee")]
-        [HttpPost]
-        public void setGoalMenteeRate(int Id, int rate)
-        {
-            Goals goal = db.Goals.Find(Id);
-            goal.MenteeRating= rate;
-            db.Entry(goal).State = EntityState.Modified;
-            db.SaveChanges();
-
-            //return View(diaryEntries);
-        }
+        }        
     }
 }
  
