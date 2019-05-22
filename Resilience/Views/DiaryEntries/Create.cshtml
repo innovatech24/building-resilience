@@ -57,6 +57,7 @@
                         <div class="col-md-8">
                             <div class="rating"></div>
                             @Html.HiddenFor(model => model.MenteeFeedback)
+                            @Html.ValidationMessageFor(model => model.MenteeFeedback, "", new { @class = "text-danger" })
                         </div>
                     </div>
                     <hr />
