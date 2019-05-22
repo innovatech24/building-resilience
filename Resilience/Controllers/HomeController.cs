@@ -12,6 +12,8 @@ namespace Resilience.Controllers
         
         public ActionResult Index()
         {
+            // Turn off validation. Comment this to start validating again
+            Session["validated"] = "yes";
             return View();
         }
 
@@ -35,6 +37,8 @@ namespace Resilience.Controllers
             // Turn on validation
             bool res = false;
 
+            // Turn off validation. Comment this to start validating again
+            Session["validated"] = "yes";
 
             if (Session["validated"] != null)
             {
