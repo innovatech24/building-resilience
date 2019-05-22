@@ -102,33 +102,26 @@
                                 </div>
                             </td>
 
-                        <td>
-                            <div class="form-group">
-                                <div class="col-md-offset-4 col-md-10">
-                                    <input type="button" value="Add a task" class="btnAdd btn btn-default" />
+                            <td>
+                                <div class="form-group">
+                                    <div class="col-md-offset-4 col-md-10">
+                                        <input type="button" value="Add a task" class="btnAdd btn btn-primary" onclick="badd()"/>
+                                    </div>
                                 </div>
-                            </div>
-                        </td>
-                                    @*<td>
-                            <div class="form-group">
-                                <div id="remove" hidden>
-                                    <input type="button" value="Remove task" class="btnRemove btn btn-danger" />
-                                </div>
-                            </div>
-                        </td>*@
+                            </td>                               
                         }
                     </tr>
                 </tbody>
 
                 <tfoot>
                     <tr>
-                        <td>
+                        @*<td>
                             <div class="form-group">
                                 <div class="col-md-offset-4 col-md-10">
                                     <input type="button" value="Add a task" class="btnAdd btn btn-primary" />
                                 </div>
                             </div>
-                        </td>
+                        </td>*@
                         <td>
                             <div class="form-group">
                                 <div class="col-md-offset-2 col-md-10">
@@ -168,21 +161,20 @@
                     showMessage('SubmitMessage', message)
                 });
 
-                $(".btnAdd").click(function () {
+                function badd() {
                     $('#sandbox').datepicker('destroy');
                     var td1 = '<td><div class="form-group"><div class="col-md-10">@Html.EditorFor(modelItem => modelItem.TaskName, new { htmlAttributes = new { @class = "form-control" } })@Html.ValidationMessageFor(model => model.TaskName, "", new { @class = "text-danger" })</div></div></td>';
                     var td2 = '<td><div class="form-group"><div class="col-md-10"><textarea class="form-control text-box multi-line" id="TaskDescription" name="TaskDescription" rows="3"></textarea>@Html.ValidationMessageFor(model => model.TaskDescription, "", new { @class = "text-danger" })</div></div></td>';
                     var td3 = '<td><div class="form-group"><div class="col-md-10"><div id="sandbox">@Html.EditorFor(modelItem => modelItem.DueDate, new { htmlAttributes = new { @class = "form-control", @onchange = "dateChange(this)" } })@Html.ValidationMessageFor(model => model.DueDate, "", new { @class = "text-danger" })</div></div></div></td>';
-                    var td4 = '<td><div class="form-group"><div class="col-md-offset-4 col-md-10"><input type="button" value="Add a task" class="btnAdd btn btn-default /></div></div></td>';
-                    var td5 = '<td><div class="form-group"><div id="remove"><input type="button" value="Remove task" class="btnRemove btn btn-danger" onclick="removeRow(this)" /></div></div></td>';
-                    var row = '<tr id="newRow">' + td1 + td2 + td3 + td4 + td5 + '</tr>';
+                    var td4 = '<td><div class="form-group"><div class="col-md-offset-4 col-md-10"><input type="button" value="Add a task" class="btnAdd btn btn-primary" onclick="badd()" /></div></div><div class="form-group"><div id="remove"><input type="button" value="Remove task" class="btnRemove btn btn-danger" onclick="removeRow(this)" /></div></div></td>';                    
+                    var row = '<tr id="newRow">' + td1 + td2 + td3 + td4 + '</tr>';
                     $("tbody").append(row);
                     $('#sandbox input').datepicker({
                         autoclose: true,
                         todayHighlight: true,
                         format: "dd-M-yyyy"
                     });
-                });
+                }               
 
                 function removeRow(element) {
                     var trow = $(element).closest('tr');
