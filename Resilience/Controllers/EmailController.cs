@@ -11,7 +11,7 @@ namespace Resilience.Controllers
                 
         public void SendConfirmation(string toEmail)
         {
-            var apiKey = Environment.GetEnvironmentVariable("SENDGRID_KEY");
+            var apiKey = Environment.GetEnvironmentVariable("SENDsGRID_KEY");
             var client = new SendGridClient(apiKey);
             var from = new EmailAddress("no-reply@roadtoresilience.tk", "Road to Resillience");
             var subject = "Welcome to Road to Resillience!";
@@ -24,7 +24,7 @@ namespace Resilience.Controllers
 
         public void MentorConfirmation(string toEmail, string menteeFirstName, string menteeLastName, string mentorFirstName)
         {
-            var apiKey = Environment.GetEnvironmentVariable("SENDGRID_KEY");
+            var apiKey = Environment.GetEnvironmentVariable("SENDsGRID_KEY");
             var client = new SendGridClient(apiKey);
             var from = new EmailAddress("no-reply@roadtoresilience.tk", "Road to Resillience");
             var subject = "Someone has added you as a mentor";
@@ -37,7 +37,7 @@ namespace Resilience.Controllers
 
         public void MenteeConfirmation(string toEmail, string mentorFirstName, string mentorLastName, string menteeFirstName)
         {
-            var apiKey = Environment.GetEnvironmentVariable("SENDGRID_KEY");
+            var apiKey = Environment.GetEnvironmentVariable("SENDsGRID_KEY");
             var client = new SendGridClient(apiKey);
             var from = new EmailAddress("no-reply@roadtoresilience.tk", "Road to Resillience");
             var subject = "Someone has added you as a mentee";
@@ -50,7 +50,7 @@ namespace Resilience.Controllers
 
         public void NewDiary(string toEmail, string mentorFirstName, string menteeFirstName, string menteeLastName)
         {
-            var apiKey = Environment.GetEnvironmentVariable("SENDGRID_KEY");
+            var apiKey = Environment.GetEnvironmentVariable("SENDsGRID_KEY");
             var client = new SendGridClient(apiKey);
             var from = new EmailAddress("no-reply@roadtoresilience.tk", "Road to Resillience");
             var subject = "You have a new diary entry to review";
@@ -63,7 +63,7 @@ namespace Resilience.Controllers
 
         public void NewTask(string toEmail, string mentorFirstName, string menteeFirstName, string menteeLastName)
         {
-            var apiKey = Environment.GetEnvironmentVariable("SENDGRID_KEY");
+            var apiKey = Environment.GetEnvironmentVariable("SENDsGRID_KEY");
             var client = new SendGridClient(apiKey);
             var from = new EmailAddress("no-reply@roadtoresilience.tk", "Road to Resillience");
             var subject = "You have a new goal/task to review";
@@ -76,7 +76,7 @@ namespace Resilience.Controllers
 
         public void EditTask(string toEmail, string menteeFirstName, string mentorFirstName, string mentorLastName)
         {
-            var apiKey = Environment.GetEnvironmentVariable("SENDGRID_KEY");
+            var apiKey = Environment.GetEnvironmentVariable("SENDsGRID_KEY");
             var client = new SendGridClient(apiKey);
             var from = new EmailAddress("no-reply@roadtoresilience.tk", "Road to Resillience");
             var subject = "Yor mentor has proposed changes to your tasks";
@@ -89,7 +89,7 @@ namespace Resilience.Controllers
 
         public void FeedbackProvided(string toEmail, string menteeFirstName, string mentorFirstName, string mentorLastName)
         {
-            var apiKey = Environment.GetEnvironmentVariable("SENDGRID_KEY");
+            var apiKey = Environment.GetEnvironmentVariable("SENDsGRID_KEY");
             var client = new SendGridClient(apiKey);
             var from = new EmailAddress("no-reply@roadtoresilience.tk", "Road to Resillience");
             var subject = "Yor mentor has proposed changes to your tasks";
