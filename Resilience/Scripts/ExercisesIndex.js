@@ -5,31 +5,7 @@ var emotionsArray = ['crying', 'disappointed', 'meh', 'happy', 'smile'];
 $(document).ready(function () {
 
 
-    // Set div with rating
-    $(".ratingEnabled").emotionsRating({
-
-        // Back ground emoticon
-        bgEmotion: 'happy',
-
-        // Set array of emoticons
-        emotions: emotionsArray,
-
-        onUpdate: function (value) {
-            $(this.element).attr("rate", value);
-
-            iid = $(this.element).attr("iid");
-
-            $.ajax({
-                url: '/Exercises/setExerciseMenteeRate',
-                type: 'POST',
-                data: {
-                    Id: iid,
-                    rate: value
-                }
-            });
-        }
-
-    });
+    
 
     // Get list of rating divs
     var ratingDis = document.getElementsByClassName("ratingDisabled");
@@ -42,6 +18,7 @@ $(document).ready(function () {
         buildDisabledRating(element);
     };
 
+    
 
 });
 
@@ -56,3 +33,29 @@ function buildDisabledRating(element) {
         initialRating: element.getAttribute("rate")
     });
 };
+
+// Set div with rating
+$(".ratingEnabled").emotionsRating({
+
+    // Back ground emoticon
+    bgEmotion: 'happy',
+    count: 5,
+    // Set array of emoticons
+    emotions: emotionsArray,
+
+    onUpdate: function (value) {
+        $(this.element).attr("rate", value);
+
+        iid = $(this.element).attr("iid");
+
+        $.ajax({
+            url: '/Exercises/setExerciseMenteeRate',
+            type: 'POST',
+            data: {
+                Id: iid,
+                rate: value
+            }
+        });
+    }
+
+});

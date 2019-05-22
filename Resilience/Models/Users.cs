@@ -62,7 +62,7 @@ namespace Resilience.Models
                 {
                     foreach(Exercise e in g.Exercises)
                     {
-                        if(DateTime.Compare(DateTime.Now.Date, e.DueDate.Date) > 0)
+                        if(DateTime.Compare(e.CompletionDate.Date, new DateTime(1990, 2, 10).Date) == 0 && DateTime.Compare(DateTime.Now.Date, e.DueDate.Date) > 0)
                         {
                             dtasks++;
                         }
