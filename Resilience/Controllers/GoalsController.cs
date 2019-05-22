@@ -8,7 +8,6 @@ using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
-using MvcSiteMapProvider.Web.Mvc.Filters;
 using Resilience.Models;
 using System.Web.Script.Serialization;
 
@@ -61,8 +60,7 @@ namespace Resilience.Controllers
             ViewBag.UsersId = new SelectList(db.Users, "Id", "FirstName", goals.UsersId);
             return View(goals);
         }
-
-        [SiteMapTitle("title")]
+        
         public ActionResult MentorView(int Id)
         {            
             var goals = db.Goals.Where(g => g.UsersId == Id).ToList();

@@ -8,7 +8,6 @@ using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
-using MvcSiteMapProvider.Web.Mvc.Filters;
 using Newtonsoft.Json;
 using Resilience.Models;
 using System.Web.Script.Serialization;
@@ -19,8 +18,7 @@ namespace Resilience.Controllers
     {
         private DiaryEntriesContainer db = new DiaryEntriesContainer();
 
-        //GET: Exercises/5
-        [SiteMapTitle("title")]
+        //GET: Exercises/5        
         public ActionResult Index(int Id)
         {
             var exercises = db.Exercises.Where(e => e.GoalsId == Id).ToList();

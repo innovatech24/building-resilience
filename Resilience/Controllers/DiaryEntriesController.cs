@@ -10,8 +10,6 @@ using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
-using MvcSiteMapProvider;
-using MvcSiteMapProvider.Web.Mvc.Filters;
 using Resilience.Models;
 
 namespace Resilience.Controllers
@@ -50,8 +48,7 @@ namespace Resilience.Controllers
             return View(users.ToList());
         }
 
-        //GET: View/5
-        [SiteMapTitle("title")]
+        //GET: View/5        
         [Authorize(Roles = "Mentor")]
         public ActionResult View(int Id)
         {
@@ -59,8 +56,7 @@ namespace Resilience.Controllers
             return View(diaryEntries.ToList());
         }
 
-        //GET: ViewUser/5
-        [SiteMapTitle("title")]
+        //GET: ViewUser/5        
         [Authorize(Roles = "Mentor")]
         public ActionResult ViewUser(int Id)
         {
@@ -119,8 +115,7 @@ namespace Resilience.Controllers
             return View(diaryEntries);
         }
 
-        //GET: Feedback/5
-        [SiteMapTitle("title")]
+        //GET: Feedback/5        
         [Authorize(Roles = "Mentor")]
         public ActionResult Feedback(int Id)
         {
