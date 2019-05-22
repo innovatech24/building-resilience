@@ -28,6 +28,7 @@ namespace Resilience.Models
         public string MentorFeedback { get; set; }
         [Display(Name = "Entry Date")]
         public System.DateTime Date { get; set; }
+        [Required(ErrorMessage = "You have to let your mentor know how you felt")]
         [Display(Name = "Mentee Feedback")]
         public Nullable<int> MenteeFeedback { get; set; }
     
