@@ -159,7 +159,16 @@
 
 
             });
+            function dateChange(element) {
+                    var goalDate = new Date("@Model.Goal.DueDate");
+                    var taskDate = new Date(element.value);
 
+                    if (taskDate > goalDate) {
+                        alert("Task date can't be after goal date");
+                        element.value = "";
+                        element.focus();
+                    };
+                };
             function showMessage(obj, messageObj, href) {
             if (messageObj != "") {
 
