@@ -12,7 +12,8 @@ using Microsoft.Owin.Security;
 using Resilience.Models;
 
 namespace Resilience.Controllers
-{
+{   
+    // This controller mangage the User/Password related operation (Log in/Registration)
     [Authorize]
     public class AccountController : Controller
     {
@@ -81,14 +82,21 @@ namespace Resilience.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
+                    
+                    // Find user in user's database
                     var currentuse = UserManager.FindByEmail(model.Email);
+
+                    // Find user in app's database
                     var user = db.Users.Find(currentuse.Id);
+
                     if (db.Users.Find(currentuse.Id) == null)
                     {
                         return RedirectToAction("Create", "Users");
-                    }                    
+                    }           
+                    
                     var roles = UserManager.GetRoles(currentuse.Id);                    
                     
+                    // If it has 2 roles, it has a special landing page
                     if (roles.Count == 2)
                     {
                         return RedirectToAction("Choice", "Options");

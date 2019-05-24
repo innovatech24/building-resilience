@@ -9,25 +9,28 @@ namespace Resilience.Models
 {
     public class SentimentPy
     {
-
+        // Run python script that returns a sentiment score of a given text
         public float getSentimentScore(string text)
         {
             string res = run_cmd("Scripts/py/sentiment_analysis.py", text);
             return (float.Parse(res));
         }
 
+        // Run python script that returns a set of sentences representing the most positive and negative
         public string getSentimentMinMax(string text)
         {
             string res = run_cmd("Scripts/py/sentiment_analysis2.py", text);
             return (res); //Json format string
         }
 
+        // Run python script returning a set of datasets
         public string getDatasets()
         {
             string res = run_cmd("Scripts/py/load_datasets.py", AppDomain.CurrentDomain.BaseDirectory.Replace("\\", "/"));
             return (res); //Json format string
         }
 
+        // Function to run a command in the command prompt
         private string run_cmd(string cmd, string args)
         {
             ProcessStartInfo start = new ProcessStartInfo();
@@ -48,6 +51,7 @@ namespace Resilience.Models
             }
         }
 
+        // Function to find python in the machine.
         public string findPy()
         {
             ProcessStartInfo start = new ProcessStartInfo();

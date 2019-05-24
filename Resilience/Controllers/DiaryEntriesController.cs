@@ -37,9 +37,12 @@ namespace Resilience.Controllers
                 d.User.LastName = mentor.LastName;
 
             }
+
+            // List in descending order by creation date
             return View(diaryEntries.OrderByDescending(d => d.Date).ToList());
         }
 
+        // This view is the dashboard of mentees for the mentor
         //GET: Dashboard
         [Authorize(Roles = "Mentor")]
         public ActionResult Dashboard()
@@ -88,9 +91,12 @@ namespace Resilience.Controllers
         // GET: DiaryEntries/Create
         [Authorize]
         public ActionResult Create()
-        {
+        {   
+            // Get current user and find its data
             ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId<int>());
             Users currentUser = db.Users.Find(user.Id);
+
+            // If does not have a mentor it returns an error.
             if (currentUser.MentorId == null)
             {
                 return RedirectToAction("NoMentorMapped", "Error");
@@ -107,9 +113,12 @@ namespace Resilience.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Entry,UsersId,MentorId,SentimentScore,MentorFeedback,Date,MenteeFeedback")] DiaryEntries diaryEntries)
         {
+            // Calculate the sentiment score of the text to save it in the database
             SentimentPy sent = new SentimentPy();
             var score = sent.getSentimentScore(diaryEntries.Entry);
             diaryEntries.SentimentScore = score;
+
+            // Get the user's information and update the diary before saving it
             ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId<int>());
             Users currentUser = db.Users.Find(user.Id);
             diaryEntries.UsersId = currentUser.Id;
