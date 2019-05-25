@@ -23,7 +23,7 @@ $(document).ready(function () {
             iid = $(this.element).attr("iid");
 
             $.ajax({
-                url: '/Goals/setGoalMenteeRate',
+                url: '/Goals/SetGoalMenteeRate',
                 type: 'POST',
                 data: {
                     Id: iid,
