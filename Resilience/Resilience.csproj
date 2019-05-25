@@ -51,12 +51,6 @@
     <Reference Include="SendGrid, Version=9.11.0.0, Culture=neutral, PublicKeyToken=4f047e93159395ca, processorArchitecture=MSIL">
       <HintPath>..\packages\Sendgrid.9.11.0\lib\net452\SendGrid.dll</HintPath>
     </Reference>
-    <Reference Include="MvcSiteMapProvider, Version=4.6.26.0, Culture=neutral, PublicKeyToken=1923abe4657913cc, processorArchitecture=MSIL">
-      <HintPath>..\packages\MvcSiteMapProvider.MVC5.Core.4.6.26\lib\net45\MvcSiteMapProvider.dll</HintPath>
-    </Reference>
-    <Reference Include="MvcSiteMapProvider.WebActivator, Version=4.6.26.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MvcSiteMapProvider.MVC5.4.6.26\lib\net45\MvcSiteMapProvider.WebActivator.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -449,9 +443,6 @@
     <Content Include="Content\bootstrap-datepicker.min.css.map" />
     <Content Include="Content\bootstrap-datepicker3.css.map" />
     <Content Include="Mvc.sitemap" />
-    <None Include="MvcSiteMapSchema.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\breakpoints.min.js" />
     <Content Include="Scripts\browser.min.js" />
@@ -581,14 +572,7 @@
     <Content Include="Views\Options\Landingpage.cshtml" />
     <Content Include="Views\Goals\MentorView.cshtml" />
     <Content Include="Views\Options\Progress.cshtml" />
-    <Content Include="Views\Shared\DisplayTemplates\SiteMapTitleHelperModel.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\SiteMapPathHelperModel.cshtml" />
-    <Content Include="Views\Shared\DisplayTemplates\SiteMapNodeModelList.cshtml" />
-    <Content Include="Views\Shared\DisplayTemplates\SiteMapNodeModel.cshtml" />
-    <Content Include="Views\Shared\DisplayTemplates\SiteMapHelperModel.cshtml" />
-    <Content Include="Views\Shared\DisplayTemplates\MetaRobotsHelperModel.cshtml" />
-    <Content Include="Views\Shared\DisplayTemplates\MenuHelperModel.cshtml" />
-    <Content Include="Views\Shared\DisplayTemplates\CanonicalHelperModel.cshtml" />
     <Content Include="Views\Options\MenteeProgress.cshtml" />
     <Content Include="Views\Error\NothingAdded.cshtml" />
     <Content Include="Views\Goals\Comments.cshtml" />
