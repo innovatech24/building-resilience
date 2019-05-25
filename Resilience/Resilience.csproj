@@ -450,6 +450,8 @@
     <Content Include="Scripts\MenteeProgress_.js" />
     <Content Include="Scripts\Progress_.js" />
     <Content Include="Scripts\py\load_datasets.py" />
+    <Content Include="Scripts\py\wrangle_datasets.py" />
+    <Content Include="Scripts\slick.js" />
     <Content Include="Scripts\umd\popper-utils.js" />
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
