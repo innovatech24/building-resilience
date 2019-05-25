@@ -1,13 +1,19 @@
 Vic_region	Employment
-Ballarat	74800
-Barwon	140900
-Bendigo	76700
-Gippsland	129800
-Goulburn/Murray	147100
-Inner Metropolitan Melbourne	853500
-North Eastern Melbourne	570200
-North Western Melbourne	192600
-South Coast of Victoria	65500
-South Eastern Melbourne and Peninsula	574400
-Western Melbourne	394000
-Wimmera Mallee	75600
+Ballarat	75600
+Bendigo	79400
+Geelong	143500
+Greater Melbourne	2613600
+Hume	80900
+Latrobe - Gippsland	130500
+Melbourne - Inner	422500
+Melbourne - Inner East	207400
+Melbourne - Inner South	235900
+Melbourne - North East	284800
+Melbourne - North West	194500
+Melbourne - Outer East	285900
+Melbourne - South East	426900
+Melbourne - West	403100
+Mornington Peninsula	152000
+North West	72500
+Shepparton	68600
+Warrnambool and South West	65800
