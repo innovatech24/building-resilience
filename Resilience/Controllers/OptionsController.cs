@@ -161,9 +161,10 @@ namespace Resilience.Controllers
                 int pendingTasks = 0;
                 foreach (var task in goal.tasks)
                 {
-
+                    // If tasks is completed
                     if(DateTime.Compare(task.CompletionDate.Date,new DateTime(1990,2,10).Date)!=0)
-                    {
+                    {   
+                        // If the tasks was completed after the due date
                         if (DateTime.Compare(task.CompletionDate.Date,task.DueDate.Date) > 0)
                         {
                             delayedCompletedTasks++;
@@ -172,7 +173,7 @@ namespace Resilience.Controllers
                         {
                             completedTasks++;
                         }
-                    }
+                    } // If today is after the due date
                     else if(DateTime.Compare(DateTime.Now.Date, task.DueDate.Date) > 0)
                     {
                         delayedTasks++;
@@ -194,7 +195,7 @@ namespace Resilience.Controllers
 
                 }
 
-                //If goal has no completion date. It's open
+                //If the goal is open
                 if (DateTime.Compare(goal.CompletionDate.Date, new DateTime(1990, 2, 10).Date) == 0)
                 {
                     openGoals++;

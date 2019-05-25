@@ -29,10 +29,12 @@ namespace Resilience.Controllers
         //GET: Exercises/5
         [SiteMapTitle("title")]
         public ActionResult Index(int Id)
-        {
+        {   
+            // Get the tasks related to the goal selected
             var exercises = db.Exercises.Where(e => e.GoalsId == Id).ToList();
             if (!exercises.Any())
-            {
+            {   
+                // If the goal has no tasks, is redirected to the page to add tasks
                 TempData["UserMessage"] = new JavaScriptSerializer().Serialize(new { Type = "warning", Title = "Warning:", Message = "There were no tasks for this goal, so please create some." });
                 return RedirectToAction("Create", "Exercises", new { id = Id });
             }

@@ -31,6 +31,7 @@ namespace Resilience.Controllers
             return View();
         }
 
+        // This function is to validate if the entry password has passed. It is called from all the views
         public JsonResult ValidateEntry()
         {
 
@@ -48,6 +49,7 @@ namespace Resilience.Controllers
             return Json(res);
         }
 
+        // The actual validation when the user inputs the password.
         public JsonResult Validate(string entry)
         {
             string pass = "IT@2019";
@@ -60,7 +62,6 @@ namespace Resilience.Controllers
 
             return Json(pass.Equals(entry));
         }
-
 
         public string GetDatasets()
         {
