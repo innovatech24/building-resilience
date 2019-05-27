@@ -256,7 +256,6 @@
       <DependentUpon>DiaryEntries.mdf</DependentUpon>
     </Content>
     <Content Include="App_Data\Employment_region_VIC.txt" />
-    <Content Include="App_Data\Historical_Victorian_employment.txt" />
     <Content Include="App_Data\Users.mdf" />
     <Content Include="App_Data\Users_log.ldf" />
     <Content Include="Content\account-login.css" />
