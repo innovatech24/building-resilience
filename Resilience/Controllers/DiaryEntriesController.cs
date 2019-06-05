@@ -22,9 +22,11 @@ namespace Resilience.Controllers
         [Authorize(Roles = "Mentee")]
         public ActionResult Index()
         {
-            //var diaryEntries = db.DiaryEntries.Include(d => d.User);
+            // Getting current user context
             ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId<int>());
+            // Finding the user
             Users currentUser = db.Users.Find(user.Id);
+            // Finding diary entries for the user
             var diaryEntries = db.DiaryEntries.Where(d => d.UsersId == currentUser.Id).ToList();
 
             // The name and last name of the mentor is going in unused variables
@@ -45,8 +47,9 @@ namespace Resilience.Controllers
         [Authorize(Roles = "Mentor")]
         public ActionResult Dashboard()
         {
-            ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId<int>());
+            ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId<int>());            
             Users currentUser = db.Users.Find(user.Id);            
+            // Finding list of mentees 
             var users = db.Users.Where(d => d.MentorId == currentUser.Id).ToList();
             return View(users.ToList());
         }
@@ -55,6 +58,7 @@ namespace Resilience.Controllers
         [Authorize(Roles = "Mentor")]
         public ActionResult View(int Id)
         {
+            // Finding list of diary entries for each user
             var diaryEntries = db.DiaryEntries.Where(d => d.Id == Id).ToList();
             return View(diaryEntries.ToList());
         }
@@ -106,8 +110,10 @@ namespace Resilience.Controllers
 
             if (ModelState.IsValid)
             {
+                // Save changes to DB
                 db.DiaryEntries.Add(diaryEntries);
                 db.SaveChanges();
+                // Send e-mail to mentor
                 EmailController mail = new EmailController();
                 var UserManager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
                 var users = UserManager.FindById(diaryEntries.MentorId);
@@ -137,9 +143,7 @@ namespace Resilience.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Feedback(DiaryEntries mentfeedback)
-        {            
-            //if (ModelState.IsValid)
-            //{
+        {                        
                 if (string.IsNullOrEmpty(mentfeedback.MentorFeedback))
                 {
                     return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -163,9 +167,7 @@ namespace Resilience.Controllers
                 TempData["UserMessage"] = new JavaScriptSerializer().Serialize(new { Type = "success", Title = "Success!", Message = "Feedback added correctly!" });
 
                 //return RedirectToAction("Dashboard", "DiaryEntries");
-                return View(diaryEntries);
-            //}
-            //return View();
+                return View(diaryEntries);          
         }
 
         //GET: ViewFeedback
